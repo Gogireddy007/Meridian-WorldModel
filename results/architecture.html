@@ -1,0 +1,127 @@
+<title>Meridian — Architecture Diagram</title>
+<style>
+:root{
+  --bg:#0b0f17; --panel:#131926; --border:#232c40; --ink:#e7ecf5; --muted:#8a96ac;
+  --accent:#35d0ba; --good:#34d399; --warn:#fbbf24;
+  --board:#0e1420; --sans:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:light){
+  :root{--bg:#f6f8fc;--panel:#fff;--border:#dde4ee;--ink:#101725;--muted:#57627a;
+    --accent:#0d9488;--good:#059669;--warn:#b45309;--board:#ffffff;}
+}
+:root[data-theme="dark"]{--bg:#0b0f17;--panel:#131926;--border:#232c40;--ink:#e7ecf5;--muted:#8a96ac;--accent:#35d0ba;--good:#34d399;--warn:#fbbf24;--board:#0e1420;}
+:root[data-theme="light"]{--bg:#f6f8fc;--panel:#fff;--border:#dde4ee;--ink:#101725;--muted:#57627a;--accent:#0d9488;--good:#059669;--warn:#b45309;--board:#ffffff;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:34px 20px 70px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+h1{font-size:25px;font-weight:700;letter-spacing:-.02em;margin:0}
+.sub{color:var(--muted);font-size:14.5px;margin:4px 0 0;max-width:60ch}
+.themebtn{background:var(--panel);border:1px solid var(--border);color:var(--muted);border-radius:7px;padding:6px 11px;font-size:12px;cursor:pointer;font-family:var(--sans)}
+.board{background:var(--board);border:1px solid var(--border);border-radius:16px;padding:22px 16px;margin:22px 0 14px;overflow-x:auto}
+.board pre.mermaid{background:transparent;margin:0;min-width:720px}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 22px}
+.chip{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:5px 12px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.law{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:9px;padding:14px 18px;font-size:14.5px;max-width:74ch}
+.law b{color:var(--accent)}
+.foot{color:var(--muted);font-size:12px;margin-top:26px;text-align:center}
+</style>
+
+<div class="wrap">
+<header>
+  <div>
+    <h1>Meridian Enterprise World Model — Architecture</h1>
+    <p class="sub">A bank of decoupled, individually-validated specialist modules, linked by interpretable objects — never one black box.</p>
+  </div>
+  <button class="themebtn" id="theme">◐ theme</button>
+</header>
+
+<div class="board">
+<pre class="mermaid">
+%%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':38,'rankSpacing':46},'themeVariables':{'fontFamily':'ui-monospace, SFMono-Regular, Menlo, monospace','fontSize':'12.5px','primaryColor':'#16203a','primaryTextColor':'#e7ecf5','primaryBorderColor':'#3a4a6a','lineColor':'#5b8cff','clusterBkg':'#0e1420','clusterBorder':'#2a3550'}}}%%
+flowchart TB
+  USER([User — any question · any entity]):::user
+
+  subgraph DATA[" 1 · Data — any entity on a free feed "]
+    direction LR
+    Y["Yahoo global<br/>equities · ETF · FX<br/>crypto · futures · indices"]
+    F["FRED macro<br/>VIX · yields"]
+  end
+
+  subgraph MEAS[" 2 · Measurement — causal, no lookahead "]
+    direction LR
+    RV["Realized variance<br/>Garman-Klass"]
+    HARf["HAR cascade d/w/m<br/>+ leverage / bad-vol"]
+    RET["Cross-asset<br/>returns panel"]
+  end
+
+  subgraph BANK[" 3 · Module bank — decoupled specialists, each validated OOS "]
+    VOL["Volatility<br/>HAR + leverage<br/><b>+6.3% vs HAR</b>"]:::ok
+    REG["Regime<br/>by-design vol-percentile<br/><b>△ marginal, no discovery claim</b>"]:::cav
+    TAIL["Tail risk · EVT<br/>VaR + Expected Shortfall<br/><b>ES calib ≈ 1.0</b>"]:::ok
+    COV["Covariance / portfolio<br/>Ledoit-Wolf → min-var<br/><b>−69% risk</b>"]:::ok
+    CONN["Connectedness<br/>Diebold-Yilmaz GFEVD<br/><b>COVID-validated</b>"]:::ok
+    NET["Network propagation<br/>generalized IRF<br/><b>+0.72 OOS · FR-gated</b>"]:::ok
+    CONT["Continual learning<br/>online, leakage-audited<br/><b>−27% vs retrain</b>"]:::ok
+  end
+
+  COMB["4 · Combiner — glass-box GAM + Bernstein online aggregation<br/><i>interpretable links only · Adebayo-faithful</i>"]:::link
+
+  subgraph ENG[" 5 · Interactive engine "]
+    direction LR
+    MODES["analyze · compare · scenario<br/>world-sim · portfolio"]
+  end
+
+  CONV["6 · Conversational contract<br/>provenance ledger — modules own every number"]:::link
+
+  USER --> ENG
+  Y --> MEAS
+  F --> MEAS
+  RV --> VOL
+  RV --> REG
+  RV --> TAIL
+  HARf --> VOL
+  RET --> COV
+  RET --> CONN
+  RET --> NET
+  VOL --> COMB
+  REG --> COMB
+  TAIL --> COMB
+  COV --> COMB
+  CONN --> COMB
+  NET --> COMB
+  CONT --> COMB
+  COMB --> ENG
+  ENG --> CONV
+  CONV --> USER
+
+  classDef user fill:#0d9488,color:#ffffff,stroke:#0d9488,stroke-width:1.5px;
+  classDef link fill:#12261f,color:#e7ecf5,stroke:#35d0ba,stroke-width:1.5px;
+  classDef ok fill:#16203a,color:#e7ecf5,stroke:#2f7d5b,stroke-width:1.2px;
+  classDef cav fill:#211d10,color:#e7ecf5,stroke:#8a6d1f,stroke-width:1.2px;
+</pre>
+</div>
+
+<div class="legend">
+  <span class="chip"><span class="sw" style="background:#0d9488"></span> User surface</span>
+  <span class="chip"><span class="sw" style="background:#2f7d5b"></span> Validated OOS ✓</span>
+  <span class="chip"><span class="sw" style="background:#8a6d1f"></span> Honest caveat △</span>
+  <span class="chip"><span class="sw" style="background:#35d0ba"></span> Interpretable link</span>
+</div>
+
+<div class="law">
+  <b>Design law.</b> (1) <b>No shared trainable backbone</b> — modules never share weights one task's gradient can corrupt, so one module's training can never degrade another's. (2) <b>Interpretable links only</b> — modules connect through a glass-box combiner, an inspectable connectedness graph, and a named regime state; every link is a number you can point at. (3) <b>Every claim is gated by an OOS test <i>and</i> an adversarial null</b> — a module earns its place only if it beats a baseline out-of-sample and survives a test built to kill it.
+</div>
+
+<div class="foot">Meridian Enterprise World Model · architecture as of 2026-07-30 · measurement-and-forecast system, not investment advice</div>
+</div>
+
+<script>
+const root=document.documentElement;
+document.getElementById('theme').onclick=()=>{
+  const cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  root.setAttribute('data-theme',cur==='dark'?'light':'dark');
+};
+</script>

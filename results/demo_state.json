@@ -1,0 +1,648 @@
+{
+  "asset": "SPY",
+  "as_of": "2026-07-27",
+  "latest": {
+    "date": "2026-07-27",
+    "regime": "Transition",
+    "vol_forecast": 8.42,
+    "vol_realized": 10.1,
+    "surprise": -0.57
+  },
+  "changed": {
+    "regime_from": "Transition",
+    "regime_to": "Transition",
+    "vol_delta": 0.54
+  },
+  "timeline": [
+    {
+      "date": "2026-03-18",
+      "regime": "Stress",
+      "vol_forecast": 9.49,
+      "vol_realized": 12.61,
+      "surprise": -0.55
+    },
+    {
+      "date": "2026-03-19",
+      "regime": "Stress",
+      "vol_forecast": 9.49,
+      "vol_realized": 16.8,
+      "surprise": 1.66
+    },
+    {
+      "date": "2026-03-20",
+      "regime": "Stress",
+      "vol_forecast": 11.5,
+      "vol_realized": 14.24,
+      "surprise": -0.66
+    },
+    {
+      "date": "2026-03-23",
+      "regime": "Stress",
+      "vol_forecast": 10.73,
+      "vol_realized": 11.96,
+      "surprise": -0.39
+    },
+    {
+      "date": "2026-03-24",
+      "regime": "Stress",
+      "vol_forecast": 11.34,
+      "vol_realized": 11.01,
+      "surprise": -0.46
+    },
+    {
+      "date": "2026-03-25",
+      "regime": "Stress",
+      "vol_forecast": 10.01,
+      "vol_realized": 13.7,
+      "surprise": 1.03
+    },
+    {
+      "date": "2026-03-26",
+      "regime": "Stress",
+      "vol_forecast": 11.75,
+      "vol_realized": 10.65,
+      "surprise": 0.75
+    },
+    {
+      "date": "2026-03-27",
+      "regime": "Stress",
+      "vol_forecast": 12.7,
+      "vol_realized": 15.0,
+      "surprise": -0.38
+    },
+    {
+      "date": "2026-03-30",
+      "regime": "Stress",
+      "vol_forecast": 13.08,
+      "vol_realized": 15.9,
+      "surprise": 0.32
+    },
+    {
+      "date": "2026-03-31",
+      "regime": "Stress",
+      "vol_forecast": 11.25,
+      "vol_realized": 9.23,
+      "surprise": -0.59
+    },
+    {
+      "date": "2026-04-01",
+      "regime": "Stress",
+      "vol_forecast": 9.65,
+      "vol_realized": 17.47,
+      "surprise": -0.55
+    },
+    {
+      "date": "2026-04-02",
+      "regime": "Stress",
+      "vol_forecast": 10.31,
+      "vol_realized": 5.49,
+      "surprise": -0.19
+    },
+    {
+      "date": "2026-04-06",
+      "regime": "Stress",
+      "vol_forecast": 8.57,
+      "vol_realized": 14.13,
+      "surprise": -0.21
+    },
+    {
+      "date": "2026-04-07",
+      "regime": "Stress",
+      "vol_forecast": 9.65,
+      "vol_realized": 9.34,
+      "surprise": 0.51
+    },
+    {
+      "date": "2026-04-08",
+      "regime": "Stress",
+      "vol_forecast": 8.65,
+      "vol_realized": 9.77,
+      "surprise": -0.15
+    },
+    {
+      "date": "2026-04-09",
+      "regime": "Transition",
+      "vol_forecast": 7.88,
+      "vol_realized": 5.26,
+      "surprise": -0.19
+    },
+    {
+      "date": "2026-04-10",
+      "regime": "Transition",
+      "vol_forecast": 7.25,
+      "vol_realized": 9.91,
+      "surprise": 0.01
+    },
+    {
+      "date": "2026-04-13",
+      "regime": "Transition",
+      "vol_forecast": 7.22,
+      "vol_realized": 5.74,
+      "surprise": -0.05
+    },
+    {
+      "date": "2026-04-14",
+      "regime": "Transition",
+      "vol_forecast": 6.66,
+      "vol_realized": 7.21,
+      "surprise": -0.33
+    },
+    {
+      "date": "2026-04-15",
+      "regime": "Transition",
+      "vol_forecast": 6.51,
+      "vol_realized": 6.76,
+      "surprise": -0.51
+    },
+    {
+      "date": "2026-04-16",
+      "regime": "Transition",
+      "vol_forecast": 6.38,
+      "vol_realized": 8.89,
+      "surprise": 0.2
+    },
+    {
+      "date": "2026-04-17",
+      "regime": "Transition",
+      "vol_forecast": 6.33,
+      "vol_realized": 5.98,
+      "surprise": -0.38
+    },
+    {
+      "date": "2026-04-20",
+      "regime": "Transition",
+      "vol_forecast": 6.5,
+      "vol_realized": 10.65,
+      "surprise": -0.34
+    },
+    {
+      "date": "2026-04-21",
+      "regime": "Transition",
+      "vol_forecast": 7.04,
+      "vol_realized": 4.23,
+      "surprise": -0.2
+    },
+    {
+      "date": "2026-04-22",
+      "regime": "Transition",
+      "vol_forecast": 6.12,
+      "vol_realized": 15.93,
+      "surprise": 0.11
+    },
+    {
+      "date": "2026-04-23",
+      "regime": "Transition",
+      "vol_forecast": 7.42,
+      "vol_realized": 7.39,
+      "surprise": -0.42
+    },
+    {
+      "date": "2026-04-24",
+      "regime": "Transition",
+      "vol_forecast": 6.61,
+      "vol_realized": 4.45,
+      "surprise": -0.42
+    },
+    {
+      "date": "2026-04-27",
+      "regime": "Transition",
+      "vol_forecast": 6.21,
+      "vol_realized": 5.73,
+      "surprise": -0.63
+    },
+    {
+      "date": "2026-04-28",
+      "regime": "Transition",
+      "vol_forecast": 5.99,
+      "vol_realized": 6.0,
+      "surprise": -0.09
+    },
+    {
+      "date": "2026-04-29",
+      "regime": "Transition",
+      "vol_forecast": 6.27,
+      "vol_realized": 13.57,
+      "surprise": 0.38
+    },
+    {
+      "date": "2026-04-30",
+      "regime": "Transition",
+      "vol_forecast": 6.24,
+      "vol_realized": 6.78,
+      "surprise": -0.64
+    },
+    {
+      "date": "2026-05-01",
+      "regime": "Transition",
+      "vol_forecast": 6.03,
+      "vol_realized": 10.77,
+      "surprise": 0.2
+    },
+    {
+      "date": "2026-05-04",
+      "regime": "Transition",
+      "vol_forecast": 6.88,
+      "vol_realized": 4.79,
+      "surprise": -0.13
+    },
+    {
+      "date": "2026-05-05",
+      "regime": "Transition",
+      "vol_forecast": 6.05,
+      "vol_realized": 7.03,
+      "surprise": 0.25
+    },
+    {
+      "date": "2026-05-06",
+      "regime": "Transition",
+      "vol_forecast": 6.01,
+      "vol_realized": 8.58,
+      "surprise": -0.74
+    },
+    {
+      "date": "2026-05-07",
+      "regime": "Transition",
+      "vol_forecast": 6.13,
+      "vol_realized": 3.95,
+      "surprise": -0.19
+    },
+    {
+      "date": "2026-05-08",
+      "regime": "Transition",
+      "vol_forecast": 5.64,
+      "vol_realized": 5.38,
+      "surprise": -0.12
+    },
+    {
+      "date": "2026-05-11",
+      "regime": "Transition",
+      "vol_forecast": 5.77,
+      "vol_realized": 10.56,
+      "surprise": -0.6
+    },
+    {
+      "date": "2026-05-12",
+      "regime": "Transition",
+      "vol_forecast": 6.17,
+      "vol_realized": 11.74,
+      "surprise": -0.43
+    },
+    {
+      "date": "2026-05-13",
+      "regime": "Transition",
+      "vol_forecast": 6.35,
+      "vol_realized": 6.7,
+      "surprise": -0.2
+    },
+    {
+      "date": "2026-05-14",
+      "regime": "Transition",
+      "vol_forecast": 6.1,
+      "vol_realized": 7.57,
+      "surprise": 0.56
+    },
+    {
+      "date": "2026-05-15",
+      "regime": "Transition",
+      "vol_forecast": 6.74,
+      "vol_realized": 12.12,
+      "surprise": -0.4
+    },
+    {
+      "date": "2026-05-18",
+      "regime": "Transition",
+      "vol_forecast": 7.07,
+      "vol_realized": 9.24,
+      "surprise": -0.44
+    },
+    {
+      "date": "2026-05-19",
+      "regime": "Transition",
+      "vol_forecast": 7.0,
+      "vol_realized": 9.62,
+      "surprise": -0.19
+    },
+    {
+      "date": "2026-05-20",
+      "regime": "Transition",
+      "vol_forecast": 6.67,
+      "vol_realized": 10.56,
+      "surprise": -0.52
+    },
+    {
+      "date": "2026-05-21",
+      "regime": "Transition",
+      "vol_forecast": 6.92,
+      "vol_realized": 6.66,
+      "surprise": -0.58
+    },
+    {
+      "date": "2026-05-22",
+      "regime": "Transition",
+      "vol_forecast": 6.45,
+      "vol_realized": 5.57,
+      "surprise": -0.41
+    },
+    {
+      "date": "2026-05-26",
+      "regime": "Transition",
+      "vol_forecast": 6.12,
+      "vol_realized": 4.7,
+      "surprise": -0.43
+    },
+    {
+      "date": "2026-05-27",
+      "regime": "Transition",
+      "vol_forecast": 6.09,
+      "vol_realized": 6.75,
+      "surprise": -0.5
+    },
+    {
+      "date": "2026-05-28",
+      "regime": "Transition",
+      "vol_forecast": 5.76,
+      "vol_realized": 4.97,
+      "surprise": -0.61
+    },
+    {
+      "date": "2026-05-29",
+      "regime": "Transition",
+      "vol_forecast": 5.48,
+      "vol_realized": 7.17,
+      "surprise": -0.48
+    },
+    {
+      "date": "2026-06-01",
+      "regime": "Transition",
+      "vol_forecast": 5.65,
+      "vol_realized": 4.27,
+      "surprise": -0.62
+    },
+    {
+      "date": "2026-06-02",
+      "regime": "Transition",
+      "vol_forecast": 5.41,
+      "vol_realized": 5.85,
+      "surprise": -0.54
+    },
+    {
+      "date": "2026-06-03",
+      "regime": "Transition",
+      "vol_forecast": 5.42,
+      "vol_realized": 7.8,
+      "surprise": -0.6
+    },
+    {
+      "date": "2026-06-04",
+      "regime": "Transition",
+      "vol_forecast": 5.36,
+      "vol_realized": 17.26,
+      "surprise": 6.05
+    },
+    {
+      "date": "2026-06-05",
+      "regime": "Stress",
+      "vol_forecast": 8.51,
+      "vol_realized": 9.31,
+      "surprise": 0.28
+    },
+    {
+      "date": "2026-06-08",
+      "regime": "Transition",
+      "vol_forecast": 6.7,
+      "vol_realized": 36.09,
+      "surprise": 2.59
+    },
+    {
+      "date": "2026-06-09",
+      "regime": "Stress",
+      "vol_forecast": 9.24,
+      "vol_realized": 16.87,
+      "surprise": 2.11
+    },
+    {
+      "date": "2026-06-10",
+      "regime": "Stress",
+      "vol_forecast": 10.8,
+      "vol_realized": 20.61,
+      "surprise": 0.15
+    },
+    {
+      "date": "2026-06-11",
+      "regime": "Stress",
+      "vol_forecast": 9.75,
+      "vol_realized": 14.21,
+      "surprise": -0.26
+    },
+    {
+      "date": "2026-06-12",
+      "regime": "Transition",
+      "vol_forecast": 8.7,
+      "vol_realized": 6.2,
+      "surprise": -0.08
+    },
+    {
+      "date": "2026-06-15",
+      "regime": "Transition",
+      "vol_forecast": 7.45,
+      "vol_realized": 6.18,
+      "surprise": -0.66
+    },
+    {
+      "date": "2026-06-16",
+      "regime": "Transition",
+      "vol_forecast": 7.01,
+      "vol_realized": 13.87,
+      "surprise": 1.91
+    },
+    {
+      "date": "2026-06-17",
+      "regime": "Stress",
+      "vol_forecast": 8.5,
+      "vol_realized": 6.44,
+      "surprise": 0.1
+    },
+    {
+      "date": "2026-06-18",
+      "regime": "Transition",
+      "vol_forecast": 6.87,
+      "vol_realized": 9.65,
+      "surprise": -0.4
+    },
+    {
+      "date": "2026-06-22",
+      "regime": "Transition",
+      "vol_forecast": 7.23,
+      "vol_realized": 11.18,
+      "surprise": 2.43
+    },
+    {
+      "date": "2026-06-23",
+      "regime": "Stress",
+      "vol_forecast": 8.96,
+      "vol_realized": 13.66,
+      "surprise": -0.17
+    },
+    {
+      "date": "2026-06-24",
+      "regime": "Transition",
+      "vol_forecast": 8.77,
+      "vol_realized": 13.59,
+      "surprise": -0.47
+    },
+    {
+      "date": "2026-06-25",
+      "regime": "Transition",
+      "vol_forecast": 8.93,
+      "vol_realized": 30.82,
+      "surprise": 0.94
+    },
+    {
+      "date": "2026-06-26",
+      "regime": "Stress",
+      "vol_forecast": 11.15,
+      "vol_realized": 13.13,
+      "surprise": -0.2
+    },
+    {
+      "date": "2026-06-29",
+      "regime": "Stress",
+      "vol_forecast": 9.38,
+      "vol_realized": 7.92,
+      "surprise": -0.23
+    },
+    {
+      "date": "2026-06-30",
+      "regime": "Transition",
+      "vol_forecast": 8.31,
+      "vol_realized": 10.58,
+      "surprise": -0.63
+    },
+    {
+      "date": "2026-07-01",
+      "regime": "Transition",
+      "vol_forecast": 8.56,
+      "vol_realized": 16.62,
+      "surprise": -0.52
+    },
+    {
+      "date": "2026-07-02",
+      "regime": "Transition",
+      "vol_forecast": 9.05,
+      "vol_realized": 6.7,
+      "surprise": 0.06
+    },
+    {
+      "date": "2026-07-06",
+      "regime": "Transition",
+      "vol_forecast": 7.53,
+      "vol_realized": 7.97,
+      "surprise": -0.69
+    },
+    {
+      "date": "2026-07-07",
+      "regime": "Transition",
+      "vol_forecast": 7.68,
+      "vol_realized": 9.58,
+      "surprise": -0.58
+    },
+    {
+      "date": "2026-07-08",
+      "regime": "Transition",
+      "vol_forecast": 8.01,
+      "vol_realized": 7.65,
+      "surprise": -0.05
+    },
+    {
+      "date": "2026-07-09",
+      "regime": "Transition",
+      "vol_forecast": 7.17,
+      "vol_realized": 10.25,
+      "surprise": -0.36
+    },
+    {
+      "date": "2026-07-10",
+      "regime": "Transition",
+      "vol_forecast": 6.98,
+      "vol_realized": 7.7,
+      "surprise": 0.45
+    },
+    {
+      "date": "2026-07-13",
+      "regime": "Transition",
+      "vol_forecast": 7.65,
+      "vol_realized": 6.89,
+      "surprise": -0.26
+    },
+    {
+      "date": "2026-07-14",
+      "regime": "Transition",
+      "vol_forecast": 6.91,
+      "vol_realized": 7.99,
+      "surprise": -0.36
+    },
+    {
+      "date": "2026-07-15",
+      "regime": "Transition",
+      "vol_forecast": 6.58,
+      "vol_realized": 9.63,
+      "surprise": -0.26
+    },
+    {
+      "date": "2026-07-16",
+      "regime": "Transition",
+      "vol_forecast": 7.2,
+      "vol_realized": 9.66,
+      "surprise": 1.08
+    },
+    {
+      "date": "2026-07-17",
+      "regime": "Transition",
+      "vol_forecast": 8.28,
+      "vol_realized": 8.66,
+      "surprise": -0.54
+    },
+    {
+      "date": "2026-07-20",
+      "regime": "Transition",
+      "vol_forecast": 7.93,
+      "vol_realized": 6.82,
+      "surprise": 0.04
+    },
+    {
+      "date": "2026-07-21",
+      "regime": "Transition",
+      "vol_forecast": 7.06,
+      "vol_realized": 5.38,
+      "surprise": -0.35
+    },
+    {
+      "date": "2026-07-22",
+      "regime": "Transition",
+      "vol_forecast": 6.74,
+      "vol_realized": 11.05,
+      "surprise": 1.77
+    },
+    {
+      "date": "2026-07-23",
+      "regime": "Transition",
+      "vol_forecast": 8.14,
+      "vol_realized": 9.73,
+      "surprise": -0.45
+    },
+    {
+      "date": "2026-07-24",
+      "regime": "Transition",
+      "vol_forecast": 7.88,
+      "vol_realized": 12.43,
+      "surprise": -0.21
+    },
+    {
+      "date": "2026-07-27",
+      "regime": "Transition",
+      "vol_forecast": 8.42,
+      "vol_realized": 10.1,
+      "surprise": -0.57
+    }
+  ]
+}

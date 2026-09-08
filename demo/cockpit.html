@@ -1,0 +1,63 @@
+<style>
+:root{--bg:#f6f7fb;--panel:#fff;--ink:#141a26;--muted:#5f6b82;--line:#e3e8f2;--grid:#c9d1e0;
+--accent:#0d9488;--calm:#0d9488;--trans:#c77d10;--stress:#e0616d;--pos:#0d9488;--negc:#e0616d;}
+@media(prefers-color-scheme:dark){:root{--bg:#080b12;--panel:#111725;--ink:#dbe3f2;--muted:#7d8aa3;
+--line:#1c2434;--grid:#222c40;--accent:#2dd4bf;--calm:#2dd4bf;--trans:#f0b429;--stress:#f0616d;--pos:#2dd4bf;--negc:#f0616d;}}
+:root[data-theme=dark]{--bg:#080b12;--panel:#111725;--ink:#dbe3f2;--muted:#7d8aa3;--line:#1c2434;--grid:#222c40;--accent:#2dd4bf;--calm:#2dd4bf;--trans:#f0b429;--stress:#f0616d;--pos:#2dd4bf;--negc:#f0616d;}
+:root[data-theme=light]{--bg:#f6f7fb;--panel:#fff;--ink:#141a26;--muted:#5f6b82;--line:#e3e8f2;--grid:#c9d1e0;--accent:#0d9488;--calm:#0d9488;--trans:#c77d10;--stress:#e0616d;--pos:#0d9488;--negc:#e0616d;}
+*{box-sizing:border-box}.mono{font-variant-numeric:tabular-nums;font-family:ui-monospace,Menlo,monospace}
+.wrap{max-width:1000px;margin:0 auto;padding:26px 20px 40px;font-family:system-ui,sans-serif;color:var(--ink);background:var(--bg);min-height:100%}
+.top{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);padding-bottom:14px;flex-wrap:wrap}
+.mark{color:var(--accent);font-size:20px}.name{font-weight:700;letter-spacing:.22em;font-size:15px}
+.tag{color:var(--muted);font-size:11px}.asof{margin-left:auto;color:var(--muted);font-size:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px}
+.card h3{margin:0 0 12px;font-size:11px;letter-spacing:.13em;color:var(--muted);text-transform:uppercase}
+.gauge{height:12px;border-radius:6px;background:linear-gradient(90deg,var(--calm),var(--trans),var(--stress));position:relative;margin:6px 0 4px}
+.gauge::after{content:"";position:absolute;top:-3px;left:calc(62.3% - 2px);width:4px;height:18px;background:var(--ink);border-radius:2px}
+.big{font-size:30px;font-weight:700;line-height:1}.unit{font-size:14px;color:var(--muted);font-weight:600}
+.sub{font-size:11.5px;color:var(--muted);margin-top:3px}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+.node{padding:5px 11px;border-radius:8px;font-weight:700;font-size:12px;font-family:ui-monospace,monospace}
+.node.t{background:rgba(224,97,109,.14);color:var(--stress);border:1px solid var(--stress)}
+.node.a{background:rgba(13,148,136,.12);color:var(--calm);border:1px solid var(--calm)}
+.arrow{color:var(--muted);font-size:18px}
+.fac{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:12px}
+.fbar{height:8px;width:var(--v);border-radius:4px;background:var(--accent);min-width:4px}
+.fbar[style*="neg"]{background:var(--trans)}
+.surp .big{color:var(--stress)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--muted);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 8px;border-bottom:1px solid var(--line)}
+td{padding:7px 8px;border-bottom:1px solid var(--line)}.num{text-align:right}.neg{color:var(--negc)}
+.pill{padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700}
+.r-calm{color:var(--calm);background:rgba(13,148,136,.12)}.r-trans{color:var(--trans);background:rgba(199,125,16,.12)}.r-stress{color:var(--stress);background:rgba(224,97,109,.14)}
+.foot{margin-top:16px;text-align:center;color:var(--muted);font-size:11px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+</style>
+<div class="wrap">
+<div class="top"><span class="mark">◆</span><div><div class="name">MERIDIAN WORLD MODEL</div>
+<div class="tag">modular · interpretable · continually-learning</div></div>
+<div class="asof">state as of <b class="mono">2026-07-28</b></div></div>
+
+<div class="grid">
+  <div class="card"><h3>Systemic connectedness (contagion)</h3>
+    <div class="big mono">62.3<span class="unit">%</span></div>
+    <div class="gauge"></div>
+    <div class="sub">share of cross-asset uncertainty from spillovers · higher = more systemic (Diebold-Yilmaz)</div></div>
+  <div class="card surp"><h3>Systemic surprise (DFG energy)</h3>
+    <div class="big mono">+1.9<span class="unit">σ</span></div>
+    <div class="sub">structure-break signal vs 1-yr norm · spikes when the factor model fails (caught the 2019 repo crisis)</div></div>
+  <div class="card"><h3>Shock propagation</h3>
+    <div class="flow"><span class="node t">SPY</span><span class="node t">IWM</span><span class="node t">USO</span><span class="arrow">→</span><span class="node a">USDJPY</span><span class="node a">AUDUSD</span><span class="node a">EURUSD</span></div>
+    <div class="sub">net transmitters (sources) cascade to net absorbers over a 10-day horizon</div></div>
+  <div class="card"><h3>Latent market factor-state (DFG)</h3>
+    <div class="fac"><div class="fbar" style="--v:14.0%;--s:neg"></div><span class="mono">F1 -0.35</span></div><div class="fac"><div class="fbar" style="--v:6.0%;--s:pos"></div><span class="mono">F2 +0.15</span></div><div class="fac"><div class="fbar" style="--v:1.6%;--s:pos"></div><span class="mono">F3 +0.04</span></div>
+    <div class="sub">3 interpretable common factors reconstruct the cross-asset vol panel (R²≈0.70)</div></div>
+</div>
+
+<div class="card"><h3>Asset state — regime · volatility forecast · 1-day 95% VaR</h3>
+<table><thead><tr><th>Asset</th><th>Regime</th><th class="num">Vol (ann)</th><th class="num">VaR 95%</th></tr></thead>
+<tbody><tr><td class="mono">SPY</td><td><span class="pill r-calm">Calm</span></td><td class="mono num">10.1%</td><td class="mono num neg">-1.26%</td></tr><tr><td class="mono">QQQ</td><td><span class="pill r-calm">Calm</span></td><td class="mono num">22.1%</td><td class="mono num neg">-3.21%</td></tr><tr><td class="mono">IWM</td><td><span class="pill r-calm">Calm</span></td><td class="mono num">14.4%</td><td class="mono num neg">-2.11%</td></tr><tr><td class="mono">AAPL</td><td><span class="pill r-calm">Calm</span></td><td class="mono num">23.9%</td><td class="mono num neg">-3.18%</td></tr><tr><td class="mono">MSFT</td><td><span class="pill r-calm">Calm</span></td><td class="mono num">28.0%</td><td class="mono num neg">-3.85%</td></tr><tr><td class="mono">JPM</td><td><span class="pill r-calm">Calm</span></td><td class="mono num">19.5%</td><td class="mono num neg">-2.56%</td></tr><tr><td class="mono">XOM</td><td><span class="pill r-calm">Calm</span></td><td class="mono num">20.4%</td><td class="mono num neg">-2.97%</td></tr><tr><td class="mono">JNJ</td><td><span class="pill r-calm">Calm</span></td><td class="mono num">24.4%</td><td class="mono num neg">-3.75%</td></tr><tr><td class="mono">EURUSD</td><td><span class="pill r-stress">Stress</span></td><td class="mono num">4.1%</td><td class="mono num neg">-0.40%</td></tr><tr><td class="mono">USDJPY</td><td><span class="pill r-stress">Stress</span></td><td class="mono num">3.4%</td><td class="mono num neg">-0.25%</td></tr><tr><td class="mono">GBPUSD</td><td><span class="pill r-stress">Stress</span></td><td class="mono num">4.7%</td><td class="mono num neg">-0.45%</td></tr></tbody></table></div>
+
+<div class="foot mono">MERIDIAN · vol⊕RF ensemble (+9% vs HAR) · switching regime · Student-t VaR · connectedness · DFG factor-state · online-adaptive · research demo, not investment advice</div>
+</div>

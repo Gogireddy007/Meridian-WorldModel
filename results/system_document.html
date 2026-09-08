@@ -1,0 +1,269 @@
+<title>Meridian Enterprise World Model — System Document</title>
+<style>
+:root{
+  --bg:#0b0f17; --panel:#131926; --panel2:#1a2233; --border:#232c40;
+  --ink:#e7ecf5; --muted:#8a96ac; --faint:#5b6678;
+  --accent:#35d0ba; --accent2:#5b8cff;
+  --good:#34d399; --warn:#fbbf24; --bad:#f87171;
+  --diagram-bg:#0e1420; --diagram-node:#16203a; --diagram-line:#3a4a6a;
+  --sans:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  --maxw:820px;
+}
+@media (prefers-color-scheme:light){
+  :root{--bg:#f6f8fc;--panel:#ffffff;--panel2:#f1f5fb;--border:#dde4ee;
+    --ink:#101725;--muted:#57627a;--faint:#98a2b5;--accent:#0d9488;--accent2:#2f5fe0;
+    --good:#059669;--warn:#b45309;--bad:#dc2626;
+    --diagram-bg:#ffffff;--diagram-node:#eef3fb;--diagram-line:#b9c4d8;}
+}
+:root[data-theme="dark"]{--bg:#0b0f17;--panel:#131926;--panel2:#1a2233;--border:#232c40;--ink:#e7ecf5;--muted:#8a96ac;--faint:#5b6678;--accent:#35d0ba;--accent2:#5b8cff;--good:#34d399;--warn:#fbbf24;--bad:#f87171;--diagram-bg:#0e1420;--diagram-node:#16203a;--diagram-line:#3a4a6a;}
+:root[data-theme="light"]{--bg:#f6f8fc;--panel:#ffffff;--panel2:#f1f5fb;--border:#dde4ee;--ink:#101725;--muted:#57627a;--faint:#98a2b5;--accent:#0d9488;--accent2:#2f5fe0;--good:#059669;--warn:#b45309;--bad:#dc2626;--diagram-bg:#ffffff;--diagram-node:#eef3fb;--diagram-line:#b9c4d8;}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:40px 22px 100px}
+.num,code{font-family:var(--mono);font-variant-numeric:tabular-nums}
+code{background:var(--panel2);padding:1px 6px;border-radius:5px;font-size:.86em;color:var(--ink)}
+a{color:var(--accent);text-decoration:none}
+h1,h2,h3{line-height:1.25;letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:32px;font-weight:720;margin:0 0 6px}
+h2{font-size:23px;font-weight:660;margin:52px 0 14px;padding-top:14px;border-top:1px solid var(--border)}
+h2 .n{color:var(--accent);font-family:var(--mono);font-size:16px;font-weight:600;margin-right:10px}
+h3{font-size:17px;font-weight:640;margin:26px 0 8px}
+p{margin:12px 0;max-width:68ch}
+ul,ol{max-width:68ch;padding-left:22px}
+li{margin:6px 0}
+.lede{font-size:18px;color:var(--muted);max-width:64ch;margin:10px 0 4px}
+
+header .meta{font-family:var(--mono);font-size:12.5px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.pill{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 9px;border-radius:20px;border:1px solid var(--border)}
+.pill.t{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.themebtn{margin-left:auto;background:var(--panel2);border:1px solid var(--border);color:var(--muted);border-radius:7px;padding:6px 11px;font-size:12px;cursor:pointer;font-family:var(--sans)}
+
+.toc{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin:26px 0}
+.toc b{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.toc ol{columns:2;column-gap:28px;margin:10px 0 0;padding-left:18px;font-size:14px}
+@media(max-width:560px){.toc ol{columns:1}}
+
+.diagram{background:var(--diagram-bg);border:1px solid var(--border);border-radius:14px;padding:20px 14px;margin:18px 0;overflow-x:auto}
+.diagram pre.mermaid{background:transparent;margin:0;min-width:640px}
+.cap{font-size:13px;color:var(--muted);margin:8px 2px 0;text-align:center}
+
+.callout{border:1px solid var(--border);border-left:3px solid var(--accent);background:var(--panel);border-radius:9px;padding:13px 16px;margin:16px 0;font-size:14.5px}
+.callout.warn{border-left-color:var(--warn)}
+.callout.good{border-left-color:var(--good)}
+.callout .h{font-weight:660;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.callout.warn .h{color:var(--warn)} .callout.good .h{color:var(--good)} .callout .h{color:var(--accent)}
+
+.tblwrap{overflow-x:auto;margin:16px 0;border:1px solid var(--border);border-radius:11px}
+table{width:100%;border-collapse:collapse;font-size:13.8px;min-width:560px}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+thead th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600;background:var(--panel2)}
+tr:last-child td{border-bottom:0}
+td .mono,td code{font-family:var(--mono)}
+.ok{color:var(--good);font-weight:600} .cav{color:var(--warn);font-weight:600} .no{color:var(--bad);font-weight:600}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:11px;padding:14px 16px}
+.kpi .v{font-family:var(--mono);font-size:24px;font-weight:660;letter-spacing:-.02em}
+.kpi .v.g{color:var(--good)} .kpi .v.a{color:var(--accent)}
+.kpi .k{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4}
+
+.foot{color:var(--faint);font-size:12.5px;margin-top:48px;padding-top:18px;border-top:1px solid var(--border);text-align:center;line-height:1.7}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Meridian — Enterprise World Model</h1>
+  <p class="lede">An interactive, continually-learning, <em>interpretable-from-foundations</em> world model for financial markets: ask about any entity, and a bank of separately-validated specialist modules forecasts, simulates, and explains — with every number traceable to a calibrated module.</p>
+  <div class="meta">
+    <span class="pill t">System Document</span>
+    <span>compiled 2026-07-30</span>
+    <span>·</span>
+    <span>modular · interpretable · OOS-validated</span>
+    <button class="themebtn" id="theme">◐ theme</button>
+  </div>
+</header>
+
+<div class="toc">
+  <b>Contents</b>
+  <ol>
+    <li><a href="#thesis">What it is &amp; the design law</a></li>
+    <li><a href="#arch">Architecture</a></li>
+    <li><a href="#data">Data &amp; measurement layer</a></li>
+    <li><a href="#bank">The module bank</a></li>
+    <li><a href="#interp">Interpretability standard</a></li>
+    <li><a href="#scorecard">Validation scorecard</a></li>
+    <li><a href="#engine">The interactive engine</a></li>
+    <li><a href="#contract">Conversational contract</a></li>
+    <li><a href="#research">Research program &amp; discipline</a></li>
+    <li><a href="#boundaries">Honest boundaries</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#files">File index</a></li>
+  </ol>
+</div>
+
+<h2 id="thesis"><span class="n">01</span>What it is &amp; the design law</h2>
+<p>Meridian is <strong>not one model</strong>. It is a <strong>bank of decoupled, individually-interpretable specialist modules</strong>, each benchmarked out-of-sample, linked by objects a human can read and audit. This design was <em>proven, not assumed</em>: a single model that tried to generalize across tasks degraded (collapsing the regime module into the vol backbone, or starving a decoupled module); only decoupled modules — each with its own objective, linked by interpretable combiners — kept every win.</p>
+<div class="callout">
+  <div class="h">The design law — "link without degradation"</div>
+  <strong>1. No shared trainable backbone.</strong> Modules never share weights one task's gradient can corrupt — so one module's training can never degrade another's.<br>
+  <strong>2. Interpretable links only.</strong> Modules connect through a glass-box combiner, an inspectable connectedness graph, and a named regime state — every link is a number you can point at and explain. No opaque cross-attention.
+</div>
+<p>A third law emerged from this session's audits: <strong>every claim is gated by an OOS test <em>and</em> an adversarial null.</strong> A module earns its place only when it beats a baseline out-of-sample and survives a test designed to kill it. When the evidence contradicted a claim, the claim was corrected — including our own.</p>
+
+<h2 id="arch"><span class="n">02</span>Architecture</h2>
+<div class="diagram">
+<pre class="mermaid">
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'ui-monospace, SFMono-Regular, Menlo, monospace','fontSize':'13px','primaryColor':'#16203a','primaryTextColor':'#e7ecf5','primaryBorderColor':'#3a4a6a','lineColor':'#5b8cff','clusterBkg':'#0e1420','clusterBorder':'#2a3550','tertiaryColor':'#16203a'}}}%%
+flowchart TB
+  USER([User — any question, any entity]):::user
+  subgraph DATA[" Data — any entity on a free feed "]
+    Y["Yahoo global<br/>equities · ETF · FX · crypto<br/>futures · indices"]
+    F["FRED macro<br/>VIX · yields"]
+  end
+  subgraph MEAS[" Measurement layer — causal, no lookahead "]
+    RV["Realized variance<br/>Garman-Klass"]
+    HARf["HAR cascade d/w/m<br/>+ leverage / bad-vol"]
+    RET["Cross-asset<br/>returns panel"]
+  end
+  subgraph BANK[" Module bank — decoupled specialists, each validated OOS "]
+    VOL["Volatility<br/>HAR + leverage"]
+    REG["Regime<br/>by-design vol-percentile"]
+    TAIL["Tail risk<br/>conditional EVT — VaR + ES"]
+    COV["Covariance / portfolio<br/>Ledoit-Wolf → min-variance"]
+    CONN["Connectedness<br/>Diebold-Yilmaz GFEVD"]
+    NET["Network propagation<br/>generalized IRF"]
+    CONT["Continual learning<br/>online, leakage-audited"]
+  end
+  COMB["Combiner — glass-box GAM + Bernstein online aggregation<br/><i>interpretable links only</i>"]:::link
+  subgraph ENG[" Interactive engine "]
+    MODES["analyze · compare · scenario<br/>world-sim · portfolio"]
+  end
+  CONV["Conversational contract<br/>provenance ledger — modules own every number"]:::link
+
+  USER --> ENG
+  Y --> MEAS
+  F --> MEAS
+  RV --> VOL & REG & TAIL
+  HARf --> VOL
+  RET --> COV & CONN & NET
+  VOL & REG & TAIL & COV & CONN & NET & CONT --> COMB
+  COMB --> ENG
+  ENG --> CONV --> USER
+
+  classDef user fill:#0d9488,color:#fff,stroke:#0d9488;
+  classDef link fill:#1b2a1f,color:#e7ecf5,stroke:#35d0ba,stroke-width:1.5px;
+</pre>
+</div>
+<div class="cap">Data flows up into causal measures, fans out to the decoupled module bank, and is recombined by an interpretable glass-box combiner. The interactive engine answers any user query; the conversational contract guarantees every emitted number came from a module.</div>
+
+<h2 id="data"><span class="n">03</span>Data &amp; measurement layer</h2>
+<p>All data is <strong>free / delayed</strong> and fetched <strong>live on every query</strong> (so the model is always current — the practical form of "continual"). The entity resolver maps any natural-language name or ticker to a market symbol via Yahoo's global search — verified on US equities, global equities (e.g. <code>RELIANCE.NS</code>), FX, crypto, futures and indices. Unknown / private entities trigger an honest "share a source" request rather than a fabricated answer.</p>
+<ul>
+  <li><strong>Realized variance</strong> — Garman-Klass OHLC estimator (robust, no intraday feed needed).</li>
+  <li><strong>HAR cascade</strong> — daily / weekly / monthly components (Corsi 2009) plus a <strong>leverage / bad-vol</strong> term (variance from down-moves).</li>
+  <li><strong>Data-quality guard</strong> — RV winsorization + a trailing-year forecast cap; continuous-futures roll-gaps are <em>flagged</em> (warn, don't emit garbage), and commodity aliases route to clean ETFs.</li>
+</ul>
+
+<h2 id="bank"><span class="n">04</span>The module bank</h2>
+<p>Each module is interpretable from its foundation, has its own objective, and carries an honest status — including caveats surfaced by adversarial tests this session.</p>
+<div class="tblwrap"><table>
+<thead><tr><th>Module</th><th>Foundation</th><th>Status &amp; validation</th></tr></thead>
+<tbody>
+<tr><td><strong>Volatility</strong></td><td>HAR multi-scale RV + leverage/bad-vol channel</td><td><span class="ok">✓</span> SSM ensemble +6.3% vs HAR-RV (p=1.2e-9); engine's per-entity HAR+leverage adds +0.76% OOS QLIKE — concentrated in equities (SPY +3.6%), ~0 in FX, exactly as the leverage effect predicts</td></tr>
+<tr><td><strong>Regime</strong></td><td>interpretable-by-design vol-percentile partition</td><td><span class="cav">△</span> hidden-regime existence is <em>marginal</em> under the honest null (HAR+leverage block-bootstrap: SPY p=0.04, QQQ p=0.08) — so we make <em>no discovery claim</em>; the by-design partition is a transparent labeling, not a claimed latent state</td></tr>
+<tr><td><strong>Tail / risk</strong></td><td>conditional EVT (peaks-over-threshold GPD)</td><td><span class="ok">✓</span> VaR + Expected Shortfall; ES calibration ratio ≈1.0 (Basel III coherent measure); VaR clustering fixed (Christoffersen 0.77)</td></tr>
+<tr><td><strong>Covariance / portfolio</strong></td><td>Ledoit-Wolf shrinkage → global min-variance</td><td><span class="ok">✓</span> covariance-optimized weights cut portfolio risk <strong>−69%</strong> vs equal-weight, OOS 2011→2026 (shrinkage is the honest frontier on daily data)</td></tr>
+<tr><td><strong>Connectedness</strong></td><td>VAR + generalized FEVD (Diebold-Yilmaz)</td><td><span class="ok">✓</span> shock source/sink graph, systemic %; COVID-validated (reduced-form monitoring tool)</td></tr>
+<tr><td><strong>Network propagation</strong></td><td>generalized impulse response (Pesaran-Shin)</td><td><span class="ok">✓</span> multi-entity "what-if" — validated OOS as a <em>co-movement</em> forecast: +0.72 corr, 79% direction on held-out large-move days. <span class="cav">△</span> Forbes-Rigobon gate: 0/14 stress links survive vol-adjustment → stress = <em>interdependence, not contagion</em></td></tr>
+<tr><td><strong>Continual learning</strong></td><td>online test-time adaptation + rehearsal</td><td><span class="ok">✓</span> beats periodic retrain −27% QLIKE; <strong>leakage-audited</strong> (clean == explicitly-lagged to 0.02%; a leaky variant would gain +3.8%, so the number is conservative)</td></tr>
+<tr><td><strong>Combiner</strong></td><td>glass-box additive GAM + Bernstein online aggregation</td><td><span class="ok">✓</span> glass-box <em>beats</em> the black box (GAM QLIKE 1.23 &lt; monotone-GBDT 1.47 &lt; linear 1.78, relative); monotone shape functions; Adebayo faithfulness pass (effect 0.78 → 0.006 under label-shuffle)</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="interp"><span class="n">05</span>Interpretability standard</h2>
+<p>"Interpretable from foundations" is a <em>testable claim</em>, so it has a bar (ascending strength), and every module is audited against it:</p>
+<ol>
+  <li><strong>Faithfulness (minimum)</strong> — the output must provably change when the explanation changes. Attention weights, gate activations, and post-hoc SHAP/LIME are decorative until proven faithful; they are never presented as "why".</li>
+  <li><strong>Causal necessity (ablation)</strong> — removing a module must move the forecast in the pre-registered direction.</li>
+  <li><strong>Causal sufficiency (clamp), bounded &amp; OOS-tested</strong> — forcing a state reproduces the target behavior, validated out-of-sample.</li>
+</ol>
+<p>Attributions that get shipped must survive the <strong>Adebayo randomization sanity check</strong> (shuffle labels / randomize the sub-model → the attribution must move) and, for weight-like importances, beat a uniform-weight and multi-seed-variance baseline. Faithfulness is treated as <em>graded, not binary</em> (Jacovi-Goldberg).</p>
+
+<h2 id="scorecard"><span class="n">06</span>Validation scorecard</h2>
+<div class="kpis">
+  <div class="kpi"><div class="v g">+6.3%</div><div class="k">vol QLIKE vs HAR-RV, p=1.2e-9</div></div>
+  <div class="kpi"><div class="v g">+0.72</div><div class="k">network propagation OOS corr (79% direction)</div></div>
+  <div class="kpi"><div class="v g">−69%</div><div class="k">portfolio risk, min-variance vs equal-weight</div></div>
+  <div class="kpi"><div class="v g">−27%</div><div class="k">online vs retrain QLIKE, leakage-audited</div></div>
+  <div class="kpi"><div class="v a">≈1.0</div><div class="k">EVT Expected-Shortfall calibration ratio</div></div>
+  <div class="kpi"><div class="v a">0/14</div><div class="k">stress links = contagion (FR gate → interdependence)</div></div>
+</div>
+<div class="callout good"><div class="h">The honesty ledger</div>Two headline results were <em>corrected downward</em> this cycle by adversarial tests: the network's stress connectedness is interdependence, not contagion (Forbes-Rigobon); and hidden volatility regimes are marginal, not strong, once the null properly embeds HAR heteroskedasticity. Both corrections are recorded, not buried — that is the point.</div>
+
+<h2 id="engine"><span class="n">07</span>The interactive engine</h2>
+<p>A user asks in plain language; the engine resolves the entity, fetches live data, runs the module bank, and explains. Five modes:</p>
+<div class="tblwrap"><table>
+<thead><tr><th>Mode</th><th>What it answers</th></tr></thead>
+<tbody>
+<tr><td><code>analyze</code></td><td>Full read of one entity — vol forecast, regime, tail VaR/ES, market beta, trend</td></tr>
+<tr><td><code>compare</code></td><td>Side-by-side risk of two entities</td></tr>
+<tr><td><code>scenario</code></td><td>"What-if a market move" via single-beta propagation</td></tr>
+<tr><td><code>world</code></td><td>Multi-entity shock propagation through the validated generalized-IRF network</td></tr>
+<tr><td><code>portfolio</code></td><td>Basket risk, diversification, min-variance weights, portfolio VaR</td></tr>
+</tbody>
+</table></div>
+<p>An interactive dashboard renders these over a live snapshot (entity cards, comparison, a scenario slider driving the network, portfolio optimization) — a companion to this document.</p>
+
+<h2 id="contract"><span class="n">08</span>Conversational contract</h2>
+<p>The interactive layer follows a strict division of labor: <strong>the LLM routes and explains; the calibrated modules own every number.</strong> A provenance ledger logs each emitted figure to its module call, and a verifier checks that no number in an explanation is un-traced. In testing, an honest paraphrase passes and a deliberately-invented figure is caught — hallucinated numbers are made <em>architecturally impossible</em>, not merely discouraged. The LLM may never present gate/attention weights as "why"; only ablation-verified attributions are surfaced.</p>
+
+<h2 id="research"><span class="n">09</span>Research program &amp; discipline</h2>
+<p>The roadmap is driven by adversarially-verified deep research — each pass fans out web searches, fact-checks every claim with independent skeptics, and synthesizes a ranked plan. Passes this program: JEPA/world-model variants; generative-latent methods; realized-measure decomposition; the interactive/any-entity architecture; higher-order implications &amp; event simulation; world-model + interpretability + financial-theory foundations; and a frontier pass on dynamic connectedness, regime rigor, interpretability, covariance/tail, and novel synthesis.</p>
+<div class="callout warn"><div class="h">What we refuse to build (evidence says it produces confident nonsense)</div>
+Causal-discovery / DAG layers (weak-instrument-fragile artifacts) · GAN/diffusion scenario generators (catastrophic backtests) · deeper per-series neural vol nets (HAR is hard to beat) · an energy/JEPA regime engine (displaces a working interpretable module) · routing the EVT tail through an isotropic-Gaussian latent (thin tails destroy tail structure) · Cholesky-HAR covariance (order-dependent) · any "contagion" claim (the FR gate stands) · long-horizon point-IRF extrapolation (variance-dominated).</div>
+
+<h2 id="boundaries"><span class="n">10</span>Honest boundaries — what we can &amp; cannot claim</h2>
+<p><strong class="ok">CAN claim:</strong> conditional volatility levels &amp; term structure; tail VaR/ES with backtested coverage; variance connectedness &amp; shock <em>propagation</em> (co-movement, OOS-validated); covariance-based min-variance portfolios; which variance regime we are in, as a pre-registered <em>convention</em>.</p>
+<p><strong class="no">CANNOT claim:</strong> the direction or level of future returns; that better volatility forecasting equals large trading alpha (it does not on daily data — settled across many experiments); that any latent coordinate "is" a named factor without an identifiability test; a "discovered" (vs imposed) crisis regime; HAR beyond the ~22-day cascade (it mis-extrapolates — Corsi's own flag); any attribution not verified by ablation; personalized investment advice.</p>
+<p>This is a measurement-and-forecast system, best-in-class where measured — not an oracle. In a market that distrusts black boxes, that honesty is itself a feature.</p>
+
+<h2 id="roadmap"><span class="n">11</span>Roadmap</h2>
+<p>Ranked, each gated by an OOS test + an adversarial null:</p>
+<ol>
+  <li><strong>Order-invariant realized covariance</strong> — matrix-log-HAR (refuse Cholesky); adversarial null = asset-ordering permutation test.</li>
+  <li><strong>Honest multi-horizon bands</strong> — lag-augmented local projections with an explicit "honest-horizon" cutoff beyond which bands are disclosed as not-guaranteed.</li>
+  <li><strong>Second wave</strong> — TVP-VAR + frequency-domain connectedness (short vs long-run spillovers), FR-gated; and the one genuinely novel mechanism: a <strong>TDRL identifiable regime latent</strong> (VAE + flow prior, vol-percentile / EPU as the observed auxiliary variable) with provable recovery up to permutation — resolving the state-space non-identifiability that retired the old switching module.</li>
+</ol>
+
+<h2 id="files"><span class="n">12</span>File index</h2>
+<div class="tblwrap"><table>
+<thead><tr><th>Area</th><th>Files</th></tr></thead>
+<tbody>
+<tr><td>Data &amp; features</td><td><code>meridian/data.py</code>, <code>meridian/features.py</code></td></tr>
+<tr><td>Interactive engine</td><td><code>meridian/engine.py</code>, <code>meridian/tools.py</code>, <code>scripts/ask.py</code>, <code>scripts/conversational_demo.py</code></td></tr>
+<tr><td>Modules</td><td><code>meridian/network.py</code>, <code>scripts/covariance.py</code>, <code>scripts/spillover.py</code>, <code>scripts/evt_tail.py</code>, <code>scripts/conformal_var.py</code></td></tr>
+<tr><td>Validation &amp; audits</td><td><code>scripts/network_scenario.py</code>, <code>forbes_rigobon.py</code>, <code>leakage_audit.py</code>, <code>interpret_regime.py</code>, <code>regime_count_test.py</code>, <code>regime_hardened.py</code>, <code>regime_faithful.py</code>, <code>shar_validate.py</code>, <code>ebm_combiner.py</code></td></tr>
+<tr><td>Docs</td><td><code>WORLD_MODEL.md</code>, <code>MODEL_CARD.md</code>, <code>RESEARCH.md</code>, <code>PREREGISTRATION.md</code>, this document</td></tr>
+<tr><td>Presentation</td><td><code>results/dashboard.html</code> (interactive), <code>results/system_document.html</code> (this)</td></tr>
+</tbody>
+</table></div>
+
+<div class="foot">
+  Meridian Enterprise World Model · compiled system document · 2026-07-30<br>
+  Every figure is a causal (no-lookahead) module output, validated out-of-sample. Measurement-and-forecast system, not investment advice.
+</div>
+</div>
+
+<script>
+const root=document.documentElement;
+document.getElementById('theme').onclick=()=>{
+  const cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  root.setAttribute('data-theme',cur==='dark'?'light':'dark');
+};
+document.querySelectorAll('.toc a').forEach(a=>a.addEventListener('click',e=>{
+  const t=document.querySelector(a.getAttribute('href'));
+  if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+}));
+</script>

@@ -1,0 +1,18 @@
+# Python environments & caches
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+.ipynb_checkpoints/
+
+# Large, regenerable model outputs & data caches (code re-fetches / re-computes these)
+*.npy
+*.parquet
+data/stocks/
+data/broad/
+data/futures/
+
+# Kept intentionally: source (meridian/, scripts/), docs (*.md), demo/,
+# deliverables (results/*.html, *.jpg, *.png, *.json, *.csv), data/fred_*.csv

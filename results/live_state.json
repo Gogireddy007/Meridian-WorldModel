@@ -1,0 +1,90 @@
+{
+  "SPY": {
+    "date": "2026-07-30",
+    "regime": "Calm",
+    "vol_forecast_ann_pct": 10.05,
+    "var95_pct": -1.26,
+    "var99_pct": -2.0,
+    "surprise_z": 0.51
+  },
+  "QQQ": {
+    "date": "2026-07-30",
+    "regime": "Calm",
+    "vol_forecast_ann_pct": 22.14,
+    "var95_pct": -3.21,
+    "var99_pct": -4.95,
+    "surprise_z": -1.35
+  },
+  "IWM": {
+    "date": "2026-07-30",
+    "regime": "Calm",
+    "vol_forecast_ann_pct": 14.39,
+    "var95_pct": -2.11,
+    "var99_pct": -3.31,
+    "surprise_z": -0.35
+  },
+  "AAPL": {
+    "date": "2026-07-30",
+    "regime": "Calm",
+    "vol_forecast_ann_pct": 23.88,
+    "var95_pct": -3.18,
+    "var99_pct": -5.12,
+    "surprise_z": -1.12
+  },
+  "MSFT": {
+    "date": "2026-07-30",
+    "regime": "Calm",
+    "vol_forecast_ann_pct": 27.97,
+    "var95_pct": -3.85,
+    "var99_pct": -6.09,
+    "surprise_z": -1.09
+  },
+  "JPM": {
+    "date": "2026-07-30",
+    "regime": "Calm",
+    "vol_forecast_ann_pct": 19.49,
+    "var95_pct": -2.56,
+    "var99_pct": -4.1,
+    "surprise_z": 0.41
+  },
+  "XOM": {
+    "date": "2026-07-30",
+    "regime": "Calm",
+    "vol_forecast_ann_pct": 20.4,
+    "var95_pct": -2.97,
+    "var99_pct": -4.71,
+    "surprise_z": 0.03
+  },
+  "JNJ": {
+    "date": "2026-07-30",
+    "regime": "Calm",
+    "vol_forecast_ann_pct": 24.4,
+    "var95_pct": -3.75,
+    "var99_pct": -5.94,
+    "surprise_z": -1.27
+  },
+  "EURUSD": {
+    "date": "2026-07-30",
+    "regime": "Stress",
+    "vol_forecast_ann_pct": 4.09,
+    "var95_pct": -0.4,
+    "var99_pct": -0.64,
+    "surprise_z": -0.99
+  },
+  "USDJPY": {
+    "date": "2026-07-30",
+    "regime": "Stress",
+    "vol_forecast_ann_pct": 3.38,
+    "var95_pct": -0.25,
+    "var99_pct": -0.41,
+    "surprise_z": -1.72
+  },
+  "GBPUSD": {
+    "date": "2026-07-30",
+    "regime": "Stress",
+    "vol_forecast_ann_pct": 4.69,
+    "var95_pct": -0.45,
+    "var99_pct": -0.72,
+    "surprise_z": 0.09
+  }
+}

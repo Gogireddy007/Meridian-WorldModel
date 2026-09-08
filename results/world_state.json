@@ -1,0 +1,79 @@
+{
+  "system": {
+    "as_of": "2026-07-28",
+    "systemic_connectedness_pct": 62.3,
+    "top_shock_transmitters": [
+      "SPY",
+      "IWM",
+      "USO"
+    ],
+    "top_shock_absorbers": [
+      "USDJPY",
+      "AUDUSD",
+      "EURUSD"
+    ],
+    "factor_state": [
+      -0.35,
+      0.15,
+      0.04
+    ],
+    "systemic_surprise_sigma": 1.89
+  },
+  "assets": {
+    "SPY": {
+      "regime": "Calm",
+      "vol_forecast_ann_pct": 10.1,
+      "var95_pct": -1.26
+    },
+    "QQQ": {
+      "regime": "Calm",
+      "vol_forecast_ann_pct": 22.1,
+      "var95_pct": -3.21
+    },
+    "IWM": {
+      "regime": "Calm",
+      "vol_forecast_ann_pct": 14.4,
+      "var95_pct": -2.11
+    },
+    "AAPL": {
+      "regime": "Calm",
+      "vol_forecast_ann_pct": 23.9,
+      "var95_pct": -3.18
+    },
+    "MSFT": {
+      "regime": "Calm",
+      "vol_forecast_ann_pct": 28.0,
+      "var95_pct": -3.85
+    },
+    "JPM": {
+      "regime": "Calm",
+      "vol_forecast_ann_pct": 19.5,
+      "var95_pct": -2.56
+    },
+    "XOM": {
+      "regime": "Calm",
+      "vol_forecast_ann_pct": 20.4,
+      "var95_pct": -2.97
+    },
+    "JNJ": {
+      "regime": "Calm",
+      "vol_forecast_ann_pct": 24.4,
+      "var95_pct": -3.75
+    },
+    "EURUSD": {
+      "regime": "Stress",
+      "vol_forecast_ann_pct": 4.1,
+      "var95_pct": -0.4
+    },
+    "USDJPY": {
+      "regime": "Stress",
+      "vol_forecast_ann_pct": 3.4,
+      "var95_pct": -0.25
+    },
+    "GBPUSD": {
+      "regime": "Stress",
+      "vol_forecast_ann_pct": 4.7,
+      "var95_pct": -0.45
+    }
+  }
+}

@@ -1,0 +1,243 @@
+<style>
+:root{
+  --bg:#f6f7fb; --panel:#ffffff; --ink:#141a26; --muted:#5f6b82;
+  --grid:#c9d1e0; --line:#e3e8f2;
+  --fc:#0d9488; --fc-fill:rgba(13,148,136,.22); --rv:#c77d10; --sp:#7c3aed;
+  --band:rgba(240,97,109,.10);
+  --calm:#0d9488; --trans:#c77d10; --stress:#e0616d;
+  --win-bg:rgba(13,148,136,.10); --mixed-bg:rgba(199,125,16,.10);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#080b12; --panel:#111725; --ink:#dbe3f2; --muted:#7d8aa3;
+    --grid:#222c40; --line:#1c2434;
+    --fc:#2dd4bf; --fc-fill:rgba(45,212,191,.20); --rv:#f0b429; --sp:#a78bfa;
+    --band:rgba(240,97,109,.14);
+    --calm:#2dd4bf; --trans:#f0b429; --stress:#f0616d;
+    --win-bg:rgba(45,212,191,.10); --mixed-bg:rgba(240,180,41,.09);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f6f7fb; --panel:#ffffff; --ink:#141a26; --muted:#5f6b82; --grid:#c9d1e0;
+  --line:#e3e8f2; --fc:#0d9488; --fc-fill:rgba(13,148,136,.22); --rv:#c77d10; --sp:#7c3aed;
+  --band:rgba(240,97,109,.10); --calm:#0d9488; --trans:#c77d10; --stress:#e0616d;
+  --win-bg:rgba(13,148,136,.10); --mixed-bg:rgba(199,125,16,.10);
+}
+:root[data-theme="dark"]{
+  --bg:#080b12; --panel:#111725; --ink:#dbe3f2; --muted:#7d8aa3; --grid:#222c40;
+  --line:#1c2434; --fc:#2dd4bf; --fc-fill:rgba(45,212,191,.20); --rv:#f0b429; --sp:#a78bfa;
+  --band:rgba(240,97,109,.14); --calm:#2dd4bf; --trans:#f0b429; --stress:#f0616d;
+  --win-bg:rgba(45,212,191,.10); --mixed-bg:rgba(240,180,41,.09);
+}
+*{box-sizing:border-box}
+.mono{font-variant-numeric:tabular-nums;font-family:ui-monospace,"SF Mono",Menlo,monospace}
+.wrap{max-width:1000px;margin:0 auto;padding:26px 20px 40px;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);
+  background:var(--bg);min-height:100%;}
+.top{display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  border-bottom:1px solid var(--line);padding-bottom:16px}
+.brand{display:flex;align-items:center;gap:11px;margin-right:auto}
+.mark{color:var(--fc);font-size:22px}
+.name{font-weight:700;letter-spacing:.22em;font-size:16px}
+.tag{color:var(--muted);font-size:11px;letter-spacing:.04em}
+.asof{display:grid;grid-template-columns:auto auto;gap:2px 10px;font-size:12px;align-items:center}
+.asof-l{color:var(--muted);letter-spacing:.12em}
+.asof-v{font-weight:600}
+.regime-pill{padding:8px 16px;border-radius:999px;font-weight:700;font-size:13px;
+  letter-spacing:.14em;border:1px solid transparent}
+.regime-calm{color:var(--calm);border-color:var(--calm);background:var(--win-bg)}
+.regime-trans{color:var(--trans);border-color:var(--trans);background:var(--mixed-bg)}
+.regime-stress{color:var(--stress);border-color:var(--stress);background:rgba(240,97,109,.12)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.t-label{font-size:10.5px;letter-spacing:.13em;color:var(--muted);display:flex;align-items:center;gap:6px}
+.t-val{font-size:30px;font-weight:700;margin:6px 0 2px;line-height:1}
+.t-val.chg{font-size:18px}
+.unit{font-size:15px;color:var(--muted);margin-left:2px;font-weight:600}
+.t-sub{font-size:11px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.dot-fc{background:var(--fc)} .dot-rv{background:var(--rv)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 16px 8px;margin-bottom:18px}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.panel h2,.verdict h2{font-size:14px;letter-spacing:.02em;margin:0}
+.legend{display:flex;gap:14px;font-size:11px;color:var(--muted);flex-wrap:wrap}
+.legend .sw{width:12px;height:3px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:middle}
+.sw-fc{background:var(--fc);height:3px} .sw-rv{background:var(--rv)}
+.sw-sp{background:var(--sp);width:8px;height:8px;border-radius:50%}
+.sw-band{background:var(--stress);opacity:.4;height:10px;width:12px;border-radius:2px}
+#chart{width:100%;display:block}
+.verdict{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.verdict .sub{font-weight:400;color:var(--muted);font-size:11.5px;letter-spacing:.02em;margin-left:6px}
+.vgrid{display:grid;grid-template-columns:1fr 1.3fr;gap:14px;margin:14px 0}
+.vcard{border-radius:11px;padding:14px 16px;border:1px solid var(--line)}
+.vcard.win{background:var(--win-bg)} .vcard.mixed{background:var(--mixed-bg)}
+.vh{font-weight:700;font-size:13px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.chk{color:var(--calm);font-size:11px;font-weight:600}
+.warn{color:var(--trans);font-size:11px;font-weight:600}
+.vcard ul{margin:0;padding-left:16px;font-size:13px;line-height:1.7;font-variant-numeric:tabular-nums}
+.big{font-size:30px;font-weight:700;margin:2px 0 6px;color:var(--fc)}
+.big-u{font-size:12px;color:var(--muted);margin-left:8px;letter-spacing:.1em;font-weight:600}
+.note{font-size:12px;color:var(--muted);line-height:1.55;margin:0}
+.note strong{color:var(--ink)}
+.honest{font-size:12.5px;color:var(--muted);line-height:1.55;margin:6px 0 0;
+  border-top:1px dashed var(--line);padding-top:12px}
+.honest strong{color:var(--stress)}
+.honest .good{color:var(--calm);font-weight:700}
+.foot{margin-top:16px;text-align:center;color:var(--muted);font-size:11px;letter-spacing:.02em}
+@media (max-width:720px){
+  .tiles{grid-template-columns:repeat(2,1fr)} .vgrid{grid-template-columns:1fr}
+  .asof{display:none}
+}
+</style>
+<div class="wrap">
+<header class="top">
+  <div class="brand">
+    <span class="mark">◆</span>
+    <div>
+      <div class="name">MERIDIAN</div>
+      <div class="tag">market belief-state monitor</div>
+    </div>
+  </div>
+  <div class="asof">
+    <div class="asof-l">ASSET</div><div class="asof-v">SPY</div>
+    <div class="asof-l">AS OF</div><div class="asof-v mono">2026-07-27</div>
+  </div>
+  <div class="regime-pill regime-trans">TRANSITION</div>
+</header>
+
+<section class="tiles">
+  <div class="tile">
+    <div class="t-label">FORECAST VOL <span class="dot dot-fc"></span></div>
+    <div class="t-val mono">8.42<span class="unit">%</span></div>
+    <div class="t-sub">next-day, annualized</div>
+  </div>
+  <div class="tile">
+    <div class="t-label">REALIZED VOL <span class="dot dot-rv"></span></div>
+    <div class="t-val mono">10.10<span class="unit">%</span></div>
+    <div class="t-sub">most recent close</div>
+  </div>
+  <div class="tile">
+    <div class="t-label">SURPRISE</div>
+    <div class="t-val mono" id="surpval">-0.57<span class="unit">&sigma;</span></div>
+    <div class="t-sub">JEPA latent-prediction energy (z)</div>
+  </div>
+  <div class="tile">
+    <div class="t-label">WHAT CHANGED</div>
+    <div class="t-val chg">+0.54% vol</div>
+    <div class="t-sub">vs previous session</div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel-head">
+    <h2>90-day belief trace</h2>
+    <div class="legend">
+      <span><i class="sw sw-fc"></i>Meridian forecast</span>
+      <span><i class="sw sw-rv"></i>Realized</span>
+      <span><i class="sw sw-sp"></i>Surprise spike</span>
+      <span><i class="sw sw-band"></i>Stress regime</span>
+    </div>
+  </div>
+  <canvas id="chart" height="340"></canvas>
+</section>
+
+<section class="verdict">
+  <h2>Standing vs benchmarks <span class="sub">purged out-of-sample, 2012&ndash;2026, pre-registered</span></h2>
+  <div class="vgrid">
+    <div class="vcard win">
+      <div class="vh">Beats decisively <span class="chk">p &lt; 0.0001</span></div>
+      <ul><li>AR(1) +25.4%</li><li>AR(3) +19.8%</li><li>GARCH +19.4%</li><li>EWMA +17.1%</li></ul>
+    </div>
+    <div class="vcard win">
+      <div class="vh">vs HAR-RV <span class="chk">clears +5% bar</span></div>
+      <p class="big mono">+6.27%<span class="big-u">QLIKE</span></p>
+      <p class="note">Beats HAR-RV by the pre-registered <strong>+5%</strong>
+      margin (DM p=0.0000), positive in 14 of 15 years. Highest MZ R&sup2; of all
+      models (0.607 vs HAR 0.593). Result of a single pre-committed 5-seed
+      ensemble &mdash; reported once, bar not moved.</p>
+    </div>
+  </div>
+  <p class="honest">Honest status &mdash; a MODULAR bank of interpretable specialists.
+  <b class="good">Volatility MET</b> (+6.8% vs HAR, p=1.2e-9, generalizes to unseen
+  assets). Regime module beats HMM on economic value (own-objective, decoupled); Tail
+  module gives calibrated 1% VaR. As a STRATEGY (vol-managed + regime overlay): Sharpe
+  0.86&rarr;1.13, drawdown &minus;29%&rarr;&minus;7.3%, alpha t~2.1 &mdash; strong risk
+  management, but <strong>NOT a 1.5-Sharpe / 2&times;-alpha engine</strong>: a better
+  vol FORECAST is not alpha (top-tier evidence). Reaching 1.5 needs cross-asset breadth
+  + carry/options data we lack &mdash; a data limit, not an architecture one. See MODEL_CARD.</p>
+</section>
+
+<footer class="foot mono">MERIDIAN &middot; SSM belief core + JEPA + SIGReg &middot; free/delayed data (Yahoo, FRED) &middot; research demo, not investment advice</footer>
+</div>
+
+<script>
+const STATE = {"asset": "SPY", "as_of": "2026-07-27", "latest": {"date": "2026-07-27", "regime": "Transition", "vol_forecast": 8.42, "vol_realized": 10.1, "surprise": -0.57}, "changed": {"regime_from": "Transition", "regime_to": "Transition", "vol_delta": 0.54}, "timeline": [{"date": "2026-03-18", "regime": "Stress", "vol_forecast": 9.49, "vol_realized": 12.61, "surprise": -0.55}, {"date": "2026-03-19", "regime": "Stress", "vol_forecast": 9.49, "vol_realized": 16.8, "surprise": 1.66}, {"date": "2026-03-20", "regime": "Stress", "vol_forecast": 11.5, "vol_realized": 14.24, "surprise": -0.66}, {"date": "2026-03-23", "regime": "Stress", "vol_forecast": 10.73, "vol_realized": 11.96, "surprise": -0.39}, {"date": "2026-03-24", "regime": "Stress", "vol_forecast": 11.34, "vol_realized": 11.01, "surprise": -0.46}, {"date": "2026-03-25", "regime": "Stress", "vol_forecast": 10.01, "vol_realized": 13.7, "surprise": 1.03}, {"date": "2026-03-26", "regime": "Stress", "vol_forecast": 11.75, "vol_realized": 10.65, "surprise": 0.75}, {"date": "2026-03-27", "regime": "Stress", "vol_forecast": 12.7, "vol_realized": 15.0, "surprise": -0.38}, {"date": "2026-03-30", "regime": "Stress", "vol_forecast": 13.08, "vol_realized": 15.9, "surprise": 0.32}, {"date": "2026-03-31", "regime": "Stress", "vol_forecast": 11.25, "vol_realized": 9.23, "surprise": -0.59}, {"date": "2026-04-01", "regime": "Stress", "vol_forecast": 9.65, "vol_realized": 17.47, "surprise": -0.55}, {"date": "2026-04-02", "regime": "Stress", "vol_forecast": 10.31, "vol_realized": 5.49, "surprise": -0.19}, {"date": "2026-04-06", "regime": "Stress", "vol_forecast": 8.57, "vol_realized": 14.13, "surprise": -0.21}, {"date": "2026-04-07", "regime": "Stress", "vol_forecast": 9.65, "vol_realized": 9.34, "surprise": 0.51}, {"date": "2026-04-08", "regime": "Stress", "vol_forecast": 8.65, "vol_realized": 9.77, "surprise": -0.15}, {"date": "2026-04-09", "regime": "Transition", "vol_forecast": 7.88, "vol_realized": 5.26, "surprise": -0.19}, {"date": "2026-04-10", "regime": "Transition", "vol_forecast": 7.25, "vol_realized": 9.91, "surprise": 0.01}, {"date": "2026-04-13", "regime": "Transition", "vol_forecast": 7.22, "vol_realized": 5.74, "surprise": -0.05}, {"date": "2026-04-14", "regime": "Transition", "vol_forecast": 6.66, "vol_realized": 7.21, "surprise": -0.33}, {"date": "2026-04-15", "regime": "Transition", "vol_forecast": 6.51, "vol_realized": 6.76, "surprise": -0.51}, {"date": "2026-04-16", "regime": "Transition", "vol_forecast": 6.38, "vol_realized": 8.89, "surprise": 0.2}, {"date": "2026-04-17", "regime": "Transition", "vol_forecast": 6.33, "vol_realized": 5.98, "surprise": -0.38}, {"date": "2026-04-20", "regime": "Transition", "vol_forecast": 6.5, "vol_realized": 10.65, "surprise": -0.34}, {"date": "2026-04-21", "regime": "Transition", "vol_forecast": 7.04, "vol_realized": 4.23, "surprise": -0.2}, {"date": "2026-04-22", "regime": "Transition", "vol_forecast": 6.12, "vol_realized": 15.93, "surprise": 0.11}, {"date": "2026-04-23", "regime": "Transition", "vol_forecast": 7.42, "vol_realized": 7.39, "surprise": -0.42}, {"date": "2026-04-24", "regime": "Transition", "vol_forecast": 6.61, "vol_realized": 4.45, "surprise": -0.42}, {"date": "2026-04-27", "regime": "Transition", "vol_forecast": 6.21, "vol_realized": 5.73, "surprise": -0.63}, {"date": "2026-04-28", "regime": "Transition", "vol_forecast": 5.99, "vol_realized": 6.0, "surprise": -0.09}, {"date": "2026-04-29", "regime": "Transition", "vol_forecast": 6.27, "vol_realized": 13.57, "surprise": 0.38}, {"date": "2026-04-30", "regime": "Transition", "vol_forecast": 6.24, "vol_realized": 6.78, "surprise": -0.64}, {"date": "2026-05-01", "regime": "Transition", "vol_forecast": 6.03, "vol_realized": 10.77, "surprise": 0.2}, {"date": "2026-05-04", "regime": "Transition", "vol_forecast": 6.88, "vol_realized": 4.79, "surprise": -0.13}, {"date": "2026-05-05", "regime": "Transition", "vol_forecast": 6.05, "vol_realized": 7.03, "surprise": 0.25}, {"date": "2026-05-06", "regime": "Transition", "vol_forecast": 6.01, "vol_realized": 8.58, "surprise": -0.74}, {"date": "2026-05-07", "regime": "Transition", "vol_forecast": 6.13, "vol_realized": 3.95, "surprise": -0.19}, {"date": "2026-05-08", "regime": "Transition", "vol_forecast": 5.64, "vol_realized": 5.38, "surprise": -0.12}, {"date": "2026-05-11", "regime": "Transition", "vol_forecast": 5.77, "vol_realized": 10.56, "surprise": -0.6}, {"date": "2026-05-12", "regime": "Transition", "vol_forecast": 6.17, "vol_realized": 11.74, "surprise": -0.43}, {"date": "2026-05-13", "regime": "Transition", "vol_forecast": 6.35, "vol_realized": 6.7, "surprise": -0.2}, {"date": "2026-05-14", "regime": "Transition", "vol_forecast": 6.1, "vol_realized": 7.57, "surprise": 0.56}, {"date": "2026-05-15", "regime": "Transition", "vol_forecast": 6.74, "vol_realized": 12.12, "surprise": -0.4}, {"date": "2026-05-18", "regime": "Transition", "vol_forecast": 7.07, "vol_realized": 9.24, "surprise": -0.44}, {"date": "2026-05-19", "regime": "Transition", "vol_forecast": 7.0, "vol_realized": 9.62, "surprise": -0.19}, {"date": "2026-05-20", "regime": "Transition", "vol_forecast": 6.67, "vol_realized": 10.56, "surprise": -0.52}, {"date": "2026-05-21", "regime": "Transition", "vol_forecast": 6.92, "vol_realized": 6.66, "surprise": -0.58}, {"date": "2026-05-22", "regime": "Transition", "vol_forecast": 6.45, "vol_realized": 5.57, "surprise": -0.41}, {"date": "2026-05-26", "regime": "Transition", "vol_forecast": 6.12, "vol_realized": 4.7, "surprise": -0.43}, {"date": "2026-05-27", "regime": "Transition", "vol_forecast": 6.09, "vol_realized": 6.75, "surprise": -0.5}, {"date": "2026-05-28", "regime": "Transition", "vol_forecast": 5.76, "vol_realized": 4.97, "surprise": -0.61}, {"date": "2026-05-29", "regime": "Transition", "vol_forecast": 5.48, "vol_realized": 7.17, "surprise": -0.48}, {"date": "2026-06-01", "regime": "Transition", "vol_forecast": 5.65, "vol_realized": 4.27, "surprise": -0.62}, {"date": "2026-06-02", "regime": "Transition", "vol_forecast": 5.41, "vol_realized": 5.85, "surprise": -0.54}, {"date": "2026-06-03", "regime": "Transition", "vol_forecast": 5.42, "vol_realized": 7.8, "surprise": -0.6}, {"date": "2026-06-04", "regime": "Transition", "vol_forecast": 5.36, "vol_realized": 17.26, "surprise": 6.05}, {"date": "2026-06-05", "regime": "Stress", "vol_forecast": 8.51, "vol_realized": 9.31, "surprise": 0.28}, {"date": "2026-06-08", "regime": "Transition", "vol_forecast": 6.7, "vol_realized": 36.09, "surprise": 2.59}, {"date": "2026-06-09", "regime": "Stress", "vol_forecast": 9.24, "vol_realized": 16.87, "surprise": 2.11}, {"date": "2026-06-10", "regime": "Stress", "vol_forecast": 10.8, "vol_realized": 20.61, "surprise": 0.15}, {"date": "2026-06-11", "regime": "Stress", "vol_forecast": 9.75, "vol_realized": 14.21, "surprise": -0.26}, {"date": "2026-06-12", "regime": "Transition", "vol_forecast": 8.7, "vol_realized": 6.2, "surprise": -0.08}, {"date": "2026-06-15", "regime": "Transition", "vol_forecast": 7.45, "vol_realized": 6.18, "surprise": -0.66}, {"date": "2026-06-16", "regime": "Transition", "vol_forecast": 7.01, "vol_realized": 13.87, "surprise": 1.91}, {"date": "2026-06-17", "regime": "Stress", "vol_forecast": 8.5, "vol_realized": 6.44, "surprise": 0.1}, {"date": "2026-06-18", "regime": "Transition", "vol_forecast": 6.87, "vol_realized": 9.65, "surprise": -0.4}, {"date": "2026-06-22", "regime": "Transition", "vol_forecast": 7.23, "vol_realized": 11.18, "surprise": 2.43}, {"date": "2026-06-23", "regime": "Stress", "vol_forecast": 8.96, "vol_realized": 13.66, "surprise": -0.17}, {"date": "2026-06-24", "regime": "Transition", "vol_forecast": 8.77, "vol_realized": 13.59, "surprise": -0.47}, {"date": "2026-06-25", "regime": "Transition", "vol_forecast": 8.93, "vol_realized": 30.82, "surprise": 0.94}, {"date": "2026-06-26", "regime": "Stress", "vol_forecast": 11.15, "vol_realized": 13.13, "surprise": -0.2}, {"date": "2026-06-29", "regime": "Stress", "vol_forecast": 9.38, "vol_realized": 7.92, "surprise": -0.23}, {"date": "2026-06-30", "regime": "Transition", "vol_forecast": 8.31, "vol_realized": 10.58, "surprise": -0.63}, {"date": "2026-07-01", "regime": "Transition", "vol_forecast": 8.56, "vol_realized": 16.62, "surprise": -0.52}, {"date": "2026-07-02", "regime": "Transition", "vol_forecast": 9.05, "vol_realized": 6.7, "surprise": 0.06}, {"date": "2026-07-06", "regime": "Transition", "vol_forecast": 7.53, "vol_realized": 7.97, "surprise": -0.69}, {"date": "2026-07-07", "regime": "Transition", "vol_forecast": 7.68, "vol_realized": 9.58, "surprise": -0.58}, {"date": "2026-07-08", "regime": "Transition", "vol_forecast": 8.01, "vol_realized": 7.65, "surprise": -0.05}, {"date": "2026-07-09", "regime": "Transition", "vol_forecast": 7.17, "vol_realized": 10.25, "surprise": -0.36}, {"date": "2026-07-10", "regime": "Transition", "vol_forecast": 6.98, "vol_realized": 7.7, "surprise": 0.45}, {"date": "2026-07-13", "regime": "Transition", "vol_forecast": 7.65, "vol_realized": 6.89, "surprise": -0.26}, {"date": "2026-07-14", "regime": "Transition", "vol_forecast": 6.91, "vol_realized": 7.99, "surprise": -0.36}, {"date": "2026-07-15", "regime": "Transition", "vol_forecast": 6.58, "vol_realized": 9.63, "surprise": -0.26}, {"date": "2026-07-16", "regime": "Transition", "vol_forecast": 7.2, "vol_realized": 9.66, "surprise": 1.08}, {"date": "2026-07-17", "regime": "Transition", "vol_forecast": 8.28, "vol_realized": 8.66, "surprise": -0.54}, {"date": "2026-07-20", "regime": "Transition", "vol_forecast": 7.93, "vol_realized": 6.82, "surprise": 0.04}, {"date": "2026-07-21", "regime": "Transition", "vol_forecast": 7.06, "vol_realized": 5.38, "surprise": -0.35}, {"date": "2026-07-22", "regime": "Transition", "vol_forecast": 6.74, "vol_realized": 11.05, "surprise": 1.77}, {"date": "2026-07-23", "regime": "Transition", "vol_forecast": 8.14, "vol_realized": 9.73, "surprise": -0.45}, {"date": "2026-07-24", "regime": "Transition", "vol_forecast": 7.88, "vol_realized": 12.43, "surprise": -0.21}, {"date": "2026-07-27", "regime": "Transition", "vol_forecast": 8.42, "vol_realized": 10.1, "surprise": -0.57}]};
+const V = {"meridian_qlike": 0.3324, "har_qlike": 0.3547, "rel": 6.27, "dm_p": 1.17e-09, "bar": 5.0, "beats": ["AR(1) +25.4%", "AR(3) +19.8%", "GARCH +19.4%", "EWMA +17.1%"], "mz_meridian": 0.6068, "mz_har": 0.5931};
+(function(){
+  const cv = document.getElementById('chart');
+  const tl = STATE.timeline;
+  function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+  function draw(){
+    const dpr = window.devicePixelRatio || 1;
+    const W = cv.clientWidth, H = cv.clientHeight;
+    cv.width = W*dpr; cv.height = H*dpr;
+    const ctx = cv.getContext('2d'); ctx.scale(dpr,dpr);
+    ctx.clearRect(0,0,W,H);
+    const padL=44, padR=12, padT=14, padB=26;
+    const iw = W-padL-padR, ih = H-padT-padB;
+    const vals = tl.flatMap(d=>[d.vol_forecast, d.vol_realized]);
+    const vmax = Math.max(...vals)*1.05, vmin=0;
+    const x = i => padL + iw*(i/(tl.length-1));
+    const y = v => padT + ih*(1-(v-vmin)/(vmax-vmin));
+    // stress regime bands
+    ctx.fillStyle = css('--band');
+    for(let i=0;i<tl.length;i++){
+      if(tl[i].regime==='Stress'){
+        const x0 = x(i-0.5), x1 = x(i+0.5);
+        ctx.fillRect(x0,padT,Math.max(x1-x0,1),ih);
+      }
+    }
+    // grid + y labels
+    ctx.strokeStyle = css('--grid'); ctx.fillStyle = css('--muted');
+    ctx.font = '11px ui-monospace, Menlo, monospace'; ctx.textAlign='right';
+    ctx.lineWidth=1;
+    for(let g=0; g<=4; g++){
+      const vv = vmin + (vmax-vmin)*g/4, yy=y(vv);
+      ctx.globalAlpha=0.5; ctx.beginPath(); ctx.moveTo(padL,yy); ctx.lineTo(W-padR,yy); ctx.stroke();
+      ctx.globalAlpha=1; ctx.fillText(vv.toFixed(0), padL-6, yy+3);
+    }
+    // realized line
+    function line(key,color,w,alpha){
+      ctx.strokeStyle=color; ctx.lineWidth=w; ctx.globalAlpha=alpha; ctx.beginPath();
+      tl.forEach((d,i)=>{ const xx=x(i),yy=y(d[key]); i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy); });
+      ctx.stroke(); ctx.globalAlpha=1;
+    }
+    line('vol_realized', css('--rv'), 1.4, 0.85);
+    // forecast area
+    const grd = ctx.createLinearGradient(0,padT,0,padT+ih);
+    grd.addColorStop(0, css('--fc-fill')); grd.addColorStop(1,'transparent');
+    ctx.beginPath(); ctx.moveTo(x(0),y(tl[0].vol_forecast));
+    tl.forEach((d,i)=>ctx.lineTo(x(i),y(d.vol_forecast)));
+    ctx.lineTo(x(tl.length-1),padT+ih); ctx.lineTo(x(0),padT+ih); ctx.closePath();
+    ctx.fillStyle=grd; ctx.fill();
+    line('vol_forecast', css('--fc'), 2.2, 1);
+    // surprise spikes (z>1.5)
+    tl.forEach((d,i)=>{ if(d.surprise>1.5){
+      ctx.fillStyle=css('--sp'); const xx=x(i),yy=y(d.vol_realized);
+      ctx.beginPath(); ctx.arc(xx,yy,3.4,0,7); ctx.fill();
+      ctx.globalAlpha=0.35; ctx.beginPath(); ctx.arc(xx,yy,3.4+d.surprise,0,7); ctx.fill(); ctx.globalAlpha=1;
+    }});
+    // endpoint marker
+    const li=tl.length-1;
+    ctx.fillStyle=css('--fc'); ctx.beginPath(); ctx.arc(x(li),y(tl[li].vol_forecast),3.5,0,7); ctx.fill();
+    // x labels (first / mid / last)
+    ctx.fillStyle=css('--muted'); ctx.textAlign='left'; ctx.fillText(tl[0].date, padL, H-8);
+    ctx.textAlign='center'; ctx.fillText(tl[Math.floor(li/2)].date, padL+iw/2, H-8);
+    ctx.textAlign='right'; ctx.fillText(tl[li].date, W-padR, H-8);
+  }
+  draw();
+  let t; window.addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(draw,80);});
+  new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  if(window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+})();
+</script>

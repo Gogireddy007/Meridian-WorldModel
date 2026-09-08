@@ -1,0 +1,370 @@
+{
+  "generated_for": "2026-07-30",
+  "last_close_date": "2026-07-30",
+  "horizon_trading_days": 5,
+  "assets": {
+    "SPY": {
+      "last_close": "2026-07-30",
+      "current_vol_ann_pct": 9.3,
+      "week": [
+        {
+          "day": "today",
+          "date": "2026-07-31",
+          "vol_forecast_ann_pct": 11.1
+        },
+        {
+          "day": "tomorrow",
+          "date": "2026-08-03",
+          "vol_forecast_ann_pct": 11.9
+        },
+        {
+          "day": "day_3",
+          "date": "2026-08-04",
+          "vol_forecast_ann_pct": 12.1
+        },
+        {
+          "day": "day_4",
+          "date": "2026-08-05",
+          "vol_forecast_ann_pct": 12.2
+        },
+        {
+          "day": "day_5",
+          "date": "2026-08-06",
+          "vol_forecast_ann_pct": 12.1
+        }
+      ],
+      "weekly_avg_vol_ann_pct": 11.9,
+      "direction": "rising"
+    },
+    "QQQ": {
+      "last_close": "2026-07-30",
+      "current_vol_ann_pct": 14.8,
+      "week": [
+        {
+          "day": "today",
+          "date": "2026-07-31",
+          "vol_forecast_ann_pct": 18.2
+        },
+        {
+          "day": "tomorrow",
+          "date": "2026-08-03",
+          "vol_forecast_ann_pct": 19.4
+        },
+        {
+          "day": "day_3",
+          "date": "2026-08-04",
+          "vol_forecast_ann_pct": 19.5
+        },
+        {
+          "day": "day_4",
+          "date": "2026-08-05",
+          "vol_forecast_ann_pct": 19.3
+        },
+        {
+          "day": "day_5",
+          "date": "2026-08-06",
+          "vol_forecast_ann_pct": 18.9
+        }
+      ],
+      "weekly_avg_vol_ann_pct": 19.1,
+      "direction": "rising"
+    },
+    "IWM": {
+      "last_close": "2026-07-30",
+      "current_vol_ann_pct": 14.2,
+      "week": [
+        {
+          "day": "today",
+          "date": "2026-07-31",
+          "vol_forecast_ann_pct": 15.0
+        },
+        {
+          "day": "tomorrow",
+          "date": "2026-08-03",
+          "vol_forecast_ann_pct": 15.5
+        },
+        {
+          "day": "day_3",
+          "date": "2026-08-04",
+          "vol_forecast_ann_pct": 15.6
+        },
+        {
+          "day": "day_4",
+          "date": "2026-08-05",
+          "vol_forecast_ann_pct": 15.5
+        },
+        {
+          "day": "day_5",
+          "date": "2026-08-06",
+          "vol_forecast_ann_pct": 15.6
+        }
+      ],
+      "weekly_avg_vol_ann_pct": 15.5,
+      "direction": "rising"
+    },
+    "AAPL": {
+      "last_close": "2026-07-30",
+      "current_vol_ann_pct": 17.4,
+      "week": [
+        {
+          "day": "today",
+          "date": "2026-07-31",
+          "vol_forecast_ann_pct": 22.0
+        },
+        {
+          "day": "tomorrow",
+          "date": "2026-08-03",
+          "vol_forecast_ann_pct": 23.1
+        },
+        {
+          "day": "day_3",
+          "date": "2026-08-04",
+          "vol_forecast_ann_pct": 23.7
+        },
+        {
+          "day": "day_4",
+          "date": "2026-08-05",
+          "vol_forecast_ann_pct": 23.6
+        },
+        {
+          "day": "day_5",
+          "date": "2026-08-06",
+          "vol_forecast_ann_pct": 23.6
+        }
+      ],
+      "weekly_avg_vol_ann_pct": 23.2,
+      "direction": "rising"
+    },
+    "MSFT": {
+      "last_close": "2026-07-30",
+      "current_vol_ann_pct": 59.3,
+      "week": [
+        {
+          "day": "today",
+          "date": "2026-07-31",
+          "vol_forecast_ann_pct": 35.9
+        },
+        {
+          "day": "tomorrow",
+          "date": "2026-08-03",
+          "vol_forecast_ann_pct": 33.1
+        },
+        {
+          "day": "day_3",
+          "date": "2026-08-04",
+          "vol_forecast_ann_pct": 33.0
+        },
+        {
+          "day": "day_4",
+          "date": "2026-08-05",
+          "vol_forecast_ann_pct": 33.5
+        },
+        {
+          "day": "day_5",
+          "date": "2026-08-06",
+          "vol_forecast_ann_pct": 33.7
+        }
+      ],
+      "weekly_avg_vol_ann_pct": 33.9,
+      "direction": "falling"
+    },
+    "JPM": {
+      "last_close": "2026-07-30",
+      "current_vol_ann_pct": 20.1,
+      "week": [
+        {
+          "day": "today",
+          "date": "2026-07-31",
+          "vol_forecast_ann_pct": 22.1
+        },
+        {
+          "day": "tomorrow",
+          "date": "2026-08-03",
+          "vol_forecast_ann_pct": 23.1
+        },
+        {
+          "day": "day_3",
+          "date": "2026-08-04",
+          "vol_forecast_ann_pct": 23.5
+        },
+        {
+          "day": "day_4",
+          "date": "2026-08-05",
+          "vol_forecast_ann_pct": 23.9
+        },
+        {
+          "day": "day_5",
+          "date": "2026-08-06",
+          "vol_forecast_ann_pct": 23.8
+        }
+      ],
+      "weekly_avg_vol_ann_pct": 23.3,
+      "direction": "rising"
+    },
+    "XOM": {
+      "last_close": "2026-07-30",
+      "current_vol_ann_pct": 20.1,
+      "week": [
+        {
+          "day": "today",
+          "date": "2026-07-31",
+          "vol_forecast_ann_pct": 21.7
+        },
+        {
+          "day": "tomorrow",
+          "date": "2026-08-03",
+          "vol_forecast_ann_pct": 22.2
+        },
+        {
+          "day": "day_3",
+          "date": "2026-08-04",
+          "vol_forecast_ann_pct": 22.6
+        },
+        {
+          "day": "day_4",
+          "date": "2026-08-05",
+          "vol_forecast_ann_pct": 22.2
+        },
+        {
+          "day": "day_5",
+          "date": "2026-08-06",
+          "vol_forecast_ann_pct": 22.2
+        }
+      ],
+      "weekly_avg_vol_ann_pct": 22.2,
+      "direction": "rising"
+    },
+    "JNJ": {
+      "last_close": "2026-07-30",
+      "current_vol_ann_pct": 22.9,
+      "week": [
+        {
+          "day": "today",
+          "date": "2026-07-31",
+          "vol_forecast_ann_pct": 22.9
+        },
+        {
+          "day": "tomorrow",
+          "date": "2026-08-03",
+          "vol_forecast_ann_pct": 23.2
+        },
+        {
+          "day": "day_3",
+          "date": "2026-08-04",
+          "vol_forecast_ann_pct": 23.1
+        },
+        {
+          "day": "day_4",
+          "date": "2026-08-05",
+          "vol_forecast_ann_pct": 22.1
+        },
+        {
+          "day": "day_5",
+          "date": "2026-08-06",
+          "vol_forecast_ann_pct": 22.2
+        }
+      ],
+      "weekly_avg_vol_ann_pct": 22.7,
+      "direction": "rising"
+    },
+    "EURUSD": {
+      "last_close": "2026-07-30",
+      "current_vol_ann_pct": 8.1,
+      "week": [
+        {
+          "day": "today",
+          "date": "2026-07-31",
+          "vol_forecast_ann_pct": 7.5
+        },
+        {
+          "day": "tomorrow",
+          "date": "2026-08-03",
+          "vol_forecast_ann_pct": 7.8
+        },
+        {
+          "day": "day_3",
+          "date": "2026-08-04",
+          "vol_forecast_ann_pct": 8.3
+        },
+        {
+          "day": "day_4",
+          "date": "2026-08-05",
+          "vol_forecast_ann_pct": 9.0
+        },
+        {
+          "day": "day_5",
+          "date": "2026-08-06",
+          "vol_forecast_ann_pct": 9.0
+        }
+      ],
+      "weekly_avg_vol_ann_pct": 8.3,
+      "direction": "falling"
+    },
+    "USDJPY": {
+      "last_close": "2026-07-30",
+      "current_vol_ann_pct": 33.2,
+      "week": [
+        {
+          "day": "today",
+          "date": "2026-07-31",
+          "vol_forecast_ann_pct": 19.1
+        },
+        {
+          "day": "tomorrow",
+          "date": "2026-08-03",
+          "vol_forecast_ann_pct": 18.4
+        },
+        {
+          "day": "day_3",
+          "date": "2026-08-04",
+          "vol_forecast_ann_pct": 19.0
+        },
+        {
+          "day": "day_4",
+          "date": "2026-08-05",
+          "vol_forecast_ann_pct": 19.7
+        },
+        {
+          "day": "day_5",
+          "date": "2026-08-06",
+          "vol_forecast_ann_pct": 18.7
+        }
+      ],
+      "weekly_avg_vol_ann_pct": 19.0,
+      "direction": "falling"
+    },
+    "GBPUSD": {
+      "last_close": "2026-07-30",
+      "current_vol_ann_pct": 9.2,
+      "week": [
+        {
+          "day": "today",
+          "date": "2026-07-31",
+          "vol_forecast_ann_pct": 8.8
+        },
+        {
+          "day": "tomorrow",
+          "date": "2026-08-03",
+          "vol_forecast_ann_pct": 9.4
+        },
+        {
+          "day": "day_3",
+          "date": "2026-08-04",
+          "vol_forecast_ann_pct": 10.3
+        },
+        {
+          "day": "day_4",
+          "date": "2026-08-05",
+          "vol_forecast_ann_pct": 11.4
+        },
+        {
+          "day": "day_5",
+          "date": "2026-08-06",
+          "vol_forecast_ann_pct": 11.7
+        }
+      ],
+      "weekly_avg_vol_ann_pct": 10.3,
+      "direction": "falling"
+    }
+  }
+}
