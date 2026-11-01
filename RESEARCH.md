@@ -1,5 +1,11 @@
 # Meridian — JEPA / World-Model Landscape (deep research, 2026-07-30)
 
+> **Status (2026-11-01, PREREGISTRATION.md Amendment 6).** This is a dated research log.
+> Figures attributed to published papers are quoted from those sources. Figures from **our own
+> experiments** in this file (marked *[pre-audit, not reproduced]*) were computed before the
+> harness audit and are not validated; the only authoritative Meridian numbers are in
+> `results/benchmark_vol.json` / `results/benchmark_vol.md`.
+
 Fan-out deep research (105 agents, 23 primary sources, 103 claims extracted, 25
 adversarially verified → 24 confirmed / 1 refuted). Question: *which JEPA / EBM /
 world-model variant has a concrete mechanism to beat a plain SSM+QLIKE core at
@@ -16,7 +22,7 @@ shows "much of the short-horizon advantage reflects better-scaled forecasts rath
 than better prediction of volatility dynamics." The HAR family forms a 90% Model
 Confidence Set. **This independently corroborates Meridian's own ablation:** a plain
 SSM+QLIKE core is near the achievable frontier for daily vol; latent-prediction JEPA
-+ SIGReg add ~nothing.
++ SIGReg add ~nothing *[pre-audit ablation, not reproduced]*.
 
 ## What the evidence de-prioritizes
 
@@ -55,10 +61,11 @@ high-rank discriminative features, the EMA target encoder is smoother and better
 additional training cost." Confidence **medium** (single recent preprint, generic
 benchmarks, unreplicated). For Meridian this is a near-zero-cost test: read the vol
 forecast off the EMA target encoder vs the online encoder.
-**Status: IMPLEMENTED & TESTED → REPLICATES.** Dual vol head (online vs EMA-target
-readout), `MERIDIAN_DUALVOL=1`. Result: EMA-target readout QLIKE 0.3361 vs online
-0.3403 = **+1.21%, DM p=0.0027**. The CF-JEPA asymmetry replicates on daily
-equity+FX vol — modest but a genuine, cheap, JEPA-specific win. See RESULTS.md.
+**Status: IMPLEMENTED; result pre-audit, not reproduced.** Dual vol head (online vs
+EMA-target readout), `MERIDIAN_DUALVOL=1`. The pre-audit run reported a small gain for the
+EMA-target readout, but its significance test used stacked panel rows (the flaw Amendment 6
+fixed), so the figure is withdrawn. Needs a re-run under the audited harness before any
+claim. See RESULTS.md for the history.
 
 ## Honest caveats (from the research)
 1. Beating a well-specified HAR/SSM+QLIKE on daily vol is genuinely hard; most "wins"
@@ -73,9 +80,9 @@ equity+FX vol — modest but a genuine, cheap, JEPA-specific win. See RESULTS.md
 ## Mapping to Meridian experiments
 | research item | Meridian action | status |
 |---|---|---|
-| CF-JEPA EMA routing (#2, JEPA) | dual online/target vol head | **done → +1.21%, p=0.003** |
+| CF-JEPA EMA routing (#2, JEPA) | dual online/target vol head | built; result pre-audit, not reproduced |
 | DS3M switching-SSM (#1, regime) | replace HMM regime layer | proposed |
-| Monthly-horizon target (caveat 4) | add h=5/22 RV targets | proposed |
+| Monthly-horizon target (caveat 4) | add h=5/22 RV targets | aux heads built; audited h=5/22 tables in `results/benchmark_vol.md` |
 | EB-JEPA/H-JEPA/hyperbolic | — | de-prioritized (no evidence) |
 
 Sources: arXiv 2607.05291 (Brini), 2106.02329 (DS3M), 1710.05741 (KVAE),
@@ -98,8 +105,8 @@ JEPA was built to avoid. Run generative objectives in the SSM's LATENT space, no
 on raw returns.
 
 **Tier 1 — build (real, transferable value):**
-- **Small GMM distributional head** ("heads not backbones", verified high): on S&P
-  monthly, CRPS-skill point −0.09% → Gaussian +1.18% → **GMM +3.59%**; head effect
+- **Small GMM distributional head** ("heads not backbones", verified high; figures below
+  are that paper's, not ours): on S&P monthly, CRPS-skill point −0.09% → Gaussian +1.18% → **GMM +3.59%**; head effect
   (3.7pp) dominates backbone spread. OOS tail gains: −8.9% 5%-VaR pinball at h=1,
   coverage 94.0% vs 92.5%, better crisis tail capture. It **complements** the QLIKE
   point core (a Model Confidence Set on squared error excludes no backbone-head — the
@@ -162,10 +169,11 @@ single asset class or single signal. Requires (a) cross-asset breadth
 (equities+bonds+FX+commodities), (b) forward/futures curves + short rates for carry,
 (c) options/implied-vol for VRP, (d) cross-sectional breadth for ranking.
 
-**We built and MEASURED this** (`scripts/modular_stack.py`): TS-momentum + vol-managed
-+ regime-overlay bridged by BOA. Momentum on our 11 assets: Sharpe 0.48 (thin breadth,
-as predicted); BOA correctly down-weighted it to 0.07; combined Sharpe 0.93. Confirms
-empirically: the ceiling is DATA/BREADTH, not architecture.
+**We built this** (`scripts/modular_stack.py`): TS-momentum + vol-managed
++ regime-overlay bridged by BOA. *[pre-audit, not reproduced]* The run suggested momentum
+is weak on our thin 11-asset universe and that BOA down-weights it, consistent with the
+ceiling being DATA/BREADTH rather than architecture. Its Sharpe figures are withdrawn
+pending a re-run on the cleaned data.
 
 Sources #3: Moskowitz-Ooi-Pedersen 2012 (JFE), Koijen et al. 2018 (JFE),
 Gu-Kelly-Xiu 2020 (RFS), Cederburg et al. 2020 (JFE), DeMiguel et al. 2024 (JF),
@@ -186,11 +194,11 @@ Donti-Amos-Kolter; Elmachtoub-Grigas SPO+; Lim-Zohren-Roberts DMN).
   (SPO+/RobustSPO 0.55–0.79 vs Markowitz 0.66); 1.33 only in a single un-deflated
   7-ETF backtest.
 - **DMN's headline ~2.8 Sharpe is GROSS, on FUTURES, and collapses to NEGATIVE past a
-  ~2–10bps cost cliff** — mirrors our own capped-vs-uncapped result (0.32 capped;
-  0.62 uncapped blew up −100% DD).
+  ~2–10bps cost cliff** — consistent with our own capped-vs-uncapped experiment, where the
+  uncapped policy blew up *[pre-audit, not reproduced; figures withdrawn]*.
 - **Energy-collapse degeneracy (LeCun 2006 §2.2.1):** a single-term "push-down"
-  economic/Sharpe loss with no contrastive term collapses to a flat energy — exactly
-  why our flexible MLP overfit to −0.31. The fix is a contrastive/regularizing term +
+  economic/Sharpe loss with no contrastive term collapses to a flat energy — a plausible
+  reason our flexible MLP overfit *[pre-audit, not reproduced]*. The fix is a contrastive/regularizing term +
   turnover control, or minimal capacity (our linear policy).
 - **EBMs** give real architectural value (un-normalized economic energy over
   (state,action); energy-min inference IS the decision; native multimodality) but have
@@ -200,7 +208,7 @@ Donti-Amos-Kolter; Elmachtoub-Grigas SPO+; Lim-Zohren-Roberts DMN).
   (sometimes) SAM help generalization; exotic optimizers (Lion/Sophia/Shampoo) are
   largely irrelevant to the OOS result.
 
-**Verdict (foundations-level, matching all 6 of our experiments):** NO method credibly
+**Verdict (foundations-level, consistent with our pre-audit experiments):** NO method credibly
 and reproducibly reaches ~1.5 net Sharpe on daily data without futures/options/intraday.
 The decision-focused edge is real but ~0.1–0.3 Sharpe. The binding constraint is DATA
 MODALITY, confirmed independently at the foundations.
@@ -208,7 +216,8 @@ MODALITY, confirmed independently at the foundations.
 **Best honest model design (from the research):** a decision-focused EBM — economic
 energy E(state, action) + a CONTRASTIVE term (prevents collapse) + explicit turnover
 penalty, minimal capacity, seed-ensembled, deflated-Sharpe (Bailey–López de Prado)
-evaluated on purged walk-forward. Expected honest net Sharpe: ~0.5–0.9 on this data.
+evaluated on purged walk-forward. Literature-based expectation (not measured here):
+net Sharpe ~0.5–0.9 on this kind of data.
 
 Sources #4: LeCun et al. 2006 (EBM tutorial), Donti-Amos-Kolter 2017, Elmachtoub-Grigas
 2022 (SPO+), Lim-Zohren-Roberts 2019 (DMN), Zhang-Zohren-Roberts 2020, Bailey-López de
@@ -216,21 +225,20 @@ Prado 2014 (deflated Sharpe).
 
 ---
 
-# Part 5 — Intraday frontier (REAL new experiment, 2026-07-30)
+# Part 5 — Intraday frontier (experiment, 2026-07-30) *[pre-audit, not reproduced]*
 
 First test of higher-frequency real data: Yahoo 1-hour bars, ~3yr, 13 liquid ETFs.
-`scripts/intraday_research.py`.
+`scripts/intraday_research.py`. Sharpe figures from this run are withdrawn (short sample,
+no date-level significance testing); the qualitative reading is kept below.
 
-**Finding 1 — data modality reveals real new structure (thesis validated):** the
-overnight vs intraday decomposition (impossible from daily bars) shows equities earn
-their premium OVERNIGHT (Sharpe ~0.9–1.4) while intraday is flat (~0.0–0.4). A genuinely
-different signal exists at higher frequency. This is real evidence that richer data
-carries structure daily bars destroy.
+**Finding 1 — data modality may reveal new structure:** the overnight vs intraday
+decomposition (impossible from daily bars) suggested equities earn their premium
+overnight while intraday returns are roughly flat, in line with the published overnight
+anomaly literature. This hints that richer data carries structure daily bars destroy.
 
-**Finding 2 — but signal ≠ tradable alpha (cost test):** the overnight anomaly is NOT
-tradable net of costs — market-neutral overnight-minus-intraday is +0.54 GROSS but
-NEGATIVE at ≥1bp/trade (it flips twice daily); overnight-only is 1.1 gross → 0.60 (1bp)
-→ 0.09 (2bp) → negative (3bp). Turnover destroys it (confirms Lachance 2021).
+**Finding 2 — but signal ≠ tradable alpha (cost test):** the overnight strategy's gross
+edge shrank quickly as per-trade costs were added and turned negative within a few basis
+points, because it trades twice daily. Turnover destroys it (consistent with Lachance 2021).
 
 **Sharpened conclusion:** reaching 1.5 net needs a signal that is BOTH in richer data
 AND low-turnover / cost-efficient. The overnight anomaly has the signal, fails on cost.

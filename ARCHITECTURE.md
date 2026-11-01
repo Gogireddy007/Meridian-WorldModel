@@ -8,11 +8,15 @@ are **decoupled** so none can degrade another (v1 violated this — the switchin
 shared vol backbone regressed vol; v2 decouples). New capabilities (alpha, carry) are
 added as NEW bridged modules, never by making one module "generalize."
 
+> **Numbers policy (PREREGISTRATION.md Amendment 6).** The only validated numbers are those in
+> `results/benchmark_vol.json` (volatility module). Figures that appeared in earlier versions of
+> this document were computed before the harness audit and are withdrawn.
+
 | module | one job | interpretable output | measured status |
 |---|---|---|---|
-| Vol module (SSM+QLIKE+EMA readout) | next-day RV | log-variance forecast | +6.8% vs HAR ✅ |
-| Regime module (switching SSM) | market regime | sticky posterior α, dwell | beats HMM econ value ✅ |
-| Tail module (Student-t head) | return VaR/tails | df, scale → VaR quantiles | calibrated exceedance ⚠ |
+| Vol module (SSM+QLIKE, HAR-anchored, "M0") | next-day RV | log-variance forecast | ✅ audited: −7.5% QLIKE vs per-asset HAR on the 2019–2026 holdout (`results/benchmark_vol.md`) |
+| Regime module (switching SSM) | market regime | sticky posterior α, dwell | not re-validated (earlier "beats HMM" claim withdrawn) |
+| Tail module (Student-t head) | return VaR/tails | df, scale → VaR quantiles | not re-validated |
 | Surprise (JEPA energy) | novelty signal | per-day energy z-score | descriptive |
 | *Alpha module(s)* (roadmap) | risk-adjusted P&L | position/signal | NOT built — needs new data |
 | Interpretable bridge | compose modules | per-module attribution | to design |
@@ -25,11 +29,11 @@ claimed "best" until benchmarked.
 
 | Finding | Source | Design consequence |
 |---|---|---|
-| SSM belief core + **direct QLIKE** training + seed-ensembling beats HAR-RV (+6.3%, generalizes) | our runs | Keep as the vol engine — do not replace it |
-| JEPA latent-prediction loss + SIGReg add **~nothing** to vol (backbone≈full) | our ablation | Demote JEPA loss to a low-weight auxiliary; it is not the vol driver |
-| JEPA **EMA target-encoder readout** gives +1.2% (CF-JEPA replicated) | our CF-JEPA run | Read heads off the EMA target encoder |
+| SSM belief core + **direct QLIKE** training + seed-ensembling beats per-asset HAR-RV (audited holdout: −7.5% QLIKE, 11/11 assets) | `results/benchmark_vol.json` | Keep as the vol engine — do not replace it |
+| JEPA latent-prediction loss + SIGReg add **~nothing** to vol (backbone≈full) | pre-audit ablation, not re-validated | Demote JEPA loss to a low-weight auxiliary; it is not the vol driver |
+| JEPA **EMA target-encoder readout** helps slightly (CF-JEPA) | pre-audit run; number withdrawn, not re-validated | Candidate only — re-test under the audited harness before relying on it |
 | Beating HAR on daily vol is near-frontier; gains survive mainly at **monthly** horizon | Brini 2026 (verified) | Expect vol ≈ current best; add weekly/monthly RV targets |
-| Regime is the open value; **HMM fails on persistence**; DS3M's Markov-discrete + RNN-continuous gives persistent regimes | our regime result + verified research #1 | Add an explicit **sticky discrete switching latent** |
+| Regime is the open value; **HMM fails on persistence** (pre-audit, not re-validated); DS3M's Markov-discrete + RNN-continuous gives persistent regimes | our regime result + verified research #1 | Add an explicit **sticky discrete switching latent** |
 | Hierarchical / hyperbolic JEPA: **no surviving evidence** | verified research | Excluded |
 | Generative/distributional latent head for tail/vol-of-vol + likelihood surprise | Track B (pending) | Add a distributional head; validate it earns its keep |
 
