@@ -21,3 +21,4 @@ data/futures/
 # results/benchmark_vol.json can be re-scored in seconds (scripts/score_vol_benchmark.py)
 !results/benchmark_vol_predictions.parquet
 !results/benchmark_vol_predictions_ablation.parquet
+!results/benchmark_tail_predictions.parquet

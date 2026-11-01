@@ -16,7 +16,7 @@ added as NEW bridged modules, never by making one module "generalize."
 |---|---|---|---|
 | Vol module (SSM+QLIKE, HAR-anchored, "M0") | next-day RV | log-variance forecast | ✅ audited: −7.5% QLIKE vs per-asset HAR on the 2019–2026 holdout (`results/benchmark_vol.md`) |
 | Regime module (switching SSM) | market regime | sticky posterior α, dwell | not re-validated (earlier "beats HMM" claim withdrawn) |
-| Tail module (Student-t head) | return VaR/tails | df, scale → VaR quantiles | not re-validated |
+| Tail module (vol-filtered EVT; Student-t head retired) | return VaR/ES | VaR + ES per day | ✅ audited: beats GARCH-family / HS / CAViaR; ≈ HAR-filtered tails (`results/benchmark_tail.md`) |
 | Surprise (JEPA energy) | novelty signal | per-day energy z-score | descriptive |
 | *Alpha module(s)* (roadmap) | risk-adjusted P&L | position/signal | NOT built — needs new data |
 | Interpretable bridge | compose modules | per-module attribution | to design |

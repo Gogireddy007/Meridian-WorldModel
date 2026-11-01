@@ -661,3 +661,18 @@ M0 on the development period. Hit rate does not discriminate between models on t
 Predictions: `results/benchmark_vol_predictions.parquet` (final, 5 seeds) and
 `results/benchmark_vol_predictions_ablation.parquet` (selection run, 3 seeds; scored in
 `results/benchmark_vol_ablation.json`).
+
+## 2026-11-01 — Tail-risk benchmark (Amendment 7)
+
+Authoritative numbers: `results/benchmark_tail.json` (tables in `results/benchmark_tail.md`),
+from `scripts/benchmark_tail.py` → `scripts/score_tail_benchmark.py`; saved predictions in
+`results/benchmark_tail_predictions.parquet`. Meridian + EVT was selected on 2012–2018 (selection
+record in `PREREGISTRATION.md`). On the 2019–2026 holdout the volatility-filtered tails (Meridian,
+HAR, LightGBM) beat GARCH-family, RiskMetrics, historical-simulation and CAViaR VaR/ES
+significantly; Meridian vs HAR-filtered tails is not significant. This supersedes the pre-audit
+`conformal_var.py` / `evt_tail.py` numbers above.
+
+## 2026-11-01 — Forward test started (Amendment 7)
+
+Frozen models and manifest: `results/forward/frozen/`; append-only log:
+`results/forward/forecast_log.csv`. No forward result yet.

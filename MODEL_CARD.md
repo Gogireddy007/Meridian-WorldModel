@@ -45,12 +45,43 @@ Reading: Meridian is the best single volatility model in this benchmark, and its
 HAR holds across assets and years. The improvement is statistically clear; whether it exceeds
 5% against the strongest HAR form is likely but not certain (see the interval above).
 
+## Tail-risk module — validated (PREREGISTRATION.md Amendment 7)
+
+Next-day VaR / Expected Shortfall: returns filtered by Meridian's volatility forecast, tail read
+from past standardized returns with a GPD (EVT) fit — variant chosen on 2012–2018. Compared with
+historical simulation, RiskMetrics, the GARCH family, GJR-GARCH + FHS / EVT and CAViaR.
+
+<!-- TAIL:START -->
+Holdout 2019-01-01 → 2026-06-29 (2168 dates × 11 assets), next-day return VaR and ES at 2.5%, reference GJR-GARCH + FHS (reference). Lower FZ0 loss is better.
+
+| Model | FZ0 loss ↓ | Δ vs reference (95% CI) | DM p | In MCS | Violations (target 2.5%) | Assets passing CC / DQ | ES ratio (realized/forecast) |
+|---|---|---|---|---|---|---|---|
+| Meridian + FHS | -3.6394 | -0.1226 [-0.1530, -0.0959] | <0.001 | yes | 2.54% | 11/11 · 10/11 | 0.97 |
+| Meridian + EVT | -3.6387 | -0.1218 [-0.1533, -0.0949] | <0.001 | yes | 2.49% | 11/11 · 10/11 | 0.98 |
+| HAR-RV + FHS | -3.6289 | -0.1182 [-0.1440, -0.0927] | <0.001 | yes | 2.58% | 11/11 · 8/11 | 0.99 |
+| HAR-RV + EVT | -3.6284 | -0.1179 [-0.1449, -0.0912] | <0.001 | yes | 2.57% | 11/11 · 7/11 | 0.99 |
+| Meridian + FHS + adaptive conformal | -3.6257 | -0.1080 [-0.1448, -0.0782] | <0.001 | no | 2.47% | 11/11 · 11/11 | 0.98 |
+| LightGBM vol + FHS | -3.6208 | -0.1048 [-0.1306, -0.0796] | <0.001 | no | 2.58% | 11/11 · 10/11 | 0.98 |
+| GJR-GARCH-skewed-t | -3.5294 | -0.0013 [-0.0124, +0.0093] | 0.404 | no | 2.60% | 10/11 · 10/11 | 0.99 |
+| GJR-GARCH + EVT (McNeil-Frey) | -3.5290 | -0.0030 [-0.0054, -0.0007] | 0.007 | no | 2.67% | 11/11 · 11/11 | 0.98 |
+| GJR-GARCH + FHS (reference) | -3.5255 | — | — | no | 2.71% | 11/11 · 11/11 | 0.98 |
+| GARCH(1,1)-t | -3.5203 | +0.0067 [-0.0097, +0.0234] | 0.799 | no | 2.87% | 10/11 · 7/11 | 1.00 |
+| GARCH(1,1)-normal | -3.5049 | +0.0179 [-0.0036, +0.0427] | 0.951 | no | 3.01% | 9/11 · 7/11 | 1.14 |
+| RiskMetrics EWMA, normal | -3.4538 | +0.0626 [+0.0215, +0.1094] | 0.999 | no | 3.48% | 4/11 · 1/11 | 1.16 |
+| Historical simulation (500d) | -3.3320 | +0.1836 [+0.0660, +0.3735] | 0.997 | no | 2.80% | 5/11 · 1/11 | 1.07 |
+
+Head-to-head against HAR-RV + FHS (both volatility-filtered): FZ0 Δ -0.0037 [-0.0333, +0.0175], DM p 0.369 at 2.5%; 1% VaR quantile loss -3.1% [-7.4%, +0.2%], DM p 0.076. Full tables: `results/benchmark_tail.md`.
+<!-- TAIL:END -->
+
+Reading: volatility-filtered tails (Meridian, HAR, LightGBM) clearly beat returns-only risk
+models; Meridian's edge over HAR-based tails is small and not significant. The earlier Student-t
+tail head and its calibration claims remain withdrawn.
+
 ## Other modules — not re-validated under the audited harness
 
 | Module | Job | Output | Status |
 |---|---|---|---|
 | **Regime** (sticky switching-SSM) | market regime | persistent posterior probabilities | not re-validated; earlier "beats HMM" claim withdrawn |
-| **Tail** (Student-t return head) | next-day VaR | quantiles | not re-validated; earlier calibration claims withdrawn |
 | **Surprise** (JEPA latent energy) | novelty signal | per-day energy z-score | descriptive only |
 | **Combiner** (BOA online aggregation) | allocate across modules | inspectable weights | not re-validated |
 

@@ -1,0 +1,17 @@
+{
+  "frozen_at_utc": "2026-11-01T16:19:03+00:00",
+  "train_data_through": "2026-10-29",
+  "git_commit": "108f349",
+  "model": "Meridian M0, 5 seeds, pooled HAR-anchored init",
+  "reference": "per-asset HAR-RV",
+  "train_rows": 54481,
+  "sha256": {
+    "meridian_M0_seed0.pt": "d95d1b2914dd05f50798828581f112f805ea4d1984617a8c89975004240c69bf",
+    "meridian_M0_seed1.pt": "8ed958efc1e53b2e7d85347d56d5a83b4afbb0e6486dab47f1e0fc962a058dbd",
+    "meridian_M0_seed2.pt": "05613c5bab81b3d41ea2cac8081061580f3ae755e9bfbaa764cb706ccb91d33e",
+    "meridian_M0_seed3.pt": "ed90b6e92ba0052ed3b595d265ef6fcf7468f9a0f7c1ae57b30ae5cc8d5c376b",
+    "meridian_M0_seed4.pt": "57d976a33bb8a38ae9fc3b958281ab020d18fafd63b65d816211bad0f48c2daa",
+    "scaler.npz": "0859965b75b10aed2c3233c3acc59c84f3db72187efc79c43e2bc28c018b5bde",
+    "har.json": "f5133e57523a0652ddf31e3f1201737540cb00006bc6e7d76ff268829430f699"
+  }
+}

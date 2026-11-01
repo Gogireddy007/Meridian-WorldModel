@@ -332,3 +332,75 @@ three are within 0.0003, i.e. practically tied). The proposed improvements M1 (p
 offset), M2 (asset embedding) and M3 (early stopping) did not beat the existing M0 on the
 development period — recorded as a negative result. The selected configuration is re-run with
 5 seeds (`results/benchmark_vol_predictions.parquet`); its holdout result is the headline.
+
+### Amendment 7 — 2026-11-01 — tail-risk (VaR / ES) benchmark and frozen forward test
+(declared before any result of this benchmark is computed)
+
+**Question.** Does Meridian's audited volatility forecast give better next-day Value-at-Risk and
+Expected Shortfall than the standard risk models, when every model is evaluated the same way?
+
+**Target.** Next-day close-to-close log return r_{t+1} of each core asset (8 equities + 3 FX),
+forecast at the close of day t. Levels α = 1%, 2.5% (Basel FRTB ES level), 5%. Zero conditional
+mean for every model.
+
+**Models** (all walk-forward on the same folds as `results/benchmark_vol_predictions.parquet`;
+parameters fit on data dated before each fold's cutoff only):
+- Historical simulation (HS, trailing 500 days).
+- RiskMetrics EWMA (λ = 0.94), normal.
+- GARCH(1,1)-normal, GARCH(1,1)-Student-t, GJR-GARCH(1,1)-skewed-t (parametric VaR/ES).
+- GJR-GARCH(1,1) + filtered historical simulation (FHS, Barone-Adesi) — **the reference**.
+- GJR-GARCH(1,1) + EVT/GPD on standardized residuals (McNeil–Frey 2000).
+- CAViaR asymmetric slope (Engle–Manganelli 2004), VaR only.
+- Volatility-filtered models using a saved OOS log-variance forecast σ²_{t+1|t} from the audited
+  volatility benchmark: **HAR-FHS, HAR-EVT, LightGBM-FHS, Meridian-FHS, Meridian-EVT,
+  Meridian-FHS-ACI** (adaptive conformal level, Gibbs–Candès 2021, γ = 0.005).
+- Filtered models read quantiles from the trailing ≤1000 past standardized returns z = r/σ (min
+  250); EVT threshold at the 90th loss percentile, GPD refit every 21 days.
+
+**Scoring** (`scripts/score_tail_benchmark.py`, from saved predictions only):
+- Primary: joint VaR+ES **FZ0 loss** (Fissler–Ziegel; Patton–Ziegel–Chen 2019) at α = 2.5%.
+  FZ0 differences between models are invariant to each asset's return scale, so assets pool.
+- Secondary: quantile (tick) loss for VaR at 1%, 2.5%, 5%, on returns scaled by each asset's
+  return s.d. before its first OOS date (a fixed constant, known ex ante).
+- Significance on the date-level loss differential (mean across assets per date): HAC DM test
+  (Newey–West, lag floor(4·(T/100)^(2/9))), moving-block bootstrap 95% CI, MCS (90%, block 22).
+- Absolute backtests per asset: Kupiec POF, Christoffersen conditional coverage, Engle–Manganelli
+  Dynamic Quantile test (4 lags); reported as the number of assets passing at 5%. ES: McNeil–Frey
+  exceedance-residual test and realized/predicted ES ratio.
+- Every table on one common row support (all models finite).
+
+**Selection rule.** Among the Meridian tail variants (FHS, EVT, FHS-ACI) the one with the lowest
+**development-period** (dates < 2019-01-01) FZ0 loss at 2.5% is chosen; the **holdout** (≥ 2019-01-01)
+result is the headline. Holdout numbers are not used for any choice. Win bar: lower holdout FZ0
+loss than the GJR-GARCH-FHS reference, DM p < 0.05. Whatever it shows is reported.
+
+**Forward test.** The selected volatility configuration (Meridian M0, 5 seeds) and per-asset HAR
+are trained once on all data up to the freeze date and **frozen** (weights and coefficients
+saved, hashed). Each run appends forecasts for the next trading day to an append-only log with a
+UTC timestamp. Only forecasts logged before their target day count as forward results; any rows
+back-filled for days already past at freeze time are labelled as such and reported separately.
+No retraining, no parameter change, for the life of the test.
+
+**Amendment 7 — selection record (written after the development-period scoring and BEFORE any
+holdout number was viewed).** `python scripts/score_tail_benchmark.py --dev-only`, development
+period 2012-06-12 → 2018-12-31, FZ0 loss at 2.5% (lower is better; Δ vs GJR-GARCH-FHS):
+
+| Model | Dev FZ0 | Δ vs reference |
+|---|---|---|
+| HAR-RV + FHS | −3.7832 | −0.0998 |
+| HAR-RV + EVT | −3.7830 | −0.0981 |
+| Meridian + EVT | −3.7753 | −0.0865 |
+| Meridian + FHS | −3.7746 | −0.0862 |
+| Meridian + FHS + ACI | −3.7547 | −0.0677 |
+| LightGBM + FHS | −3.7514 | −0.0595 |
+| GJR-GARCH + EVT | −3.7034 | −0.0002 |
+| GJR-GARCH + FHS (reference) | −3.7016 | 0 |
+| GJR-GARCH-skewed-t | −3.6911 | +0.0161 |
+| GARCH-t | −3.6842 | +0.0204 |
+| GARCH-normal | −3.6804 | +0.0187 |
+| RiskMetrics | −3.6207 | +0.0676 |
+| Historical simulation | −3.5578 | +0.1409 |
+
+**Selected Meridian tail variant: Meridian + EVT.** Noted before the holdout: on the development
+period the HAR-filtered tails are slightly better than the Meridian-filtered ones, so the tail
+benchmark will also report Meridian against HAR-RV + FHS, not only against the GJR reference.

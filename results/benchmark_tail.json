@@ -1,0 +1,2923 @@
+{
+  "reference": "GJR_FHS",
+  "split_date": "2019-01-01",
+  "primary": "FZ0 at 2.5%",
+  "meridian_dev_FZ0": {
+    "Meridian_FHS": -3.774592182527499,
+    "Meridian_EVT": -3.7753050750716564,
+    "Meridian_FHS_ACI": -3.754678661582414
+  },
+  "selected": "Meridian_EVT",
+  "tables": {
+    "dev": {
+      "010": {
+        "CAViaR_AS": {
+          "violation_rate": 0.008227743952608195,
+          "tick": 0.020887100905669805,
+          "assets_pass_kupiec": 9,
+          "assets_pass_cc": 8,
+          "assets_pass_dq": 8,
+          "has_es": false,
+          "tick_pct_vs_ref": 0.006730508649321232,
+          "tick_ci95_pct_vs_ref": [
+            -0.01104445847486223,
+            0.026561687917562114
+          ],
+          "tick_DM_p": 0.9187017916812252,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false
+        },
+        "GARCH_N": {
+          "violation_rate": 0.013712906587680325,
+          "tick": 0.020896192036509588,
+          "assets_pass_kupiec": 9,
+          "assets_pass_cc": 6,
+          "assets_pass_dq": 6,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.007168689075406354,
+          "tick_ci95_pct_vs_ref": [
+            -0.018475923033064428,
+            0.039980575704643556
+          ],
+          "tick_DM_p": 0.6161383377501758,
+          "FZ0": -3.388222305638556,
+          "es_test_p": 2.5263591723998042e-11,
+          "es_ratio": 1.1930822186020211,
+          "n_violations": 250,
+          "FZ0_diff_vs_ref": 0.03920884306174174,
+          "FZ0_diff_ci95": [
+            -0.0042115988316309624,
+            0.09259552718225095
+          ],
+          "FZ0_DM_p": 0.9372715207425731,
+          "tick_MCS_p": 0.007,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.002,
+          "FZ0_in_MCS90": false
+        },
+        "GARCH_t": {
+          "violation_rate": 0.009818441116779113,
+          "tick": 0.020882990210118007,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 7,
+          "assets_pass_dq": 8,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.006532378586060927,
+          "tick_ci95_pct_vs_ref": [
+            -0.010192783648941198,
+            0.02561620738501985
+          ],
+          "tick_DM_p": 0.8989590969890424,
+          "FZ0": -3.4261429020269807,
+          "es_test_p": 0.00947725986121922,
+          "es_ratio": 1.0652885310584475,
+          "n_violations": 179,
+          "FZ0_diff_vs_ref": 0.015545228899061014,
+          "FZ0_diff_ci95": [
+            -0.00905384673273968,
+            0.03937606449582965
+          ],
+          "FZ0_DM_p": 0.8793474978474279,
+          "tick_MCS_p": 0.001,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_EVT": {
+          "violation_rate": 0.01014755087488344,
+          "tick": 0.020715402889937094,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.0015451075548285065,
+          "tick_ci95_pct_vs_ref": [
+            -0.006348696416285979,
+            0.0036290116195706467
+          ],
+          "tick_DM_p": 0.7400747369537617,
+          "FZ0": -3.440259210506591,
+          "es_test_p": 0.0025824875677449848,
+          "es_ratio": 1.0650282076183772,
+          "n_violations": 185,
+          "FZ0_diff_vs_ref": -0.0006074592688333296,
+          "FZ0_diff_ci95": [
+            -0.007596716252938081,
+            0.005572295601577709
+          ],
+          "FZ0_DM_p": 0.427144444868111,
+          "tick_MCS_p": 0.002,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_FHS": {
+          "violation_rate": 0.010970325270144259,
+          "tick": 0.020747459947044775,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 8,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0,
+          "tick_ci95_pct_vs_ref": null,
+          "tick_DM_p": null,
+          "FZ0": -3.4359602831164904,
+          "es_test_p": 0.05245071397993318,
+          "es_ratio": 1.0278541169494986,
+          "n_violations": 200,
+          "FZ0_diff_vs_ref": 0.0,
+          "FZ0_diff_ci95": null,
+          "FZ0_DM_p": null,
+          "tick_MCS_p": 0.006,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_skewt": {
+          "violation_rate": 0.008556853710712523,
+          "tick": 0.020830115739283242,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 8,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.003983899351989839,
+          "tick_ci95_pct_vs_ref": [
+            -0.014057328336190047,
+            0.020103905678242998
+          ],
+          "tick_DM_p": 0.8381655313090118,
+          "FZ0": -3.435087252892651,
+          "es_test_p": 0.059594222680653425,
+          "es_ratio": 1.0469063019923812,
+          "n_violations": 156,
+          "FZ0_diff_vs_ref": 0.008360869928017056,
+          "FZ0_diff_ci95": [
+            -0.028546819821138554,
+            0.035773776061960146
+          ],
+          "FZ0_DM_p": 0.6915992182415913,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "HAR_EVT": {
+          "violation_rate": 0.011025176896494982,
+          "tick": 0.01918429467279087,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 7,
+          "assets_pass_dq": 3,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.07534248906823704,
+          "tick_ci95_pct_vs_ref": [
+            -0.11622659374409487,
+            -0.03562550247700813
+          ],
+          "tick_DM_p": 1.6797884748355276e-05,
+          "FZ0": -3.545041892612507,
+          "es_test_p": 4.876135105832281e-05,
+          "es_ratio": 1.0834334939513879,
+          "n_violations": 201,
+          "FZ0_diff_vs_ref": -0.13202565593214155,
+          "FZ0_diff_ci95": [
+            -0.1813784770428855,
+            -0.08199492968976353
+          ],
+          "FZ0_DM_p": 1.5830733217040358e-07,
+          "tick_MCS_p": 1.0,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 1.0,
+          "FZ0_in_MCS90": true
+        },
+        "HAR_FHS": {
+          "violation_rate": 0.012615874060665899,
+          "tick": 0.019272271910407774,
+          "assets_pass_kupiec": 9,
+          "assets_pass_cc": 7,
+          "assets_pass_dq": 3,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.07110210312020027,
+          "tick_ci95_pct_vs_ref": [
+            -0.11349040571589603,
+            -0.02794637601554055
+          ],
+          "tick_DM_p": 4.126755128285269e-05,
+          "FZ0": -3.5364845253153856,
+          "es_test_p": 0.0032927663068651187,
+          "es_ratio": 1.046972878163895,
+          "n_violations": 230,
+          "FZ0_diff_vs_ref": -0.12581492324698104,
+          "FZ0_diff_ci95": [
+            -0.17304030786065708,
+            -0.0749112127606298
+          ],
+          "FZ0_DM_p": 7.895571600407477e-07,
+          "tick_MCS_p": 0.723,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.453,
+          "FZ0_in_MCS90": true
+        },
+        "HS": {
+          "violation_rate": 0.01393231309308321,
+          "tick": 0.02300748967836026,
+          "assets_pass_kupiec": 8,
+          "assets_pass_cc": 6,
+          "assets_pass_dq": 2,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.10893042989763169,
+          "tick_ci95_pct_vs_ref": [
+            0.053539052147092835,
+            0.1840089482685605
+          ],
+          "tick_DM_p": 0.99954052451119,
+          "FZ0": -3.2835251936781673,
+          "es_test_p": 0.1660748059042816,
+          "es_ratio": 1.0123068922631882,
+          "n_violations": 254,
+          "FZ0_diff_vs_ref": 0.1533383089470147,
+          "FZ0_diff_ci95": [
+            0.08487468968512196,
+            0.25295402978336196
+          ],
+          "FZ0_DM_p": 0.9998291526578857,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "LightGBM_FHS": {
+          "violation_rate": 0.013438648455926717,
+          "tick": 0.019832405603192993,
+          "assets_pass_kupiec": 8,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.04410440343961819,
+          "tick_ci95_pct_vs_ref": [
+            -0.06980368853967707,
+            -0.016707080544789966
+          ],
+          "tick_DM_p": 0.00017309214153781436,
+          "FZ0": -3.49520753010498,
+          "es_test_p": 0.008151114202471658,
+          "es_ratio": 1.0426298726247898,
+          "n_violations": 245,
+          "FZ0_diff_vs_ref": -0.07532458149692636,
+          "FZ0_diff_ci95": [
+            -0.12327283186680092,
+            -0.030849417995216975
+          ],
+          "FZ0_DM_p": 0.000746878530507217,
+          "tick_MCS_p": 0.035,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.004,
+          "FZ0_in_MCS90": false
+        },
+        "Meridian_EVT": {
+          "violation_rate": 0.011957654544457243,
+          "tick": 0.0193081534796691,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.06937265916161872,
+          "tick_ci95_pct_vs_ref": [
+            -0.10049428659309056,
+            -0.037422324371245194
+          ],
+          "tick_DM_p": 1.4458444153504517e-05,
+          "FZ0": -3.5308854322032985,
+          "es_test_p": 0.0013213198471155399,
+          "es_ratio": 1.059869534232126,
+          "n_violations": 218,
+          "FZ0_diff_vs_ref": -0.11305735511224464,
+          "FZ0_diff_ci95": [
+            -0.1675481222897961,
+            -0.06436676763858773
+          ],
+          "FZ0_DM_p": 5.230730767041269e-06,
+          "tick_MCS_p": 0.734,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.453,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_FHS": {
+          "violation_rate": 0.012835280566068783,
+          "tick": 0.019370258137690603,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.06637929717031876,
+          "tick_ci95_pct_vs_ref": [
+            -0.09595183731189362,
+            -0.03594043737503037
+          ],
+          "tick_DM_p": 8.959048255721376e-06,
+          "FZ0": -3.5248370398010707,
+          "es_test_p": 0.02253399876748112,
+          "es_ratio": 1.0336929712492107,
+          "n_violations": 234,
+          "FZ0_diff_vs_ref": -0.10905973495028368,
+          "FZ0_diff_ci95": [
+            -0.16077838686681215,
+            -0.061440917633259796
+          ],
+          "FZ0_DM_p": 8.166795553659983e-06,
+          "tick_MCS_p": 0.734,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.453,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_FHS_ACI": {
+          "violation_rate": 0.010366957380286326,
+          "tick": 0.020666166655206895,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.003918228643186694,
+          "tick_ci95_pct_vs_ref": [
+            -0.03937025232979226,
+            0.03077476471225285
+          ],
+          "tick_DM_p": 0.16672206495845376,
+          "FZ0": -3.473119431225624,
+          "es_test_p": 0.0024052446293165494,
+          "es_ratio": 1.0658778442990646,
+          "n_violations": 189,
+          "FZ0_diff_vs_ref": -0.0612155196545983,
+          "FZ0_diff_ci95": [
+            -0.11587445053150011,
+            -0.015650352328385176
+          ],
+          "FZ0_DM_p": 0.008441390775136125,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "RiskMetrics": {
+          "violation_rate": 0.01947232735450606,
+          "tick": 0.022078939834798833,
+          "assets_pass_kupiec": 1,
+          "assets_pass_cc": 2,
+          "assets_pass_dq": 2,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0641755613049737,
+          "tick_ci95_pct_vs_ref": [
+            0.015678637424353815,
+            0.12752116331293548
+          ],
+          "tick_DM_p": 0.9705731796460442,
+          "FZ0": -3.2277772353989516,
+          "es_test_p": 2.1907782379947845e-22,
+          "es_ratio": 1.2382171915423,
+          "n_violations": 355,
+          "FZ0_diff_vs_ref": 0.1819702543920923,
+          "FZ0_diff_ci95": [
+            0.07800728211245363,
+            0.31485435019904795
+          ],
+          "FZ0_DM_p": 0.9986668033367657,
+          "tick_MCS_p": 0.002,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.001,
+          "FZ0_in_MCS90": false
+        },
+        "_meta": {
+          "n_rows": 18231,
+          "n_dates": 1903,
+          "n_assets": 11,
+          "date_range": [
+            "2012-06-12",
+            "2018-12-31"
+          ],
+          "ref": "GJR_FHS",
+          "alpha": 0.01,
+          "nw_lag": 7
+        }
+      },
+      "025": {
+        "CAViaR_AS": {
+          "violation_rate": 0.019143217596401734,
+          "tick": 0.04078396393895967,
+          "assets_pass_kupiec": 8,
+          "assets_pass_cc": 7,
+          "assets_pass_dq": 6,
+          "has_es": false,
+          "tick_pct_vs_ref": 0.018801070514405938,
+          "tick_ci95_pct_vs_ref": [
+            0.006980857713412197,
+            0.03043285646786502
+          ],
+          "tick_DM_p": 0.9999929977578366,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false
+        },
+        "GARCH_N": {
+          "violation_rate": 0.02331194119905655,
+          "tick": 0.04034544177285236,
+          "assets_pass_kupiec": 8,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.007846597012441059,
+          "tick_ci95_pct_vs_ref": [
+            -0.0014192087178703545,
+            0.019162877085357806
+          ],
+          "tick_DM_p": 0.8999291563236832,
+          "FZ0": -3.680438917102785,
+          "es_test_p": 6.7248043761916335e-15,
+          "es_ratio": 1.176385691822339,
+          "n_violations": 425,
+          "FZ0_diff_vs_ref": 0.018716639797601516,
+          "FZ0_diff_ci95": [
+            0.003581888644254152,
+            0.03794263792204133
+          ],
+          "FZ0_DM_p": 0.9804400750801805,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GARCH_t": {
+          "violation_rate": 0.022050353792989964,
+          "tick": 0.040457187599238234,
+          "assets_pass_kupiec": 8,
+          "assets_pass_cc": 8,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.010638056119207429,
+          "tick_ci95_pct_vs_ref": [
+            0.0014250083251496626,
+            0.021268319869873334
+          ],
+          "tick_DM_p": 0.9916727756800462,
+          "FZ0": -3.6842132345210996,
+          "es_test_p": 0.0019211463241184438,
+          "es_ratio": 1.0584437377224931,
+          "n_violations": 402,
+          "FZ0_diff_vs_ref": 0.020381232745717525,
+          "FZ0_diff_ci95": [
+            0.008735925085013621,
+            0.03294889724269928
+          ],
+          "FZ0_DM_p": 0.9993524706618945,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_EVT": {
+          "violation_rate": 0.022269760298392848,
+          "tick": 0.04000727445824128,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.0006009688655200796,
+          "tick_ci95_pct_vs_ref": [
+            -0.002866145488135907,
+            0.0014581131919487063
+          ],
+          "tick_DM_p": 0.721990165557528,
+          "FZ0": -3.703447110552433,
+          "es_test_p": 0.004386534466912854,
+          "es_ratio": 1.0459412053371757,
+          "n_violations": 406,
+          "FZ0_diff_vs_ref": -0.00016099808161438743,
+          "FZ0_diff_ci95": [
+            -0.0026799898861018813,
+            0.00239998416502875
+          ],
+          "FZ0_DM_p": 0.45179938599290365,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_FHS": {
+          "violation_rate": 0.02331194119905655,
+          "tick": 0.040031332042444086,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0,
+          "tick_ci95_pct_vs_ref": null,
+          "tick_DM_p": null,
+          "FZ0": -3.7016125264997037,
+          "es_test_p": 0.017828133606836858,
+          "es_ratio": 1.033520889389127,
+          "n_violations": 425,
+          "FZ0_diff_vs_ref": 0.0,
+          "FZ0_diff_ci95": null,
+          "FZ0_DM_p": null,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_skewt": {
+          "violation_rate": 0.018814107838297407,
+          "tick": 0.04042317413060952,
+          "assets_pass_kupiec": 7,
+          "assets_pass_cc": 5,
+          "assets_pass_dq": 8,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.009788384951816775,
+          "tick_ci95_pct_vs_ref": [
+            0.0002178004344691787,
+            0.018270651912111382
+          ],
+          "tick_DM_p": 0.9959178563496179,
+          "FZ0": -3.6910853304781943,
+          "es_test_p": 0.015599478358334843,
+          "es_ratio": 1.0506140319113388,
+          "n_violations": 343,
+          "FZ0_diff_vs_ref": 0.01607973183807817,
+          "FZ0_diff_ci95": [
+            -0.00025613154849955235,
+            0.029338323395377765
+          ],
+          "FZ0_DM_p": 0.9830991509577132,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "HAR_EVT": {
+          "violation_rate": 0.024628380231473863,
+          "tick": 0.03790436866453312,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 8,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.053132465730988176,
+          "tick_ci95_pct_vs_ref": [
+            -0.07443780129776466,
+            -0.031414008004660605
+          ],
+          "tick_DM_p": 7.353938700547e-09,
+          "FZ0": -3.7830467248855815,
+          "es_test_p": 0.0004924815242160214,
+          "es_ratio": 1.0413220595452866,
+          "n_violations": 449,
+          "FZ0_diff_vs_ref": -0.09808778217012315,
+          "FZ0_diff_ci95": [
+            -0.1230091255665191,
+            -0.07101729705989165
+          ],
+          "FZ0_DM_p": 1.0713317922418668e-12,
+          "tick_MCS_p": 1.0,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.492,
+          "FZ0_in_MCS90": true
+        },
+        "HAR_FHS": {
+          "violation_rate": 0.026054522516592616,
+          "tick": 0.03793625511776007,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.052335928328906656,
+          "tick_ci95_pct_vs_ref": [
+            -0.07263774545681255,
+            -0.031404422375346415
+          ],
+          "tick_DM_p": 5.116164580384304e-09,
+          "FZ0": -3.7831946072374683,
+          "es_test_p": 0.0016575600408265383,
+          "es_ratio": 1.0350596512449397,
+          "n_violations": 475,
+          "FZ0_diff_vs_ref": -0.09984004123411513,
+          "FZ0_diff_ci95": [
+            -0.12466447253238129,
+            -0.07239750139444238
+          ],
+          "FZ0_DM_p": 5.732284435878677e-13,
+          "tick_MCS_p": 0.936,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 1.0,
+          "FZ0_in_MCS90": true
+        },
+        "HS": {
+          "violation_rate": 0.028413142449673634,
+          "tick": 0.04422469611021794,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 4,
+          "assets_pass_dq": 0,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.10475204930297477,
+          "tick_ci95_pct_vs_ref": [
+            0.06729878660540396,
+            0.14156562438415463
+          ],
+          "tick_DM_p": 0.9999996999916424,
+          "FZ0": -3.557845625326025,
+          "es_test_p": 0.007259241888696245,
+          "es_ratio": 1.0351707586694945,
+          "n_violations": 518,
+          "FZ0_diff_vs_ref": 0.14089803606860796,
+          "FZ0_diff_ci95": [
+            0.09361387236269773,
+            0.1979277227922437
+          ],
+          "FZ0_DM_p": 0.999999933585216,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "LightGBM_FHS": {
+          "violation_rate": 0.026822445285502716,
+          "tick": 0.03868639426304523,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.033597127819100736,
+          "tick_ci95_pct_vs_ref": [
+            -0.04808049278040207,
+            -0.017968655059524476
+          ],
+          "tick_DM_p": 1.3245784552796414e-06,
+          "FZ0": -3.7514153256338885,
+          "es_test_p": 0.0011904799678565663,
+          "es_ratio": 1.0327245579832547,
+          "n_violations": 489,
+          "FZ0_diff_vs_ref": -0.05945776583774198,
+          "FZ0_diff_ci95": [
+            -0.08497353621027719,
+            -0.0327333214828307
+          ],
+          "FZ0_DM_p": 4.964082207460971e-06,
+          "tick_MCS_p": 0.001,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.001,
+          "FZ0_in_MCS90": false
+        },
+        "Meridian_EVT": {
+          "violation_rate": 0.024683231857824586,
+          "tick": 0.03807065942228887,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.04897845063152961,
+          "tick_ci95_pct_vs_ref": [
+            -0.06668398958976504,
+            -0.03195601162786212
+          ],
+          "tick_DM_p": 3.7235913483858914e-08,
+          "FZ0": -3.7753050750716564,
+          "es_test_p": 0.00027066219590696027,
+          "es_ratio": 1.0446522840872965,
+          "n_violations": 450,
+          "FZ0_diff_vs_ref": -0.08650828703285665,
+          "FZ0_diff_ci95": [
+            -0.1158634338331061,
+            -0.05849836469018211
+          ],
+          "FZ0_DM_p": 5.569333077213929e-09,
+          "tick_MCS_p": 0.886,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.492,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_FHS": {
+          "violation_rate": 0.0262739290219955,
+          "tick": 0.0380838719332697,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 8,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.048648396388847326,
+          "tick_ci95_pct_vs_ref": [
+            -0.06599200139998049,
+            -0.0317463292005299
+          ],
+          "tick_DM_p": 2.7617167357566887e-08,
+          "FZ0": -3.774592182527499,
+          "es_test_p": 0.004150799359277527,
+          "es_ratio": 1.0274859617458454,
+          "n_violations": 479,
+          "FZ0_diff_vs_ref": -0.08622771572775643,
+          "FZ0_diff_ci95": [
+            -0.11644418238456251,
+            -0.057326867184580806
+          ],
+          "FZ0_DM_p": 9.3109789918002e-09,
+          "tick_MCS_p": 0.886,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.492,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_FHS_ACI": {
+          "violation_rate": 0.02534145137403324,
+          "tick": 0.03869871966027706,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.03328923406181172,
+          "tick_ci95_pct_vs_ref": [
+            -0.05143564895487584,
+            -0.01549215852654332
+          ],
+          "tick_DM_p": 5.445921200567828e-05,
+          "FZ0": -3.754678661582414,
+          "es_test_p": 0.00044245816187431653,
+          "es_ratio": 1.0440034239898939,
+          "n_violations": 462,
+          "FZ0_diff_vs_ref": -0.06771549162093478,
+          "FZ0_diff_ci95": [
+            -0.09755626538377837,
+            -0.03925817260473309
+          ],
+          "FZ0_DM_p": 7.979105415639741e-06,
+          "tick_MCS_p": 0.001,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "RiskMetrics": {
+          "violation_rate": 0.03258186605232845,
+          "tick": 0.04097772656893834,
+          "assets_pass_kupiec": 6,
+          "assets_pass_cc": 5,
+          "assets_pass_dq": 3,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.023641344871832448,
+          "tick_ci95_pct_vs_ref": [
+            0.0030970325951306834,
+            0.04931011520768905
+          ],
+          "tick_DM_p": 0.9322430407372597,
+          "FZ0": -3.620663425623992,
+          "es_test_p": 8.748623336597515e-27,
+          "es_ratio": 1.212298210208215,
+          "n_violations": 594,
+          "FZ0_diff_vs_ref": 0.06760020497103345,
+          "FZ0_diff_ci95": [
+            0.022963713290522738,
+            0.12487609440988084
+          ],
+          "FZ0_DM_p": 0.9954379297006095,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "_meta": {
+          "n_rows": 18231,
+          "n_dates": 1903,
+          "n_assets": 11,
+          "date_range": [
+            "2012-06-12",
+            "2018-12-31"
+          ],
+          "ref": "GJR_FHS",
+          "alpha": 0.025,
+          "nw_lag": 7
+        }
+      },
+      "050": {
+        "CAViaR_AS": {
+          "violation_rate": 0.038670396577258515,
+          "tick": 0.06656938158034834,
+          "assets_pass_kupiec": 5,
+          "assets_pass_cc": 5,
+          "assets_pass_dq": 7,
+          "has_es": false,
+          "tick_pct_vs_ref": 0.01579033577351141,
+          "tick_ci95_pct_vs_ref": [
+            0.00719113126311377,
+            0.02438313964464042
+          ],
+          "tick_DM_p": 0.9999996259183912,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false
+        },
+        "GARCH_N": {
+          "violation_rate": 0.03932861609346717,
+          "tick": 0.06638404410803557,
+          "assets_pass_kupiec": 4,
+          "assets_pass_cc": 5,
+          "assets_pass_dq": 8,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.012962248614480698,
+          "tick_ci95_pct_vs_ref": [
+            0.00570981508830139,
+            0.020965407017068907
+          ],
+          "tick_DM_p": 0.9999543105230176,
+          "FZ0": -3.886906931328511,
+          "es_test_p": 4.6801468801017284e-17,
+          "es_ratio": 1.143822895370688,
+          "n_violations": 717,
+          "FZ0_diff_vs_ref": 0.0197747924865474,
+          "FZ0_diff_ci95": [
+            0.011285520082250285,
+            0.028829563755644064
+          ],
+          "FZ0_DM_p": 0.9999933115473384,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GARCH_t": {
+          "violation_rate": 0.044649223849487135,
+          "tick": 0.06606920138864229,
+          "assets_pass_kupiec": 9,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.008158025050193363,
+          "tick_ci95_pct_vs_ref": [
+            0.0022552193270002517,
+            0.014463623344847524
+          ],
+          "tick_DM_p": 0.9895396522796406,
+          "FZ0": -3.891710899528721,
+          "es_test_p": 0.02319484711877198,
+          "es_ratio": 1.0285902862268805,
+          "n_violations": 814,
+          "FZ0_diff_vs_ref": 0.01606655836028444,
+          "FZ0_diff_ci95": [
+            0.008318418788399107,
+            0.024707279309482768
+          ],
+          "FZ0_DM_p": 0.9999362986877173,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_EVT": {
+          "violation_rate": 0.04613021776095661,
+          "tick": 0.06549739885703758,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.0005671797179152005,
+          "tick_ci95_pct_vs_ref": [
+            -0.0015107367753135702,
+            0.0001904851603860667
+          ],
+          "tick_DM_p": 0.10612563901520453,
+          "FZ0": -3.9080372694688816,
+          "es_test_p": 0.05229371967065139,
+          "es_ratio": 1.011873434994671,
+          "n_violations": 841,
+          "FZ0_diff_vs_ref": -0.0010205056223929546,
+          "FZ0_diff_ci95": [
+            -0.0020402539175852926,
+            -9.419461265781183e-05
+          ],
+          "FZ0_DM_p": 0.019776564246950363,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_FHS": {
+          "violation_rate": 0.04607536613460589,
+          "tick": 0.06553456873524653,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0,
+          "tick_ci95_pct_vs_ref": null,
+          "tick_DM_p": null,
+          "FZ0": -3.9068477392875085,
+          "es_test_p": 0.02882892664901475,
+          "es_ratio": 1.0147086117606625,
+          "n_violations": 840,
+          "FZ0_diff_vs_ref": 0.0,
+          "FZ0_diff_ci95": null,
+          "FZ0_DM_p": null,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_skewt": {
+          "violation_rate": 0.03998683560967583,
+          "tick": 0.06588898667822055,
+          "assets_pass_kupiec": 5,
+          "assets_pass_cc": 6,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.005408106741433327,
+          "tick_ci95_pct_vs_ref": [
+            -0.001809398872310758,
+            0.012048275079011204
+          ],
+          "tick_DM_p": 0.9726984223714044,
+          "FZ0": -3.899051093000437,
+          "es_test_p": 0.23521171351998554,
+          "es_ratio": 1.0101222211665708,
+          "n_violations": 729,
+          "FZ0_diff_vs_ref": 0.011199696224003394,
+          "FZ0_diff_ci95": [
+            9.835649894749281e-05,
+            0.021009962808411282
+          ],
+          "FZ0_DM_p": 0.9871123572903032,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "HAR_EVT": {
+          "violation_rate": 0.04953101859470133,
+          "tick": 0.0626908539392239,
+          "assets_pass_kupiec": 9,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.043392591893157584,
+          "tick_ci95_pct_vs_ref": [
+            -0.05633111546051316,
+            -0.030570022633981567
+          ],
+          "tick_DM_p": 9.322401495012542e-14,
+          "FZ0": -3.9767956981361916,
+          "es_test_p": 0.018596053488240293,
+          "es_ratio": 1.016765225720339,
+          "n_violations": 903,
+          "FZ0_diff_vs_ref": -0.08408521747399883,
+          "FZ0_diff_ci95": [
+            -0.09956579422092432,
+            -0.0661155857010406
+          ],
+          "FZ0_DM_p": 1.2205599036900343e-21,
+          "tick_MCS_p": 0.527,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.605,
+          "FZ0_in_MCS90": true
+        },
+        "HAR_FHS": {
+          "violation_rate": 0.04986012835280566,
+          "tick": 0.0626711691285456,
+          "assets_pass_kupiec": 9,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.04369296482698759,
+          "tick_ci95_pct_vs_ref": [
+            -0.056809536095691435,
+            -0.0307781138097678
+          ],
+          "tick_DM_p": 6.542767497892994e-14,
+          "FZ0": -3.9768879299502036,
+          "es_test_p": 0.0063602666040240225,
+          "es_ratio": 1.022774930702935,
+          "n_violations": 909,
+          "FZ0_diff_vs_ref": -0.08456935879902487,
+          "FZ0_diff_ci95": [
+            -0.10026349517459436,
+            -0.06584664917312062
+          ],
+          "FZ0_DM_p": 2.5968658565326133e-21,
+          "tick_MCS_p": 1.0,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 1.0,
+          "FZ0_in_MCS90": true
+        },
+        "HS": {
+          "violation_rate": 0.05167023202237946,
+          "tick": 0.07124638279123206,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 2,
+          "assets_pass_dq": 1,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.08715726930409384,
+          "tick_ci95_pct_vs_ref": [
+            0.0549648240989244,
+            0.1139274816273593
+          ],
+          "tick_DM_p": 0.9999999803756419,
+          "FZ0": -3.7780891954362272,
+          "es_test_p": 0.003470958502508769,
+          "es_ratio": 1.0293706538978933,
+          "n_violations": 942,
+          "FZ0_diff_vs_ref": 0.12709132471700924,
+          "FZ0_diff_ci95": [
+            0.08821871674812556,
+            0.16753330808441536
+          ],
+          "FZ0_DM_p": 0.999999999877395,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "LightGBM_FHS": {
+          "violation_rate": 0.05112171575887225,
+          "tick": 0.06361595305436926,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 11,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.029276391344365105,
+          "tick_ci95_pct_vs_ref": [
+            -0.040025708503210425,
+            -0.019026370850519916
+          ],
+          "tick_DM_p": 4.5960125956672885e-09,
+          "FZ0": -3.9528985973529935,
+          "es_test_p": 0.0026779669554299564,
+          "es_ratio": 1.023804464366833,
+          "n_violations": 932,
+          "FZ0_diff_vs_ref": -0.052681672144999886,
+          "FZ0_diff_ci95": [
+            -0.06960361120711589,
+            -0.034481442703902666
+          ],
+          "FZ0_DM_p": 1.268072003214833e-09,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "Meridian_EVT": {
+          "violation_rate": 0.04964072184740278,
+          "tick": 0.06309625820642678,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.03720647859407289,
+          "tick_ci95_pct_vs_ref": [
+            -0.0493323188707934,
+            -0.025568127369678364
+          ],
+          "tick_DM_p": 1.0319145349930433e-10,
+          "FZ0": -3.9679933674789205,
+          "es_test_p": 0.009063092141651222,
+          "es_ratio": 1.0152922946608145,
+          "n_violations": 905,
+          "FZ0_diff_vs_ref": -0.07128526739798417,
+          "FZ0_diff_ci95": [
+            -0.09051222798021556,
+            -0.05137721317456954
+          ],
+          "FZ0_DM_p": 9.479041255949793e-13,
+          "tick_MCS_p": 0.266,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.192,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_FHS": {
+          "violation_rate": 0.050957160879820086,
+          "tick": 0.06305166239211941,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.037886971579195516,
+          "tick_ci95_pct_vs_ref": [
+            -0.050132820389526725,
+            -0.02625165582410969
+          ],
+          "tick_DM_p": 9.871309121522128e-11,
+          "FZ0": -3.9685141789325384,
+          "es_test_p": 0.011179515246366477,
+          "es_ratio": 1.0130292862853225,
+          "n_violations": 929,
+          "FZ0_diff_vs_ref": -0.0719658854584656,
+          "FZ0_diff_ci95": [
+            -0.09144697228280557,
+            -0.05136989857471831
+          ],
+          "FZ0_DM_p": 1.3488171845699246e-12,
+          "tick_MCS_p": 0.266,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.192,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_FHS_ACI": {
+          "violation_rate": 0.05090230925346936,
+          "tick": 0.06352792249470539,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.030619660421476236,
+          "tick_ci95_pct_vs_ref": [
+            -0.04393116477979117,
+            -0.0187836864507521
+          ],
+          "tick_DM_p": 2.621708558976012e-07,
+          "FZ0": -3.9573241557214387,
+          "es_test_p": 0.0014401241841481495,
+          "es_ratio": 1.0227968091997568,
+          "n_violations": 928,
+          "FZ0_diff_vs_ref": -0.06202994594634276,
+          "FZ0_diff_ci95": [
+            -0.08365342931670114,
+            -0.0403012081260971
+          ],
+          "FZ0_DM_p": 1.2272973248291358e-08,
+          "tick_MCS_p": 0.006,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.003,
+          "FZ0_in_MCS90": false
+        },
+        "RiskMetrics": {
+          "violation_rate": 0.05188963852778235,
+          "tick": 0.06623649183874078,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 6,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.010710730489887688,
+          "tick_ci95_pct_vs_ref": [
+            9.774547848209485e-05,
+            0.022721855606426703
+          ],
+          "tick_DM_p": 0.8993171330626136,
+          "FZ0": -3.8679102950428095,
+          "es_test_p": 5.60347010368918e-31,
+          "es_ratio": 1.1752172907956042,
+          "n_violations": 946,
+          "FZ0_diff_vs_ref": 0.030267551123059372,
+          "FZ0_diff_ci95": [
+            0.007117261056302157,
+            0.05950641234743583
+          ],
+          "FZ0_DM_p": 0.9885721281179057,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "_meta": {
+          "n_rows": 18231,
+          "n_dates": 1903,
+          "n_assets": 11,
+          "date_range": [
+            "2012-06-12",
+            "2018-12-31"
+          ],
+          "ref": "GJR_FHS",
+          "alpha": 0.05,
+          "nw_lag": 7
+        }
+      }
+    },
+    "holdout": {
+      "010": {
+        "CAViaR_AS": {
+          "violation_rate": 0.011145125801205396,
+          "tick": 0.024208445076985458,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 10,
+          "has_es": false,
+          "tick_pct_vs_ref": -0.013098631000687866,
+          "tick_ci95_pct_vs_ref": [
+            -0.029090494922724024,
+            0.006316779295330415
+          ],
+          "tick_DM_p": 0.18051319421236797,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false
+        },
+        "GARCH_N": {
+          "violation_rate": 0.018033100545298,
+          "tick": 0.025078860779902963,
+          "assets_pass_kupiec": 2,
+          "assets_pass_cc": 2,
+          "assets_pass_dq": 2,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.022385450941627028,
+          "tick_ci95_pct_vs_ref": [
+            -0.01886017125290092,
+            0.07256640356271307
+          ],
+          "tick_DM_p": 0.8278237939945281,
+          "FZ0": -3.219101342507119,
+          "es_test_p": 2.959276546304975e-19,
+          "es_ratio": 1.1303033572664498,
+          "n_violations": 377,
+          "FZ0_diff_vs_ref": 0.06417843942124422,
+          "FZ0_diff_ci95": [
+            0.004874462419177329,
+            0.1321964726175769
+          ],
+          "FZ0_DM_p": 0.9884353729642917,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GARCH_t": {
+          "violation_rate": 0.011910456328326796,
+          "tick": 0.02439405511407077,
+          "assets_pass_kupiec": 9,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 8,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.005531899675442431,
+          "tick_ci95_pct_vs_ref": [
+            -0.026836195500943554,
+            0.017384809903980065
+          ],
+          "tick_DM_p": 0.35675471057550334,
+          "FZ0": -3.297660851779731,
+          "es_test_p": 0.2761779050498275,
+          "es_ratio": 0.9952149136421026,
+          "n_violations": 249,
+          "FZ0_diff_vs_ref": 0.0003641992506164561,
+          "FZ0_diff_ci95": [
+            -0.028118760063349915,
+            0.03090771504942539
+          ],
+          "FZ0_DM_p": 0.5104914491971114,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_EVT": {
+          "violation_rate": 0.01047546158997417,
+          "tick": 0.024511273930866495,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 11,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.0007532610474639823,
+          "tick_ci95_pct_vs_ref": [
+            -0.005303171053532882,
+            0.004011310005875046
+          ],
+          "tick_DM_p": 0.4111298579369635,
+          "FZ0": -3.2956616355341803,
+          "es_test_p": 0.07697220661120635,
+          "es_ratio": 1.0192773376425917,
+          "n_violations": 219,
+          "FZ0_diff_vs_ref": -0.0025662580559543758,
+          "FZ0_diff_ci95": [
+            -0.009017137229981886,
+            0.003497588411912771
+          ],
+          "FZ0_DM_p": 0.21725927000356554,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_FHS": {
+          "violation_rate": 0.01124079211709557,
+          "tick": 0.02452975123697729,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0,
+          "tick_ci95_pct_vs_ref": null,
+          "tick_DM_p": null,
+          "FZ0": -3.2926525607477513,
+          "es_test_p": 0.3891364622874856,
+          "es_ratio": 1.004697639618579,
+          "n_violations": 235,
+          "FZ0_diff_vs_ref": 0.0,
+          "FZ0_diff_ci95": null,
+          "FZ0_DM_p": null,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_skewt": {
+          "violation_rate": 0.01009279632641347,
+          "tick": 0.024467111791836138,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 11,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.0025536111041650766,
+          "tick_ci95_pct_vs_ref": [
+            -0.01395290311464446,
+            0.010688938549661051
+          ],
+          "tick_DM_p": 0.43732956355793895,
+          "FZ0": -3.2981544150905258,
+          "es_test_p": 0.09825433984044993,
+          "es_ratio": 1.0107539849339056,
+          "n_violations": 211,
+          "FZ0_diff_vs_ref": -0.000520910094538608,
+          "FZ0_diff_ci95": [
+            -0.013540159426372088,
+            0.01722870212105348
+          ],
+          "FZ0_DM_p": 0.474178562484563,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "HAR_EVT": {
+          "violation_rate": 0.009949296852578208,
+          "tick": 0.02298146559572425,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.06311868499176143,
+          "tick_ci95_pct_vs_ref": [
+            -0.09666719071993377,
+            -0.024819862384776476
+          ],
+          "tick_DM_p": 1.8984723669436394e-05,
+          "FZ0": -3.4100366595477163,
+          "es_test_p": 0.06654574765290243,
+          "es_ratio": 1.0060942283389924,
+          "n_violations": 208,
+          "FZ0_diff_vs_ref": -0.13459319959803723,
+          "FZ0_diff_ci95": [
+            -0.17387666984273786,
+            -0.09540372308283852
+          ],
+          "FZ0_DM_p": 1.58516492980578e-10,
+          "tick_MCS_p": 0.524,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.767,
+          "FZ0_in_MCS90": true
+        },
+        "HAR_FHS": {
+          "violation_rate": 0.010905960011479959,
+          "tick": 0.022988086237917506,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 6,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.06284878245058623,
+          "tick_ci95_pct_vs_ref": [
+            -0.09562066782029718,
+            -0.027141840443092997
+          ],
+          "tick_DM_p": 6.425280691762379e-06,
+          "FZ0": -3.405902131185074,
+          "es_test_p": 0.42355020073143085,
+          "es_ratio": 0.9867286016752527,
+          "n_violations": 228,
+          "FZ0_diff_vs_ref": -0.13207953122041485,
+          "FZ0_diff_ci95": [
+            -0.17284650801702323,
+            -0.09430740635461145
+          ],
+          "FZ0_DM_p": 3.06422953718934e-10,
+          "tick_MCS_p": 0.524,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.767,
+          "FZ0_in_MCS90": true
+        },
+        "HS": {
+          "violation_rate": 0.014302114225581173,
+          "tick": 0.030974853316503428,
+          "assets_pass_kupiec": 8,
+          "assets_pass_cc": 4,
+          "assets_pass_dq": 0,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.2627463286219751,
+          "tick_ci95_pct_vs_ref": [
+            0.06698160412660278,
+            0.57356334556472
+          ],
+          "tick_DM_p": 0.9802249626242808,
+          "FZ0": -2.9989372539018815,
+          "es_test_p": 0.026211607321395068,
+          "es_ratio": 1.0410127601113512,
+          "n_violations": 299,
+          "FZ0_diff_vs_ref": 0.27604759061531264,
+          "FZ0_diff_ci95": [
+            0.0884561341550229,
+            0.5704881856106372
+          ],
+          "FZ0_DM_p": 0.994170096098087,
+          "tick_MCS_p": 0.06,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.013,
+          "FZ0_in_MCS90": false
+        },
+        "LightGBM_FHS": {
+          "violation_rate": 0.011145125801205396,
+          "tick": 0.022594399701718074,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.07889813135739343,
+          "tick_ci95_pct_vs_ref": [
+            -0.10791391592404906,
+            -0.04702606798139227
+          ],
+          "tick_DM_p": 9.001947099691703e-09,
+          "FZ0": -3.408009580734808,
+          "es_test_p": 0.7497748793790375,
+          "es_ratio": 0.9828905168291134,
+          "n_violations": 233,
+          "FZ0_diff_vs_ref": -0.12597602686059792,
+          "FZ0_diff_ci95": [
+            -0.1627383422884911,
+            -0.08694886847602461
+          ],
+          "FZ0_DM_p": 2.114903665600864e-11,
+          "tick_MCS_p": 0.334,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.258,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_EVT": {
+          "violation_rate": 0.009614464746962594,
+          "tick": 0.02227146641639487,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.09206309508667898,
+          "tick_ci95_pct_vs_ref": [
+            -0.12720516368418258,
+            -0.058827529292081696
+          ],
+          "tick_DM_p": 6.229798736324703e-10,
+          "FZ0": -3.4264773736569105,
+          "es_test_p": 0.046837275437353866,
+          "es_ratio": 1.0145999691287217,
+          "n_violations": 201,
+          "FZ0_diff_vs_ref": -0.14209092820721791,
+          "FZ0_diff_ci95": [
+            -0.18493034027197466,
+            -0.10531910614335863
+          ],
+          "FZ0_DM_p": 3.887809216470462e-13,
+          "tick_MCS_p": 1.0,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 1.0,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_FHS": {
+          "violation_rate": 0.010379795274083996,
+          "tick": 0.022318480709392387,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.09014647177715895,
+          "tick_ci95_pct_vs_ref": [
+            -0.12507064013166797,
+            -0.05655290247579996
+          ],
+          "tick_DM_p": 6.778165925959943e-10,
+          "FZ0": -3.421649832855495,
+          "es_test_p": 0.3356728090708849,
+          "es_ratio": 0.9983020368983303,
+          "n_violations": 217,
+          "FZ0_diff_vs_ref": -0.13886335786853388,
+          "FZ0_diff_ci95": [
+            -0.18137094142892093,
+            -0.10267276265738005
+          ],
+          "FZ0_DM_p": 6.481490297719935e-13,
+          "tick_MCS_p": 0.635,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.686,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_FHS_ACI": {
+          "violation_rate": 0.009997130010523294,
+          "tick": 0.023258342020613818,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 11,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.0518313130891801,
+          "tick_ci95_pct_vs_ref": [
+            -0.09130703246202905,
+            -0.015020933239771585
+          ],
+          "tick_DM_p": 0.0007827057584999852,
+          "FZ0": -3.3882257117152768,
+          "es_test_p": 0.2595223392239485,
+          "es_ratio": 1.0076157942136164,
+          "n_violations": 209,
+          "FZ0_diff_vs_ref": -0.10178385273073445,
+          "FZ0_diff_ci95": [
+            -0.14904033374399295,
+            -0.06124970094586397
+          ],
+          "FZ0_DM_p": 2.048818340557957e-06,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.001,
+          "FZ0_in_MCS90": false
+        },
+        "RiskMetrics": {
+          "violation_rate": 0.021046589495838514,
+          "tick": 0.026369661313278996,
+          "assets_pass_kupiec": 0,
+          "assets_pass_cc": 0,
+          "assets_pass_dq": 0,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.07500728639792076,
+          "tick_ci95_pct_vs_ref": [
+            0.0012482790729274388,
+            0.17142205137905472
+          ],
+          "tick_DM_p": 0.9721209521349695,
+          "FZ0": -3.1174965750923813,
+          "es_test_p": 1.266092634924658e-25,
+          "es_ratio": 1.152391994233889,
+          "n_violations": 440,
+          "FZ0_diff_vs_ref": 0.15660442877942107,
+          "FZ0_diff_ci95": [
+            0.05678097967198492,
+            0.27340051269985793
+          ],
+          "FZ0_DM_p": 0.9994963642605124,
+          "tick_MCS_p": 0.004,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "_meta": {
+          "n_rows": 20906,
+          "n_dates": 2168,
+          "n_assets": 11,
+          "date_range": [
+            "2019-01-01",
+            "2026-06-29"
+          ],
+          "ref": "GJR_FHS",
+          "alpha": 0.01,
+          "nw_lag": 7
+        }
+      },
+      "025": {
+        "CAViaR_AS": {
+          "violation_rate": 0.025734238974457094,
+          "tick": 0.04909280926153762,
+          "assets_pass_kupiec": 8,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 9,
+          "has_es": false,
+          "tick_pct_vs_ref": -0.0017316960332730558,
+          "tick_ci95_pct_vs_ref": [
+            -0.01649024479578131,
+            0.012955458612420138
+          ],
+          "tick_DM_p": 0.7302040948923023,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false
+        },
+        "GARCH_N": {
+          "violation_rate": 0.030134889505405146,
+          "tick": 0.049364998764205505,
+          "assets_pass_kupiec": 6,
+          "assets_pass_cc": 9,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.003803089147551786,
+          "tick_ci95_pct_vs_ref": [
+            -0.010371593770534171,
+            0.02055206107406649
+          ],
+          "tick_DM_p": 0.6844456904000747,
+          "FZ0": -3.5049109545778685,
+          "es_test_p": 2.187246307029342e-27,
+          "es_ratio": 1.1373939458555922,
+          "n_violations": 630,
+          "FZ0_diff_vs_ref": 0.01789073953539485,
+          "FZ0_diff_ci95": [
+            -0.003611550104278992,
+            0.042691499627934754
+          ],
+          "FZ0_DM_p": 0.9507632357948406,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GARCH_t": {
+          "violation_rate": 0.028699894767052522,
+          "tick": 0.049408432508715544,
+          "assets_pass_kupiec": 8,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.004686284285885911,
+          "tick_ci95_pct_vs_ref": [
+            -0.008082607700012536,
+            0.018500699035303707
+          ],
+          "tick_DM_p": 0.7801802525946631,
+          "FZ0": -3.5202853791983406,
+          "es_test_p": 0.14322494772104674,
+          "es_ratio": 0.9984756888524952,
+          "n_violations": 600,
+          "FZ0_diff_vs_ref": 0.006715051843890982,
+          "FZ0_diff_ci95": [
+            -0.009659574247865866,
+            0.023443950251989303
+          ],
+          "FZ0_DM_p": 0.7987267438504617,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_EVT": {
+          "violation_rate": 0.026690902133358844,
+          "tick": 0.0490383270535559,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 11,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.002839554030734992,
+          "tick_ci95_pct_vs_ref": [
+            -0.0048714114548136875,
+            -0.0008180923646662904
+          ],
+          "tick_DM_p": 0.0048400369751646815,
+          "FZ0": -3.5289992273824238,
+          "es_test_p": 0.45709358042864295,
+          "es_ratio": 0.98363336537467,
+          "n_violations": 558,
+          "FZ0_diff_vs_ref": -0.0030439235800537364,
+          "FZ0_diff_ci95": [
+            -0.005433892794826253,
+            -0.0006905242141391715
+          ],
+          "FZ0_DM_p": 0.0068610114394070205,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_FHS": {
+          "violation_rate": 0.027073567396919546,
+          "tick": 0.04917797055807746,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 11,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0,
+          "tick_ci95_pct_vs_ref": null,
+          "tick_DM_p": null,
+          "FZ0": -3.525455914103521,
+          "es_test_p": 0.4859586631123643,
+          "es_ratio": 0.9844730070173581,
+          "n_violations": 566,
+          "FZ0_diff_vs_ref": 0.0,
+          "FZ0_diff_ci95": null,
+          "FZ0_DM_p": null,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_skewt": {
+          "violation_rate": 0.025973404764182532,
+          "tick": 0.04888550696125626,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.005947044855700412,
+          "tick_ci95_pct_vs_ref": [
+            -0.023388004876244296,
+            0.006928837250324712
+          ],
+          "tick_DM_p": 0.23066923618870425,
+          "FZ0": -3.529359299422074,
+          "es_test_p": 0.26902405569474813,
+          "es_ratio": 0.9896361884413533,
+          "n_violations": 543,
+          "FZ0_diff_vs_ref": -0.0012512996220354353,
+          "FZ0_diff_ci95": [
+            -0.012437655621833568,
+            0.009257308075578358
+          ],
+          "FZ0_DM_p": 0.40378755232117197,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "HAR_EVT": {
+          "violation_rate": 0.025686405816512006,
+          "tick": 0.04655881389575754,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.053258738264255645,
+          "tick_ci95_pct_vs_ref": [
+            -0.080640014885885,
+            -0.021571741754305315
+          ],
+          "tick_DM_p": 2.6975632537479765e-06,
+          "FZ0": -3.628369105689902,
+          "es_test_p": 0.6708143489261964,
+          "es_ratio": 0.9937982526929746,
+          "n_violations": 537,
+          "FZ0_diff_vs_ref": -0.11792039091761315,
+          "FZ0_diff_ci95": [
+            -0.14488943422791586,
+            -0.0911972005531324
+          ],
+          "FZ0_DM_p": 9.494621418440703e-17,
+          "tick_MCS_p": 0.693,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.933,
+          "FZ0_in_MCS90": true
+        },
+        "HAR_FHS": {
+          "violation_rate": 0.025829905290347267,
+          "tick": 0.046462411499361214,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 8,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.05521901428423659,
+          "tick_ci95_pct_vs_ref": [
+            -0.08032463308115342,
+            -0.02708196771067374
+          ],
+          "tick_DM_p": 1.2395562974257807e-07,
+          "FZ0": -3.628854733687349,
+          "es_test_p": 0.644496673171635,
+          "es_ratio": 0.9894158111567698,
+          "n_violations": 540,
+          "FZ0_diff_vs_ref": -0.11818777730459692,
+          "FZ0_diff_ci95": [
+            -0.14402924547050913,
+            -0.09265859157430087
+          ],
+          "FZ0_DM_p": 2.2622819593251098e-17,
+          "tick_MCS_p": 0.693,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.933,
+          "FZ0_in_MCS90": true
+        },
+        "HS": {
+          "violation_rate": 0.028030230555821295,
+          "tick": 0.056550365760310944,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 5,
+          "assets_pass_dq": 1,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.1499125547185185,
+          "tick_ci95_pct_vs_ref": [
+            0.03929673304712514,
+            0.3159302719664989
+          ],
+          "tick_DM_p": 0.9868926028956397,
+          "FZ0": -3.331952969107281,
+          "es_test_p": 2.9692336091332522e-05,
+          "es_ratio": 1.067102134214742,
+          "n_violations": 586,
+          "FZ0_diff_vs_ref": 0.1836062171196524,
+          "FZ0_diff_ci95": [
+            0.06599185293988466,
+            0.3734599320209424
+          ],
+          "FZ0_DM_p": 0.9968233608858909,
+          "tick_MCS_p": 0.024,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.003,
+          "FZ0_in_MCS90": false
+        },
+        "LightGBM_FHS": {
+          "violation_rate": 0.025829905290347267,
+          "tick": 0.04610347039542746,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.06251783324444271,
+          "tick_ci95_pct_vs_ref": [
+            -0.08447710096745716,
+            -0.040472576760513246
+          ],
+          "tick_DM_p": 3.692213191780529e-10,
+          "FZ0": -3.620798873557681,
+          "es_test_p": 0.7102795405480833,
+          "es_ratio": 0.9772622731630128,
+          "n_violations": 540,
+          "FZ0_diff_vs_ref": -0.1048014862275746,
+          "FZ0_diff_ci95": [
+            -0.13055610346269111,
+            -0.07964679300065867
+          ],
+          "FZ0_DM_p": 6.733309902620233e-17,
+          "tick_MCS_p": 0.074,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.016,
+          "FZ0_in_MCS90": false
+        },
+        "Meridian_EVT": {
+          "violation_rate": 0.024921075289390606,
+          "tick": 0.045541246244924345,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.07395027228417794,
+          "tick_ci95_pct_vs_ref": [
+            -0.09697221487156836,
+            -0.0509969956240227
+          ],
+          "tick_DM_p": 1.2103061400702827e-12,
+          "FZ0": -3.6386761778752605,
+          "es_test_p": 0.7214825916456011,
+          "es_ratio": 0.9764744637548426,
+          "n_violations": 521,
+          "FZ0_diff_vs_ref": -0.1218450741101451,
+          "FZ0_diff_ci95": [
+            -0.15331695822404748,
+            -0.09494680872265215
+          ],
+          "FZ0_DM_p": 3.163111090246018e-18,
+          "tick_MCS_p": 1.0,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.882,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_FHS": {
+          "violation_rate": 0.02544724002678657,
+          "tick": 0.045540666457343004,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.0739620618634298,
+          "tick_ci95_pct_vs_ref": [
+            -0.09554525867704902,
+            -0.05158088932813437
+          ],
+          "tick_DM_p": 1.7996593226254966e-13,
+          "FZ0": -3.6394060801415087,
+          "es_test_p": 0.7554553274249605,
+          "es_ratio": 0.9702925176644485,
+          "n_violations": 532,
+          "FZ0_diff_vs_ref": -0.12262427118354594,
+          "FZ0_diff_ci95": [
+            -0.15302860325023296,
+            -0.09585231242289649
+          ],
+          "FZ0_DM_p": 4.800551171894975e-19,
+          "tick_MCS_p": 0.991,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 1.0,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_FHS_ACI": {
+          "violation_rate": 0.024729742657610257,
+          "tick": 0.04610644976355266,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 11,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.062457249855348174,
+          "tick_ci95_pct_vs_ref": [
+            -0.09382300627902176,
+            -0.03541038736708911
+          ],
+          "tick_DM_p": 8.389507921746111e-07,
+          "FZ0": -3.625676242505353,
+          "es_test_p": 0.6764461429703655,
+          "es_ratio": 0.9795373596354048,
+          "n_violations": 517,
+          "FZ0_diff_vs_ref": -0.1080010533061428,
+          "FZ0_diff_ci95": [
+            -0.1447605863482524,
+            -0.07818392437502204
+          ],
+          "FZ0_DM_p": 1.4239704760867955e-12,
+          "tick_MCS_p": 0.08,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.016,
+          "FZ0_in_MCS90": false
+        },
+        "RiskMetrics": {
+          "violation_rate": 0.03477470582607864,
+          "tick": 0.05083530449431772,
+          "assets_pass_kupiec": 3,
+          "assets_pass_cc": 4,
+          "assets_pass_dq": 1,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.03370073871354684,
+          "tick_ci95_pct_vs_ref": [
+            0.0037442237729577057,
+            0.07158110963092866
+          ],
+          "tick_DM_p": 0.9793453115410354,
+          "FZ0": -3.453766139747129,
+          "es_test_p": 6.419911821321568e-34,
+          "es_ratio": 1.1552515516180264,
+          "n_violations": 727,
+          "FZ0_diff_vs_ref": 0.0625772861329055,
+          "FZ0_diff_ci95": [
+            0.02154379690773105,
+            0.10936569773337311
+          ],
+          "FZ0_DM_p": 0.9989511612386046,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "_meta": {
+          "n_rows": 20906,
+          "n_dates": 2168,
+          "n_assets": 11,
+          "date_range": [
+            "2019-01-01",
+            "2026-06-29"
+          ],
+          "ref": "GJR_FHS",
+          "alpha": 0.025,
+          "nw_lag": 7
+        }
+      },
+      "050": {
+        "CAViaR_AS": {
+          "violation_rate": 0.049459485315220514,
+          "tick": 0.08121032041487204,
+          "assets_pass_kupiec": 8,
+          "assets_pass_cc": 8,
+          "assets_pass_dq": 9,
+          "has_es": false,
+          "tick_pct_vs_ref": -0.00011302533774848467,
+          "tick_ci95_pct_vs_ref": [
+            -0.012217196267486097,
+            0.010062614064899894
+          ],
+          "tick_DM_p": 0.7880339796801845,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false
+        },
+        "GARCH_N": {
+          "violation_rate": 0.04993781689467139,
+          "tick": 0.08157327825502628,
+          "assets_pass_kupiec": 8,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.004355825602227581,
+          "tick_ci95_pct_vs_ref": [
+            -0.004735920795436363,
+            0.014192062713552327
+          ],
+          "tick_DM_p": 0.9249675186074018,
+          "FZ0": -3.714790046904918,
+          "es_test_p": 3.1982022899425527e-29,
+          "es_ratio": 1.1227555031296192,
+          "n_violations": 1044,
+          "FZ0_diff_vs_ref": 0.012566887422509693,
+          "FZ0_diff_ci95": [
+            0.0010395899339688504,
+            0.02375318926515074
+          ],
+          "FZ0_DM_p": 0.9863793409047164,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GARCH_t": {
+          "violation_rate": 0.0537166363723333,
+          "tick": 0.08182837404654478,
+          "assets_pass_kupiec": 8,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.00749664511786885,
+          "tick_ci95_pct_vs_ref": [
+            -0.0004398458133655192,
+            0.01639445596898859
+          ],
+          "tick_DM_p": 0.969072919461007,
+          "FZ0": -3.717013331994746,
+          "es_test_p": 0.016579192250486607,
+          "es_ratio": 1.0151774237694506,
+          "n_violations": 1123,
+          "FZ0_diff_vs_ref": 0.009900477707873619,
+          "FZ0_diff_ci95": [
+            -0.0014222122478224927,
+            0.021389202383241154
+          ],
+          "FZ0_DM_p": 0.9549245219239061,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_EVT": {
+          "violation_rate": 0.05247297426576102,
+          "tick": 0.0811158475905636,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.0012762044263543437,
+          "tick_ci95_pct_vs_ref": [
+            -0.0024136062728779438,
+            -0.00019410763389350887
+          ],
+          "tick_DM_p": 0.0629363893350785,
+          "FZ0": -3.7279797424893033,
+          "es_test_p": 0.47028538009625154,
+          "es_ratio": 0.9904847231859228,
+          "n_violations": 1097,
+          "FZ0_diff_vs_ref": -0.0016255306930300214,
+          "FZ0_diff_ci95": [
+            -0.003029999161647773,
+            -0.00033424432041357364
+          ],
+          "FZ0_DM_p": 0.009967106331366037,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_FHS": {
+          "violation_rate": 0.05366880321438822,
+          "tick": 0.08121950027632253,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0,
+          "tick_ci95_pct_vs_ref": null,
+          "tick_DM_p": null,
+          "FZ0": -3.7260193437276667,
+          "es_test_p": 0.6456641670253889,
+          "es_ratio": 0.9841424977574798,
+          "n_violations": 1122,
+          "FZ0_diff_vs_ref": 0.0,
+          "FZ0_diff_ci95": null,
+          "FZ0_DM_p": null,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "GJR_skewt": {
+          "violation_rate": 0.04888548741987946,
+          "tick": 0.08078874394215563,
+          "assets_pass_kupiec": 9,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.005303607295063406,
+          "tick_ci95_pct_vs_ref": [
+            -0.020256721084851062,
+            0.005668087888513866
+          ],
+          "tick_DM_p": 0.22156591636626746,
+          "FZ0": -3.729820734777028,
+          "es_test_p": 0.08214674962943853,
+          "es_ratio": 0.9994620326364264,
+          "n_violations": 1022,
+          "FZ0_diff_vs_ref": -0.0017895685832010665,
+          "FZ0_diff_ci95": [
+            -0.011504873277698596,
+            0.006240619886871933
+          ],
+          "FZ0_DM_p": 0.33342774570583394,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "HAR_EVT": {
+          "violation_rate": 0.05118147900124366,
+          "tick": 0.07795118872879114,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.04024047841235223,
+          "tick_ci95_pct_vs_ref": [
+            -0.05727865425341723,
+            -0.02079922815867212
+          ],
+          "tick_DM_p": 7.91844824980989e-09,
+          "FZ0": -3.8084570399667625,
+          "es_test_p": 0.7188972606544245,
+          "es_ratio": 0.9903881710479238,
+          "n_violations": 1070,
+          "FZ0_diff_vs_ref": -0.09495582714934384,
+          "FZ0_diff_ci95": [
+            -0.11376680526480848,
+            -0.07634562385926923
+          ],
+          "FZ0_DM_p": 1.6309826651085237e-20,
+          "tick_MCS_p": 0.746,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.938,
+          "FZ0_in_MCS90": true
+        },
+        "HAR_FHS": {
+          "violation_rate": 0.05132497847507893,
+          "tick": 0.07793967997281895,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 8,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.040382177831002175,
+          "tick_ci95_pct_vs_ref": [
+            -0.05713471000482241,
+            -0.021198740824286078
+          ],
+          "tick_DM_p": 2.8446628945558087e-09,
+          "FZ0": -3.8082388455663994,
+          "es_test_p": 0.7011487494393808,
+          "es_ratio": 0.9900377303373313,
+          "n_violations": 1073,
+          "FZ0_diff_vs_ref": -0.09471766264636972,
+          "FZ0_diff_ci95": [
+            -0.11329969803571842,
+            -0.07602254630625069
+          ],
+          "FZ0_DM_p": 6.497488872960745e-21,
+          "tick_MCS_p": 0.746,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 0.888,
+          "FZ0_in_MCS90": true
+        },
+        "HS": {
+          "violation_rate": 0.051707643738639626,
+          "tick": 0.08955027749350951,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 5,
+          "assets_pass_dq": 1,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.10257114595441075,
+          "tick_ci95_pct_vs_ref": [
+            0.03445681642811531,
+            0.20094212904140618
+          ],
+          "tick_DM_p": 0.9955813291569791,
+          "FZ0": -3.5757569154249147,
+          "es_test_p": 0.0008753589448640833,
+          "es_ratio": 1.0343103317346147,
+          "n_violations": 1081,
+          "FZ0_diff_vs_ref": 0.14338592269904185,
+          "FZ0_diff_ci95": [
+            0.05953614991615491,
+            0.2733439232034368
+          ],
+          "FZ0_DM_p": 0.9989973557286254,
+          "tick_MCS_p": 0.012,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.001,
+          "FZ0_in_MCS90": false
+        },
+        "LightGBM_FHS": {
+          "violation_rate": 0.051085812685353484,
+          "tick": 0.07778314600105012,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.0423094732617334,
+          "tick_ci95_pct_vs_ref": [
+            -0.05551806781917176,
+            -0.02890292087854236
+          ],
+          "tick_DM_p": 1.5830102896405335e-10,
+          "FZ0": -3.7988567757949814,
+          "es_test_p": 0.7330286306907331,
+          "es_ratio": 0.9832568612940419,
+          "n_violations": 1068,
+          "FZ0_diff_vs_ref": -0.08008400960264371,
+          "FZ0_diff_ci95": [
+            -0.09794727576332546,
+            -0.062231134914619304
+          ],
+          "FZ0_DM_p": 1.5960518100984513e-18,
+          "tick_MCS_p": 0.036,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.004,
+          "FZ0_in_MCS90": false
+        },
+        "Meridian_EVT": {
+          "violation_rate": 0.049459485315220514,
+          "tick": 0.07707057075240843,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.051082923556519555,
+          "tick_ci95_pct_vs_ref": [
+            -0.06686071046561988,
+            -0.03587595744924374
+          ],
+          "tick_DM_p": 7.690496614852581e-13,
+          "FZ0": -3.8140186620011627,
+          "es_test_p": 0.7550645007876426,
+          "es_ratio": 0.9823622231970065,
+          "n_violations": 1034,
+          "FZ0_diff_vs_ref": -0.09597903611469434,
+          "FZ0_diff_ci95": [
+            -0.11890437974274522,
+            -0.0758335116066033
+          ],
+          "FZ0_DM_p": 1.0125111434100365e-20,
+          "tick_MCS_p": 1.0,
+          "tick_in_MCS90": true,
+          "FZ0_MCS_p": 1.0,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_FHS": {
+          "violation_rate": 0.04969865110494595,
+          "tick": 0.0771702938209138,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.04985510181215902,
+          "tick_ci95_pct_vs_ref": [
+            -0.0651393399685059,
+            -0.035078181432958815
+          ],
+          "tick_DM_p": 4.925013362157973e-13,
+          "FZ0": -3.813203482000567,
+          "es_test_p": 0.7200571291219674,
+          "es_ratio": 0.9833031592164087,
+          "n_violations": 1039,
+          "FZ0_diff_vs_ref": -0.09539382356257006,
+          "FZ0_diff_ci95": [
+            -0.11849334936026362,
+            -0.07523865243988552
+          ],
+          "FZ0_DM_p": 5.5374293342615394e-21,
+          "tick_MCS_p": 0.057,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.458,
+          "FZ0_in_MCS90": true
+        },
+        "Meridian_FHS_ACI": {
+          "violation_rate": 0.04898115373576963,
+          "tick": 0.07774192582768166,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.04281698898429043,
+          "tick_ci95_pct_vs_ref": [
+            -0.06241024189320405,
+            -0.025209105353310408
+          ],
+          "tick_DM_p": 3.966917445416758e-07,
+          "FZ0": -3.803842163123677,
+          "es_test_p": 0.25602074020258225,
+          "es_ratio": 0.995741363204408,
+          "n_violations": 1024,
+          "FZ0_diff_vs_ref": -0.0853774484556325,
+          "FZ0_diff_ci95": [
+            -0.11095133437475613,
+            -0.06443692750372207
+          ],
+          "FZ0_DM_p": 4.598252155295961e-15,
+          "tick_MCS_p": 0.036,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.003,
+          "FZ0_in_MCS90": false
+        },
+        "RiskMetrics": {
+          "violation_rate": 0.05476896584712523,
+          "tick": 0.08319316727895969,
+          "assets_pass_kupiec": 10,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 3,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.02430040810300982,
+          "tick_ci95_pct_vs_ref": [
+            0.0082178694982445,
+            0.04026674185409574
+          ],
+          "tick_DM_p": 0.9994313489534052,
+          "FZ0": -3.6850713839939675,
+          "es_test_p": 2.3748764734897486e-39,
+          "es_ratio": 1.1486548159719918,
+          "n_violations": 1145,
+          "FZ0_diff_vs_ref": 0.03711956801501189,
+          "FZ0_diff_ci95": [
+            0.014321287758541959,
+            0.061041268003783705
+          ],
+          "FZ0_DM_p": 0.9995344271661638,
+          "tick_MCS_p": 0.0,
+          "tick_in_MCS90": false,
+          "FZ0_MCS_p": 0.0,
+          "FZ0_in_MCS90": false
+        },
+        "_meta": {
+          "n_rows": 20906,
+          "n_dates": 2168,
+          "n_assets": 11,
+          "date_range": [
+            "2019-01-01",
+            "2026-06-29"
+          ],
+          "ref": "GJR_FHS",
+          "alpha": 0.05,
+          "nw_lag": 7
+        }
+      }
+    },
+    "holdout_vs_HAR_FHS": {
+      "010": {
+        "Meridian_EVT": {
+          "violation_rate": 0.009614464746962594,
+          "tick": 0.02227146641639487,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.03117353111111154,
+          "tick_ci95_pct_vs_ref": [
+            -0.07380415027170606,
+            0.0018592140750448118
+          ],
+          "tick_DM_p": 0.07599783154756089,
+          "FZ0": -3.4264773736569105,
+          "es_test_p": 0.046837275437353866,
+          "es_ratio": 1.0145999691287217,
+          "n_violations": 201,
+          "FZ0_diff_vs_ref": -0.010011396986803053,
+          "FZ0_diff_ci95": [
+            -0.0461121906640024,
+            0.016823228434187893
+          ],
+          "FZ0_DM_p": 0.24501327474234702
+        },
+        "HAR_FHS": {
+          "violation_rate": 0.010905960011479959,
+          "tick": 0.022988086237917506,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 6,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0,
+          "tick_ci95_pct_vs_ref": null,
+          "tick_DM_p": null,
+          "FZ0": -3.405902131185074,
+          "es_test_p": 0.42355020073143085,
+          "es_ratio": 0.9867286016752527,
+          "n_violations": 228,
+          "FZ0_diff_vs_ref": 0.0,
+          "FZ0_diff_ci95": null,
+          "FZ0_DM_p": null
+        },
+        "HAR_EVT": {
+          "violation_rate": 0.009949296852578208,
+          "tick": 0.02298146559572425,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 10,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.00028800319107624706,
+          "tick_ci95_pct_vs_ref": [
+            -0.010089504485291423,
+            0.010610648944093207
+          ],
+          "tick_DM_p": 0.5248911615961656,
+          "FZ0": -3.4100366595477163,
+          "es_test_p": 0.06654574765290243,
+          "es_ratio": 1.0060942283389924,
+          "n_violations": 208,
+          "FZ0_diff_vs_ref": -0.002513668377622381,
+          "FZ0_diff_ci95": [
+            -0.009611168526007323,
+            0.004429970834464563
+          ],
+          "FZ0_DM_p": 0.24135097158028146
+        },
+        "_meta": {
+          "n_rows": 20906,
+          "n_dates": 2168,
+          "n_assets": 11,
+          "date_range": [
+            "2019-01-01",
+            "2026-06-29"
+          ],
+          "ref": "HAR_FHS",
+          "alpha": 0.01,
+          "nw_lag": 7
+        }
+      },
+      "025": {
+        "Meridian_EVT": {
+          "violation_rate": 0.024921075289390606,
+          "tick": 0.045541246244924345,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 10,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.019826031940884836,
+          "tick_ci95_pct_vs_ref": [
+            -0.0620808798978226,
+            0.010966671221430632
+          ],
+          "tick_DM_p": 0.15873252902934362,
+          "FZ0": -3.6386761778752605,
+          "es_test_p": 0.7214825916456011,
+          "es_ratio": 0.9764744637548426,
+          "n_violations": 521,
+          "FZ0_diff_vs_ref": -0.0036572968055481785,
+          "FZ0_diff_ci95": [
+            -0.03333165606657921,
+            0.01753501436930958
+          ],
+          "FZ0_DM_p": 0.3687592691650388
+        },
+        "HAR_FHS": {
+          "violation_rate": 0.025829905290347267,
+          "tick": 0.046462411499361214,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 8,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0,
+          "tick_ci95_pct_vs_ref": null,
+          "tick_DM_p": null,
+          "FZ0": -3.628854733687349,
+          "es_test_p": 0.644496673171635,
+          "es_ratio": 0.9894158111567698,
+          "n_violations": 540,
+          "FZ0_diff_vs_ref": 0.0,
+          "FZ0_diff_ci95": null,
+          "FZ0_DM_p": null
+        },
+        "HAR_EVT": {
+          "violation_rate": 0.025686405816512006,
+          "tick": 0.04655881389575754,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0020748470276377162,
+          "tick_ci95_pct_vs_ref": [
+            -0.0021143151778345165,
+            0.007570806137644487
+          ],
+          "tick_DM_p": 0.7618482287407811,
+          "FZ0": -3.628369105689902,
+          "es_test_p": 0.6708143489261964,
+          "es_ratio": 0.9937982526929746,
+          "n_violations": 537,
+          "FZ0_diff_vs_ref": 0.0002673863869837793,
+          "FZ0_diff_ci95": [
+            -0.002507424885908489,
+            0.003312706458063462
+          ],
+          "FZ0_DM_p": 0.5816374812164197
+        },
+        "_meta": {
+          "n_rows": 20906,
+          "n_dates": 2168,
+          "n_assets": 11,
+          "date_range": [
+            "2019-01-01",
+            "2026-06-29"
+          ],
+          "ref": "HAR_FHS",
+          "alpha": 0.025,
+          "nw_lag": 7
+        }
+      },
+      "050": {
+        "Meridian_EVT": {
+          "violation_rate": 0.049459485315220514,
+          "tick": 0.07707057075240843,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 9,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.011151049384775624,
+          "tick_ci95_pct_vs_ref": [
+            -0.040733475596789005,
+            0.00969225105183416
+          ],
+          "tick_DM_p": 0.20297707257528005,
+          "FZ0": -3.8140186620011627,
+          "es_test_p": 0.7550645007876426,
+          "es_ratio": 0.9823622231970065,
+          "n_violations": 1034,
+          "FZ0_diff_vs_ref": -0.001261373468324643,
+          "FZ0_diff_ci95": [
+            -0.024648972628662818,
+            0.01438175711223797
+          ],
+          "FZ0_DM_p": 0.4388989645004087
+        },
+        "HAR_FHS": {
+          "violation_rate": 0.05132497847507893,
+          "tick": 0.07793967997281895,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 8,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0,
+          "tick_ci95_pct_vs_ref": null,
+          "tick_DM_p": null,
+          "FZ0": -3.8082388455663994,
+          "es_test_p": 0.7011487494393808,
+          "es_ratio": 0.9900377303373313,
+          "n_violations": 1073,
+          "FZ0_diff_vs_ref": 0.0,
+          "FZ0_diff_ci95": null,
+          "FZ0_DM_p": null
+        },
+        "HAR_EVT": {
+          "violation_rate": 0.05118147900124366,
+          "tick": 0.07795118872879114,
+          "assets_pass_kupiec": 11,
+          "assets_pass_cc": 11,
+          "assets_pass_dq": 7,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0001476623457552506,
+          "tick_ci95_pct_vs_ref": [
+            -0.0011503036362523755,
+            0.0014156088841171088
+          ],
+          "tick_DM_p": 0.5145019717753918,
+          "FZ0": -3.8084570399667625,
+          "es_test_p": 0.7188972606544245,
+          "es_ratio": 0.9903881710479238,
+          "n_violations": 1070,
+          "FZ0_diff_vs_ref": -0.00023816450297413304,
+          "FZ0_diff_ci95": [
+            -0.0013394796988045368,
+            0.0008643675975252269
+          ],
+          "FZ0_DM_p": 0.35168523089128106
+        },
+        "_meta": {
+          "n_rows": 20906,
+          "n_dates": 2168,
+          "n_assets": 11,
+          "date_range": [
+            "2019-01-01",
+            "2026-06-29"
+          ],
+          "ref": "HAR_FHS",
+          "alpha": 0.05,
+          "nw_lag": 7
+        }
+      }
+    },
+    "breadth_holdout": {
+      "025": {
+        "CAViaR_AS": {
+          "violation_rate": 0.0281615302869288,
+          "tick": 0.05970323963667764,
+          "assets_pass_kupiec": 1,
+          "assets_pass_cc": 2,
+          "assets_pass_dq": 1,
+          "has_es": false,
+          "tick_pct_vs_ref": 0.00836898049474466,
+          "tick_ci95_pct_vs_ref": [
+            -0.011650804603602011,
+            0.03546509302317519
+          ],
+          "tick_DM_p": 0.7422452779639788
+        },
+        "GARCH_N": {
+          "violation_rate": 0.03028692879914984,
+          "tick": 0.058607351666194595,
+          "assets_pass_kupiec": 2,
+          "assets_pass_cc": 1,
+          "assets_pass_dq": 1,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.01014022339866627,
+          "tick_ci95_pct_vs_ref": [
+            -0.01890237913777012,
+            -0.0007397679339628822
+          ],
+          "tick_DM_p": 0.014774899242676803,
+          "FZ0": -3.6453214345881637,
+          "es_test_p": 0.00037017921293484103,
+          "es_ratio": 1.11281189609204,
+          "n_violations": 114,
+          "FZ0_diff_vs_ref": -0.003208635208938349,
+          "FZ0_diff_ci95": [
+            -0.01739410286846495,
+            0.011782213517517468
+          ],
+          "FZ0_DM_p": 0.3319025846287145
+        },
+        "GARCH_t": {
+          "violation_rate": 0.028692879914984058,
+          "tick": 0.058694612719603564,
+          "assets_pass_kupiec": 2,
+          "assets_pass_cc": 1,
+          "assets_pass_dq": 1,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.00866641159216519,
+          "tick_ci95_pct_vs_ref": [
+            -0.017995144335215277,
+            0.0012492500635942272
+          ],
+          "tick_DM_p": 0.05005432809744191,
+          "FZ0": -3.6548041687037616,
+          "es_test_p": 0.2979540401141978,
+          "es_ratio": 1.0311861140983969,
+          "n_violations": 108,
+          "FZ0_diff_vs_ref": -0.01269136932453654,
+          "FZ0_diff_ci95": [
+            -0.025591095014108136,
+            0.0010238166147098638
+          ],
+          "FZ0_DM_p": 0.036075400014748286
+        },
+        "GJR_EVT": {
+          "violation_rate": 0.026301806588735387,
+          "tick": 0.05912418340783942,
+          "assets_pass_kupiec": 2,
+          "assets_pass_cc": 1,
+          "assets_pass_dq": 1,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.0014110974821966993,
+          "tick_ci95_pct_vs_ref": [
+            -0.00624708149470829,
+            0.0031521923366302526
+          ],
+          "tick_DM_p": 0.2773254462164946,
+          "FZ0": -3.6448241824603755,
+          "es_test_p": 0.09395899148774052,
+          "es_ratio": 1.0488406972672457,
+          "n_violations": 99,
+          "FZ0_diff_vs_ref": -0.002711383081149988,
+          "FZ0_diff_ci95": [
+            -0.008608437623513874,
+            0.002483934647521918
+          ],
+          "FZ0_DM_p": 0.17452507470517964
+        },
+        "GJR_FHS": {
+          "violation_rate": 0.030818278427205102,
+          "tick": 0.05920773128838704,
+          "assets_pass_kupiec": 2,
+          "assets_pass_cc": 1,
+          "assets_pass_dq": 1,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.0,
+          "tick_ci95_pct_vs_ref": null,
+          "tick_DM_p": null,
+          "FZ0": -3.642112799379226,
+          "es_test_p": 0.30958788447772223,
+          "es_ratio": 1.0241455169493279,
+          "n_violations": 116,
+          "FZ0_diff_vs_ref": 0.0,
+          "FZ0_diff_ci95": null,
+          "FZ0_DM_p": null
+        },
+        "GJR_skewt": {
+          "violation_rate": 0.02497343251859724,
+          "tick": 0.058661004206672446,
+          "assets_pass_kupiec": 2,
+          "assets_pass_cc": 1,
+          "assets_pass_dq": 1,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.009234048828042685,
+          "tick_ci95_pct_vs_ref": [
+            -0.024607029955628405,
+            0.0059762963312763135
+          ],
+          "tick_DM_p": 0.12003499355468021,
+          "FZ0": -3.659553103910542,
+          "es_test_p": 0.5963790557665682,
+          "es_ratio": 1.0112202305177276,
+          "n_violations": 94,
+          "FZ0_diff_vs_ref": -0.017440304531316512,
+          "FZ0_diff_ci95": [
+            -0.03927165369557283,
+            0.002513890142268031
+          ],
+          "FZ0_DM_p": 0.054906760650475124
+        },
+        "HAR_EVT": {
+          "violation_rate": 0.0281615302869288,
+          "tick": 0.055848855612460835,
+          "assets_pass_kupiec": 2,
+          "assets_pass_cc": 2,
+          "assets_pass_dq": 2,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.056730356033503626,
+          "tick_ci95_pct_vs_ref": [
+            -0.10043704564912455,
+            -0.016560212132034242
+          ],
+          "tick_DM_p": 0.0058653825940459155,
+          "FZ0": -3.702274849704663,
+          "es_test_p": 0.23321742411924848,
+          "es_ratio": 1.0246802326998765,
+          "n_violations": 106,
+          "FZ0_diff_vs_ref": -0.06016205032543749,
+          "FZ0_diff_ci95": [
+            -0.11378614312070047,
+            -0.010472786950892845
+          ],
+          "FZ0_DM_p": 0.006988978163882004
+        },
+        "HAR_FHS": {
+          "violation_rate": 0.028692879914984058,
+          "tick": 0.0561323660974041,
+          "assets_pass_kupiec": 2,
+          "assets_pass_cc": 2,
+          "assets_pass_dq": 2,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.05194195291833692,
+          "tick_ci95_pct_vs_ref": [
+            -0.0927045155989396,
+            -0.013753413210423582
+          ],
+          "tick_DM_p": 0.0073455241797630065,
+          "FZ0": -3.69863985287198,
+          "es_test_p": 0.2703111392847501,
+          "es_ratio": 1.0219569820868764,
+          "n_violations": 108,
+          "FZ0_diff_vs_ref": -0.05652705349275478,
+          "FZ0_diff_ci95": [
+            -0.10965319644381291,
+            -0.007943237772096953
+          ],
+          "FZ0_DM_p": 0.009995609722492612
+        },
+        "HS": {
+          "violation_rate": 0.03427205100956429,
+          "tick": 0.06500058150597302,
+          "assets_pass_kupiec": 1,
+          "assets_pass_cc": 1,
+          "assets_pass_dq": 0,
+          "has_es": true,
+          "tick_pct_vs_ref": 0.09783942217563357,
+          "tick_ci95_pct_vs_ref": [
+            0.015634783801087095,
+            0.2113617638804595
+          ],
+          "tick_DM_p": 0.9731576995554606,
+          "FZ0": -3.476285862195579,
+          "es_test_p": 0.04344485281856409,
+          "es_ratio": 1.054258942647863,
+          "n_violations": 129,
+          "FZ0_diff_vs_ref": 0.16582693718364652,
+          "FZ0_diff_ci95": [
+            0.032277843317631325,
+            0.3760557198291007
+          ],
+          "FZ0_DM_p": 0.9813928956135276
+        },
+        "LightGBM_FHS": {
+          "violation_rate": 0.02895855472901169,
+          "tick": 0.05658013793873333,
+          "assets_pass_kupiec": 2,
+          "assets_pass_cc": 2,
+          "assets_pass_dq": 2,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.04437922704478103,
+          "tick_ci95_pct_vs_ref": [
+            -0.09471132712228464,
+            0.0010329204996572864
+          ],
+          "tick_DM_p": 0.033941695290471835,
+          "FZ0": -3.691510853910701,
+          "es_test_p": 0.45053962853718654,
+          "es_ratio": 1.0057568999175897,
+          "n_violations": 109,
+          "FZ0_diff_vs_ref": -0.04939805453147538,
+          "FZ0_diff_ci95": [
+            -0.10812758719748043,
+            0.0021423616397394356
+          ],
+          "FZ0_DM_p": 0.027625501610556418
+        },
+        "Meridian_EVT": {
+          "violation_rate": 0.02709883103081828,
+          "tick": 0.0554453255706153,
+          "assets_pass_kupiec": 2,
+          "assets_pass_cc": 2,
+          "assets_pass_dq": 2,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.06354585179840688,
+          "tick_ci95_pct_vs_ref": [
+            -0.1252523058644352,
+            -0.010970908854381945
+          ],
+          "tick_DM_p": 0.013652602622093038,
+          "FZ0": -3.705864759967413,
+          "es_test_p": 0.39875050873939855,
+          "es_ratio": 1.0041275589678065,
+          "n_violations": 102,
+          "FZ0_diff_vs_ref": -0.06375196058818713,
+          "FZ0_diff_ci95": [
+            -0.13438232498178587,
+            -0.005727213158123722
+          ],
+          "FZ0_DM_p": 0.015272358833712594
+        },
+        "Meridian_FHS": {
+          "violation_rate": 0.02709883103081828,
+          "tick": 0.05553869057378121,
+          "assets_pass_kupiec": 2,
+          "assets_pass_cc": 2,
+          "assets_pass_dq": 2,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.06196894619614435,
+          "tick_ci95_pct_vs_ref": [
+            -0.12309593649511844,
+            -0.009774383143565955
+          ],
+          "tick_DM_p": 0.014441606968430273,
+          "FZ0": -3.7049863375440033,
+          "es_test_p": 0.30812417037169537,
+          "es_ratio": 1.0092265083830065,
+          "n_violations": 102,
+          "FZ0_diff_vs_ref": -0.06287353816477802,
+          "FZ0_diff_ci95": [
+            -0.13331745053731706,
+            -0.004977542428206665
+          ],
+          "FZ0_DM_p": 0.01620406803899529
+        },
+        "Meridian_FHS_ACI": {
+          "violation_rate": 0.025770456960680126,
+          "tick": 0.056314077871811544,
+          "assets_pass_kupiec": 2,
+          "assets_pass_cc": 2,
+          "assets_pass_dq": 2,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.04887289807611761,
+          "tick_ci95_pct_vs_ref": [
+            -0.1113464978738293,
+            0.0039278941376128945
+          ],
+          "tick_DM_p": 0.0455543217661673,
+          "FZ0": -3.6870056619980245,
+          "es_test_p": 0.2734270790445149,
+          "es_ratio": 1.0092111147600362,
+          "n_violations": 97,
+          "FZ0_diff_vs_ref": -0.04489286261879907,
+          "FZ0_diff_ci95": [
+            -0.11527691311675108,
+            0.015384074909840364
+          ],
+          "FZ0_DM_p": 0.07085570225387998
+        },
+        "RiskMetrics": {
+          "violation_rate": 0.032412327311370885,
+          "tick": 0.058829600478736976,
+          "assets_pass_kupiec": 1,
+          "assets_pass_cc": 1,
+          "assets_pass_dq": 0,
+          "has_es": true,
+          "tick_pct_vs_ref": -0.006386510704290971,
+          "tick_ci95_pct_vs_ref": [
+            -0.030465493723005395,
+            0.015673493494596194
+          ],
+          "tick_DM_p": 0.2967494718508032,
+          "FZ0": -3.627189488931921,
+          "es_test_p": 9.084780035372204e-06,
+          "es_ratio": 1.1447183785741255,
+          "n_violations": 122,
+          "FZ0_diff_vs_ref": 0.01492331044730435,
+          "FZ0_diff_ci95": [
+            -0.011116126359830926,
+            0.0458310867938396
+          ],
+          "FZ0_DM_p": 0.8446148659109896
+        },
+        "_meta": {
+          "n_rows": 3764,
+          "n_dates": 1882,
+          "n_assets": 2,
+          "date_range": [
+            "2019-01-02",
+            "2026-06-29"
+          ],
+          "ref": "GJR_FHS",
+          "alpha": 0.025,
+          "nw_lag": 7
+        }
+      }
+    }
+  }
+}

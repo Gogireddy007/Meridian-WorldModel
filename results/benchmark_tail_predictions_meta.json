@@ -1,0 +1,21 @@
+{
+  "rows": 49717,
+  "alphas": {
+    "010": 0.01,
+    "025": 0.025,
+    "050": 0.05
+  },
+  "hs_window": 500,
+  "z_window": 1000,
+  "z_min": 250,
+  "evt_threshold": 0.9,
+  "evt_refit": 21,
+  "aci_gamma": 0.005,
+  "vol_sources": {
+    "HAR": "HAR",
+    "LightGBM": "LightGBM",
+    "Meridian": "Meridian_M0"
+  },
+  "git_commit_at_run": "108f349",
+  "runtime_s": 99
+}

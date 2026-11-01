@@ -83,6 +83,58 @@ for 5/22-day targets, full-sample scaling in TimeMixer, 1-day-stale EWMA/GARCH f
 ~500 invalid Yahoo FX price bars that read as zero volatility. `pytest tests/test_harness.py`
 checks the leakage, calibration and significance fixes.
 
+## Tail-risk benchmark (VaR / Expected Shortfall)
+
+Next-day Value-at-Risk and Expected Shortfall of close-to-close returns, against the standard
+risk models: historical simulation, RiskMetrics, GARCH-normal / -t, GJR-GARCH-skewed-t,
+GJR-GARCH with filtered historical simulation (the reference) and with EVT (McNeil–Frey), and
+CAViaR. Meridian's volatility forecast is turned into a tail forecast by filtering returns
+through it and reading the tail from past standardized returns. Pre-registered in
+`PREREGISTRATION.md` Amendment 7 (variant chosen on 2012–2018, reported on 2019–2026). Primary
+score: the FZ0 loss, which rewards getting VaR and ES right jointly.
+
+<!-- TAIL:START -->
+Holdout 2019-01-01 → 2026-06-29 (2168 dates × 11 assets), next-day return VaR and ES at 2.5%, reference GJR-GARCH + FHS (reference). Lower FZ0 loss is better.
+
+| Model | FZ0 loss ↓ | Δ vs reference (95% CI) | DM p | In MCS | Violations (target 2.5%) | Assets passing CC / DQ | ES ratio (realized/forecast) |
+|---|---|---|---|---|---|---|---|
+| Meridian + FHS | -3.6394 | -0.1226 [-0.1530, -0.0959] | <0.001 | yes | 2.54% | 11/11 · 10/11 | 0.97 |
+| Meridian + EVT | -3.6387 | -0.1218 [-0.1533, -0.0949] | <0.001 | yes | 2.49% | 11/11 · 10/11 | 0.98 |
+| HAR-RV + FHS | -3.6289 | -0.1182 [-0.1440, -0.0927] | <0.001 | yes | 2.58% | 11/11 · 8/11 | 0.99 |
+| HAR-RV + EVT | -3.6284 | -0.1179 [-0.1449, -0.0912] | <0.001 | yes | 2.57% | 11/11 · 7/11 | 0.99 |
+| Meridian + FHS + adaptive conformal | -3.6257 | -0.1080 [-0.1448, -0.0782] | <0.001 | no | 2.47% | 11/11 · 11/11 | 0.98 |
+| LightGBM vol + FHS | -3.6208 | -0.1048 [-0.1306, -0.0796] | <0.001 | no | 2.58% | 11/11 · 10/11 | 0.98 |
+| GJR-GARCH-skewed-t | -3.5294 | -0.0013 [-0.0124, +0.0093] | 0.404 | no | 2.60% | 10/11 · 10/11 | 0.99 |
+| GJR-GARCH + EVT (McNeil-Frey) | -3.5290 | -0.0030 [-0.0054, -0.0007] | 0.007 | no | 2.67% | 11/11 · 11/11 | 0.98 |
+| GJR-GARCH + FHS (reference) | -3.5255 | — | — | no | 2.71% | 11/11 · 11/11 | 0.98 |
+| GARCH(1,1)-t | -3.5203 | +0.0067 [-0.0097, +0.0234] | 0.799 | no | 2.87% | 10/11 · 7/11 | 1.00 |
+| GARCH(1,1)-normal | -3.5049 | +0.0179 [-0.0036, +0.0427] | 0.951 | no | 3.01% | 9/11 · 7/11 | 1.14 |
+| RiskMetrics EWMA, normal | -3.4538 | +0.0626 [+0.0215, +0.1094] | 0.999 | no | 3.48% | 4/11 · 1/11 | 1.16 |
+| Historical simulation (500d) | -3.3320 | +0.1836 [+0.0660, +0.3735] | 0.997 | no | 2.80% | 5/11 · 1/11 | 1.07 |
+
+Head-to-head against HAR-RV + FHS (both volatility-filtered): FZ0 Δ -0.0037 [-0.0333, +0.0175], DM p 0.369 at 2.5%; 1% VaR quantile loss -3.1% [-7.4%, +0.2%], DM p 0.076. Full tables: `results/benchmark_tail.md`.
+<!-- TAIL:END -->
+
+**Honest read:**
+- Every model that uses a realized-volatility forecast (Meridian, HAR, LightGBM) beats every
+  returns-only model (the GARCH family, RiskMetrics, historical simulation, CAViaR) by a clear,
+  significant margin. Meridian-based tails also pass the dynamic-quantile backtest on more
+  assets (10/11) than HAR-based tails (7–8/11), i.e. their violations cluster less.
+- Meridian-based tails are the best in the table, but their edge over **HAR-based tails** is
+  small and **not statistically significant**. Most of the tail gain comes from using
+  range-based realized volatility at all, which HAR also does.
+- On 2012–2018 HAR-based tails were slightly better than Meridian's: the ranking at the top is
+  not stable across periods.
+- ES is well calibrated for the volatility-filtered models (realized/forecast ratio ≈ 1).
+
+## Forward test
+
+`scripts/forward_test.py` freezes Meridian M0 and per-asset HAR (trained once, weights hashed)
+and appends a forecast for every next trading day to `results/forward/forecast_log.csv`. Only
+forecasts logged before their target day count. Run `python scripts/forward_test.py predict`
+each trading day after the close, and `python scripts/forward_test.py score` to score it.
+Nothing is scored yet: a meaningful read needs months of new data.
+
 ## Layout
 
 ```
@@ -92,6 +144,7 @@ meridian/
   features.py             realized-variance estimators, HAR features, targets
   evalproto.py            purged walk-forward, QLIKE, MZ-R2, walk-forward calibration/combination
   scoring.py              benchmark statistics: date-level HAC DM, MCS, bootstrap CIs, IC, hit rate
+  riskscore.py            tail statistics: FZ0 / quantile loss, Kupiec, Christoffersen, DQ, ES test
   lgbm_worker.py          LightGBM baseline (separate process: cannot share one with PyTorch-MPS)
   baselines.py            HAR-RV, AR(1), AR(3), EWMA, GARCH(1,1)
   model.py                SSM belief core + JEPA predictor + SIGReg + heads
@@ -101,6 +154,9 @@ scripts/
   benchmark_vol.py        audited benchmark: fits all models per fold, saves raw forecasts
   score_vol_benchmark.py  scores saved forecasts -> results/benchmark_vol.json
   render_benchmark_md.py  JSON -> results/benchmark_vol.md + README/MODEL_CARD summary blocks
+  benchmark_tail.py       VaR/ES of every risk model per fold -> benchmark_tail_predictions.parquet
+  score_tail_benchmark.py scores them -> results/benchmark_tail.{json,md} + summary blocks
+  forward_test.py         frozen forward test: freeze / predict / score
   run_baselines.py        fit baselines -> results/baseline_predictions.parquet
   run_meridian.py         walk-forward train/eval -> meridian_predictions.parquet
   compare.py              volatility verdict vs HAR-RV (pre-registered)
@@ -108,6 +164,7 @@ scripts/
   fit_final.py            final model + demo_state.json for the live demo
 demo/                     self-contained market-state dashboard
 tests/test_harness.py     leakage / calibration / significance / data-cleaning tests
+tests/test_tail.py        tail-loss, backtest-calibration and no-look-ahead tests
 ```
 
 ## Run it
@@ -115,10 +172,13 @@ tests/test_harness.py     leakage / calibration / significance / data-cleaning t
 ```bash
 python3.12 -m venv .venv && source .venv/bin/activate
 pip install numpy pandas scipy scikit-learn torch pyarrow arch statsmodels hmmlearn lightgbm pytest
-python -m pytest tests/test_harness.py -q                 # harness correctness checks
+python -m pytest tests -q                                 # harness correctness checks
 BENCH_VARIANTS=M0 BENCH_ENSEMBLE=5 python scripts/benchmark_vol.py   # ~20 min on Apple MPS
 python scripts/score_vol_benchmark.py results/benchmark_vol_predictions.parquet
 python scripts/render_benchmark_md.py                      # regenerates the tables in this README
+python scripts/benchmark_tail.py                           # ~2 min; needs the vol predictions
+python scripts/score_tail_benchmark.py                     # tail tables + README blocks
+python scripts/forward_test.py predict                     # daily, after the close
 ```
 
 ## Provenance & relationship to prior work
