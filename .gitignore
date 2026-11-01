@@ -16,3 +16,8 @@ data/futures/
 
 # Kept intentionally: source (meridian/, scripts/), docs (*.md), demo/,
 # deliverables (results/*.html, *.jpg, *.png, *.json, *.csv), data/fred_*.csv
+
+# Exception: the audited volatility benchmark's saved forecasts are kept so every number in
+# results/benchmark_vol.json can be re-scored in seconds (scripts/score_vol_benchmark.py)
+!results/benchmark_vol_predictions.parquet
+!results/benchmark_vol_predictions_ablation.parquet

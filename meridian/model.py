@@ -46,6 +46,9 @@ class MeridianConfig:
     lambda_aux: float = 0.3    # weight of each auxiliary-horizon loss in the total
     har_anchor: bool = False   # add an explicit linear HAR skip pathway (HARNet-style)
     har_idx: tuple = (0, 1, 2) # feature indices of (har_d, har_w, har_m) in the input window
+    offset_mode: bool = False  # vol = external per-row offset (e.g. per-asset HAR) + NN correction
+    n_assets: int = 0          # >0 with asset_emb_dim>0: learned per-asset embedding
+    asset_emb_dim: int = 0     # embedding size added (via a zero-init projection) to the belief
 
 
 # --------------------------------------------------------------------------- #
@@ -176,6 +179,21 @@ class Meridian(nn.Module):
             self.har_skip_aux = nn.ModuleDict({
                 h: nn.Linear(len(cfg.har_idx), 1) for h in cfg.aux_horizons
             })
+        # Offset mode: the forecast is offset + NN correction, where the offset (e.g. a
+        # per-asset HAR forecast fit on the fold's train data) is passed in per row. The
+        # correction heads start at exactly 0, so before training the model IS the
+        # offset model and gradient descent only ever adds corrections on top of it.
+        if cfg.offset_mode:
+            for head in (self.vol_head, *self.aux_heads.values()):
+                nn.init.zeros_(head[-1].weight); nn.init.zeros_(head[-1].bias)
+        # Asset embedding (index n_assets = "unseen asset": a fixed zero vector), added
+        # to the belief state through a zero-initialized projection.
+        if cfg.asset_emb_dim > 0 and cfg.n_assets > 0:
+            self.asset_emb = nn.Embedding(cfg.n_assets + 1, cfg.asset_emb_dim, padding_idx=cfg.n_assets)
+            self.asset_proj = nn.Linear(cfg.asset_emb_dim, cfg.d_model)
+            nn.init.zeros_(self.asset_proj.weight); nn.init.zeros_(self.asset_proj.bias)
+        else:
+            self.asset_emb = None
 
     @torch.no_grad()
     def init_har_anchor(self, beta, mean_har, std_har, aux_beta=None):
@@ -221,13 +239,19 @@ class Meridian(nn.Module):
         """Return last belief state h_t for a window x: (B, L, F) -> (B, d_model)."""
         return self.encoder(x)[:, -1]
 
-    def forward(self, x_ctx, x_fut=None):
+    def forward(self, x_ctx, x_fut=None, offset=None, aux_offset=None, asset_id=None):
         """x_ctx: (B, L, F) context window ending at t.
         x_fut:  (B, L, F) window ending at t+1 (for JEPA target); optional.
+        offset / aux_offset: (B,) / {h: (B,)} per-row log-variance offsets (offset_mode).
+        asset_id: (B,) long, used when an asset embedding is configured.
         """
         h_seq = self.encoder(x_ctx)
         h_t = h_seq[:, -1]                               # belief state
+        if self.asset_emb is not None and asset_id is not None:
+            h_t = h_t + self.asset_proj(self.asset_emb(asset_id))
         vol = self.vol_head(h_t).squeeze(-1)             # predicted log RV_{t+1}
+        if offset is not None:
+            vol = vol + offset
         regime_logits = self.regime_head(h_t)
 
         if self.cfg.har_anchor:
@@ -241,6 +265,8 @@ class Meridian(nn.Module):
             aux = {h: self.aux_heads[h](h_t).squeeze(-1) for h in self.cfg.aux_horizons}
             if self.cfg.har_anchor:
                 aux = {h: v + self.har_skip_aux[h](har_x).squeeze(-1) for h, v in aux.items()}
+            if aux_offset is not None:
+                aux = {h: v + aux_offset[h] if h in aux_offset else v for h, v in aux.items()}
             out["aux"] = aux
 
         if self.cfg.dual_vol:
@@ -259,7 +285,9 @@ class Meridian(nn.Module):
 
     def loss(self, batch):
         cfg = self.cfg
-        out = self.forward(batch["x_ctx"], batch["x_fut"])
+        aux_off = {h: batch[f"off_{h}"] for h in cfg.aux_horizons if f"off_{h}" in batch} or None
+        out = self.forward(batch["x_ctx"], batch["x_fut"], offset=batch.get("off_y"),
+                           aux_offset=aux_off, asset_id=batch.get("asset_id"))
         y = batch["y"]                       # log RV_{t+1}
 
         def vol_objective(f):

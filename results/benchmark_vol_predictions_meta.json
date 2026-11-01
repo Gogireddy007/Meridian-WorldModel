@@ -1,0 +1,16 @@
+{
+  "out": "benchmark_vol_predictions.parquet",
+  "variants": [
+    "M0"
+  ],
+  "ensemble": 5,
+  "epochs": 8,
+  "max_epochs_early_stop": 20,
+  "folds": 12,
+  "rows": 49717,
+  "min_train_d": 1260,
+  "test_d": 378,
+  "embargo_d": 22,
+  "git_commit_at_run": "ab041b0",
+  "runtime_s": 1101
+}

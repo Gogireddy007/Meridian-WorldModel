@@ -255,3 +255,80 @@ Three changes, disclosed before the corrected pooled numbers are inspected:
 the raw (uncalibrated) table already reported under Amendment 4 — it is kept alongside the
 new calibrated table for transparency, not replaced. Whichever way the calibrated CORE
 numbers land is reported as-is.
+
+### Amendment 6 — 2026-10-31 — harness audit; numbers under Amendments 4–5 are SUPERSEDED
+(declared before any result of the fixed harness is computed)
+
+An audit of `scripts/benchmark_vol.py` and `meridian/evalproto.py` found that several numbers
+reported under Amendments 4–5 are overstated or not comparable. They are superseded, not
+defended:
+
+1. **Significance was inflated.** DM was run on ~40k stacked panel rows with HAC lag 0,
+   ignoring cross-asset correlation on the same date and loss autocorrelation; MCS
+   block-bootstrapped stacked panel rows. The reported `p≈1e-14` values are withdrawn.
+2. **Raw and calibrated tables used different rows** (calibration drops a per-asset warm-up),
+   so raw-vs-calibrated comparisons mixed a sample change with a model change.
+3. **The HAR baseline was handicapped**: one pooled regression and one intercept across
+   equities and FX. Textbook HAR is fit per asset.
+4. **h=5/h=22 label leakage**: the embargo was counted on the union calendar, so a 22-day
+   label could reach ~1 trading day into the test block.
+5. **TimeMixer** was standardized with full-sample (incl. test) statistics.
+6. **Pooled IC** mostly measured cross-asset level differences.
+
+**Fixed protocol (applies to every model, every table):**
+- **Invalid OHLC bars repaired** (`clean_ohlc` in `scripts/benchmark_vol.py`): 36 stale FX
+  bars with high == low (open=high=low=close, volume 0: no real quote) are dropped, and
+  ~470 FX bars whose open/close fall outside [low, high] (a Yahoo snapshot-timing quirk)
+  have open/close clipped into the range. Left as-is, the range-based RV estimator reads
+  these bars as zero or negative variance (clipped to 1e-12, log ≈ −27.6); each such row
+  adds QLIKE ≈ 15 as a target and distorts the next day's forecasts as an input. Every
+  QLIKE number reported under Amendments 4–5 includes these rows. (Found in a 1-fold,
+  1-epoch smoke check, before any result of the fixed harness was computed.)
+- Train rows for a horizon-h target are purged by **label end date** (the date the h-day
+  label window ends, on that asset's own calendar must be < test start), plus the 22-day
+  embargo.
+- All scalers/normalizers are fit on each fold's train rows only.
+- Every model's raw OOS forecast is saved to `results/benchmark_vol_predictions.parquet`;
+  all metrics are computed from that file by `scripts/score_vol_benchmark.py`.
+- Every table is scored on **one common row support** (all models finite after calibration
+  warm-up).
+- **DM**: on the date-level (cross-asset mean) loss differential, Newey–West lag
+  `floor(4·(T/100)^(2/9))`, HLN correction, one-sided. **MCS**: on date-level losses, block
+  22. **CI**: block-bootstrap over dates for the % QLIKE change vs per-asset HAR.
+- **IC**: per-asset time-series Spearman, averaged across assets.
+- Reference model for all tests: **per-asset HAR-RV** (log, Jensen-corrected).
+
+**Model list:** RW, EWMA, GARCH(1,1), GJR-GARCH(1,1), EGARCH(1,1), HAR pooled, HAR per
+asset, LHAR, SHAR, HAR-X(VIX), Ridge, RandomForest, LightGBM, TimeMixer, Meridian variants,
+and a walk-forward Granger–Ramanathan combination. HARQ, HAR-CJ and Realized GARCH need
+intraday data and are omitted rather than approximated.
+
+**Selection rule (anti-snooping):** Meridian variants (current; per-asset HAR offset; asset
+embedding; early stopping; combination) are compared ONLY on the **development period**
+(OOS dates < 2019-01-01). The single variant with the lowest development-period calibrated
+QLIKE is chosen, re-run with 5 seeds, and its **holdout-period** (OOS dates ≥ 2019-01-01)
+result is the headline. Holdout numbers are not used for any choice. The §5 win bar (≥5%
+QLIKE reduction vs HAR, DM p<0.05) is applied to the holdout result against **per-asset
+HAR**. Whatever it shows is reported.
+
+**Amendment 6 — selection record (written after the development-period scoring and BEFORE
+any holdout number was viewed).** Ablation run: `results/benchmark_vol_predictions_ablation.parquet`
+(3 seeds per variant), scored in `results/benchmark_vol_ablation.json`. Development period
+(2012-06-14 → 2018-12-31, 1,901 dates × 11 assets), calibrated QLIKE vs per-asset HAR (0.3741):
+
+| Candidate | Dev QLIKE | vs HAR |
+|---|---|---|
+| GR combo HAR + LightGBM + Meridian M0 | 0.3353 | −10.4% |
+| GR combo HAR + LightGBM + Meridian M2 | 0.3354 | −10.3% |
+| GR combo HAR + LightGBM + Meridian M1 | 0.3356 | −10.3% |
+| GR combo HAR + LightGBM + Meridian M3 | 0.3381 | −9.6% |
+| Meridian M0 | 0.3404 | −9.0% |
+| Meridian M2 | 0.3430 | −8.3% |
+| Meridian M1 | 0.3432 | −8.3% |
+| Meridian M3 | 0.3477 | −7.1% |
+
+**Selected: GR combination of HAR + LightGBM + Meridian M0** (lowest development QLIKE; the top
+three are within 0.0003, i.e. practically tied). The proposed improvements M1 (per-asset HAR
+offset), M2 (asset embedding) and M3 (early stopping) did not beat the existing M0 on the
+development period — recorded as a negative result. The selected configuration is re-run with
+5 seeds (`results/benchmark_vol_predictions.parquet`); its holdout result is the headline.

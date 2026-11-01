@@ -1,11 +1,23 @@
 # Meridian — Results (Day 1)
 
+> **STATUS (2026-10-31, PREREGISTRATION.md Amendment 6): this file is a dated lab log, not the
+> source of truth.** The only authoritative volatility numbers are in
+> `results/benchmark_vol.json` (tables rendered in `results/benchmark_vol.md`), produced by the
+> audited harness (`scripts/benchmark_vol.py` → `scripts/score_vol_benchmark.py`). Every section
+> below carries a status label:
+> - **NOT REPRODUCED IN THIS REPO** — the predictions behind it are not saved here, and its
+>   numbers were computed before the Amendment 6 fixes (significance tests on stacked panel rows,
+>   which overstate significance; invalid FX price bars left in the data). Treat as unverified.
+> - **SUPERSEDED** — replaced by the audited harness results.
+
 Generated under the locked protocol in `PREREGISTRATION.md`. All numbers are
 purged/embargoed walk-forward **out-of-sample**, 11 assets (8 equity + 3 FX),
 2012–2026 test window. **The pre-registered bars were not moved after seeing
 results.**
 
 ## FINAL — pre-committed 5-seed ensemble (Amendment 1) — **PRIMARY CLAIM MET**
+
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
 
 The single pre-committed configuration (5-seed ensemble of Meridian-QLIKE, log-var
 averaged; locked in `PREREGISTRATION.md` §6 before running) evaluated once:
@@ -59,6 +71,8 @@ objective vs HMM is not met as written** (economic-value win documented separate
 
 ## Update — QLIKE-trained variant (2nd look at OOS)
 
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
+
 Per the "train on the loss you're judged by" fix, a second Meridian was trained
 with the head emitting **log-variance directly** and optimized on the **exact
 QLIKE** objective (no Jensen/affine crutch). Result, same protocol:
@@ -82,6 +96,8 @@ authoritative volatility verdict; the two rows above are the earlier progression
 
 ## CF-JEPA EMA-readout, ENSEMBLED — new headline vol (+6.78% vs HAR)
 
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
+
 5-seed ensemble of the dual-head model; the EMA-target readout, ensembled:
 
 | readout (5-seed ensemble) | calibrated QLIKE | vs HAR |
@@ -97,6 +113,8 @@ model. (Modest, but a real, significant, JEPA-specific gain.)
 ---
 
 ## CF-JEPA EMA-encoder routing — REPLICATES (+1.21%, single-seed)
+
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
 
 From the deep research (RESEARCH.md), the one JEPA-specific lever with a concrete
 mechanism: read the vol forecast off the **EMA target encoder** (smoother, better for
@@ -123,6 +141,8 @@ seed (not yet ensembled); the gain is a smoothing/variance-reduction effect.
 ---
 
 ## Attribution ablation — the vol win is the SSM + QLIKE head, NOT JEPA/SIGReg
+
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
 
 Matched 1-seed configs (`MERIDIAN_LJEPA` / `MERIDIAN_LSIG` overrides), calibrated
 pooled OOS:
@@ -155,6 +175,8 @@ pooled OOS:
 
 ## Held-out-asset generalization — PASSES (strongest evidence)
 
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
+
 Meridian (5-seed ensemble) trained on 8 assets and forecast the **3 it never saw in
 training** (IWM, JNJ, GBPUSD). `scripts/run_meridian.py` with `MERIDIAN_HOLDOUT`.
 
@@ -175,6 +197,8 @@ below the +5% bar (the point estimate +8% is comfortably above it).
 ---
 
 ## Economic evaluation — forecast skill ≠ alpha (the PM reality check)
+
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
 
 A vol-managed strategy (Moreira–Muir; scale exposure to 10% target vol via the
 forecast, 1bp cost, purged OOS) converts the forecast into P&L. `scripts/backtest.py`,
@@ -225,6 +249,8 @@ interpretable; it cannot manufacture alpha from data that lacks it.
 
 ## Meridian-WM v1 (shared switching core) — regime WON, vol REGRESSED
 
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
+
 First bridged-model run (single seed). Honest three-axis result:
 - **Vol: regressed** — QLIKE 0.413 vs the 0.331 core (the switching core contaminated
   the shared vol backbone). Fails "must-not-regress".
@@ -250,6 +276,8 @@ is therefore a **bank of separately-trained interpretable modules**, not one net
 
 ## Progression (how we got to the FINAL result above)
 
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
+
 The three sections below are the chronological progression: the MSE model (§1–2),
 the QLIKE-trained model (the 2-row table above), and the pre-committed ensemble
 (the FINAL section at the top). The FINAL section is authoritative. Summary arc:
@@ -262,6 +290,8 @@ the QLIKE-trained model (the 2-row table above), and the pre-committed ensemble
   §3) — reported both ways, not claimed as a persistence win.
 
 ## 1. Volatility — raw (as-trained) forecasts
+
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
 
 QLIKE conversion uses a single per-fold Jensen (½·Var) term.
 
@@ -280,6 +310,8 @@ failure — the belief core sees the future, but its raw output is mis-scaled an
 QLIKE punishes under-forecast variance hard.
 
 ## 2. Volatility — after identical walk-forward calibration (all models)
+
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
 
 The **same** leakage-safe affine+Jensen recalibration (fit on past OOS rows only,
 22-day embargo) is applied to **every** model. For the log-linear baselines it is
@@ -311,6 +343,8 @@ Diebold–Mariano (H1: Meridian lower loss):
   significantly better, but by 2.5%, not 5%.
 
 ## 3. Regimes vs HMM — persistence line NOT met as written; economic-value win separate
+
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
 
 **Verdict framing (per user decision): report both.**
 - **On the literal spec ("beat HMM on regime *persistence*"): NOT MET.** Meridian's
@@ -358,6 +392,8 @@ NOT met.** Both facts are reported; the goalpost change is disclosed, not hidden
 
 ## 4. Honest reading & what would be needed to actually clear +5%
 
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
+
 - The core idea is **working**: an SSM belief state + JEPA + SIGReg produces the
   most informative next-day vol signal in the study (best MZ R²). That is the
   substantive, defensible finding.
@@ -372,6 +408,8 @@ NOT met.** Both facts are reported; the goalpost change is disclosed, not hidden
   post-hoc HMM-on-belief.
 
 ## Reproduce
+
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
 ```
 python scripts/run_baselines.py
 python scripts/run_meridian.py          # ~15 min, MPS
@@ -382,6 +420,8 @@ python scripts/fit_final.py             # demo model + state
 ```
 
 ## BROAD real-data attempt at the PM's Sharpe bar — the honest ceiling
+
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
 
 Expanded to **39 instruments across 4 asset classes** (equities, sectors,
 international, bonds, commodities, FX), 2005–2026, **total-return (dividend-adjusted)**
@@ -421,6 +461,8 @@ same interpretable bridge — but the number must still be *measured*, never pro
 
 ## Architecture exploration — the ceiling is not architecture (6 experiments)
 
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
+
 Every architecture tested on real data, honestly measured:
 
 | experiment | metric | result | verdict |
@@ -442,6 +484,8 @@ intraday — where continuous-time world-models also become the right tool.
 
 ## Cross-sectional equity module (breadth lever) — also exhausted
 
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
+
 99 liquid large-caps, total returns, dollar-neutral L/S, net 5bp, 2008–2026
 (`scripts/xsection.py`): cross-sectional **momentum 0.02 (dead — factor decay since
 2010)**; reversal/low-vol negative (high turnover cost-destroyed). The strongest
@@ -456,6 +500,8 @@ gate to the goal is a richer data feed (futures curves / options / intraday), no
 model. Real deliverables (vol +6.8% vs HAR, regime, calibrated VaR, risk overlay) stand.
 
 ## FUTURES data acquired — the definitive test (premia have decayed)
+
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
 
 Pulled 29 continuous futures (6 asset classes, ~19.6yr) + VIX term structure — the
 evidence-backed data the research demanded (`scripts/futures_strategy.py`,
@@ -477,6 +523,8 @@ in 2026, proven on real data across 12 experiments + 5 verified research passes.
 
 ## Frontier avenues (crypto, VRP short-vol) — best honest result: 0.68 combined
 
+> **NOT REPRODUCED IN THIS REPO** (see status note at top).
+
 New data acquired: 15 crypto assets (2014-26) + vol ETFs (SVXY/VXX). Honest tests
 (`scripts/frontier_strategies.py`, realistic costs, deflated Sharpe):
 - **Crypto trend:** 0.89 Sharpe 2015-26 BUT survivorship-biased and decayed to **0.27
@@ -495,6 +543,8 @@ and true diversification is a genuinely good, defensible product — just not th
 bygone-era 1.5. (13 experiments + 5 research passes; 6th running.)
 
 ## `benchmark_vol.py` corrected to evaluate the real neural core — still doesn't beat HAR/EWMA
+
+> **SUPERSEDED (Amendment 6).** Numbers below came from the pre-audit harness (pooled-row significance tests, handicapped pooled HAR baseline, invalid FX bars, 1-day-stale EWMA/GARCH). See `results/benchmark_vol.md`.
 
 Prior runs of `scripts/benchmark_vol.py` reported "Meridian" as a 4-coefficient OLS
 placeholder (HAR + one leverage feature), not the QLIKE-trained neural SSM ensemble
@@ -534,6 +584,8 @@ HAR's pooled QLIKE from 0.819 to 0.934, explaining most of the table's movement.
   forecast on average, not evidence of Meridian generalizing better than the baselines.
 
 ## Follow-up (Amendment 5) — Meridian CLEARS the win bar once every model is calibrated equally
+
+> **SUPERSEDED (Amendment 6).** Numbers below came from the pre-audit harness (pooled-row significance tests, handicapped pooled HAR baseline, invalid FX bars, 1-day-stale EWMA/GARCH). See `results/benchmark_vol.md`.
 
 The prior entry's honest negative result (Meridian ties HAR on raw QLIKE, wins RMSE/IC,
 edges HAR only in the "stress" regime) prompted a literature/codebase review, not a
@@ -594,3 +646,18 @@ levers, and fixing a benchmark-vs-production feature inconsistency did not produ
 QLIKE win here — this is reported as the honest negative result it is, consistent with
 this project's standing thesis that HAR is a genuinely hard frontier on daily RV. Full
 numbers, including the h=5/h=22 and regime breakdowns: `results/benchmark_vol.json`.
+
+## 2026-11-01 — Audited benchmark (Amendment 6): the current, reproducible result
+
+**AUTHORITATIVE.** All numbers live in `results/benchmark_vol.json` and are rendered in
+`results/benchmark_vol.md` (and the README / MODEL_CARD summary blocks) by
+`scripts/render_benchmark_md.py`; none are copied here, so this log cannot drift from them.
+Summary in words: on the untouched 2019–2026 holdout, the Meridian volatility core (config M0,
+selected on 2012–2018 only) is the best single model among 15 traditional, ML and deep
+baselines, beats per-asset HAR-RV on every asset and in nearly every year with a significant
+date-level DM test, and clears the 5% bar on the point estimate (the interval against the
+strongest HAR form reaches just below 5%). The three proposed improvements (M1–M3) did not beat
+M0 on the development period. Hit rate does not discriminate between models on this task.
+Predictions: `results/benchmark_vol_predictions.parquet` (final, 5 seeds) and
+`results/benchmark_vol_predictions_ablation.parquet` (selection run, 3 seeds; scored in
+`results/benchmark_vol_ablation.json`).

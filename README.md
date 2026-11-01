@@ -20,70 +20,68 @@ score** — benchmarked honestly against HAR-RV (volatility) and a Gaussian HMM
 - Every OOS number comes from expanding walk-forward with a 22-day purge/embargo
   at every train/test boundary. Feature scaling is fit on train only.
 
-## Benchmark: volatility forecasting vs GARCH · EWMA · HAR · TimeMixer
+## Benchmark: Meridian vs traditional volatility models
 
-A head-to-head under **one identical purged/embargoed walk-forward** (`scripts/benchmark_vol.py`):
-**42,135** pooled out-of-sample forecasts across the pre-registered 11-asset CORE universe,
-**12 expanding folds**, 22-day purge + embargo. Metrics: **QLIKE** (variance loss), **RMSE**
-(log-vol), **IC** (Spearman rank corr of forecast vs realized), **Diebold–Mariano**, and a **Model
-Confidence Set** (Hansen–Lunde–Nason, 90%). As of **Amendment 4/5** (see `PREREGISTRATION.md`),
-**"Meridian" is the real, QLIKE-trained, 5-seed CF-JEPA SSM ensemble** (`meridian/model.py`),
-now with realized-semivariance features, auxiliary h=5/h=22 heads, and a **HAR-anchored
-initialization** (HARNet-style, arXiv:2205.07719 — the model is initialized to reproduce HAR's
-own forecast exactly before any optimization step, so training only ever has to find corrections
-on top of HAR). Every model is scored twice: **RAW** (each model's own fold-level fit), and
-**CALIBRATED** (every model, including HAR, put through the same leakage-safe walk-forward affine
-recalibration already validated elsewhere in this project — `meridian/evalproto.py:
-walk_forward_calibrate` — on a forced common row support so no model is scored on an easier date
-range than another). **Ensemble_GR** is a walk-forward Granger-Ramanathan optimal combination of
-HAR + Meridian + RF+SemiVar (data-fit weights, not a naive average).
+One audited harness (`scripts/benchmark_vol.py` → `scripts/score_vol_benchmark.py` →
+`scripts/render_benchmark_md.py`) produces every number below; nothing here is typed by hand.
+Expanding walk-forward over 2011–2026, 12 folds, 22-day embargo, training rows purged by label
+end date, all scalers fit on train only, every model's raw forecast saved to
+`results/benchmark_vol_predictions.parquet`. Significance is tested on the **date-level** loss
+series (Newey–West HAC), not on stacked asset-day rows. Meridian's configuration was chosen on
+the 2012–2018 development period only (`PREREGISTRATION.md` Amendment 6); the table is the
+untouched 2019–2026 holdout.
 
-### Result: Meridian clears the pre-registered win bar (≥5% QLIKE reduction, DM p<0.05)
+Compared models: random walk, 22-day mean, EWMA, GARCH(1,1), GJR-GARCH, EGARCH, HAR-RV (per
+asset and pooled), LHAR, SHAR, HAR-X (+VIX), Ridge, random forest, LightGBM, TimeMixer, and
+Meridian (SSM belief core, QLIKE-trained, 5-seed ensemble), alone and in a walk-forward
+Granger–Ramanathan combination with HAR and LightGBM.
 
-| Model (calibrated) | QLIKE ↓ | RMSE (log) ↓ | IC ↑ | DM vs HAR_cal (p) | vs HAR |
-|---|---|---|---|---|---|
-| **Ensemble_GR** (HAR+Meridian+RF, GR-fit weights) | **0.323** | 0.855 | **0.788** | 1.8e-15 | **−9.7%** |
-| **Meridian** (SSM ensemble, calibrated) | 0.326 | **0.860** | 0.786 | 1.5e-14 | **−8.7%** |
-| Meridian+ (naive blend, calibrated) | 0.327 | 0.854 | 0.787 | 1.6e-16 | −8.5% |
-| RF+SemiVar (calibrated) | 0.339 | 0.863 | 0.780 | 8.4e-9 | −5.2% |
-| HAR+Lev (calibrated) | 0.353 | 0.869 | 0.776 | 3.6e-7 | −1.3% |
-| **HAR-RV** (calibrated, reference) | 0.357 | 0.874 | 0.773 | — | — |
-| TimeMixer (calibrated) | 0.386 | 0.916 | 0.755 | 1.000 | +8.0% |
-| GARCH (calibrated) | 0.430 | 0.961 | 0.718 | 1.000 | +20.2% |
-| EWMA (calibrated) | 0.424 | 0.953 | 0.738 | 1.000 | +18.6% |
+<!-- BENCH:START -->
+Holdout 2019-01-01 → 2026-06-29 (2168 trading dates × 11 assets, 20906 forecasts, never used for any modelling choice). All models get the same walk-forward recalibration; reference = per-asset HAR-RV.
 
-*n=39,121 (common support across all 9 calibrated models). QLIKE/RMSE lower = better; IC higher =
-better. Both Meridian and Ensemble_GR clear **≥5% QLIKE reduction AND DM p<0.05 vs HAR-RV** — the
-§5 pre-registered win bar — and **Ensemble_GR is the sole survivor of the 90% Model Confidence
-Set**: every other model, including HAR itself, is statistically eliminated at 90% confidence.*
+| Model | QLIKE ↓ | vs HAR (95% CI) | DM p | IC ↑ | Hit rate | Assets beating HAR |
+|---|---|---|---|---|---|---|
+| GR combo: HAR + LightGBM + Meridian M0 (pooled HAR anchor) | 0.3022 | -8.2% [-12.4, -5.2] | <0.001 | 0.594 | 68.3% | 11/11 |
+| Meridian M0 (pooled HAR anchor) | 0.3045 | -7.5% [-11.3, -4.7] | <0.001 | 0.591 | 68.1% | 11/11 |
+| LightGBM | 0.3118 | -5.3% [-9.3, -2.5] | <0.001 | 0.583 | 67.9% | 10/11 |
+| HAR-X (+VIX) | 0.3126 | -5.0% [-7.7, -2.9] | <0.001 | 0.578 | 66.9% | 10/11 |
+| Ridge | 0.3132 | -4.9% [-8.7, -2.1] | <0.001 | 0.578 | 67.2% | 9/11 |
+| Random forest | 0.3171 | -3.7% [-6.8, -1.4] | <0.001 | 0.573 | 67.6% | 11/11 |
+| LHAR (leverage) | 0.3204 | -2.7% [-5.4, -0.5] | 0.011 | 0.569 | 68.0% | 10/11 |
+| HAR-RV, per asset (reference) | 0.3292 | +0.0% | — | 0.562 | 66.9% | 0/11 |
+| TimeMixer | 0.3392 | +3.0% [+0.3, +6.1] | 0.957 | 0.542 | 67.0% | 3/11 |
+| EGARCH(1,1) | 0.3695 | +12.2% [+8.1, +16.8] | 1.000 | 0.515 | 68.2% | 0/11 |
+| GJR-GARCH(1,1) | 0.3758 | +14.1% [+9.9, +18.9] | 1.000 | 0.504 | 68.1% | 0/11 |
+| GARCH(1,1) | 0.3782 | +14.9% [+11.0, +18.6] | 1.000 | 0.490 | 67.7% | 0/11 |
+| EWMA RiskMetrics λ=0.94 | 0.3758 | +14.1% [+7.9, +21.8] | 1.000 | 0.513 | 66.8% | 0/11 |
+| Random walk (log RV_t) | 0.3884 | +18.0% [+12.9, +24.7] | 1.000 | 0.472 | 62.3% | 0/11 |
 
-**How this was reached, honestly (nothing here is a raw-number artifact):**
-- **The raw (uncalibrated) comparison still does *not* show a Meridian win** — Meridian raw QLIKE
-  is 0.959 vs HAR raw 0.934, essentially tied (DM p=0.69). Recalibration is not optional
-  cosmetics; it is what turns a QLIKE-trained-but-still-miscalibrated model into one that beats
-  HAR. This matches the exact mechanism (`walk_forward_calibrate`) already used to produce the
-  MODEL_CARD's separate headline number — it just hadn't been wired into this script before.
-- **HAR benefits from calibration too** (raw 0.934 → calibrated 0.357) — the win is Meridian
-  beating an *equally recalibrated* HAR, not beating a stale, uncalibrated one. Frequent
-  (quarterly, walk-forward) recalibration matters a lot for QLIKE for every model; what separates
-  Meridian from HAR after both get it is real.
-- **Holds under cross-asset-class generalization**: CORE-trained Meridian, evaluated on TLT/GLD
-  (never trained on breadth assets), still beats calibrated HAR by 8.1%.
-- **Not yet extended to every cut**: the h=5/h=22 horizon and VIX-regime breakdowns in
-  `results/benchmark_vol.json` still use RAW (uncalibrated) numbers — recalibration wasn't wired
-  into those cuts in this round, so no horizon/regime win claim is made yet; that's the natural
-  next step, not a result being hidden.
-- **TimeMixer and GARCH/EWMA get *worse* relative to HAR after calibration** (TimeMixer +8.0%,
-  EWMA/GARCH +18-20%) — calibration doesn't mechanically help everyone equally; it corrects level
-  drift, and these three had comparatively more of it, or benefit from it less than HAR/Meridian's
-  quarterly-refit dynamics do.
+Conservative check against the **strongest** HAR form (raw per-asset HAR, which scores better than its calibrated version here): Meridian M0 alone -6.8% [-9.7, -4.5], DM p <0.001; combination -7.0% [-9.5, -4.9], DM p <0.001; Meridian beats HAR on 11/11 assets and in 14/15 calendar years (2012–2026). Full tables: `results/benchmark_vol.md`.
+<!-- BENCH:END -->
 
-**Methodology changes behind this table**, all disclosed *before* the corrected numbers were
-inspected, per `PREREGISTRATION.md` **Amendments 4 and 5**: wiring in the real neural core
-(replacing an old 4-coefficient OLS placeholder), fixing a benchmark-vs-production HAR feature
-inconsistency, HAR-anchored initialization, uniform post-hoc walk-forward recalibration, and the
-Ensemble_GR combination. Full numbers including the raw table, CORE+BREADTH cut, and horizon/regime
-breakdowns: `results/benchmark_vol.{json,csv}`.
+**Honest read:**
+- Meridian is the best single model on the holdout, ahead of every traditional model including
+  LightGBM, and the improvement over HAR holds on every asset and in nearly every year. Combining
+  it with HAR and LightGBM adds little on top of Meridian alone.
+- The point estimate clears the pre-registered 5% bar, but against the strongest HAR form the
+  95% interval reaches just below 5%: the improvement is clearly real; its size is uncertain.
+- The ML baselines (LightGBM, Ridge, HAR-X) are strong; the GARCH family, EWMA and TimeMixer are
+  worse than HAR on QLIKE.
+- **Hit rate does not separate the models**: almost all score ~66–68%, because volatility
+  persistence makes the up/down call easy. It is reported, not used as evidence of skill.
+- Three proposed Meridian improvements (per-asset HAR offset, asset embedding, early stopping)
+  did *not* beat the existing configuration on the development period — recorded in
+  `PREREGISTRATION.md` as a negative result.
+- Limits: daily OHLC range-based realized variance (no intraday data, so HARQ / jump / Realized
+  GARCH models are not tested); free delayed Yahoo/FRED data; a better volatility forecast is not
+  by itself a profitable trading strategy.
+
+**What the audit fixed** (all numbers from before it are withdrawn — see `RESULTS.md` labels):
+significance computed on stacked panel rows (vastly overstated), raw vs calibrated tables on
+different rows, a pooled HAR baseline instead of per-asset HAR, label leakage into test blocks
+for 5/22-day targets, full-sample scaling in TimeMixer, 1-day-stale EWMA/GARCH forecasts, and
+~500 invalid Yahoo FX price bars that read as zero volatility. `pytest tests/test_harness.py`
+checks the leakage, calibration and significance fixes.
 
 ## Layout
 
@@ -92,30 +90,35 @@ PREREGISTRATION.md        locked evaluation protocol + win criteria
 meridian/
   data.py                 Yahoo (daily OHLC) + FRED (VIX, yields), cached
   features.py             realized-variance estimators, HAR features, targets
-  evalproto.py            purged walk-forward, QLIKE, MZ-R2, Diebold-Mariano
+  evalproto.py            purged walk-forward, QLIKE, MZ-R2, walk-forward calibration/combination
+  scoring.py              benchmark statistics: date-level HAC DM, MCS, bootstrap CIs, IC, hit rate
+  lgbm_worker.py          LightGBM baseline (separate process: cannot share one with PyTorch-MPS)
   baselines.py            HAR-RV, AR(1), AR(3), EWMA, GARCH(1,1)
   model.py                SSM belief core + JEPA predictor + SIGReg + heads
   windows.py              leakage-safe windowing / scaling
   regimes.py              HMM + Meridian-belief regime metrics
 scripts/
+  benchmark_vol.py        audited benchmark: fits all models per fold, saves raw forecasts
+  score_vol_benchmark.py  scores saved forecasts -> results/benchmark_vol.json
+  render_benchmark_md.py  JSON -> results/benchmark_vol.md + README/MODEL_CARD summary blocks
   run_baselines.py        fit baselines -> results/baseline_predictions.parquet
   run_meridian.py         walk-forward train/eval -> meridian_predictions.parquet
   compare.py              volatility verdict vs HAR-RV (pre-registered)
   compare_regimes.py      regime verdict vs HMM
   fit_final.py            final model + demo_state.json for the live demo
 demo/                     self-contained market-state dashboard
+tests/test_harness.py     leakage / calibration / significance / data-cleaning tests
 ```
 
 ## Run it
 
 ```bash
-python3 -m venv --system-site-packages .venv && source .venv/bin/activate
-pip install statsmodels hmmlearn arch          # rest inherited from system
-python scripts/run_baselines.py
-python scripts/run_meridian.py
-python scripts/compare.py
-python scripts/compare_regimes.py
-python scripts/fit_final.py
+python3.12 -m venv .venv && source .venv/bin/activate
+pip install numpy pandas scipy scikit-learn torch pyarrow arch statsmodels hmmlearn lightgbm pytest
+python -m pytest tests/test_harness.py -q                 # harness correctness checks
+BENCH_VARIANTS=M0 BENCH_ENSEMBLE=5 python scripts/benchmark_vol.py   # ~20 min on Apple MPS
+python scripts/score_vol_benchmark.py results/benchmark_vol_predictions.parquet
+python scripts/render_benchmark_md.py                      # regenerates the tables in this README
 ```
 
 ## Provenance & relationship to prior work
@@ -138,5 +141,5 @@ python scripts/fit_final.py
 - **HAR-RV** — Corsi (2009), the volatility benchmark that is famously hard to beat.
 - Data is free/delayed (Yahoo, FRED) per project scope.
 
-See `RESULTS.md` for the current head-to-head numbers.
+Current head-to-head numbers: `results/benchmark_vol.md` (generated). `RESULTS.md` is a dated lab log; its sections are labeled as not reproduced or superseded.
 # RENWM
