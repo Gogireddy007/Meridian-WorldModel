@@ -1,0 +1,21 @@
+\begin{table}[!htbp]
+\centering
+\scriptsize
+\caption{Development-period ablation of the proposed Meridian improvements (3 seeds each). The selection rule picks the lowest development QLIKE.}
+\label{tab:ablation}
+\begin{tabularx}{\linewidth}{XXrr}
+\toprule
+\textbf{Candidate} & \textbf{Change tested} & \textbf{Dev QLIKE} & \textbf{vs HAR} \\
+\midrule
+\rowcolor{good}GR combo: HAR + LightGBM + Meridian M0 (pooled HAR anchor) & pooled HAR-anchored initialization (existing) & 0.3353 & $-10.4\%$ \\
+GR combo: HAR + LightGBM + Meridian M2 (M1 + asset embedding) & M1 + learned asset embedding & 0.3354 & $-10.3\%$ \\
+GR combo: HAR + LightGBM + Meridian M1 (per-asset HAR offset) & per-asset HAR offset + zero-init correction & 0.3356 & $-10.3\%$ \\
+GR combo: HAR + LightGBM + Meridian M3 (M1 + early stopping) & M1 + early stopping (purged validation slice) & 0.3381 & $-9.6\%$ \\
+Meridian M0 (pooled HAR anchor) & pooled HAR-anchored initialization (existing) & 0.3404 & $-9.0\%$ \\
+Meridian M2 (M1 + asset embedding) & M1 + learned asset embedding & 0.3430 & $-8.3\%$ \\
+Meridian M1 (per-asset HAR offset) & per-asset HAR offset + zero-init correction & 0.3432 & $-8.3\%$ \\
+Meridian M3 (M1 + early stopping) & M1 + early stopping (purged validation slice) & 0.3477 & $-7.1\%$ \\
+HAR-RV, per asset (reference) & reference & 0.3741 & $+0.0\%$ \\
+\bottomrule
+\end{tabularx}
+\end{table}

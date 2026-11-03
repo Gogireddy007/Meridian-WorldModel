@@ -1,0 +1,25 @@
+\begin{table}[!htbp]
+\centering
+\scriptsize
+\caption{Joint VaR + ES at 2.5\% (FZ0 loss, lower is better), holdout 2019-01-01 to 2026-06-29 (2,168 dates $\times$ 11 assets). Reference: GJR-GARCH + filtered historical simulation.}
+\label{tab:tailfz}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X r l r c r l r}
+\toprule
+\textbf{Model} & \textbf{FZ0} & \textbf{$\Delta$ vs reference [95\% CI]} & \textbf{DM $p$} & \textbf{MCS} & \textbf{Viol.\ \%} & \textbf{CC $\cdot$ DQ pass} & \textbf{ES ratio} \\
+\midrule
+\rowcolor{good}Meridian + FHS & -3.6394 & -0.1226 [-0.1530, -0.0959] & $<$0.001 & \checkmark & 2.54 & 11/11 $\cdot$ 10/11 & 0.97 \\
+\rowcolor{good}Meridian + EVT & -3.6387 & -0.1218 [-0.1533, -0.0949] & $<$0.001 & \checkmark & 2.49 & 11/11 $\cdot$ 10/11 & 0.98 \\
+HAR-RV + FHS & -3.6289 & -0.1182 [-0.1440, -0.0927] & $<$0.001 & \checkmark & 2.58 & 11/11 $\cdot$ 8/11 & 0.99 \\
+HAR-RV + EVT & -3.6284 & -0.1179 [-0.1449, -0.0912] & $<$0.001 & \checkmark & 2.57 & 11/11 $\cdot$ 7/11 & 0.99 \\
+\rowcolor{good}Meridian + FHS + adaptive conformal & -3.6257 & -0.1080 [-0.1448, -0.0782] & $<$0.001 &  & 2.47 & 11/11 $\cdot$ 11/11 & 0.98 \\
+LightGBM vol + FHS & -3.6208 & -0.1048 [-0.1306, -0.0796] & $<$0.001 &  & 2.58 & 11/11 $\cdot$ 10/11 & 0.98 \\
+GJR-GARCH-skewed-t & -3.5294 & -0.0013 [-0.0124, +0.0093] & 0.404 &  & 2.60 & 10/11 $\cdot$ 10/11 & 0.99 \\
+GJR-GARCH + EVT (McNeil-Frey) & -3.5290 & -0.0030 [-0.0054, -0.0007] & 0.007 &  & 2.67 & 11/11 $\cdot$ 11/11 & 0.98 \\
+GJR-GARCH + FHS (reference) & -3.5255 & --- & --- &  & 2.71 & 11/11 $\cdot$ 11/11 & 0.98 \\
+\rowcolor{bad}GARCH(1,1)-t & -3.5203 & +0.0067 [-0.0097, +0.0234] & 0.799 &  & 2.87 & 10/11 $\cdot$ 7/11 & 1.00 \\
+\rowcolor{bad}GARCH(1,1)-normal & -3.5049 & +0.0179 [-0.0036, +0.0427] & 0.951 &  & 3.01 & 9/11 $\cdot$ 7/11 & 1.14 \\
+\rowcolor{bad}RiskMetrics EWMA, normal & -3.4538 & +0.0626 [+0.0215, +0.1094] & 0.999 &  & 3.48 & 4/11 $\cdot$ 1/11 & 1.16 \\
+\rowcolor{bad}Historical simulation (500d) & -3.3320 & +0.1836 [+0.0660, +0.3735] & 0.997 &  & 2.80 & 5/11 $\cdot$ 1/11 & 1.07 \\
+\bottomrule
+\end{tabularx}
+\end{table}

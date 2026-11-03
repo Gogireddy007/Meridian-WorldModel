@@ -1,0 +1,26 @@
+\begin{table}[!htbp]
+\centering
+\footnotesize
+\caption{Data universe and data-quality repairs (Yahoo daily OHLC as used by the audited benchmark).}
+\label{tab:data}
+\begin{tabularx}{\linewidth}{llrllrr}
+\toprule
+\textbf{Asset} & \textbf{Class} & \textbf{Daily bars} & \textbf{First} & \textbf{Last} & \textbf{Stale bars dropped} & \textbf{Bars clipped} \\
+\midrule
+SPY & Equity / ETF & 4,925 & 2007-01-03 & 2026-07-31 & 0 & 0 \\
+QQQ & Equity / ETF & 4,925 & 2007-01-03 & 2026-07-31 & 0 & 0 \\
+IWM & Equity / ETF & 4,925 & 2007-01-03 & 2026-07-31 & 0 & 0 \\
+AAPL & Equity / ETF & 4,925 & 2007-01-03 & 2026-07-31 & 0 & 0 \\
+MSFT & Equity / ETF & 4,925 & 2007-01-03 & 2026-07-31 & 0 & 0 \\
+JPM & Equity / ETF & 4,925 & 2007-01-03 & 2026-07-31 & 0 & 0 \\
+XOM & Equity / ETF & 4,925 & 2007-01-03 & 2026-07-31 & 0 & 0 \\
+JNJ & Equity / ETF & 4,925 & 2007-01-03 & 2026-07-31 & 0 & 0 \\
+EURUSD & FX & 5,078 & 2007-01-01 & 2026-07-31 & 14 & 121 \\
+USDJPY & FX & 5,078 & 2007-01-01 & 2026-07-31 & 5 & 255 \\
+GBPUSD & FX & 5,090 & 2007-01-01 & 2026-07-31 & 17 & 93 \\
+TLT & Breadth (not trained on) & 4,925 & 2007-01-03 & 2026-07-31 & 0 & 0 \\
+GLD & Breadth (not trained on) & 4,925 & 2007-01-03 & 2026-07-31 & 0 & 0 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\begin{minipage}{\linewidth}\scriptsize Stale bar: high $\le$ low (open = high = low = close, no real quote). Clipped bar: open or close outside [low, high]; clipped into the range. Only the three FX pairs were affected.\end{minipage}
+\end{table}

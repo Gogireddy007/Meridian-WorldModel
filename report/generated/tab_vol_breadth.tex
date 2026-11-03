@@ -1,0 +1,28 @@
+\begin{table}[!htbp]
+\centering
+\scriptsize
+\caption{Out-of-universe check: TLT (long Treasuries) and GLD (gold), holdout. Pooled models (Meridian, Ridge, random forest, LightGBM, TimeMixer, pooled HAR) never trained on these assets.}
+\label{tab:volbreadth}
+\begin{tabularx}{\linewidth}{Xrlr}
+\toprule
+\textbf{Model (calibrated)} & \textbf{QLIKE} & \textbf{vs HAR [95\% CI]} & \textbf{DM $p$} \\
+\midrule
+\rowcolor{good}Meridian M0 (pooled HAR anchor) & 0.3086 & $-7.1\%$ [-12.4, -2.1] & 0.002 \\
+HAR-X (+VIX) & 0.3265 & $-1.7\%$ [-6.6, +1.9] & 0.181 \\
+HAR-RV, pooled & 0.3267 & $-1.6\%$ [-4.5, +1.1] & 0.110 \\
+Ridge & 0.3300 & $-0.6\%$ [-7.0, +4.8] & 0.405 \\
+HAR-RV, per asset (reference) & 0.3320 & $+0.0\%$  & --- \\
+SHAR (daily-sign semivariance) & 0.3323 & $+0.1\%$ [-0.4, +0.8] & 0.613 \\
+LHAR (leverage) & 0.3346 & $+0.8\%$ [-0.1, +1.8] & 0.931 \\
+Random forest & 0.3377 & $+1.7\%$ [-2.1, +5.9] & 0.822 \\
+LightGBM & 0.3473 & $+4.6\%$ [-0.4, +10.4] & 0.961 \\
+EWMA RiskMetrics $\lambda$=0.94 & 0.3594 & $+8.2\%$ [+4.2, +12.8] & 1.000 \\
+22-day mean RV & 0.3676 & $+10.7\%$ [+4.5, +17.7] & 1.000 \\
+TimeMixer & 0.3716 & $+11.9\%$ [+6.5, +17.5] & 1.000 \\
+GJR-GARCH(1,1) & 0.3861 & $+16.3\%$ [+6.4, +29.5] & 0.999 \\
+EGARCH(1,1) & 0.3877 & $+16.8\%$ [+5.6, +32.2] & 0.995 \\
+GARCH(1,1) & 0.3899 & $+17.4\%$ [+7.0, +31.2] & 0.999 \\
+Random walk (log RV\_t) & 0.4001 & $+20.5\%$ [+11.4, +29.9] & 1.000 \\
+\bottomrule
+\end{tabularx}
+\end{table}

@@ -1,0 +1,25 @@
+\begin{table}[!htbp]
+\centering
+\scriptsize
+\caption{Tail benchmark, development period (used only to choose the Meridian tail variant), 2.5\%.}
+\label{tab:taildev}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X r l r c r l r}
+\toprule
+\textbf{Model} & \textbf{FZ0} & \textbf{$\Delta$ vs reference [95\% CI]} & \textbf{DM $p$} & \textbf{MCS} & \textbf{Viol.\ \%} & \textbf{CC $\cdot$ DQ pass} & \textbf{ES ratio} \\
+\midrule
+HAR-RV + FHS & -3.7832 & -0.0998 [-0.1247, -0.0724] & $<$0.001 & \checkmark & 2.61 & 10/11 $\cdot$ 7/11 & 1.04 \\
+HAR-RV + EVT & -3.7830 & -0.0981 [-0.1230, -0.0710] & $<$0.001 & \checkmark & 2.46 & 9/11 $\cdot$ 8/11 & 1.04 \\
+\rowcolor{good}Meridian + EVT & -3.7753 & -0.0865 [-0.1159, -0.0585] & $<$0.001 & \checkmark & 2.47 & 10/11 $\cdot$ 9/11 & 1.04 \\
+\rowcolor{good}Meridian + FHS & -3.7746 & -0.0862 [-0.1164, -0.0573] & $<$0.001 & \checkmark & 2.63 & 10/11 $\cdot$ 8/11 & 1.03 \\
+\rowcolor{good}Meridian + FHS + adaptive conformal & -3.7547 & -0.0677 [-0.0976, -0.0393] & $<$0.001 &  & 2.53 & 10/11 $\cdot$ 9/11 & 1.04 \\
+LightGBM vol + FHS & -3.7514 & -0.0595 [-0.0850, -0.0327] & $<$0.001 &  & 2.68 & 11/11 $\cdot$ 9/11 & 1.03 \\
+GJR-GARCH + EVT (McNeil-Frey) & -3.7034 & -0.0002 [-0.0027, +0.0024] & 0.452 &  & 2.23 & 9/11 $\cdot$ 9/11 & 1.05 \\
+GJR-GARCH + FHS (reference) & -3.7016 & --- & --- &  & 2.33 & 9/11 $\cdot$ 9/11 & 1.03 \\
+\rowcolor{bad}GJR-GARCH-skewed-t & -3.6911 & +0.0161 [-0.0003, +0.0293] & 0.983 &  & 1.88 & 5/11 $\cdot$ 8/11 & 1.05 \\
+\rowcolor{bad}GARCH(1,1)-t & -3.6842 & +0.0204 [+0.0087, +0.0329] & 0.999 &  & 2.21 & 8/11 $\cdot$ 10/11 & 1.06 \\
+\rowcolor{bad}GARCH(1,1)-normal & -3.6804 & +0.0187 [+0.0036, +0.0379] & 0.980 &  & 2.33 & 10/11 $\cdot$ 9/11 & 1.18 \\
+\rowcolor{bad}RiskMetrics EWMA, normal & -3.6207 & +0.0676 [+0.0230, +0.1249] & 0.995 &  & 3.26 & 5/11 $\cdot$ 3/11 & 1.21 \\
+\rowcolor{bad}Historical simulation (500d) & -3.5578 & +0.1409 [+0.0936, +0.1979] & 1.000 &  & 2.84 & 4/11 $\cdot$ 0/11 & 1.04 \\
+\bottomrule
+\end{tabularx}
+\end{table}

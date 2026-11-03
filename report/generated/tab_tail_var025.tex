@@ -1,0 +1,26 @@
+\begin{table}[!htbp]
+\centering
+\scriptsize
+\caption{VaR at 2.5\%: quantile loss on returns scaled per asset, holdout.}
+\label{tab:tailvar025}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X r l r c r l}
+\toprule
+\textbf{Model} & \textbf{Loss $\times10^3$} & \textbf{vs reference [95\% CI]} & \textbf{DM $p$} & \textbf{MCS} & \textbf{Viol.\ \% (target 2.5)} & \textbf{Kupiec $\cdot$ CC $\cdot$ DQ pass (of 11)} \\
+\midrule
+\rowcolor{good}Meridian + FHS & 45.54 & $-7.4\%$ [-9.6, -5.2] & $<$0.001 & \checkmark & 2.54 & 11 $\cdot$ 11 $\cdot$ 10 \\
+\rowcolor{good}Meridian + EVT & 45.54 & $-7.4\%$ [-9.7, -5.1] & $<$0.001 & \checkmark & 2.49 & 11 $\cdot$ 11 $\cdot$ 10 \\
+LightGBM vol + FHS & 46.10 & $-6.3\%$ [-8.4, -4.0] & $<$0.001 &  & 2.58 & 11 $\cdot$ 11 $\cdot$ 10 \\
+\rowcolor{good}Meridian + FHS + adaptive conformal & 46.11 & $-6.2\%$ [-9.4, -3.5] & $<$0.001 &  & 2.47 & 11 $\cdot$ 11 $\cdot$ 11 \\
+HAR-RV + FHS & 46.46 & $-5.5\%$ [-8.0, -2.7] & $<$0.001 & \checkmark & 2.58 & 11 $\cdot$ 11 $\cdot$ 8 \\
+HAR-RV + EVT & 46.56 & $-5.3\%$ [-8.1, -2.2] & $<$0.001 & \checkmark & 2.57 & 11 $\cdot$ 11 $\cdot$ 7 \\
+GJR-GARCH-skewed-t & 48.89 & $-0.6\%$ [-2.3, +0.7] & 0.231 &  & 2.60 & 10 $\cdot$ 10 $\cdot$ 10 \\
+GJR-GARCH + EVT (McNeil-Frey) & 49.04 & $-0.3\%$ [-0.5, -0.1] & 0.005 &  & 2.67 & 11 $\cdot$ 11 $\cdot$ 11 \\
+CAViaR asymmetric slope & 49.09 & $-0.2\%$ [-1.6, +1.3] & 0.730 &  & 2.57 & 8 $\cdot$ 9 $\cdot$ 9 \\
+GJR-GARCH + FHS (reference) & 49.18 & $+0.0\%$  & --- &  & 2.71 & 11 $\cdot$ 11 $\cdot$ 11 \\
+GARCH(1,1)-normal & 49.36 & $+0.4\%$ [-1.0, +2.1] & 0.684 &  & 3.01 & 6 $\cdot$ 9 $\cdot$ 7 \\
+GARCH(1,1)-t & 49.41 & $+0.5\%$ [-0.8, +1.9] & 0.780 &  & 2.87 & 8 $\cdot$ 10 $\cdot$ 7 \\
+RiskMetrics EWMA, normal & 50.84 & $+3.4\%$ [+0.4, +7.2] & 0.979 &  & 3.48 & 3 $\cdot$ 4 $\cdot$ 1 \\
+Historical simulation (500d) & 56.55 & $+15.0\%$ [+3.9, +31.6] & 0.987 &  & 2.80 & 11 $\cdot$ 5 $\cdot$ 1 \\
+\bottomrule
+\end{tabularx}
+\end{table}

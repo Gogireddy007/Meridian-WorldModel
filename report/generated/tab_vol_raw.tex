@@ -1,0 +1,28 @@
+\begin{table}[!htbp]
+\centering
+\scriptsize
+\caption{Raw (uncalibrated) forecasts on the holdout, reference = raw per-asset HAR-RV.}
+\label{tab:volraw}
+\begin{tabularx}{\linewidth}{X l r l r r}
+\toprule
+\textbf{Model (raw, uncalibrated)} & \textbf{Family} & \textbf{QLIKE} & \textbf{vs raw HAR [95\% CI]} & \textbf{DM $p$} & \textbf{Won} \\
+\midrule
+\rowcolor{good}Meridian M0 (pooled HAR anchor) & Meridian & 0.3029 & $-6.8\%$ [-9.7, -4.5] & $<$0.001 & 11/11 \\
+HAR-X (+VIX) & HAR & 0.3119 & $-4.0\%$ [-5.7, -2.5] & $<$0.001 & 10/11 \\
+Ridge & ML & 0.3133 & $-3.6\%$ [-6.2, -1.3] & $<$0.001 & 10/11 \\
+LightGBM & ML & 0.3137 & $-3.4\%$ [-6.3, -1.4] & 0.003 & 10/11 \\
+LHAR (leverage) & HAR & 0.3159 & $-2.8\%$ [-4.8, -1.3] & 0.001 & 10/11 \\
+Random forest & ML & 0.3195 & $-1.7\%$ [-4.0, +0.2] & 0.039 & 8/11 \\
+SHAR (daily-sign semivariance) & HAR & 0.3218 & $-0.9\%$ [-1.6, -0.4] & 0.008 & 7/11 \\
+HAR-RV, per asset (reference) & HAR & 0.3249 & $+0.0\%$  & --- & 0/11 \\
+HAR-RV, pooled & HAR & 0.3285 & $+1.1\%$ [+0.4, +1.6] & 1.000 & 2/11 \\
+TimeMixer & Deep & 0.3570 & $+9.9\%$ [+6.5, +13.9] & 1.000 & 0/11 \\
+EWMA RiskMetrics $\lambda$=0.94 & Naive & 0.3627 & $+11.6\%$ [+6.2, +18.0] & 1.000 & 2/11 \\
+22-day mean RV & Naive & 0.3779 & $+16.3\%$ [+10.6, +22.4] & 1.000 & 0/11 \\
+EGARCH(1,1) & GARCH & 0.4218 & $+29.8\%$ [+25.1, +34.4] & 1.000 & 0/11 \\
+GJR-GARCH(1,1) & GARCH & 0.4230 & $+30.2\%$ [+25.8, +34.2] & 1.000 & 0/11 \\
+GARCH(1,1) & GARCH & 0.4307 & $+32.6\%$ [+28.2, +37.0] & 1.000 & 0/11 \\
+Random walk (log RV\_t) & Naive & 0.5205 & $+60.2\%$ [+46.9, +69.5] & 1.000 & 0/11 \\
+\bottomrule
+\end{tabularx}
+\end{table}

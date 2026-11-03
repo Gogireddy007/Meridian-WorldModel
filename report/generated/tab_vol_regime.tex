@@ -1,0 +1,21 @@
+\begin{table}[!htbp]
+\centering
+\small
+\caption{QLIKE change vs calibrated per-asset HAR by VIX tercile, full out-of-sample period (2012-08-13 to 2026-06-28); DM $p$ in brackets.}
+\label{tab:volregime}
+\begin{tabularx}{\linewidth}{Xlll}
+\toprule
+\textbf{Model} & \textbf{Calm} & \textbf{Normal} & \textbf{Stress} \\
+\midrule
+\rowcolor{good}Meridian M0 (pooled HAR anchor) & $-4.1\%$ ($<$0.001) & $-5.2\%$ ($<$0.001) & $-14.1\%$ (0.009) \\
+\rowcolor{good}GR combo: HAR + LightGBM + Meridian M0 (pooled HAR anchor) & $-4.9\%$ ($<$0.001) & $-6.4\%$ (0.034) & $-15.3\%$ (0.005) \\
+LightGBM & $-2.9\%$ ($<$0.001) & $-4.1\%$ (0.203) & $-10.9\%$ (0.004) \\
+HAR-X (+VIX) & $-1.8\%$ ($<$0.001) & $-2.8\%$ ($<$0.001) & $-9.6\%$ (0.004) \\
+Ridge & $-1.6\%$ ($<$0.001) & $-2.6\%$ ($<$0.001) & $-10.7\%$ (0.010) \\
+LHAR (leverage) & $-1.2\%$ ($<$0.001) & $-2.2\%$ ($<$0.001) & $-7.1\%$ (0.035) \\
+TimeMixer & $+2.6\%$ (0.975) & $+1.5\%$ (0.869) & $+3.3\%$ (0.931) \\
+GJR-GARCH(1,1) & $+9.6\%$ (1.000) & $+8.1\%$ (1.000) & $+12.9\%$ (0.984) \\
+EWMA RiskMetrics $\lambda$=0.94 & $+6.2\%$ (1.000) & $+9.0\%$ (1.000) & $+26.9\%$ (0.999) \\
+\bottomrule
+\end{tabularx}
+\end{table}
