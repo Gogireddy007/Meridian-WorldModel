@@ -49,7 +49,7 @@ def fetch():
     import io
     FDATA.mkdir(parents=True, exist_ok=True)
     for name, sym in ({s: s for s in EQUITIES} | FX | BREADTH).items():
-        fetch_yahoo(sym).to_parquet(FDATA / f"px_{name}.parquet")
+        complete_bars(fetch_yahoo(sym)).to_parquet(FDATA / f"px_{name}.parquet")
     cols = {}
     for s in FRED_SERIES:
         # FRED stalls requests with a browser user agent (meridian.data._get); plain curl works
@@ -61,6 +61,15 @@ def fetch():
         ser = pd.to_numeric(df.set_index(df.columns[0])[s], errors="coerce").dropna()
         cols[s] = ser[ser.index >= pd.Timestamp(mdata.DEFAULT_START)]
     pd.DataFrame(cols).sort_index().to_parquet(FDATA / "macro.parquet")
+
+
+def complete_bars(df):
+    """Drop the bar of the current New York trading day until 17:00 ET (FX day end; equities
+    close at 16:00). Yahoo returns a partial bar for a day still in progress, which must
+    never become a forecast origin or an outcome."""
+    now = pd.Timestamp.now(tz="America/New_York")
+    last_complete = now.normalize().tz_localize(None) - (pd.Timedelta(0) if now.hour >= 17 else pd.Timedelta(days=1))
+    return df[df.index <= last_complete]
 
 
 def use_snapshot():

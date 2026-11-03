@@ -22,3 +22,12 @@ data/futures/
 !results/benchmark_vol_predictions.parquet
 !results/benchmark_vol_predictions_ablation.parquet
 !results/benchmark_tail_predictions.parquet
+
+# LaTeX build files
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
+report/*.fls
+report/*.fdb_latexmk
+report/build.log
