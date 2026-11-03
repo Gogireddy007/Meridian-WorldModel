@@ -31,3 +31,5 @@ report/*.toc
 report/*.fls
 report/*.fdb_latexmk
 report/build.log
+report/arch_build.log
+report/*.pdf
