@@ -91,3 +91,15 @@ def test_saved_predictions_are_out_of_sample():
         assert (P["target_date"] > P["date"]).all()
         bf = meta["snapshots"][s]["baseline_fit"]
         assert pd.Timestamp(bf["train_label_end_max"]) <= cut
+
+
+def test_forward_test_drops_in_progress_bars():
+    from scripts.forward_test import complete_bars
+    idx = pd.to_datetime(["2026-11-03", "2026-11-04", "2026-11-05"])
+    df = pd.DataFrame({"close": [1.0, 2.0, 3.0]}, index=idx)
+    at = pd.Timestamp("2026-11-04 23:30", tz="UTC")              # 18:30 New York
+    assert complete_bars(df, fx=False, now=at).index.max() == pd.Timestamp("2026-11-04")
+    assert complete_bars(df, fx=True, now=at).index.max() == pd.Timestamp("2026-11-03")
+    at = pd.Timestamp("2026-11-05 01:47", tz="UTC")              # 20:47 New York (scheduled run)
+    assert complete_bars(df, fx=True, now=at).index.max() == pd.Timestamp("2026-11-04")
+    assert complete_bars(df, fx=False, now=at).index.max() == pd.Timestamp("2026-11-04")

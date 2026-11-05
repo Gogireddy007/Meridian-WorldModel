@@ -311,6 +311,8 @@ def r1():
     _, mean, std, har, models = dfz.load_A()
     log = pd.read_csv(ROOT / "results" / "forward" / "forecast_log.csv", parse_dates=["origin_date", "logged_at_utc"])
     log = log[log["precommitted"]]
+    covered = {a: o.index.max() for a, o in d["prices"].items()}     # forecasts after the snapshot's
+    log = log[[t <= covered.get(a, pd.Timestamp.min) for a, t in zip(log["asset"], log["origin_date"])]]
     P = pd.read_parquet(DEP / "predictions_A.parquet").set_index(["asset", "date"])
     rows, w_vintage, w_har, w_deployed = 0, 0.0, 0.0, 0.0
     for _, r in log.iterrows():
