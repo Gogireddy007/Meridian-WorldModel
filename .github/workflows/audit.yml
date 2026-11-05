@@ -1,0 +1,39 @@
+# Runs on every push and pull request: the harness tests plus the full, offline audit of the
+# frozen-model deployment (scripts/audit_deploy.py). The job fails if any audit check FAILs,
+# so a leak, a retrained weight file, or a report number that no longer matches its JSON
+# cannot be merged silently. Uses only committed data (results/deploy/data/); no network.
+name: audit
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # W1 compares weights with git HEAD; T4/W1 read file history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements-ci.txt
+      - name: Tests
+        run: python -m pytest tests -q
+      - name: Deployment audit (fails on any FAIL)
+        run: python scripts/audit_deploy.py
+      - name: Audit report must be committed as generated
+        run: |
+          git diff --exit-code -- DEPLOYMENT.md README.md || (echo "report differs from a fresh render" && exit 1)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: audit-report
+          path: results/deploy/audit_report.*
