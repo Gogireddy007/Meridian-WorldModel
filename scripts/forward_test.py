@@ -49,7 +49,7 @@ def fetch():
     import io
     FDATA.mkdir(parents=True, exist_ok=True)
     for name, sym in ({s: s for s in EQUITIES} | FX | BREADTH).items():
-        complete_bars(fetch_yahoo(sym)).to_parquet(FDATA / f"px_{name}.parquet")
+        complete_bars(fetch_yahoo(sym), fx=name in FX).to_parquet(FDATA / f"px_{name}.parquet")
     cols = {}
     for s in FRED_SERIES:
         # FRED stalls requests with a browser user agent (meridian.data._get); plain curl works
@@ -63,12 +63,16 @@ def fetch():
     pd.DataFrame(cols).sort_index().to_parquet(FDATA / "macro.parquet")
 
 
-def complete_bars(df):
-    """Drop the bar of the current New York trading day until 17:00 ET (FX day end; equities
-    close at 16:00). Yahoo returns a partial bar for a day still in progress, which must
-    never become a forecast origin or an outcome."""
-    now = pd.Timestamp.now(tz="America/New_York")
-    last_complete = now.normalize().tz_localize(None) - (pd.Timedelta(0) if now.hour >= 17 else pd.Timedelta(days=1))
+def complete_bars(df, fx=False, now=None):
+    """Drop a bar whose day is still in progress: Yahoo returns a partial bar for it, which
+    must never become a forecast origin or an outcome. Equity bars are New York days
+    (complete from 17:00 ET); Yahoo FX bars are UTC days (complete from 00:00 UTC next day)."""
+    now = pd.Timestamp.now(tz="UTC") if now is None else pd.Timestamp(now).tz_convert("UTC")
+    if fx:
+        last_complete = now.tz_localize(None).normalize() - pd.Timedelta(days=1)
+    else:
+        ny = now.tz_convert("America/New_York")
+        last_complete = ny.normalize().tz_localize(None) - (pd.Timedelta(0) if ny.hour >= 17 else pd.Timedelta(days=1))
     return df[df.index <= last_complete]
 
 

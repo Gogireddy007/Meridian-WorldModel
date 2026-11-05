@@ -1,0 +1,2882 @@
+{
+  "deploy_meta": {
+    "run_at_utc": "2026-11-05T00:35:25+00:00",
+    "git_commit": "e6494aa",
+    "data_last_target": "2026-11-04"
+  },
+  "snapshots": {
+    "A": {
+      "name": "Meridian M0 forward-frozen (audited config, 5 seeds)",
+      "train_label_end_max": "2026-10-30",
+      "windows": {
+        "Nov-2026": {
+          "core": {
+            "models": {
+              "Meridian_M0": {
+                "QLIKE": 0.2853426168283866,
+                "RMSE_log": 0.8345570379207002,
+                "pct_vs_ref": -0.08626570615591289,
+                "assets_beating_ref": 8,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 2
+              },
+              "Meridian_M0_rtvix": {
+                "QLIKE": 0.27633553860572524,
+                "RMSE_log": 0.7902608198155398,
+                "pct_vs_ref": -0.11510849294626369,
+                "assets_beating_ref": 9,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 1
+              },
+              "HAR_frozen": {
+                "QLIKE": 0.3122818293575782,
+                "RMSE_log": 0.842456732553237,
+                "pct_vs_ref": -5.551115123125783e-16,
+                "assets_beating_ref": 6,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 9
+              },
+              "HAR": {
+                "QLIKE": 0.31228182935757837,
+                "RMSE_log": 0.8424567325532372,
+                "pct_vs_ref": 0.0,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 10
+              },
+              "HAR_pooled": {
+                "QLIKE": 0.3122672039816835,
+                "RMSE_log": 0.8377977482955024,
+                "pct_vs_ref": -4.6833899766007825e-05,
+                "assets_beating_ref": 5,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 8
+              },
+              "LHAR": {
+                "QLIKE": 0.2952848675317889,
+                "RMSE_log": 0.8325754822773828,
+                "pct_vs_ref": -0.054428276729246106,
+                "assets_beating_ref": 8,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 5
+              },
+              "SHAR": {
+                "QLIKE": 0.30937117088550264,
+                "RMSE_log": 0.8541095183913365,
+                "pct_vs_ref": -0.009320614260725613,
+                "assets_beating_ref": 8,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 7
+              },
+              "HARX": {
+                "QLIKE": 0.32000941048707043,
+                "RMSE_log": 0.8741114255938609,
+                "pct_vs_ref": 0.024745535612459957,
+                "assets_beating_ref": 6,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 11
+              },
+              "Ridge": {
+                "QLIKE": 0.2908484834943694,
+                "RMSE_log": 0.8464311707590727,
+                "pct_vs_ref": -0.06863462375413043,
+                "assets_beating_ref": 8,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 4
+              },
+              "RandomForest": {
+                "QLIKE": 0.2867888205815256,
+                "RMSE_log": 0.8124194160967269,
+                "pct_vs_ref": -0.08163462097201302,
+                "assets_beating_ref": 9,
+                "dates_beating_ref": 3,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 3
+              },
+              "LightGBM": {
+                "QLIKE": 0.30829622928687195,
+                "RMSE_log": 0.8510695307394202,
+                "pct_vs_ref": -0.012762830546066417,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 6
+              },
+              "TimeMixer": {
+                "QLIKE": 0.32120673878975875,
+                "RMSE_log": 0.8335706164363554,
+                "pct_vs_ref": 0.028579662961948804,
+                "assets_beating_ref": 5,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 12
+              },
+              "RW": {
+                "QLIKE": 0.5522300981159046,
+                "RMSE_log": 1.248568390667329,
+                "pct_vs_ref": 0.7683708951364361,
+                "assets_beating_ref": 2,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 18
+              },
+              "MA22": {
+                "QLIKE": 0.3478230834576871,
+                "RMSE_log": 0.8243702371447731,
+                "pct_vs_ref": 0.1138114701493318,
+                "assets_beating_ref": 5,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 13
+              },
+              "EWMA": {
+                "QLIKE": 0.3577136165481538,
+                "RMSE_log": 0.8224796170389361,
+                "pct_vs_ref": 0.14548328759325213,
+                "assets_beating_ref": 3,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 14
+              },
+              "GARCH": {
+                "QLIKE": 0.45839957044013435,
+                "RMSE_log": 0.9658703108560026,
+                "pct_vs_ref": 0.4679034364027752,
+                "assets_beating_ref": 5,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 17
+              },
+              "GJR_GARCH": {
+                "QLIKE": 0.43291935768593054,
+                "RMSE_log": 0.9919477495044416,
+                "pct_vs_ref": 0.3863097913078257,
+                "assets_beating_ref": 4,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 16
+              },
+              "EGARCH": {
+                "QLIKE": 0.4117590114421932,
+                "RMSE_log": 1.0057443226959883,
+                "pct_vs_ref": 0.3185493766616452,
+                "assets_beating_ref": 3,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 15
+              }
+            },
+            "meta": {
+              "n_rows": 33,
+              "n_dates": 3,
+              "n_assets": 11,
+              "target_range": [
+                "2026-11-02",
+                "2026-11-04"
+              ],
+              "ref": "HAR",
+              "bootstrap_block": 1,
+              "tests_run": false,
+              "note": "DM test and CI need >= 20 target dates; not computed"
+            },
+            "per_asset": {
+              "AAPL": {
+                "Meridian_M0": 0.14195024040006357,
+                "Meridian_M0_rtvix": 0.13292393525568205,
+                "HAR_frozen": 0.17594758844876401,
+                "HAR": 0.17594758844876165,
+                "HAR_pooled": 0.16682106924251583,
+                "LHAR": 0.12030045708018733,
+                "SHAR": 0.15247862202472273,
+                "HARX": 0.15842170443254067,
+                "Ridge": 0.09805349257045304,
+                "RandomForest": 0.12020033896020459,
+                "LightGBM": 0.10948689516390549,
+                "TimeMixer": 0.14841639444731305,
+                "RW": 0.3924696192847459,
+                "MA22": 0.3931842108456613,
+                "EWMA": 0.32325699556771054,
+                "GARCH": 0.5806131222412595,
+                "GJR_GARCH": 0.3780389120020367,
+                "EGARCH": 0.19656200461064222
+              },
+              "EURUSD": {
+                "Meridian_M0": 0.3414618248162898,
+                "Meridian_M0_rtvix": 0.32818344334314337,
+                "HAR_frozen": 0.3353550068335351,
+                "HAR": 0.33535500683353486,
+                "HAR_pooled": 0.3744242719245161,
+                "LHAR": 0.3364746291295729,
+                "SHAR": 0.33449226068293064,
+                "HARX": 0.33722779114129864,
+                "Ridge": 0.37861958818492175,
+                "RandomForest": 0.3153597220516429,
+                "LightGBM": 0.30881969254637115,
+                "TimeMixer": 0.4182248429348839,
+                "RW": 0.9864242421281958,
+                "MA22": 0.2912165986577395,
+                "EWMA": 0.3431720391522133,
+                "GARCH": 0.4102509667283694,
+                "GJR_GARCH": 0.3925386520160383,
+                "EGARCH": 0.3766201145392467
+              },
+              "GBPUSD": {
+                "Meridian_M0": 0.2699854051651301,
+                "Meridian_M0_rtvix": 0.23500637347673012,
+                "HAR_frozen": 0.2592259230499689,
+                "HAR": 0.25922592304996933,
+                "HAR_pooled": 0.2627187503820312,
+                "LHAR": 0.2520401292385505,
+                "SHAR": 0.25586235158952425,
+                "HARX": 0.2780167257543195,
+                "Ridge": 0.2719520522599781,
+                "RandomForest": 0.2341705960749386,
+                "LightGBM": 0.26001753436860725,
+                "TimeMixer": 0.26141418817193357,
+                "RW": 0.5875739636385139,
+                "MA22": 0.2550606634917428,
+                "EWMA": 0.20238272802284843,
+                "GARCH": 0.77762159047064,
+                "GJR_GARCH": 0.7580126953285219,
+                "EGARCH": 0.8412491010643529
+              },
+              "IWM": {
+                "Meridian_M0": 0.1447927605860321,
+                "Meridian_M0_rtvix": 0.11753703853687163,
+                "HAR_frozen": 0.16030334780835634,
+                "HAR": 0.16030334780835465,
+                "HAR_pooled": 0.16369516450183244,
+                "LHAR": 0.16436024578262157,
+                "SHAR": 0.21081120888998264,
+                "HARX": 0.15261920961729825,
+                "Ridge": 0.15974594700115374,
+                "RandomForest": 0.14879683535435614,
+                "LightGBM": 0.1505833397657875,
+                "TimeMixer": 0.1235132685291287,
+                "RW": 0.4224008433997915,
+                "MA22": 0.17580907384225833,
+                "EWMA": 0.2085258032466691,
+                "GARCH": 0.14628639502205543,
+                "GJR_GARCH": 0.1344335782987327,
+                "EGARCH": 0.13613948070023532
+              },
+              "JNJ": {
+                "Meridian_M0": 0.1396363943265503,
+                "Meridian_M0_rtvix": 0.11414102622262516,
+                "HAR_frozen": 0.23184206227726079,
+                "HAR": 0.2318420622772598,
+                "HAR_pooled": 0.16881149139471185,
+                "LHAR": 0.21579283591227746,
+                "SHAR": 0.20000062132425925,
+                "HARX": 0.3047845963015044,
+                "Ridge": 0.19959527596441454,
+                "RandomForest": 0.16467496455041633,
+                "LightGBM": 0.2977910738598247,
+                "TimeMixer": 0.1078651980337854,
+                "RW": 0.1665155792890106,
+                "MA22": 0.17039159268724888,
+                "EWMA": 0.23332810897935605,
+                "GARCH": 0.3030671339226732,
+                "GJR_GARCH": 0.2775431965574064,
+                "EGARCH": 0.2351033705773312
+              },
+              "JPM": {
+                "Meridian_M0": 0.4717750159217391,
+                "Meridian_M0_rtvix": 0.41200165985244347,
+                "HAR_frozen": 0.5071275204347375,
+                "HAR": 0.50712752043474,
+                "HAR_pooled": 0.5037206245293965,
+                "LHAR": 0.5013962840372262,
+                "SHAR": 0.5013982890761501,
+                "HARX": 0.45246919260886687,
+                "Ridge": 0.45847723129533696,
+                "RandomForest": 0.46176879405770593,
+                "LightGBM": 0.45172893972409467,
+                "TimeMixer": 0.5239651794448049,
+                "RW": 0.8480906243909438,
+                "MA22": 0.4701141058978004,
+                "EWMA": 0.47323411972409607,
+                "GARCH": 0.49956970538944284,
+                "GJR_GARCH": 0.47570315211873804,
+                "EGARCH": 0.4446372967507533
+              },
+              "MSFT": {
+                "Meridian_M0": 0.31397197960775336,
+                "Meridian_M0_rtvix": 0.42128746454574567,
+                "HAR_frozen": 0.3404009482150203,
+                "HAR": 0.3404009482150217,
+                "HAR_pooled": 0.32766404992941295,
+                "LHAR": 0.3930769388939837,
+                "SHAR": 0.3053229944177293,
+                "HARX": 0.38063778876931126,
+                "Ridge": 0.3350184091321475,
+                "RandomForest": 0.323994857517054,
+                "LightGBM": 0.3754243302591882,
+                "TimeMixer": 0.26642450292635783,
+                "RW": 0.3568927183022513,
+                "MA22": 0.5310141098823792,
+                "EWMA": 0.46496556683062756,
+                "GARCH": 1.1792638491955396,
+                "GJR_GARCH": 0.9841843455705656,
+                "EGARCH": 0.8075592870012275
+              },
+              "QQQ": {
+                "Meridian_M0": 0.36678612462862636,
+                "Meridian_M0_rtvix": 0.36478569518947596,
+                "HAR_frozen": 0.45748101095486726,
+                "HAR": 0.457481010954868,
+                "HAR_pooled": 0.4583115540518435,
+                "LHAR": 0.3567929123854065,
+                "SHAR": 0.49737543616040547,
+                "HARX": 0.42606653308353454,
+                "Ridge": 0.3885950822970954,
+                "RandomForest": 0.48035714016529374,
+                "LightGBM": 0.45443713924433343,
+                "TimeMixer": 0.35092765919206687,
+                "RW": 0.9650890369822348,
+                "MA22": 0.4925550296403454,
+                "EWMA": 0.5849428914376034,
+                "GARCH": 0.3141377529730201,
+                "GJR_GARCH": 0.4458413741502891,
+                "EGARCH": 0.46167245641737975
+              },
+              "SPY": {
+                "Meridian_M0": 0.32127540731189247,
+                "Meridian_M0_rtvix": 0.36197139889599006,
+                "HAR_frozen": 0.26676153044177475,
+                "HAR": 0.26676153044177564,
+                "HAR_pooled": 0.28104872323039154,
+                "LHAR": 0.23490335150209973,
+                "SHAR": 0.2608718566420892,
+                "HARX": 0.3401717967012234,
+                "Ridge": 0.26038777953314723,
+                "RandomForest": 0.2626845742013015,
+                "LightGBM": 0.2482441139450502,
+                "TimeMixer": 0.2720958276686525,
+                "RW": 0.44779050161832995,
+                "MA22": 0.34944579025580347,
+                "EWMA": 0.40487922340552845,
+                "GARCH": 0.24118686399061842,
+                "GJR_GARCH": 0.33966271578984636,
+                "EGARCH": 0.43151976647218976
+              },
+              "USDJPY": {
+                "Meridian_M0": 0.38505094797530753,
+                "Meridian_M0_rtvix": 0.35945015734817803,
+                "HAR_frozen": 0.4243555842809776,
+                "HAR": 0.42435558428097847,
+                "HAR_pooled": 0.45899531187096493,
+                "LHAR": 0.42255086265338115,
+                "SHAR": 0.43947422760838517,
+                "HARX": 0.4186391601338448,
+                "Ridge": 0.4278481368740778,
+                "RandomForest": 0.4421363476953603,
+                "LightGBM": 0.4985310745572495,
+                "TimeMixer": 0.6600438734106733,
+                "RW": 0.6638928242456675,
+                "MA22": 0.43364777723894016,
+                "EWMA": 0.4066208958416302,
+                "GARCH": 0.43007305159635195,
+                "GJR_GARCH": 0.42512555518326495,
+                "EGARCH": 0.4552217159225054
+              },
+              "XOM": {
+                "Meridian_M0": 0.2420826843728677,
+                "Meridian_M0_rtvix": 0.19240273199609184,
+                "HAR_frozen": 0.276299600188098,
+                "HAR": 0.276299600188098,
+                "HAR_pooled": 0.2687282327409024,
+                "LHAR": 0.25044489623437066,
+                "SHAR": 0.24499501132434962,
+                "HARX": 0.27104901681403254,
+                "Ridge": 0.22104032332533805,
+                "RandomForest": 0.20053285576850755,
+                "LightGBM": 0.2361943887211794,
+                "TimeMixer": 0.40038319192774613,
+                "RW": 0.23739112599526635,
+                "MA22": 0.2636149655946378,
+                "EWMA": 0.28954140982140886,
+                "GARCH": 0.16032484331150712,
+                "GJR_GARCH": 0.1510287575297955,
+                "EGARCH": 0.1430645318082604
+              }
+            }
+          },
+          "breadth": {
+            "models": {
+              "Meridian_M0": {
+                "QLIKE": 0.3214656902488174,
+                "RMSE_log": 0.9378356897021689,
+                "pct_vs_ref": 0.6343611687373214,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 13
+              },
+              "Meridian_M0_rtvix": {
+                "QLIKE": 0.28024755349474545,
+                "RMSE_log": 0.8645686440152331,
+                "pct_vs_ref": 0.4248043662480159,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 10
+              },
+              "HAR_frozen": {
+                "QLIKE": 0.1966919530382475,
+                "RMSE_log": 0.6770765927940731,
+                "pct_vs_ref": -2.6645352591003757e-15,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 4
+              },
+              "HAR": {
+                "QLIKE": 0.19669195303824802,
+                "RMSE_log": 0.6770765927940743,
+                "pct_vs_ref": 0.0,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 5
+              },
+              "HAR_pooled": {
+                "QLIKE": 0.22715303310620857,
+                "RMSE_log": 0.741725683025452,
+                "pct_vs_ref": 0.15486693582241884,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 8
+              },
+              "LHAR": {
+                "QLIKE": 0.20295492573926346,
+                "RMSE_log": 0.679774179650804,
+                "pct_vs_ref": 0.031841529886062814,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 7
+              },
+              "SHAR": {
+                "QLIKE": 0.19888145004905275,
+                "RMSE_log": 0.6759287041024258,
+                "pct_vs_ref": 0.0111316044046752,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 6
+              },
+              "HARX": {
+                "QLIKE": 0.1965405201595554,
+                "RMSE_log": 0.6898970105214234,
+                "pct_vs_ref": -0.0007698986987189071,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 3
+              },
+              "Ridge": {
+                "QLIKE": 0.2984753776011107,
+                "RMSE_log": 0.9093848151168814,
+                "pct_vs_ref": 0.5174763023633724,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 12
+              },
+              "RandomForest": {
+                "QLIKE": 0.2601483365123909,
+                "RMSE_log": 0.8073263379090426,
+                "pct_vs_ref": 0.3226180964393768,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 9
+              },
+              "LightGBM": {
+                "QLIKE": 0.2965192361627008,
+                "RMSE_log": 0.9069172314350581,
+                "pct_vs_ref": 0.5075310991753728,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 11
+              },
+              "TimeMixer": {
+                "QLIKE": 0.4122198395172574,
+                "RMSE_log": 1.074865812306255,
+                "pct_vs_ref": 1.0957636199641505,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 17
+              },
+              "RW": {
+                "QLIKE": 0.49815582308820927,
+                "RMSE_log": 1.0996899606466957,
+                "pct_vs_ref": 1.5326700731439669,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 18
+              },
+              "MA22": {
+                "QLIKE": 0.18311668323002636,
+                "RMSE_log": 0.6435967039136773,
+                "pct_vs_ref": -0.06901792167156862,
+                "assets_beating_ref": 2,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 1
+              },
+              "EWMA": {
+                "QLIKE": 0.19555699338337473,
+                "RMSE_log": 0.6717066279230045,
+                "pct_vs_ref": -0.005770239388759313,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 2
+              },
+              "GARCH": {
+                "QLIKE": 0.4001748498295719,
+                "RMSE_log": 1.0526017801983385,
+                "pct_vs_ref": 1.0345257833285908,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 16
+              },
+              "GJR_GARCH": {
+                "QLIKE": 0.35693895338150927,
+                "RMSE_log": 0.9815825939725741,
+                "pct_vs_ref": 0.8147105047663044,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 14
+              },
+              "EGARCH": {
+                "QLIKE": 0.38154830893851077,
+                "RMSE_log": 1.0266764851421297,
+                "pct_vs_ref": 0.939826734367299,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 15
+              }
+            },
+            "meta": {
+              "n_rows": 6,
+              "n_dates": 3,
+              "n_assets": 2,
+              "target_range": [
+                "2026-11-02",
+                "2026-11-04"
+              ],
+              "ref": "HAR",
+              "bootstrap_block": 1,
+              "tests_run": false,
+              "note": "DM test and CI need >= 20 target dates; not computed"
+            },
+            "per_asset": {
+              "GLD": {
+                "Meridian_M0": 0.42464036925631965,
+                "Meridian_M0_rtvix": 0.37254033840957335,
+                "HAR_frozen": 0.15423412981900464,
+                "HAR": 0.1542341298190062,
+                "HAR_pooled": 0.19984510527960064,
+                "LHAR": 0.16630665025106595,
+                "SHAR": 0.15401453891931904,
+                "HARX": 0.16287747662608418,
+                "Ridge": 0.3543026430070351,
+                "RandomForest": 0.31238291800675594,
+                "LightGBM": 0.37783620319778205,
+                "TimeMixer": 0.5888493676077743,
+                "RW": 0.4169002376396171,
+                "MA22": 0.1344767778658542,
+                "EWMA": 0.18104113485524054,
+                "GARCH": 0.5966304127718015,
+                "GJR_GARCH": 0.512166180584891,
+                "EGARCH": 0.5662727449777668
+              },
+              "TLT": {
+                "Meridian_M0": 0.21829101124131514,
+                "Meridian_M0_rtvix": 0.18795476857991758,
+                "HAR_frozen": 0.23914977625749034,
+                "HAR": 0.23914977625748982,
+                "HAR_pooled": 0.2544609609328165,
+                "LHAR": 0.239603201227461,
+                "SHAR": 0.24374836117878643,
+                "HARX": 0.23020356369302664,
+                "Ridge": 0.2426481121951863,
+                "RandomForest": 0.2079137550180258,
+                "LightGBM": 0.21520226912761956,
+                "TimeMixer": 0.2355903114267405,
+                "RW": 0.5794114085368015,
+                "MA22": 0.23175658859419848,
+                "EWMA": 0.21007285191150893,
+                "GARCH": 0.2037192868873423,
+                "GJR_GARCH": 0.20171172617812747,
+                "EGARCH": 0.19682387289925476
+              }
+            }
+          }
+        }
+      }
+    },
+    "B": {
+      "name": "Meridian legacy final (pre-audit config, 1 seed)",
+      "train_label_end_max": "2026-09-08",
+      "windows": {
+        "Oct-2026": {
+          "core": {
+            "models": {
+              "Meridian_legacy": {
+                "QLIKE": 0.42921628142889645,
+                "RMSE_log": 0.7822997772797778,
+                "pct_vs_ref": 0.3280532177739899,
+                "assets_beating_ref": 2,
+                "dates_beating_ref": 11,
+                "ci95_pct_vs_ref": [
+                  -0.010482437468022191,
+                  0.46966443332755153
+                ],
+                "DM_p": 0.9413395603312789,
+                "rank": 16
+              },
+              "Meridian_legacy_raw": {
+                "QLIKE": 0.6383945477883262,
+                "RMSE_log": 0.8573508957609249,
+                "pct_vs_ref": 0.9752790611231905,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 9,
+                "ci95_pct_vs_ref": [
+                  0.36852546141262926,
+                  1.2324613652500012
+                ],
+                "DM_p": 0.9934389445608661,
+                "rank": 18
+              },
+              "Meridian_legacy_cal": {
+                "QLIKE": 0.33319413281552007,
+                "RMSE_log": 0.8368001546772629,
+                "pct_vs_ref": 0.030947704863264036,
+                "assets_beating_ref": 5,
+                "dates_beating_ref": 12,
+                "ci95_pct_vs_ref": [
+                  -0.02666775306987131,
+                  0.07733252189544683
+                ],
+                "DM_p": 0.8412512788127815,
+                "rank": 11
+              },
+              "HAR": {
+                "QLIKE": 0.32319207971825503,
+                "RMSE_log": 0.8203633213506218,
+                "pct_vs_ref": 0.0,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 9
+              },
+              "HAR_pooled": {
+                "QLIKE": 0.3215549742937662,
+                "RMSE_log": 0.8141502985170125,
+                "pct_vs_ref": -0.0050654255695744554,
+                "assets_beating_ref": 5,
+                "dates_beating_ref": 15,
+                "ci95_pct_vs_ref": [
+                  -0.03284967213582416,
+                  0.0053219423287094525
+                ],
+                "DM_p": 0.19647169754639637,
+                "rank": 6
+              },
+              "LHAR": {
+                "QLIKE": 0.3221316686851456,
+                "RMSE_log": 0.8121975197239368,
+                "pct_vs_ref": -0.003281055136109323,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 15,
+                "ci95_pct_vs_ref": [
+                  -0.028521026761021324,
+                  0.0187295162199805
+                ],
+                "DM_p": 0.43469210085269455,
+                "rank": 7
+              },
+              "SHAR": {
+                "QLIKE": 0.3202564441984871,
+                "RMSE_log": 0.8161985662138125,
+                "pct_vs_ref": -0.00908325328494164,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 13,
+                "ci95_pct_vs_ref": [
+                  -0.029944691464308143,
+                  0.01917086996298592
+                ],
+                "DM_p": 0.27590867033271843,
+                "rank": 5
+              },
+              "HARX": {
+                "QLIKE": 0.3261491798467218,
+                "RMSE_log": 0.8198037320049081,
+                "pct_vs_ref": 0.009149667686920493,
+                "assets_beating_ref": 9,
+                "dates_beating_ref": 12,
+                "ci95_pct_vs_ref": [
+                  -0.017096043419060278,
+                  0.07139004738251674
+                ],
+                "DM_p": 0.5996979944571579,
+                "rank": 10
+              },
+              "Ridge": {
+                "QLIKE": 0.31442781632245204,
+                "RMSE_log": 0.7985587619592535,
+                "pct_vs_ref": -0.027117816140306727,
+                "assets_beating_ref": 8,
+                "dates_beating_ref": 17,
+                "ci95_pct_vs_ref": [
+                  -0.06110496445216304,
+                  0.013355519786583987
+                ],
+                "DM_p": 0.013244297176979508,
+                "rank": 4
+              },
+              "RandomForest": {
+                "QLIKE": 0.3137885809307151,
+                "RMSE_log": 0.8027670605033668,
+                "pct_vs_ref": -0.029095696886314526,
+                "assets_beating_ref": 8,
+                "dates_beating_ref": 15,
+                "ci95_pct_vs_ref": [
+                  -0.0729605471737246,
+                  0.007279886601162382
+                ],
+                "DM_p": 0.11380769647517447,
+                "rank": 3
+              },
+              "LightGBM": {
+                "QLIKE": 0.3224267031054531,
+                "RMSE_log": 0.8001378324960661,
+                "pct_vs_ref": -0.0023681787420939404,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 14,
+                "ci95_pct_vs_ref": [
+                  -0.05642113237558311,
+                  0.07143029813313144
+                ],
+                "DM_p": 0.35840607126331364,
+                "rank": 8
+              },
+              "TimeMixer": {
+                "QLIKE": 0.3505231251292154,
+                "RMSE_log": 0.7950132485061264,
+                "pct_vs_ref": 0.08456595048612092,
+                "assets_beating_ref": 2,
+                "dates_beating_ref": 12,
+                "ci95_pct_vs_ref": [
+                  -0.020715932146247597,
+                  0.16049554583828265
+                ],
+                "DM_p": 0.8789334368130053,
+                "rank": 14
+              },
+              "RW": {
+                "QLIKE": 0.5382382561879894,
+                "RMSE_log": 1.090551687722639,
+                "pct_vs_ref": 0.6653819507495431,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": [
+                  0.46465984091788043,
+                  0.9223839909256926
+                ],
+                "DM_p": 0.9999983191810858,
+                "rank": 17
+              },
+              "MA22": {
+                "QLIKE": 0.30388928152158823,
+                "RMSE_log": 0.8209649267078456,
+                "pct_vs_ref": -0.0597254679430701,
+                "assets_beating_ref": 8,
+                "dates_beating_ref": 15,
+                "ci95_pct_vs_ref": [
+                  -0.12161021473973586,
+                  0.07515173102278172
+                ],
+                "DM_p": 0.30197520124884486,
+                "rank": 1
+              },
+              "EWMA": {
+                "QLIKE": 0.3061261891343413,
+                "RMSE_log": 0.795651056471342,
+                "pct_vs_ref": -0.052804173291595036,
+                "assets_beating_ref": 8,
+                "dates_beating_ref": 15,
+                "ci95_pct_vs_ref": [
+                  -0.132287989038092,
+                  0.049093407775481795
+                ],
+                "DM_p": 0.20565517574846,
+                "rank": 2
+              },
+              "GARCH": {
+                "QLIKE": 0.3398314854783214,
+                "RMSE_log": 0.8805500620044051,
+                "pct_vs_ref": 0.05148457157295416,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 8,
+                "ci95_pct_vs_ref": [
+                  -0.02126401110947995,
+                  0.15216476191639475
+                ],
+                "DM_p": 0.9813732110370127,
+                "rank": 12
+              },
+              "GJR_GARCH": {
+                "QLIKE": 0.34638553865326166,
+                "RMSE_log": 0.9009845991086134,
+                "pct_vs_ref": 0.07176369840258978,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 8,
+                "ci95_pct_vs_ref": [
+                  -0.03213540225904605,
+                  0.21957385635326676
+                ],
+                "DM_p": 0.9819600450189355,
+                "rank": 13
+              },
+              "EGARCH": {
+                "QLIKE": 0.35221662819549293,
+                "RMSE_log": 0.9360970893523471,
+                "pct_vs_ref": 0.08980587798605777,
+                "assets_beating_ref": 6,
+                "dates_beating_ref": 7,
+                "ci95_pct_vs_ref": [
+                  -0.05454551135033983,
+                  0.3177269861245278
+                ],
+                "DM_p": 0.9554130137393984,
+                "rank": 15
+              }
+            },
+            "meta": {
+              "n_rows": 239,
+              "n_dates": 25,
+              "n_assets": 11,
+              "target_range": [
+                "2026-10-01",
+                "2026-10-30"
+              ],
+              "ref": "HAR",
+              "bootstrap_block": 3,
+              "tests_run": true,
+              "note": "few weeks of data: low power, wide intervals"
+            },
+            "per_asset": {
+              "AAPL": {
+                "Meridian_legacy": 0.5892463791157764,
+                "Meridian_legacy_raw": 0.8487284601103997,
+                "Meridian_legacy_cal": 0.44424328840576005,
+                "HAR": 0.3712547911060526,
+                "HAR_pooled": 0.38247922888817726,
+                "LHAR": 0.37790153116187325,
+                "SHAR": 0.3950839313608449,
+                "HARX": 0.357459094897852,
+                "Ridge": 0.37132680188916717,
+                "RandomForest": 0.3669086215590619,
+                "LightGBM": 0.3616023718059468,
+                "TimeMixer": 0.45918670265100303,
+                "RW": 0.5095867232934759,
+                "MA22": 0.3246215075653796,
+                "EWMA": 0.3318174362309275,
+                "GARCH": 0.3193873008729058,
+                "GJR_GARCH": 0.350450603271397,
+                "EGARCH": 0.3229427737317232
+              },
+              "EURUSD": {
+                "Meridian_legacy": 0.25275390396592234,
+                "Meridian_legacy_raw": 0.3580831110664195,
+                "Meridian_legacy_cal": 0.25784998009610877,
+                "HAR": 0.2335811414560982,
+                "HAR_pooled": 0.24628034530994564,
+                "LHAR": 0.23089534458768052,
+                "SHAR": 0.23403286502623497,
+                "HARX": 0.2322158557741496,
+                "Ridge": 0.2265277631865875,
+                "RandomForest": 0.23768002815414183,
+                "LightGBM": 0.23646329011412517,
+                "TimeMixer": 0.2536021093493714,
+                "RW": 0.5121292249772144,
+                "MA22": 0.29300749321355346,
+                "EWMA": 0.2668052223121553,
+                "GARCH": 0.23452581551151847,
+                "GJR_GARCH": 0.21929717458855322,
+                "EGARCH": 0.23136161199294042
+              },
+              "GBPUSD": {
+                "Meridian_legacy": 0.3480141764353271,
+                "Meridian_legacy_raw": 0.49739564721043167,
+                "Meridian_legacy_cal": 0.310216356725981,
+                "HAR": 0.3550346875433144,
+                "HAR_pooled": 0.36140451025467923,
+                "LHAR": 0.34709772104505676,
+                "SHAR": 0.35093966721360814,
+                "HARX": 0.35425049405544234,
+                "Ridge": 0.3372652481951274,
+                "RandomForest": 0.3335801352493783,
+                "LightGBM": 0.3192920101427556,
+                "TimeMixer": 0.2997891379232292,
+                "RW": 0.6460838673635926,
+                "MA22": 0.3148340613486734,
+                "EWMA": 0.3164998821083328,
+                "GARCH": 0.7645047304814251,
+                "GJR_GARCH": 0.7742526262528715,
+                "EGARCH": 0.848707024127328
+              },
+              "IWM": {
+                "Meridian_legacy": 0.38936116790478775,
+                "Meridian_legacy_raw": 0.6333232707419114,
+                "Meridian_legacy_cal": 0.2594699089090691,
+                "HAR": 0.26707979174870483,
+                "HAR_pooled": 0.27101139596695695,
+                "LHAR": 0.2565295397737495,
+                "SHAR": 0.2651201145115935,
+                "HARX": 0.2517297892682881,
+                "Ridge": 0.2560071162231737,
+                "RandomForest": 0.2770483306999635,
+                "LightGBM": 0.2599628507975922,
+                "TimeMixer": 0.2974230533956368,
+                "RW": 0.5585281403753973,
+                "MA22": 0.2261517460398129,
+                "EWMA": 0.236700580954823,
+                "GARCH": 0.2318481153317726,
+                "GJR_GARCH": 0.24697763089704922,
+                "EGARCH": 0.29261430826187246
+              },
+              "JNJ": {
+                "Meridian_legacy": 0.6830358389000176,
+                "Meridian_legacy_raw": 1.0127642741145144,
+                "Meridian_legacy_cal": 0.4696334869432567,
+                "HAR": 0.4769209966533284,
+                "HAR_pooled": 0.4446821055423394,
+                "LHAR": 0.5102186511706586,
+                "SHAR": 0.4938455300399726,
+                "HARX": 0.5628162314938674,
+                "Ridge": 0.5367327440663258,
+                "RandomForest": 0.47132970924572193,
+                "LightGBM": 0.6196010902214154,
+                "TimeMixer": 0.4871256442734676,
+                "RW": 0.8208072809106975,
+                "MA22": 0.373662988004448,
+                "EWMA": 0.3850143280767991,
+                "GARCH": 0.4043348671115647,
+                "GJR_GARCH": 0.4230842695827776,
+                "EGARCH": 0.35864414025627717
+              },
+              "JPM": {
+                "Meridian_legacy": 0.5474907113021444,
+                "Meridian_legacy_raw": 0.7790903067298001,
+                "Meridian_legacy_cal": 0.4296368652955532,
+                "HAR": 0.4118107526369644,
+                "HAR_pooled": 0.4086899422536792,
+                "LHAR": 0.39487750885445777,
+                "SHAR": 0.41162648867562124,
+                "HARX": 0.4019136985791478,
+                "Ridge": 0.3963261277991837,
+                "RandomForest": 0.36830379400268604,
+                "LightGBM": 0.3695908929048801,
+                "TimeMixer": 0.471932657573562,
+                "RW": 0.7387648960516254,
+                "MA22": 0.3551786608194823,
+                "EWMA": 0.3578566433281289,
+                "GARCH": 0.409502677894927,
+                "GJR_GARCH": 0.38417638575681,
+                "EGARCH": 0.3814785689676578
+              },
+              "MSFT": {
+                "Meridian_legacy": 0.3695388827189886,
+                "Meridian_legacy_raw": 0.5803222069724313,
+                "Meridian_legacy_cal": 0.2719538244466884,
+                "HAR": 0.26018708885490527,
+                "HAR_pooled": 0.2664311734960459,
+                "LHAR": 0.26929084898663136,
+                "SHAR": 0.25863207939666216,
+                "HARX": 0.2609144700806194,
+                "Ridge": 0.2704761395022289,
+                "RandomForest": 0.256377886354189,
+                "LightGBM": 0.2742755109596685,
+                "TimeMixer": 0.329585780678519,
+                "RW": 0.3335537992369336,
+                "MA22": 0.24817270684851928,
+                "EWMA": 0.2342833381947414,
+                "GARCH": 0.2939897730228139,
+                "GJR_GARCH": 0.26814210581615516,
+                "EGARCH": 0.2529058591811441
+              },
+              "QQQ": {
+                "Meridian_legacy": 0.574521001995453,
+                "Meridian_legacy_raw": 0.895113459385535,
+                "Meridian_legacy_cal": 0.37001445482815887,
+                "HAR": 0.33965635491811386,
+                "HAR_pooled": 0.34132346891150306,
+                "LHAR": 0.3353324454245907,
+                "SHAR": 0.29569984481366585,
+                "HARX": 0.330744979624612,
+                "Ridge": 0.32076694151870483,
+                "RandomForest": 0.33142514111736765,
+                "LightGBM": 0.2966180218642036,
+                "TimeMixer": 0.4035819071170645,
+                "RW": 0.49848033237934025,
+                "MA22": 0.34687533639499013,
+                "EWMA": 0.36581986818923035,
+                "GARCH": 0.3414698055597386,
+                "GJR_GARCH": 0.36439166283541796,
+                "EGARCH": 0.3563900614123018
+              },
+              "SPY": {
+                "Meridian_legacy": 0.3623269750251078,
+                "Meridian_legacy_raw": 0.578087429728233,
+                "Meridian_legacy_cal": 0.2598957269491274,
+                "HAR": 0.27835985615918596,
+                "HAR_pooled": 0.27051899527539364,
+                "LHAR": 0.26967725201280324,
+                "SHAR": 0.25347469087403585,
+                "HARX": 0.27832872396256875,
+                "Ridge": 0.2582238491634488,
+                "RandomForest": 0.25818521636868413,
+                "LightGBM": 0.27426978923211764,
+                "TimeMixer": 0.31045834431781716,
+                "RW": 0.4618272412221571,
+                "MA22": 0.23640551676758356,
+                "EWMA": 0.26315616461625163,
+                "GARCH": 0.26221269820471527,
+                "GJR_GARCH": 0.26011859232105433,
+                "EGARCH": 0.3192337971677055
+              },
+              "USDJPY": {
+                "Meridian_legacy": 0.26122246022347567,
+                "Meridian_legacy_raw": 0.25769033193051777,
+                "Meridian_legacy_cal": 0.3723171829516656,
+                "HAR": 0.33840777632140734,
+                "HAR_pooled": 0.3236800917228239,
+                "LHAR": 0.3269354553582385,
+                "SHAR": 0.3421393795285526,
+                "HARX": 0.3353586379586996,
+                "Ridge": 0.26836131720065176,
+                "RandomForest": 0.3249330847797399,
+                "LightGBM": 0.30447031710613476,
+                "TimeMixer": 0.2625452191804073,
+                "RW": 0.4460591909490961,
+                "MA22": 0.4126761311701356,
+                "EWMA": 0.40725929870610195,
+                "GARCH": 0.2718059590951862,
+                "GJR_GARCH": 0.28361849651391513,
+                "EGARCH": 0.27224398832791485
+              },
+              "XOM": {
+                "Meridian_legacy": 0.3245194934189534,
+                "Meridian_legacy_raw": 0.5452863207196853,
+                "Meridian_legacy_cal": 0.21721352729786067,
+                "HAR": 0.2208854288739137,
+                "HAR_pooled": 0.2190898243556185,
+                "LHAR": 0.22189812602156814,
+                "SHAR": 0.22069641197770026,
+                "HARX": 0.21933525026633563,
+                "Ridge": 0.21164060714850882,
+                "RandomForest": 0.22384914749743706,
+                "LightGBM": 0.22568147574053815,
+                "TimeMixer": 0.26981323319153555,
+                "RW": 0.3943254628868047,
+                "MA22": 0.21614366861796458,
+                "EWMA": 0.20545649211133388,
+                "GARCH": 0.21598923575011186,
+                "GJR_GARCH": 0.2465500901405851,
+                "EGARCH": 0.2512999921718161
+              }
+            }
+          },
+          "breadth": {
+            "models": {
+              "Meridian_legacy": {
+                "QLIKE": 0.3065932604336959,
+                "RMSE_log": 0.8205414207783416,
+                "pct_vs_ref": 0.13688117432690183,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 10,
+                "ci95_pct_vs_ref": [
+                  -0.15273057401920428,
+                  0.5482800897006703
+                ],
+                "DM_p": 0.8208848398538517,
+                "rank": 13
+              },
+              "Meridian_legacy_raw": {
+                "QLIKE": 0.44186765195912714,
+                "RMSE_log": 0.8589455759665635,
+                "pct_vs_ref": 0.6384933391743686,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 10,
+                "ci95_pct_vs_ref": [
+                  -0.07934941644425027,
+                  1.6769586845665414
+                ],
+                "DM_p": 0.9676935050716999,
+                "rank": 17
+              },
+              "Meridian_legacy_cal": {
+                "QLIKE": 0.28253157645212185,
+                "RMSE_log": 0.9169763955025343,
+                "pct_vs_ref": 0.04765783163972426,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 9,
+                "ci95_pct_vs_ref": [
+                  -0.015965563279114466,
+                  0.25630104070238907
+                ],
+                "DM_p": 0.7766100311307763,
+                "rank": 9
+              },
+              "HAR": {
+                "QLIKE": 0.2696792482426464,
+                "RMSE_log": 0.8711393951701413,
+                "pct_vs_ref": 0.0,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 4
+              },
+              "HAR_pooled": {
+                "QLIKE": 0.2743543776841445,
+                "RMSE_log": 0.8865084344540196,
+                "pct_vs_ref": 0.017335888734351546,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 7,
+                "ci95_pct_vs_ref": [
+                  -0.006628471893678943,
+                  0.11749729125339467
+                ],
+                "DM_p": 0.7255037779831338,
+                "rank": 8
+              },
+              "LHAR": {
+                "QLIKE": 0.2628270982362827,
+                "RMSE_log": 0.8547454795002888,
+                "pct_vs_ref": -0.025408517900488925,
+                "assets_beating_ref": 2,
+                "dates_beating_ref": 16,
+                "ci95_pct_vs_ref": [
+                  -0.04860263643544976,
+                  0.009396178955348345
+                ],
+                "DM_p": 0.05192479719878321,
+                "rank": 1
+              },
+              "SHAR": {
+                "QLIKE": 0.2731444617341521,
+                "RMSE_log": 0.8775448486474419,
+                "pct_vs_ref": 0.012849388724147648,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 6,
+                "ci95_pct_vs_ref": [
+                  -0.007306592485799251,
+                  0.02045916965611784
+                ],
+                "DM_p": 0.9337039452830982,
+                "rank": 7
+              },
+              "HARX": {
+                "QLIKE": 0.2645989875571144,
+                "RMSE_log": 0.8493092541340511,
+                "pct_vs_ref": -0.018838159475144223,
+                "assets_beating_ref": 2,
+                "dates_beating_ref": 12,
+                "ci95_pct_vs_ref": [
+                  -0.0717295376529701,
+                  0.018747502740355526
+                ],
+                "DM_p": 0.2519249969422592,
+                "rank": 2
+              },
+              "Ridge": {
+                "QLIKE": 0.2725929220976033,
+                "RMSE_log": 0.9093068487206887,
+                "pct_vs_ref": 0.010804219731194387,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 7,
+                "ci95_pct_vs_ref": [
+                  -0.05453997955483554,
+                  0.2369113458880186
+                ],
+                "DM_p": 0.5616412914243313,
+                "rank": 6
+              },
+              "RandomForest": {
+                "QLIKE": 0.2658899868903536,
+                "RMSE_log": 0.8976201133553287,
+                "pct_vs_ref": -0.014050993456060756,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 9,
+                "ci95_pct_vs_ref": [
+                  -0.11008476042133844,
+                  0.11335435375907922
+                ],
+                "DM_p": 0.3869810563933317,
+                "rank": 3
+              },
+              "LightGBM": {
+                "QLIKE": 0.2701464541879233,
+                "RMSE_log": 0.9122491742156803,
+                "pct_vs_ref": 0.0017324504882056946,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 9,
+                "ci95_pct_vs_ref": [
+                  -0.08939277294979074,
+                  0.23031073442123834
+                ],
+                "DM_p": 0.5095917255884617,
+                "rank": 5
+              },
+              "TimeMixer": {
+                "QLIKE": 0.2937149231411984,
+                "RMSE_log": 0.8683120057302846,
+                "pct_vs_ref": 0.08912689817692487,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 7,
+                "ci95_pct_vs_ref": [
+                  -0.04037706038449301,
+                  0.3537013546050999
+                ],
+                "DM_p": 0.8690232274713903,
+                "rank": 11
+              },
+              "RW": {
+                "QLIKE": 0.5099566476868799,
+                "RMSE_log": 1.1196648854037687,
+                "pct_vs_ref": 0.8909747450350414,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 8,
+                "ci95_pct_vs_ref": [
+                  0.4113581802247023,
+                  2.1251919304216913
+                ],
+                "DM_p": 0.9952086070676184,
+                "rank": 18
+              },
+              "MA22": {
+                "QLIKE": 0.30108012390569494,
+                "RMSE_log": 0.9347331259186881,
+                "pct_vs_ref": 0.11643786412069534,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 7,
+                "ci95_pct_vs_ref": [
+                  -0.04084887228408194,
+                  0.17637615245952665
+                ],
+                "DM_p": 0.9331196980335645,
+                "rank": 12
+              },
+              "EWMA": {
+                "QLIKE": 0.29154396637062585,
+                "RMSE_log": 0.8916171741946689,
+                "pct_vs_ref": 0.08107675421991112,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 11,
+                "ci95_pct_vs_ref": [
+                  -0.09238623537903512,
+                  0.17624327996210837
+                ],
+                "DM_p": 0.8115385486307906,
+                "rank": 10
+              },
+              "GARCH": {
+                "QLIKE": 0.3378581615639135,
+                "RMSE_log": 0.9764463765147399,
+                "pct_vs_ref": 0.252814830082597,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 3,
+                "ci95_pct_vs_ref": [
+                  0.11778090994054376,
+                  0.49949662959930213
+                ],
+                "DM_p": 0.9976989154372087,
+                "rank": 15
+              },
+              "GJR_GARCH": {
+                "QLIKE": 0.33269084318765657,
+                "RMSE_log": 0.957313865547823,
+                "pct_vs_ref": 0.23365385121629734,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 4,
+                "ci95_pct_vs_ref": [
+                  0.0837748472816068,
+                  0.4563051317618736
+                ],
+                "DM_p": 0.9923384523811176,
+                "rank": 14
+              },
+              "EGARCH": {
+                "QLIKE": 0.348374333065382,
+                "RMSE_log": 0.9757100787955008,
+                "pct_vs_ref": 0.29180993841961844,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 4,
+                "ci95_pct_vs_ref": [
+                  0.12382203838713281,
+                  0.5738413828486231
+                ],
+                "DM_p": 0.9957723636335065,
+                "rank": 16
+              }
+            },
+            "meta": {
+              "n_rows": 44,
+              "n_dates": 22,
+              "n_assets": 2,
+              "target_range": [
+                "2026-10-01",
+                "2026-10-30"
+              ],
+              "ref": "HAR",
+              "bootstrap_block": 3,
+              "tests_run": true,
+              "note": "few weeks of data: low power, wide intervals"
+            },
+            "per_asset": {
+              "GLD": {
+                "Meridian_legacy": 0.20270976171348928,
+                "Meridian_legacy_raw": 0.29373980892744994,
+                "Meridian_legacy_cal": 0.22172896453360605,
+                "HAR": 0.1991291326563937,
+                "HAR_pooled": 0.20193509443806257,
+                "LHAR": 0.19476461248511504,
+                "SHAR": 0.19975405080144323,
+                "HARX": 0.1895466854231933,
+                "Ridge": 0.20140654853291923,
+                "RandomForest": 0.21758529808838054,
+                "LightGBM": 0.20593706865972006,
+                "TimeMixer": 0.21677001562083847,
+                "RW": 0.3496969583029985,
+                "MA22": 0.22618076007458499,
+                "EWMA": 0.21072507068386737,
+                "GARCH": 0.3164807817212288,
+                "GJR_GARCH": 0.28939706854821595,
+                "EGARCH": 0.312156097110385
+              },
+              "TLT": {
+                "Meridian_legacy": 0.4104767591539025,
+                "Meridian_legacy_raw": 0.5899954949908042,
+                "Meridian_legacy_cal": 0.3433341883706377,
+                "HAR": 0.3402293638288991,
+                "HAR_pooled": 0.3467736609302265,
+                "LHAR": 0.3308895839874503,
+                "SHAR": 0.34653487266686095,
+                "HARX": 0.3396512896910355,
+                "Ridge": 0.3437792956622873,
+                "RandomForest": 0.3141946756923267,
+                "LightGBM": 0.33435583971612676,
+                "TimeMixer": 0.3706598306615582,
+                "RW": 0.670216337070761,
+                "MA22": 0.3759794877368048,
+                "EWMA": 0.3723628620573843,
+                "GARCH": 0.35923554140659825,
+                "GJR_GARCH": 0.37598461782709713,
+                "EGARCH": 0.384592569020379
+              }
+            }
+          }
+        },
+        "Nov-2026": {
+          "core": {
+            "models": {
+              "Meridian_legacy": {
+                "QLIKE": 0.40612140716671424,
+                "RMSE_log": 0.8552173198740044,
+                "pct_vs_ref": 0.29925809975978,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 13
+              },
+              "Meridian_legacy_raw": {
+                "QLIKE": 0.6408152179485039,
+                "RMSE_log": 0.9548141467421851,
+                "pct_vs_ref": 1.0500873573186054,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 18
+              },
+              "Meridian_legacy_cal": {
+                "QLIKE": 0.285254664916819,
+                "RMSE_log": 0.8614759221352458,
+                "pct_vs_ref": -0.08741714337826456,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 2
+              },
+              "HAR": {
+                "QLIKE": 0.3125794691923045,
+                "RMSE_log": 0.8429376847271512,
+                "pct_vs_ref": 0.0,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 7
+              },
+              "HAR_pooled": {
+                "QLIKE": 0.3124301034941618,
+                "RMSE_log": 0.8381058013804911,
+                "pct_vs_ref": -0.0004778487164517342,
+                "assets_beating_ref": 5,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 6
+              },
+              "LHAR": {
+                "QLIKE": 0.2955220912313953,
+                "RMSE_log": 0.8329658231026867,
+                "pct_vs_ref": -0.05456973231474527,
+                "assets_beating_ref": 8,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 4
+              },
+              "SHAR": {
+                "QLIKE": 0.3095742452332091,
+                "RMSE_log": 0.8545601643297347,
+                "pct_vs_ref": -0.009614271746192449,
+                "assets_beating_ref": 8,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 5
+              },
+              "HARX": {
+                "QLIKE": 0.3211660594208787,
+                "RMSE_log": 0.8754175103200573,
+                "pct_vs_ref": 0.02747010304535258,
+                "assets_beating_ref": 6,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 9
+              },
+              "Ridge": {
+                "QLIKE": 0.29113997678029885,
+                "RMSE_log": 0.8470861522231821,
+                "pct_vs_ref": -0.06858893345556127,
+                "assets_beating_ref": 8,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 3
+              },
+              "RandomForest": {
+                "QLIKE": 0.2841094624391884,
+                "RMSE_log": 0.8124026682992421,
+                "pct_vs_ref": -0.09108085961845713,
+                "assets_beating_ref": 9,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 1
+              },
+              "LightGBM": {
+                "QLIKE": 0.31652568487553717,
+                "RMSE_log": 0.8602072149806276,
+                "pct_vs_ref": 0.01262467971242498,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 8
+              },
+              "TimeMixer": {
+                "QLIKE": 0.3258132157103103,
+                "RMSE_log": 0.8339372484986876,
+                "pct_vs_ref": 0.04233722244202842,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 10
+              },
+              "RW": {
+                "QLIKE": 0.5523002008545439,
+                "RMSE_log": 1.2485315016971752,
+                "pct_vs_ref": 0.7669113146863746,
+                "assets_beating_ref": 2,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 17
+              },
+              "MA22": {
+                "QLIKE": 0.34800727531940623,
+                "RMSE_log": 0.8244556664228965,
+                "pct_vs_ref": 0.1133401570443704,
+                "assets_beating_ref": 5,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 11
+              },
+              "EWMA": {
+                "QLIKE": 0.35786094456988926,
+                "RMSE_log": 0.8226558317342332,
+                "pct_vs_ref": 0.14486388211801193,
+                "assets_beating_ref": 3,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 12
+              },
+              "GARCH": {
+                "QLIKE": 0.4592340025183748,
+                "RMSE_log": 0.9681124906005221,
+                "pct_vs_ref": 0.46917519472734726,
+                "assets_beating_ref": 5,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 16
+              },
+              "GJR_GARCH": {
+                "QLIKE": 0.43424859220839623,
+                "RMSE_log": 0.9948055430032208,
+                "pct_vs_ref": 0.38924220880687055,
+                "assets_beating_ref": 4,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 15
+              },
+              "EGARCH": {
+                "QLIKE": 0.4130582153322393,
+                "RMSE_log": 1.0079653838485538,
+                "pct_vs_ref": 0.3214502423961776,
+                "assets_beating_ref": 3,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 14
+              }
+            },
+            "meta": {
+              "n_rows": 33,
+              "n_dates": 3,
+              "n_assets": 11,
+              "target_range": [
+                "2026-11-02",
+                "2026-11-04"
+              ],
+              "ref": "HAR",
+              "bootstrap_block": 1,
+              "tests_run": false,
+              "note": "DM test and CI need >= 20 target dates; not computed"
+            },
+            "per_asset": {
+              "AAPL": {
+                "Meridian_legacy": 0.34574487970520823,
+                "Meridian_legacy_raw": 0.7027788301102621,
+                "Meridian_legacy_cal": 0.10575504127026703,
+                "HAR": 0.17555819930467775,
+                "HAR_pooled": 0.16686823377440888,
+                "LHAR": 0.12028362684592109,
+                "SHAR": 0.15199982784229826,
+                "HARX": 0.15816864923306362,
+                "Ridge": 0.09811460059335449,
+                "RandomForest": 0.11957318801781407,
+                "LightGBM": 0.11852181395745753,
+                "TimeMixer": 0.23744602951920268,
+                "RW": 0.3925413530611355,
+                "MA22": 0.3923197412882051,
+                "EWMA": 0.32300867527131333,
+                "GARCH": 0.5777649909245418,
+                "GJR_GARCH": 0.37735347430873595,
+                "EGARCH": 0.19676151145952225
+              },
+              "EURUSD": {
+                "Meridian_legacy": 0.38795753045268105,
+                "Meridian_legacy_raw": 0.518997660833634,
+                "Meridian_legacy_cal": 0.3680187235618388,
+                "HAR": 0.3352880429559184,
+                "HAR_pooled": 0.37492834965114225,
+                "LHAR": 0.3363363845736805,
+                "SHAR": 0.33420726214197666,
+                "HARX": 0.33713075378243107,
+                "Ridge": 0.37897433337925435,
+                "RandomForest": 0.31650202303779923,
+                "LightGBM": 0.31061116329801625,
+                "TimeMixer": 0.3770740907296937,
+                "RW": 0.9862803553085152,
+                "MA22": 0.2911057284954716,
+                "EWMA": 0.3432639491202374,
+                "GARCH": 0.4065678366262036,
+                "GJR_GARCH": 0.3884640733061063,
+                "EGARCH": 0.37683242394652233
+              },
+              "GBPUSD": {
+                "Meridian_legacy": 0.23698097696767118,
+                "Meridian_legacy_raw": 0.2955187547505826,
+                "Meridian_legacy_cal": 0.28763798971465665,
+                "HAR": 0.25976488927843966,
+                "HAR_pooled": 0.2629563062712584,
+                "LHAR": 0.2525874697409645,
+                "SHAR": 0.2564931926028631,
+                "HARX": 0.2785869378374983,
+                "Ridge": 0.27240411683458216,
+                "RandomForest": 0.23602045124369467,
+                "LightGBM": 0.25430146885223776,
+                "TimeMixer": 0.20535906786865574,
+                "RW": 0.5876126570618551,
+                "MA22": 0.25482528379721875,
+                "EWMA": 0.2023731948605881,
+                "GARCH": 0.7887655381165489,
+                "GJR_GARCH": 0.7696487133138022,
+                "EGARCH": 0.8481049632454086
+              },
+              "IWM": {
+                "Meridian_legacy": 0.28789760242645906,
+                "Meridian_legacy_raw": 0.5382819914420546,
+                "Meridian_legacy_cal": 0.15175292275827057,
+                "HAR": 0.16096751557399616,
+                "HAR_pooled": 0.1639535585297116,
+                "LHAR": 0.16494095469821532,
+                "SHAR": 0.21162985266465725,
+                "HARX": 0.15364183967861686,
+                "Ridge": 0.16007434861422612,
+                "RandomForest": 0.14426473766246625,
+                "LightGBM": 0.1487436516171957,
+                "TimeMixer": 0.09613756098580513,
+                "RW": 0.4223570557709861,
+                "MA22": 0.176576071683152,
+                "EWMA": 0.20872003654299745,
+                "GARCH": 0.14611796191460233,
+                "GJR_GARCH": 0.1342498482039655,
+                "EGARCH": 0.13565397374014312
+              },
+              "JNJ": {
+                "Meridian_legacy": 0.31739296790636634,
+                "Meridian_legacy_raw": 0.6305708632573942,
+                "Meridian_legacy_cal": 0.12010598318730244,
+                "HAR": 0.23350163481353134,
+                "HAR_pooled": 0.168835142374924,
+                "LHAR": 0.2155241778945259,
+                "SHAR": 0.2007879507220376,
+                "HARX": 0.3124017629713096,
+                "Ridge": 0.20049152590954197,
+                "RandomForest": 0.17015992096046798,
+                "LightGBM": 0.33172644524008515,
+                "TimeMixer": 0.18261999747880595,
+                "RW": 0.16652562291020442,
+                "MA22": 0.17075419008282097,
+                "EWMA": 0.2341295933128172,
+                "GARCH": 0.3019183849920384,
+                "GJR_GARCH": 0.2793412503449741,
+                "EGARCH": 0.23679804121121584
+              },
+              "JPM": {
+                "Meridian_legacy": 0.6484309663815065,
+                "Meridian_legacy_raw": 0.9247278526974902,
+                "Meridian_legacy_cal": 0.487055126358231,
+                "HAR": 0.5075319867954697,
+                "HAR_pooled": 0.5040923804962655,
+                "LHAR": 0.501543461011009,
+                "SHAR": 0.5016531128984693,
+                "HARX": 0.4527257662321211,
+                "Ridge": 0.4587576855146858,
+                "RandomForest": 0.46075476953835065,
+                "LightGBM": 0.4608423747097263,
+                "TimeMixer": 0.566105098130106,
+                "RW": 0.8490245942705116,
+                "MA22": 0.47014723435260103,
+                "EWMA": 0.4732467004543583,
+                "GARCH": 0.49949975133527275,
+                "GJR_GARCH": 0.4758079381973744,
+                "EGARCH": 0.44455787009988157
+              },
+              "MSFT": {
+                "Meridian_legacy": 0.563797205341915,
+                "Meridian_legacy_raw": 0.9539573958467726,
+                "Meridian_legacy_cal": 0.2915522777950969,
+                "HAR": 0.3404197241590075,
+                "HAR_pooled": 0.3276144766166073,
+                "LHAR": 0.3935285535005757,
+                "SHAR": 0.30518553143269367,
+                "HARX": 0.3821416513626725,
+                "Ridge": 0.335569786966568,
+                "RandomForest": 0.3103837805092884,
+                "LightGBM": 0.39542891116568907,
+                "TimeMixer": 0.33610636593330506,
+                "RW": 0.3568887520991137,
+                "MA22": 0.5316121688798533,
+                "EWMA": 0.4649494269471841,
+                "GARCH": 1.1845608932821694,
+                "GJR_GARCH": 0.9893789060308077,
+                "EGARCH": 0.8105439902296045
+              },
+              "QQQ": {
+                "Meridian_legacy": 0.5769310668916142,
+                "Meridian_legacy_raw": 0.8785540701897672,
+                "Meridian_legacy_cal": 0.39089520999628385,
+                "HAR": 0.4583350589911368,
+                "HAR_pooled": 0.45865165087826737,
+                "LHAR": 0.35795321424968946,
+                "SHAR": 0.4985597316776615,
+                "HARX": 0.4265303622019235,
+                "Ridge": 0.3888685002158043,
+                "RandomForest": 0.4907748122365054,
+                "LightGBM": 0.4796615477462666,
+                "TimeMixer": 0.3557680878813943,
+                "RW": 0.965541446743675,
+                "MA22": 0.49379326479493474,
+                "EWMA": 0.5852530058318072,
+                "GARCH": 0.3145395066011038,
+                "GJR_GARCH": 0.4467439764659265,
+                "EGARCH": 0.4626125049128181
+              },
+              "SPY": {
+                "Meridian_legacy": 0.3742978658369453,
+                "Meridian_legacy_raw": 0.5496073456188058,
+                "Meridian_legacy_cal": 0.3112539313862983,
+                "HAR": 0.2666440116481199,
+                "HAR_pooled": 0.2807993035138782,
+                "LHAR": 0.2346920182622274,
+                "SHAR": 0.2609742416915957,
+                "HARX": 0.34156454174018785,
+                "Ridge": 0.2602013916396218,
+                "RandomForest": 0.2440327188937729,
+                "LightGBM": 0.24416200091479393,
+                "TimeMixer": 0.25687620553760254,
+                "RW": 0.44756107035515474,
+                "MA22": 0.35002819679483443,
+                "EWMA": 0.40499223722679334,
+                "GARCH": 0.2413693482557325,
+                "GJR_GARCH": 0.3404787286254709,
+                "EGARCH": 0.43345103741855046
+              },
+              "USDJPY": {
+                "Meridian_legacy": 0.43720918710556406,
+                "Meridian_legacy_raw": 0.5571235549754535,
+                "Meridian_legacy_cal": 0.42810359971925377,
+                "HAR": 0.42392437399343974,
+                "HAR_pooled": 0.45926798264427554,
+                "LHAR": 0.4221420029747199,
+                "SHAR": 0.4390576744333123,
+                "HARX": 0.4183344644386104,
+                "Ridge": 0.42761023121242414,
+                "RandomForest": 0.4437090207508598,
+                "LightGBM": 0.49414449175625613,
+                "TimeMixer": 0.7169275424401835,
+                "RW": 0.6635423331762299,
+                "MA22": 0.4330719555295976,
+                "EWMA": 0.4068709851378161,
+                "GARCH": 0.4305520741348126,
+                "GJR_GARCH": 0.4250073666903826,
+                "EGARCH": 0.4560734236347019
+              },
+              "XOM": {
+                "Meridian_legacy": 0.2906952298179252,
+                "Meridian_legacy_raw": 0.4988490777113265,
+                "Meridian_legacy_cal": 0.19567050833750996,
+                "HAR": 0.27643872360161237,
+                "HAR_pooled": 0.26876375368504063,
+                "LHAR": 0.2512111397938194,
+                "SHAR": 0.24476831945773458,
+                "HARX": 0.2715999241512311,
+                "Ridge": 0.22147322370322384,
+                "RandomForest": 0.18902866398005277,
+                "LightGBM": 0.2436386643731839,
+                "TimeMixer": 0.25352532630865837,
+                "RW": 0.23742696864260057,
+                "MA22": 0.2638461928147782,
+                "EWMA": 0.28966258556286945,
+                "GARCH": 0.15991774151909674,
+                "GJR_GARCH": 0.1502602388048122,
+                "EGARCH": 0.14225062875626304
+              }
+            }
+          },
+          "breadth": {
+            "models": {
+              "Meridian_legacy": {
+                "QLIKE": 0.2542711968419259,
+                "RMSE_log": 0.743895591524834,
+                "pct_vs_ref": 0.2938454483543518,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 8
+              },
+              "Meridian_legacy_raw": {
+                "QLIKE": 0.27154928537886486,
+                "RMSE_log": 0.6657808440377452,
+                "pct_vs_ref": 0.3817640820314474,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 10
+              },
+              "Meridian_legacy_cal": {
+                "QLIKE": 0.34510291443786817,
+                "RMSE_log": 0.9784943757821722,
+                "pct_vs_ref": 0.7560378076831138,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 13
+              },
+              "HAR": {
+                "QLIKE": 0.19652362433653467,
+                "RMSE_log": 0.67674578274165,
+                "pct_vs_ref": 0.0,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 4
+              },
+              "HAR_pooled": {
+                "QLIKE": 0.22730648838963952,
+                "RMSE_log": 0.7418354518420202,
+                "pct_vs_ref": 0.15663696492993173,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 7
+              },
+              "LHAR": {
+                "QLIKE": 0.20255362787221706,
+                "RMSE_log": 0.678935791139908,
+                "pct_vs_ref": 0.030683351968699535,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 6
+              },
+              "SHAR": {
+                "QLIKE": 0.19904044062603543,
+                "RMSE_log": 0.6755535470781688,
+                "pct_vs_ref": 0.012806685699989329,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 5
+              },
+              "HARX": {
+                "QLIKE": 0.19627451436641474,
+                "RMSE_log": 0.6892972156319801,
+                "pct_vs_ref": -0.001267582820950519,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 3
+              },
+              "Ridge": {
+                "QLIKE": 0.29875893773733475,
+                "RMSE_log": 0.909882590874667,
+                "pct_vs_ref": 0.5202189494822687,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 11
+              },
+              "RandomForest": {
+                "QLIKE": 0.2650141118907783,
+                "RMSE_log": 0.8116697445084725,
+                "pct_vs_ref": 0.34851019965395014,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 9
+              },
+              "LightGBM": {
+                "QLIKE": 0.29910547791968917,
+                "RMSE_log": 0.9103326681438407,
+                "pct_vs_ref": 0.5219823007512285,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 1,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 12
+              },
+              "TimeMixer": {
+                "QLIKE": 0.42413582112642495,
+                "RMSE_log": 1.1074618484493202,
+                "pct_vs_ref": 1.1581925458494413,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 17
+              },
+              "RW": {
+                "QLIKE": 0.49861140113348884,
+                "RMSE_log": 1.0999231798027116,
+                "pct_vs_ref": 1.5371575698179032,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 18
+              },
+              "MA22": {
+                "QLIKE": 0.1834563943779645,
+                "RMSE_log": 0.643856999212296,
+                "pct_vs_ref": -0.06649190397686411,
+                "assets_beating_ref": 2,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 1
+              },
+              "EWMA": {
+                "QLIKE": 0.19590338895918413,
+                "RMSE_log": 0.672201436798872,
+                "pct_vs_ref": -0.0031560346978357634,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 2
+              },
+              "GARCH": {
+                "QLIKE": 0.40279580220560646,
+                "RMSE_log": 1.0568142551547186,
+                "pct_vs_ref": 1.0496049956612001,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 16
+              },
+              "GJR_GARCH": {
+                "QLIKE": 0.35991697192920463,
+                "RMSE_log": 0.9864074422898473,
+                "pct_vs_ref": 0.8314183505636394,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 14
+              },
+              "EGARCH": {
+                "QLIKE": 0.3845716452266335,
+                "RMSE_log": 1.0314712413772542,
+                "pct_vs_ref": 0.9568723430831814,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 15
+              }
+            },
+            "meta": {
+              "n_rows": 6,
+              "n_dates": 3,
+              "n_assets": 2,
+              "target_range": [
+                "2026-11-02",
+                "2026-11-04"
+              ],
+              "ref": "HAR",
+              "bootstrap_block": 1,
+              "tests_run": false,
+              "note": "DM test and CI need >= 20 target dates; not computed"
+            },
+            "per_asset": {
+              "GLD": {
+                "Meridian_legacy": 0.22760263563202413,
+                "Meridian_legacy_raw": 0.10140716163321135,
+                "Meridian_legacy_cal": 0.4581350752972104,
+                "HAR": 0.1544815437523599,
+                "HAR_pooled": 0.19978338522105532,
+                "LHAR": 0.16572462578497324,
+                "SHAR": 0.1543000865855039,
+                "HARX": 0.16290962370005047,
+                "Ridge": 0.3546818451211293,
+                "RandomForest": 0.3098984407284669,
+                "LightGBM": 0.38370601791394643,
+                "TimeMixer": 0.6117715059980723,
+                "RW": 0.417389808848282,
+                "MA22": 0.13493200762091698,
+                "EWMA": 0.18156877094797497,
+                "GARCH": 0.60155203258838,
+                "GJR_GARCH": 0.5177937543740413,
+                "EGARCH": 0.5720377914750291
+              },
+              "TLT": {
+                "Meridian_legacy": 0.28093975805182764,
+                "Meridian_legacy_raw": 0.4416914091245184,
+                "Meridian_legacy_cal": 0.23207075357852588,
+                "HAR": 0.23856570492070941,
+                "HAR_pooled": 0.2548295915582237,
+                "LHAR": 0.23938262995946089,
+                "SHAR": 0.24378079466656696,
+                "HARX": 0.22963940503277902,
+                "Ridge": 0.24283603035354018,
+                "RandomForest": 0.22012978305308964,
+                "LightGBM": 0.21450493792543188,
+                "TimeMixer": 0.23650013625477748,
+                "RW": 0.5798329934186958,
+                "MA22": 0.231980781135012,
+                "EWMA": 0.2102380069703933,
+                "GARCH": 0.20403957182283308,
+                "GJR_GARCH": 0.20204018948436805,
+                "EGARCH": 0.19710549897823793
+              }
+            }
+          }
+        },
+        "Oct+Nov-2026": {
+          "core": {
+            "models": {
+              "Meridian_legacy": {
+                "QLIKE": 0.4264143297720876,
+                "RMSE_log": 0.791504530999343,
+                "pct_vs_ref": 0.32466089418227617,
+                "assets_beating_ref": 2,
+                "dates_beating_ref": 12,
+                "ci95_pct_vs_ref": [
+                  0.044570752403264136,
+                  0.5448027495308928
+                ],
+                "DM_p": 0.9649426966583323,
+                "rank": 16
+              },
+              "Meridian_legacy_raw": {
+                "QLIKE": 0.6386882320357007,
+                "RMSE_log": 0.8697578163621259,
+                "pct_vs_ref": 0.9840921504779345,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 10,
+                "ci95_pct_vs_ref": [
+                  0.4759809721728775,
+                  1.344012105002822
+                ],
+                "DM_p": 0.9979817100857267,
+                "rank": 18
+              },
+              "Meridian_legacy_cal": {
+                "QLIKE": 0.32737794737192766,
+                "RMSE_log": 0.8398325517083691,
+                "pct_vs_ref": 0.017003262374047257,
+                "assets_beating_ref": 5,
+                "dates_beating_ref": 14,
+                "ci95_pct_vs_ref": [
+                  -0.024966996895382513,
+                  0.08376598747676066
+                ],
+                "DM_p": 0.7271369551536473,
+                "rank": 11
+              },
+              "HAR": {
+                "QLIKE": 0.32190452035297423,
+                "RMSE_log": 0.8231351226903554,
+                "pct_vs_ref": 0.0,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 9
+              },
+              "HAR_pooled": {
+                "QLIKE": 0.32044791276293194,
+                "RMSE_log": 0.8170941009366722,
+                "pct_vs_ref": -0.0045249678023939754,
+                "assets_beating_ref": 5,
+                "dates_beating_ref": 16,
+                "ci95_pct_vs_ref": [
+                  -0.026890970399502032,
+                  0.009944858524631485
+                ],
+                "DM_p": 0.1834715126483465,
+                "rank": 7
+              },
+              "LHAR": {
+                "QLIKE": 0.31890330083230084,
+                "RMSE_log": 0.8147454219431046,
+                "pct_vs_ref": -0.009323322075075247,
+                "assets_beating_ref": 9,
+                "dates_beating_ref": 17,
+                "ci95_pct_vs_ref": [
+                  -0.026435483266393042,
+                  0.015380821008340448
+                ],
+                "DM_p": 0.1994478575667468,
+                "rank": 5
+              },
+              "SHAR": {
+                "QLIKE": 0.31896044211814095,
+                "RMSE_log": 0.820948284256272,
+                "pct_vs_ref": -0.00914581203024123,
+                "assets_beating_ref": 6,
+                "dates_beating_ref": 15,
+                "ci95_pct_vs_ref": [
+                  -0.027245889717771563,
+                  0.014343727670110844
+                ],
+                "DM_p": 0.2659686253667292,
+                "rank": 6
+              },
+              "HARX": {
+                "QLIKE": 0.3255446100891747,
+                "RMSE_log": 0.826750420179385,
+                "pct_vs_ref": 0.011307979559308512,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 13,
+                "ci95_pct_vs_ref": [
+                  -0.020468070972564662,
+                  0.061125677774367976
+                ],
+                "DM_p": 0.6578344389388961,
+                "rank": 10
+              },
+              "Ridge": {
+                "QLIKE": 0.3116024534368231,
+                "RMSE_log": 0.8046022956722026,
+                "pct_vs_ref": -0.03200348632835215,
+                "assets_beating_ref": 9,
+                "dates_beating_ref": 19,
+                "ci95_pct_vs_ref": [
+                  -0.05740184525730458,
+                  0.006234428981744792
+                ],
+                "DM_p": 0.010919195769992184,
+                "rank": 3
+              },
+              "RandomForest": {
+                "QLIKE": 0.3101878055254931,
+                "RMSE_log": 0.8039422421723432,
+                "pct_vs_ref": -0.03639810591859216,
+                "assets_beating_ref": 9,
+                "dates_beating_ref": 17,
+                "ci95_pct_vs_ref": [
+                  -0.06913396233894692,
+                  -0.0007397650993832189
+                ],
+                "DM_p": 0.0686443127862135,
+                "rank": 2
+              },
+              "LightGBM": {
+                "QLIKE": 0.32171077074667653,
+                "RMSE_log": 0.8076638301895264,
+                "pct_vs_ref": -0.0006018853232792054,
+                "assets_beating_ref": 8,
+                "dates_beating_ref": 16,
+                "ci95_pct_vs_ref": [
+                  -0.04909681199558661,
+                  0.05925270943198014
+                ],
+                "DM_p": 0.38358808939883116,
+                "rank": 8
+              },
+              "TimeMixer": {
+                "QLIKE": 0.3475252317070689,
+                "RMSE_log": 0.7998366185258201,
+                "pct_vs_ref": 0.07959102694799403,
+                "assets_beating_ref": 2,
+                "dates_beating_ref": 14,
+                "ci95_pct_vs_ref": [
+                  -0.008292832711014124,
+                  0.16327173605273718
+                ],
+                "DM_p": 0.9112739082052186,
+                "rank": 12
+              },
+              "RW": {
+                "QLIKE": 0.5399443009453286,
+                "RMSE_log": 1.1109164756771723,
+                "pct_vs_ref": 0.6773430219410084,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 2,
+                "ci95_pct_vs_ref": [
+                  0.4658970973529411,
+                  0.8648552604744307
+                ],
+                "DM_p": 0.9999999647043829,
+                "rank": 17
+              },
+              "MA22": {
+                "QLIKE": 0.3092418322397058,
+                "RMSE_log": 0.8213892263039058,
+                "pct_vs_ref": -0.03933678253223516,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 16,
+                "ci95_pct_vs_ref": [
+                  -0.11337422562676701,
+                  0.059188655709458714
+                ],
+                "DM_p": 0.372954242929789,
+                "rank": 1
+              },
+              "EWMA": {
+                "QLIKE": 0.3124028322570365,
+                "RMSE_log": 0.7989760235597159,
+                "pct_vs_ref": -0.029517100553663966,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 16,
+                "ci95_pct_vs_ref": [
+                  -0.11302425535444405,
+                  0.05228744085997564
+                ],
+                "DM_p": 0.3178698773575256,
+                "rank": 4
+              },
+              "GARCH": {
+                "QLIKE": 0.35431782026626907,
+                "RMSE_log": 0.8916319093719792,
+                "pct_vs_ref": 0.10069227943041326,
+                "assets_beating_ref": 7,
+                "dates_beating_ref": 8,
+                "ci95_pct_vs_ref": [
+                  0.005627444240028797,
+                  0.19300812380007937
+                ],
+                "DM_p": 0.9986937637326071,
+                "rank": 13
+              },
+              "GJR_GARCH": {
+                "QLIKE": 0.3570453944154655,
+                "RMSE_log": 0.9128813918682535,
+                "pct_vs_ref": 0.1091655190923031,
+                "assets_beating_ref": 6,
+                "dates_beating_ref": 8,
+                "ci95_pct_vs_ref": [
+                  0.00022339174786737415,
+                  0.22527076315330422
+                ],
+                "DM_p": 0.9982424254910018,
+                "rank": 14
+              },
+              "EGARCH": {
+                "QLIKE": 0.35959814428193637,
+                "RMSE_log": 0.9451077473239387,
+                "pct_vs_ref": 0.11709566516068293,
+                "assets_beating_ref": 4,
+                "dates_beating_ref": 7,
+                "ci95_pct_vs_ref": [
+                  -0.027315343349266715,
+                  0.29163661606676616
+                ],
+                "DM_p": 0.9875468840344767,
+                "rank": 15
+              }
+            },
+            "meta": {
+              "n_rows": 272,
+              "n_dates": 28,
+              "n_assets": 11,
+              "target_range": [
+                "2026-10-01",
+                "2026-11-04"
+              ],
+              "ref": "HAR",
+              "bootstrap_block": 3,
+              "tests_run": true,
+              "note": "few weeks of data: low power, wide intervals"
+            },
+            "per_asset": {
+              "AAPL": {
+                "Meridian_legacy": 0.5600261991865082,
+                "Meridian_legacy_raw": 0.8312145045103831,
+                "Meridian_legacy_cal": 0.40362469874950085,
+                "HAR": 0.3477712000898876,
+                "HAR_pooled": 0.35660590947452503,
+                "LHAR": 0.346987382643959,
+                "SHAR": 0.3659138389386194,
+                "HARX": 0.3335442414180774,
+                "Ridge": 0.3385413377336697,
+                "RandomForest": 0.33722836953411217,
+                "LightGBM": 0.3324327048641281,
+                "TimeMixer": 0.43257782187518695,
+                "RW": 0.495541278865595,
+                "MA22": 0.33274529561211863,
+                "EWMA": 0.3307603849157738,
+                "GARCH": 0.35039262367910207,
+                "GJR_GARCH": 0.35367894779587766,
+                "EGARCH": 0.3078010222590591
+              },
+              "EURUSD": {
+                "Meridian_legacy": 0.2696543572767673,
+                "Meridian_legacy_raw": 0.37819742978732124,
+                "Meridian_legacy_cal": 0.27162107302932503,
+                "HAR": 0.24629450414357576,
+                "HAR_pooled": 0.26236134585259513,
+                "LHAR": 0.24407547458593049,
+                "SHAR": 0.24655466466570267,
+                "HARX": 0.24533021802518482,
+                "Ridge": 0.24558358446067086,
+                "RandomForest": 0.247532777514599,
+                "LightGBM": 0.24573177426211154,
+                "TimeMixer": 0.26903610702191166,
+                "RW": 0.5713981162686269,
+                "MA22": 0.29276977262379317,
+                "EWMA": 0.27636256316316554,
+                "GARCH": 0.25603106815085414,
+                "GJR_GARCH": 0.2404430369282474,
+                "EGARCH": 0.24954546348713813
+              },
+              "GBPUSD": {
+                "Meridian_legacy": 0.33413502650187016,
+                "Meridian_legacy_raw": 0.4721610356529505,
+                "Meridian_legacy_cal": 0.30739406084956544,
+                "HAR": 0.343125962760205,
+                "HAR_pooled": 0.3490984847567516,
+                "LHAR": 0.3352839396320452,
+                "SHAR": 0.33913385788726497,
+                "HARX": 0.3447925495281993,
+                "Ridge": 0.3291576067750592,
+                "RandomForest": 0.32138517474866785,
+                "LightGBM": 0.3111681924814409,
+                "TimeMixer": 0.2879853791664075,
+                "RW": 0.6387749660758753,
+                "MA22": 0.3073329641547416,
+                "EWMA": 0.30223404620236477,
+                "GARCH": 0.7675373314358157,
+                "GJR_GARCH": 0.7736771371354879,
+                "EGARCH": 0.8486317665170882
+              },
+              "IWM": {
+                "Meridian_legacy": 0.37718554004738836,
+                "Meridian_legacy_raw": 0.6219183172259285,
+                "Meridian_legacy_cal": 0.24654387057097335,
+                "HAR": 0.2543463186077398,
+                "HAR_pooled": 0.2581644554744875,
+                "LHAR": 0.24553890956468544,
+                "SHAR": 0.2587012830899611,
+                "HARX": 0.23995923531752747,
+                "Ridge": 0.24449518411009996,
+                "RandomForest": 0.26111429953546383,
+                "LightGBM": 0.24661654689594464,
+                "TimeMixer": 0.273268794306457,
+                "RW": 0.542187610222868,
+                "MA22": 0.22020266511701356,
+                "EWMA": 0.23334291562540393,
+                "GARCH": 0.22156049692171215,
+                "GJR_GARCH": 0.23345029697387915,
+                "EGARCH": 0.27377906811926495
+              },
+              "JNJ": {
+                "Meridian_legacy": 0.6391586943807793,
+                "Meridian_legacy_raw": 0.9669010648116597,
+                "Meridian_legacy_cal": 0.42769018649254215,
+                "HAR": 0.44771067323255276,
+                "HAR_pooled": 0.41158046996224956,
+                "LHAR": 0.4748553143775226,
+                "SHAR": 0.45867862052182046,
+                "HARX": 0.5327664952711605,
+                "Ridge": 0.4963837978875118,
+                "RandomForest": 0.43518933465149146,
+                "LightGBM": 0.5850561328236558,
+                "TimeMixer": 0.4505849666581082,
+                "RW": 0.7422934819506382,
+                "MA22": 0.34931393225385277,
+                "EWMA": 0.3669081599051212,
+                "GARCH": 0.3920448892572216,
+                "GJR_GARCH": 0.4058351072742412,
+                "EGARCH": 0.3440226083708698
+              },
+              "JPM": {
+                "Meridian_legacy": 0.5596035419116678,
+                "Meridian_legacy_raw": 0.7965668122459229,
+                "Meridian_legacy_cal": 0.4365270566230746,
+                "HAR": 0.42329730073598504,
+                "HAR_pooled": 0.42013823484278956,
+                "LHAR": 0.40767742311324395,
+                "SHAR": 0.42242968358236305,
+                "HARX": 0.4080111466975046,
+                "Ridge": 0.40381791472504397,
+                "RandomForest": 0.37939791106696574,
+                "LightGBM": 0.38054107072146154,
+                "TimeMixer": 0.48323335044034743,
+                "RW": 0.7519960598378915,
+                "MA22": 0.3689748896434566,
+                "EWMA": 0.3717034501832764,
+                "GARCH": 0.42030232670776846,
+                "GJR_GARCH": 0.3951721720496777,
+                "EGARCH": 0.3890480851035247
+              },
+              "MSFT": {
+                "Meridian_legacy": 0.3928498814337398,
+                "Meridian_legacy_raw": 0.6251584296373521,
+                "Meridian_legacy_cal": 0.2743056388484974,
+                "HAR": 0.2698150050913976,
+                "HAR_pooled": 0.2737731698705133,
+                "LHAR": 0.2841993735283047,
+                "SHAR": 0.26421849364098593,
+                "HARX": 0.27546173183446576,
+                "Ridge": 0.27828737719794955,
+                "RandomForest": 0.26285859365280095,
+                "LightGBM": 0.28881391898439096,
+                "TimeMixer": 0.33036825090909333,
+                "RW": 0.3363539935803952,
+                "MA22": 0.2821854422922793,
+                "EWMA": 0.2619632688450345,
+                "GARCH": 0.4008583074539366,
+                "GJR_GARCH": 0.35469052184191346,
+                "EGARCH": 0.3198224349069594
+              },
+              "QQQ": {
+                "Meridian_legacy": 0.5748102097829922,
+                "Meridian_legacy_raw": 0.8931263326820428,
+                "Meridian_legacy_cal": 0.37252014544833384,
+                "HAR": 0.3538977994068766,
+                "HAR_pooled": 0.3554028507475148,
+                "LHAR": 0.3380469376836025,
+                "SHAR": 0.3200430312373454,
+                "HARX": 0.34223922553388936,
+                "Ridge": 0.3289391285623568,
+                "RandomForest": 0.35054710165166403,
+                "LightGBM": 0.31858324497005114,
+                "TimeMixer": 0.3978442488087841,
+                "RW": 0.5545276661030605,
+                "MA22": 0.36450548780298353,
+                "EWMA": 0.39215184470633957,
+                "GARCH": 0.33823816968470255,
+                "GJR_GARCH": 0.37427394047107887,
+                "EGARCH": 0.3691367546323638
+              },
+              "SPY": {
+                "Meridian_legacy": 0.3637634819225283,
+                "Meridian_legacy_raw": 0.5746698196351019,
+                "Meridian_legacy_cal": 0.26605871148158783,
+                "HAR": 0.276953954817858,
+                "HAR_pooled": 0.2717526322640118,
+                "LHAR": 0.2654790239627342,
+                "SHAR": 0.254374636972143,
+                "HARX": 0.28591702209588304,
+                "Ridge": 0.2584611542605896,
+                "RandomForest": 0.2564869166716948,
+                "LightGBM": 0.27065685463403877,
+                "TimeMixer": 0.3040284876641914,
+                "RW": 0.46011530071811685,
+                "MA22": 0.25004023837085365,
+                "EWMA": 0.2801764933295166,
+                "GARCH": 0.25971149621083733,
+                "GJR_GARCH": 0.2697618086775843,
+                "EGARCH": 0.3329398659978069
+              },
+              "USDJPY": {
+                "Meridian_legacy": 0.28322080108373676,
+                "Meridian_legacy_raw": 0.29511948481113476,
+                "Meridian_legacy_cal": 0.37929048504761415,
+                "HAR": 0.3490973510304114,
+                "HAR_pooled": 0.34062857808800534,
+                "LHAR": 0.33883627381029857,
+                "SHAR": 0.3542541663916475,
+                "HARX": 0.34573061626868845,
+                "Ridge": 0.28826743145212336,
+                "RandomForest": 0.3397800767761299,
+                "LightGBM": 0.32817958893739996,
+                "TimeMixer": 0.3193430095878793,
+                "RW": 0.47324458372748784,
+                "MA22": 0.4152256092150683,
+                "EWMA": 0.4072107595100662,
+                "GARCH": 0.2916492234751395,
+                "GJR_GARCH": 0.30129210528597355,
+                "EGARCH": 0.2952226677412632
+              },
+              "XOM": {
+                "Meridian_legacy": 0.32046058178682996,
+                "Meridian_legacy_raw": 0.5397138515586822,
+                "Meridian_legacy_cal": 0.2146283650226186,
+                "HAR": 0.22755182424123743,
+                "HAR_pooled": 0.22505069587514914,
+                "LHAR": 0.22541568767423822,
+                "SHAR": 0.22358504087530434,
+                "HARX": 0.22560701113252307,
+                "Ridge": 0.2128205211350746,
+                "RandomForest": 0.2196706894753509,
+                "LightGBM": 0.22783633837645564,
+                "TimeMixer": 0.2678586843655903,
+                "RW": 0.3754976435775002,
+                "MA22": 0.22186797152158222,
+                "EWMA": 0.21556122332551808,
+                "GARCH": 0.20926065644239003,
+                "GJR_GARCH": 0.23499530798029236,
+                "EGARCH": 0.2382140685619497
+              }
+            }
+          },
+          "breadth": {
+            "models": {
+              "Meridian_legacy": {
+                "QLIKE": 0.3003146128026835,
+                "RMSE_log": 0.8117261327308593,
+                "pct_vs_ref": 0.15106919436425992,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 11,
+                "ci95_pct_vs_ref": [
+                  -0.12160828622789477,
+                  0.5698285804948028
+                ],
+                "DM_p": 0.866140688709063,
+                "rank": 12
+              },
+              "Meridian_legacy_raw": {
+                "QLIKE": 0.4214294479694958,
+                "RMSE_log": 0.838119739685411,
+                "pct_vs_ref": 0.6152875500412136,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 11,
+                "ci95_pct_vs_ref": [
+                  -0.030859904312926026,
+                  1.6546449209934369
+                ],
+                "DM_p": 0.9766991812089297,
+                "rank": 17
+              },
+              "Meridian_legacy_cal": {
+                "QLIKE": 0.29004013701041137,
+                "RMSE_log": 0.9245746989466255,
+                "pct_vs_ref": 0.11168838481139187,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 9,
+                "ci95_pct_vs_ref": [
+                  0.01354019269282672,
+                  0.3484718208646359
+                ],
+                "DM_p": 0.9366315453189666,
+                "rank": 11
+              },
+              "HAR": {
+                "QLIKE": 0.260900573373913,
+                "RMSE_log": 0.8501623179454291,
+                "pct_vs_ref": 0.0,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 0,
+                "ci95_pct_vs_ref": null,
+                "DM_p": null,
+                "rank": 3
+              },
+              "HAR_pooled": {
+                "QLIKE": 0.2687086309688039,
+                "RMSE_log": 0.8704182444941635,
+                "pct_vs_ref": 0.0299273301469547,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 8,
+                "ci95_pct_vs_ref": [
+                  -0.00027066150576026955,
+                  0.12474325277473196
+                ],
+                "DM_p": 0.8662013884521756,
+                "rank": 6
+              },
+              "LHAR": {
+                "QLIKE": 0.2555942817925948,
+                "RMSE_log": 0.8356036809265083,
+                "pct_vs_ref": -0.02033836688320878,
+                "assets_beating_ref": 2,
+                "dates_beating_ref": 17,
+                "ci95_pct_vs_ref": [
+                  -0.04215514709716619,
+                  0.0131656427340148
+                ],
+                "DM_p": 0.08612832257980094,
+                "rank": 1
+              },
+              "SHAR": {
+                "QLIKE": 0.26425197920117804,
+                "RMSE_log": 0.855826780030591,
+                "pct_vs_ref": 0.012845528792541083,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 7,
+                "ci95_pct_vs_ref": [
+                  -0.006083524055934696,
+                  0.020362169800373947
+                ],
+                "DM_p": 0.9506422651400446,
+                "rank": 4
+              },
+              "HARX": {
+                "QLIKE": 0.2564000507742304,
+                "RMSE_log": 0.831734778782377,
+                "pct_vs_ref": -0.01724995289003295,
+                "assets_beating_ref": 2,
+                "dates_beating_ref": 14,
+                "ci95_pct_vs_ref": [
+                  -0.0649955901648241,
+                  0.024504313305184187
+                ],
+                "DM_p": 0.2552828713705194,
+                "rank": 2
+              },
+              "Ridge": {
+                "QLIKE": 0.2757328439743711,
+                "RMSE_log": 0.9093759570254335,
+                "pct_vs_ref": 0.05685027981598578,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 8,
+                "ci95_pct_vs_ref": [
+                  -0.026512137516185738,
+                  0.2925093787109115
+                ],
+                "DM_p": 0.7900022052354225,
+                "rank": 8
+              },
+              "RandomForest": {
+                "QLIKE": 0.26578488189040456,
+                "RMSE_log": 0.8877455585076632,
+                "pct_vs_ref": 0.01872095738743962,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 9,
+                "ci95_pct_vs_ref": [
+                  -0.08453271082047131,
+                  0.1314209221810082
+                ],
+                "DM_p": 0.6506875596219326,
+                "rank": 5
+              },
+              "LightGBM": {
+                "QLIKE": 0.2736215370357353,
+                "RMSE_log": 0.912019406129669,
+                "pct_vs_ref": 0.04875789844888945,
+                "assets_beating_ref": 1,
+                "dates_beating_ref": 10,
+                "ci95_pct_vs_ref": [
+                  -0.059087453689188246,
+                  0.2808036913764353
+                ],
+                "DM_p": 0.7536186821562026,
+                "rank": 7
+              },
+              "TimeMixer": {
+                "QLIKE": 0.30936543089942553,
+                "RMSE_log": 0.9003701794664247,
+                "pct_vs_ref": 0.18575987357472967,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 7,
+                "ci95_pct_vs_ref": [
+                  -0.01705690713537329,
+                  0.4890834175688038
+                ],
+                "DM_p": 0.9668651060745175,
+                "rank": 13
+              },
+              "RW": {
+                "QLIKE": 0.5085952181004729,
+                "RMSE_log": 1.117314298265964,
+                "pct_vs_ref": 0.9493832900534611,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 8,
+                "ci95_pct_vs_ref": [
+                  0.4797887016884598,
+                  2.121707804202756
+                ],
+                "DM_p": 0.9986553638652883,
+                "rank": 18
+              },
+              "MA22": {
+                "QLIKE": 0.2869652763623672,
+                "RMSE_log": 0.9047790420534257,
+                "pct_vs_ref": 0.09990281988035044,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 9,
+                "ci95_pct_vs_ref": [
+                  -0.05769818604737663,
+                  0.16387622239801775
+                ],
+                "DM_p": 0.9162730498521684,
+                "rank": 10
+              },
+              "EWMA": {
+                "QLIKE": 0.2800670970812528,
+                "RMSE_log": 0.8682200272262532,
+                "pct_vs_ref": 0.07346294206824555,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 13,
+                "ci95_pct_vs_ref": [
+                  -0.09059343790524506,
+                  0.1552053727839477
+                ],
+                "DM_p": 0.8088405925076905,
+                "rank": 9
+              },
+              "GARCH": {
+                "QLIKE": 0.34565067844091674,
+                "RMSE_log": 0.9864363068396763,
+                "pct_vs_ref": 0.324836791161601,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 3,
+                "ci95_pct_vs_ref": [
+                  0.14245416242296904,
+                  0.5612466981847367
+                ],
+                "DM_p": 0.9996495009135413,
+                "rank": 15
+              },
+              "GJR_GARCH": {
+                "QLIKE": 0.3359579786366423,
+                "RMSE_log": 0.9608516086130454,
+                "pct_vs_ref": 0.28768585784271083,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 4,
+                "ci95_pct_vs_ref": [
+                  0.10209710816833989,
+                  0.48879136589486805
+                ],
+                "DM_p": 0.9986358190929161,
+                "rank": 14
+              },
+              "EGARCH": {
+                "QLIKE": 0.3527180105247322,
+                "RMSE_log": 0.9825685164578335,
+                "pct_vs_ref": 0.35192501098581275,
+                "assets_beating_ref": 0,
+                "dates_beating_ref": 4,
+                "ci95_pct_vs_ref": [
+                  0.14089542242233358,
+                  0.6014929623301578
+                ],
+                "DM_p": 0.9993360328801734,
+                "rank": 16
+              }
+            },
+            "meta": {
+              "n_rows": 50,
+              "n_dates": 25,
+              "n_assets": 2,
+              "target_range": [
+                "2026-10-01",
+                "2026-11-04"
+              ],
+              "ref": "HAR",
+              "bootstrap_block": 3,
+              "tests_run": true,
+              "note": "few weeks of data: low power, wide intervals"
+            },
+            "per_asset": {
+              "GLD": {
+                "Meridian_legacy": 0.2056969065837135,
+                "Meridian_legacy_raw": 0.2706598912521414,
+                "Meridian_legacy_cal": 0.2500976978252386,
+                "HAR": 0.19377142198790967,
+                "HAR_pooled": 0.20167688933202169,
+                "LHAR": 0.191279814081098,
+                "SHAR": 0.19429957509553053,
+                "HARX": 0.1863502380164162,
+                "Ridge": 0.21979958412350445,
+                "RandomForest": 0.2286628752051909,
+                "LightGBM": 0.22726934257022724,
+                "TimeMixer": 0.26417019446610657,
+                "RW": 0.3578201003684326,
+                "MA22": 0.21523090978014486,
+                "EWMA": 0.20722631471556027,
+                "GARCH": 0.35068933182528694,
+                "GJR_GARCH": 0.316804670847315,
+                "EGARCH": 0.3433419004341423
+              },
+              "TLT": {
+                "Meridian_legacy": 0.3949323190216536,
+                "Meridian_legacy_raw": 0.57219900468685,
+                "Meridian_legacy_cal": 0.32998257619558424,
+                "HAR": 0.3280297247599164,
+                "HAR_pooled": 0.3357403726055861,
+                "LHAR": 0.3199087495040916,
+                "SHAR": 0.33420438330682567,
+                "HARX": 0.32644986353204464,
+                "Ridge": 0.3316661038252377,
+                "RandomForest": 0.3029068885756182,
+                "LightGBM": 0.31997373150124336,
+                "TimeMixer": 0.35456066733274455,
+                "RW": 0.6593703358325133,
+                "MA22": 0.3586996429445896,
+                "EWMA": 0.35290787944694535,
+                "GARCH": 0.3406120250565464,
+                "GJR_GARCH": 0.3551112864259697,
+                "EGARCH": 0.36209412061532203
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "forward_log": {
+    "n_rows": 22,
+    "n_dates": 2,
+    "target_dates": [
+      "2026-11-02",
+      "2026-11-03"
+    ],
+    "QLIKE_Meridian_M0": 0.30675902922331805,
+    "QLIKE_HAR": 0.3004667459713261,
+    "pct_vs_HAR": 0.02094169599917195,
+    "per_date_pct": {
+      "2026-11-02": 0.13014908728590302,
+      "2026-11-03": -0.10350038545107698
+    },
+    "assets_beating_HAR": 6,
+    "n_assets": 11
+  }
+}

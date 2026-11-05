@@ -1,0 +1,11 @@
+# Versions the frozen-model deployment and its audit were run and verified with.
+numpy==2.5.3
+pandas==3.0.5
+scipy==1.18.1
+scikit-learn==1.9.1
+pyarrow==26.0.1
+arch==8.0.0
+statsmodels==0.15.0
+hmmlearn==0.3.3
+lightgbm==4.7.0
+pytest==9.2.0
