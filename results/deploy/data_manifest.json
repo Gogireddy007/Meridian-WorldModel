@@ -1,0 +1,216 @@
+{
+  "built_at_utc": "2026-11-05T00:26:18+00:00",
+  "assets": {
+    "SPY": {
+      "source": "yahoo",
+      "rows": 4992,
+      "first": "2007-01-03",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3794,
+        "first": "2011-06-28",
+        "last": "2026-07-30",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.9997364259356879,
+        "corr_log": 0.9999809964933933
+      }
+    },
+    "QQQ": {
+      "source": "yahoo",
+      "rows": 4992,
+      "first": "2007-01-03",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3794,
+        "first": "2011-06-28",
+        "last": "2026-07-30",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.9997364259356879,
+        "corr_log": 0.9999999843703453
+      }
+    },
+    "IWM": {
+      "source": "yahoo",
+      "rows": 4992,
+      "first": "2007-01-03",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3794,
+        "first": "2011-06-28",
+        "last": "2026-07-30",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.9997364259356879,
+        "corr_log": 0.9999999329083686
+      }
+    },
+    "AAPL": {
+      "source": "yahoo",
+      "rows": 4992,
+      "first": "2007-01-03",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3794,
+        "first": "2011-06-28",
+        "last": "2026-07-30",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.9997364259356879,
+        "corr_log": 0.999914729839375
+      }
+    },
+    "MSFT": {
+      "source": "yahoo",
+      "rows": 4992,
+      "first": "2007-01-03",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3794,
+        "first": "2011-06-28",
+        "last": "2026-07-30",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.9997364259356879,
+        "corr_log": 0.999986906685867
+      }
+    },
+    "JPM": {
+      "source": "yahoo",
+      "rows": 4992,
+      "first": "2007-01-03",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3794,
+        "first": "2011-06-28",
+        "last": "2026-07-30",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.9997364259356879,
+        "corr_log": 0.9999992974379966
+      }
+    },
+    "XOM": {
+      "source": "yahoo",
+      "rows": 4992,
+      "first": "2007-01-03",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3794,
+        "first": "2011-06-28",
+        "last": "2026-07-30",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.9997364259356879,
+        "corr_log": 0.9999820092102627
+      }
+    },
+    "JNJ": {
+      "source": "yahoo",
+      "rows": 4992,
+      "first": "2007-01-03",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3794,
+        "first": "2011-06-28",
+        "last": "2026-07-30",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.9997364259356879,
+        "corr_log": 0.9999983477770616
+      }
+    },
+    "TLT": {
+      "source": "yahoo",
+      "rows": 4992,
+      "first": "2007-01-03",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3794,
+        "first": "2011-06-28",
+        "last": "2026-07-30",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.9997364259356879,
+        "corr_log": 0.9999036073399673
+      }
+    },
+    "GLD": {
+      "source": "yahoo",
+      "rows": 4992,
+      "first": "2007-01-03",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3794,
+        "first": "2011-06-28",
+        "last": "2026-07-30",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.9997364259356879,
+        "corr_log": 0.9999999986104708
+      }
+    },
+    "EURUSD": {
+      "source": "yahoo",
+      "rows": 5146,
+      "first": "2007-01-01",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3926,
+        "first": "2011-06-28",
+        "last": "2026-07-29",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.999745287824758,
+        "corr_log": 0.9999845255385397
+      }
+    },
+    "USDJPY": {
+      "source": "yahoo",
+      "rows": 5146,
+      "first": "2007-01-01",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3926,
+        "first": "2011-06-28",
+        "last": "2026-07-29",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.999745287824758,
+        "corr_log": 0.9999827512520592
+      }
+    },
+    "GBPUSD": {
+      "source": "yahoo",
+      "rows": 5158,
+      "first": "2007-01-01",
+      "last": "2026-11-04",
+      "check_vs_benchmark": {
+        "overlap": 3925,
+        "first": "2011-06-28",
+        "last": "2026-07-29",
+        "median_abs_log_diff": 0.0,
+        "share_exact_1e-3": 0.9997452229299363,
+        "corr_log": 0.9999772558963433
+      }
+    }
+  },
+  "macro": {
+    "source": "fred",
+    "sha256": {
+      "fred_VIXCLS.csv": "cf6c316330e6869bf93b464179173829c466f42e0007faa72c7d92dc39f2a957",
+      "fred_DGS10.csv": "6cf6f289f918ee84343ef50dba91d0ef419a6c05e493f827e9a718e049ca0bef",
+      "fred_DGS2.csv": "69f43122d6d6f8390aac58df8b4dbc9afea28bb3d4c5e9e0f97052335a17a449"
+    },
+    "last": {
+      "VIXCLS": "2026-11-03",
+      "DGS10": "2026-11-03",
+      "DGS2": "2026-11-03"
+    }
+  },
+  "files_sha256": {
+    "macro.parquet": "c4c354ae0b99ccf709641373a35484650b0633808cb1e65871409d2d5ce7876e",
+    "px_AAPL.parquet": "bc9a31fdc65946e6ff01b9e5243e668318d8b0e6cdc1d6559ac392285078a117",
+    "px_EURUSD.parquet": "0e3c296cbaa744c721f16fad68bb913b7916cbd329269c25b836c431d9e80459",
+    "px_GBPUSD.parquet": "606a81c954f5bb9b9fe0482d0ab63542ed9279154aa80810875159df1f391324",
+    "px_GLD.parquet": "6cc08efe7e7c23f8cadc17f2d85ab88d8150f2868e1f531cf67a89db121fee02",
+    "px_IWM.parquet": "dd5870786fda312f47e143b177e23eca2af65c9e3e1889b1096960a1d3c4906d",
+    "px_JNJ.parquet": "5e066295ad727e7681f462982a210188c8260bf8b60410142c9ade018bd8ce43",
+    "px_JPM.parquet": "e01c4629786d561b02d6507958d39123d9c0844b9e96e87c183e4488ede4a73b",
+    "px_MSFT.parquet": "4388384b7ac174740ec699383d0eedcd6668383cb056e3e1625af629ca3cb2f2",
+    "px_QQQ.parquet": "42f27287dbf8b1cada0bd4fc5335b96113ffa30b817572240633317e3a232a55",
+    "px_SPY.parquet": "483a4eab04c63e60ce1e76863c1a7653ca7f8bb43acca5c8b79b0b6dd786a392",
+    "px_TLT.parquet": "014e42eec24bd0d06cfabe78456fb02dadb5107e7afaf75bcc3506fd27a02574",
+    "px_USDJPY.parquet": "1731512b9fd561152c12e496186a2b6f7210cafa54d95a00a53efce61f8cc46a",
+    "px_XOM.parquet": "6c6c5baa626a293955019bbac354dc8b995dafd7edd592581e26a24bc529d045"
+  }
+}

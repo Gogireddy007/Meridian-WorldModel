@@ -1,0 +1,81 @@
+{
+  "run_at_utc": "2026-11-05T00:35:25+00:00",
+  "git_commit": "e6494aa",
+  "data_manifest_sha256": "c8753f415f855a9aef98390f44dfc722cd365c272a25b64e7c4207875015a9bb",
+  "data_last_target": "2026-11-04",
+  "snapshots": {
+    "A": {
+      "name": "Meridian M0 forward-frozen (audited config, 5 seeds)",
+      "train_origin_max": "2026-10-29",
+      "train_label_end_max": "2026-10-30",
+      "eval_target_from": "2026-11-02",
+      "windows": {
+        "Nov-2026": [
+          "2026-11-01",
+          "2026-11-30"
+        ]
+      },
+      "baseline_fit": {
+        "n_train_rows_core": 54866,
+        "train_origin_max": "2026-10-29",
+        "train_label_end_max": "2026-10-30"
+      },
+      "rows": 39,
+      "target_range": [
+        "2026-11-02",
+        "2026-11-04"
+      ]
+    },
+    "B": {
+      "name": "Meridian legacy final (pre-audit config, 1 seed)",
+      "train_origin_max": "2026-09-07",
+      "train_label_end_max": "2026-09-08",
+      "eval_target_from": "2026-10-01",
+      "windows": {
+        "Oct-2026": [
+          "2026-10-01",
+          "2026-10-31"
+        ],
+        "Nov-2026": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "Oct+Nov-2026": [
+          "2026-10-01",
+          "2026-11-30"
+        ]
+      },
+      "baseline_fit": {
+        "n_train_rows_core": 54451,
+        "train_origin_max": "2026-09-07",
+        "train_label_end_max": "2026-09-08",
+        "legacy_bias": 0.3829487805091632,
+        "legacy_jensen": 0.2827279547257159,
+        "legacy_jensen_rows": [
+          "2024-09-08",
+          "2026-09-07",
+          5551
+        ]
+      },
+      "rows": 322,
+      "target_range": [
+        "2026-10-01",
+        "2026-11-04"
+      ]
+    }
+  },
+  "weights_sha256": {
+    "A": {
+      "meridian_M0_seed0.pt": "d95d1b2914dd05f50798828581f112f805ea4d1984617a8c89975004240c69bf",
+      "meridian_M0_seed1.pt": "8ed958efc1e53b2e7d85347d56d5a83b4afbb0e6486dab47f1e0fc962a058dbd",
+      "meridian_M0_seed2.pt": "05613c5bab81b3d41ea2cac8081061580f3ae755e9bfbaa764cb706ccb91d33e",
+      "meridian_M0_seed3.pt": "ed90b6e92ba0052ed3b595d265ef6fcf7468f9a0f7c1ae57b30ae5cc8d5c376b",
+      "meridian_M0_seed4.pt": "57d976a33bb8a38ae9fc3b958281ab020d18fafd63b65d816211bad0f48c2daa",
+      "scaler.npz": "0859965b75b10aed2c3233c3acc59c84f3db72187efc79c43e2bc28c018b5bde",
+      "har.json": "f5133e57523a0652ddf31e3f1201737540cb00006bc6e7d76ff268829430f699"
+    },
+    "B": {
+      "meridian_final.pt": "608a21d102bfd8f28e5739459941eee275076e51601470681b301baa3b562829"
+    }
+  }
+}

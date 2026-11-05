@@ -1,0 +1,384 @@
+{
+  "run_at_utc": "2026-11-05T00:39:19+00:00",
+  "git_commit": "e6494aa",
+  "summary": {
+    "PASS": 14,
+    "WARN": 1
+  },
+  "checks": [
+    {
+      "id": "W1",
+      "check": "weights_unchanged",
+      "status": "PASS",
+      "evidence": {
+        "results/forward/frozen/meridian_M0_seed0.pt": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        },
+        "results/forward/frozen/meridian_M0_seed1.pt": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        },
+        "results/forward/frozen/meridian_M0_seed2.pt": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        },
+        "results/forward/frozen/meridian_M0_seed3.pt": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        },
+        "results/forward/frozen/meridian_M0_seed4.pt": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        },
+        "results/forward/frozen/scaler.npz": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        },
+        "results/forward/frozen/har.json": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        },
+        "results/meridian_final.pt": {
+          "matches_git_HEAD": true,
+          "matches_hash_recorded_at_deploy": true,
+          "first_committed": "2026-09-08"
+        }
+      }
+    },
+    {
+      "id": "W2",
+      "check": "no_training_code_path",
+      "status": "PASS",
+      "evidence": {
+        "banned_calls_found": [],
+        "all_meridian_in_eval_mode": true
+      }
+    },
+    {
+      "id": "T1",
+      "check": "targets_after_training",
+      "status": "PASS",
+      "evidence": {
+        "A": {
+          "train_label_end_max": "2026-10-30",
+          "first_scored_target": "2026-11-02",
+          "calendar_gap_days": 3,
+          "rows_violating": 0
+        },
+        "B": {
+          "train_label_end_max": "2026-09-08",
+          "first_scored_target": "2026-10-01",
+          "calendar_gap_days": 23,
+          "rows_violating": 0
+        }
+      }
+    },
+    {
+      "id": "T2",
+      "check": "baselines_same_cutoff",
+      "status": "PASS",
+      "evidence": {
+        "A": {
+          "meridian_label_end": "2026-10-30",
+          "baselines_label_end": "2026-10-30",
+          "baselines_origin_max": "2026-10-29",
+          "ok": true
+        },
+        "B": {
+          "meridian_label_end": "2026-09-08",
+          "baselines_label_end": "2026-09-08",
+          "baselines_origin_max": "2026-09-07",
+          "ok": true
+        }
+      }
+    },
+    {
+      "id": "T3",
+      "check": "lookahead_truncation",
+      "status": "PASS",
+      "evidence": {
+        "origins_tested": 24,
+        "max_abs_diff_log_var": {
+          "Meridian_M0": 0.0,
+          "Meridian_legacy_raw": 9.5367431640625e-07,
+          "HAR_frozen": 0.0,
+          "EWMA_state": 0.0,
+          "GARCH_state": 0.0
+        },
+        "tolerance": 0.0001
+      }
+    },
+    {
+      "id": "T4",
+      "check": "legacy_provenance",
+      "status": "PASS",
+      "evidence": {
+        "best_match_training_data": "uncleaned (pre-audit) bars",
+        "best_match_last_origin": "2026-07-28",
+        "max_scaled_error": 0.00013085266239996364,
+        "assumed_cutoff_used_for_baselines": "2026-09-08",
+        "eval_window_starts": "2026-10-01",
+        "note": "baselines were given data through the later, conservative cut-off"
+      }
+    },
+    {
+      "id": "D1",
+      "check": "data_source_parity",
+      "status": "PASS",
+      "evidence": {
+        "SPY": {
+          "source": "yahoo",
+          "overlap": 3794,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.9999809964933933
+        },
+        "QQQ": {
+          "source": "yahoo",
+          "overlap": 3794,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.9999999843703453
+        },
+        "IWM": {
+          "source": "yahoo",
+          "overlap": 3794,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.9999999329083686
+        },
+        "AAPL": {
+          "source": "yahoo",
+          "overlap": 3794,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.999914729839375
+        },
+        "MSFT": {
+          "source": "yahoo",
+          "overlap": 3794,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.999986906685867
+        },
+        "JPM": {
+          "source": "yahoo",
+          "overlap": 3794,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.9999992974379966
+        },
+        "XOM": {
+          "source": "yahoo",
+          "overlap": 3794,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.9999820092102627
+        },
+        "JNJ": {
+          "source": "yahoo",
+          "overlap": 3794,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.9999983477770616
+        },
+        "TLT": {
+          "source": "yahoo",
+          "overlap": 3794,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.9999036073399673
+        },
+        "GLD": {
+          "source": "yahoo",
+          "overlap": 3794,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.9999999986104708
+        },
+        "EURUSD": {
+          "source": "yahoo",
+          "overlap": 3926,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.9999845255385397
+        },
+        "USDJPY": {
+          "source": "yahoo",
+          "overlap": 3926,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.9999827512520592
+        },
+        "GBPUSD": {
+          "source": "yahoo",
+          "overlap": 3925,
+          "median_abs_log_diff": 0.0,
+          "corr_log": 0.9999772558963433
+        },
+        "_snapshot_files_match_manifest": true
+      }
+    },
+    {
+      "id": "D2",
+      "check": "truth_recomputed",
+      "status": "PASS",
+      "evidence": {
+        "rows": 361,
+        "max_abs_log_diff": 0.0,
+        "target_date_mismatches": 0
+      }
+    },
+    {
+      "id": "D3",
+      "check": "bars_complete",
+      "status": "PASS",
+      "evidence": {
+        "SPY": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        },
+        "QQQ": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        },
+        "IWM": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        },
+        "AAPL": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        },
+        "MSFT": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        },
+        "JPM": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        },
+        "XOM": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        },
+        "JNJ": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        },
+        "EURUSD": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        },
+        "USDJPY": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        },
+        "GBPUSD": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        },
+        "TLT": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        },
+        "GLD": {
+          "last_bar": "2026-11-04",
+          "after_last_complete_day": false,
+          "duplicates": 0,
+          "degenerate_bars_in_window": 0
+        }
+      }
+    },
+    {
+      "id": "R1",
+      "check": "precommitted_reproduced",
+      "status": "PASS",
+      "evidence": {
+        "logged_rows_recomputed": 39,
+        "max_abs_diff_Meridian_realtime_vintage": 9.5367431640625e-07,
+        "max_abs_diff_HAR": 1.7763568394002505e-15,
+        "max_abs_diff_deployed_same_day_macro": "0.21962643",
+        "note": "deployed forecasts use the same-day VIX/yield close (as in training); the live log used the previous day's value because FRED had not yet published. Both use only data known at the close."
+      }
+    },
+    {
+      "id": "R2",
+      "check": "frozen_har_reproduced",
+      "status": "PASS",
+      "evidence": {
+        "max_abs_diff_log_var": 1.0658141036401503e-14
+      }
+    },
+    {
+      "id": "S1",
+      "check": "scores_recomputed",
+      "status": "PASS",
+      "evidence": {
+        "numbers_checked": 72,
+        "max_abs_diff": 0.0
+      }
+    },
+    {
+      "id": "S2",
+      "check": "report_matches_json",
+      "status": "PASS",
+      "evidence": {
+        "identical_to_fresh_render": {
+          "DEPLOYMENT.md": true,
+          "README.md": true
+        }
+      }
+    },
+    {
+      "id": "S3",
+      "check": "no_tests_on_tiny_samples",
+      "status": "PASS",
+      "evidence": {
+        "violations": []
+      }
+    },
+    {
+      "id": "S4",
+      "check": "scorer_sanity",
+      "status": "WARN",
+      "evidence": {
+        "oracle_QLIKE": 0.0,
+        "A:Meridian_M0": {
+          "QLIKE": 0.2853426168283866,
+          "shuffled_mean": 0.2525753566041285,
+          "share_shuffles_better": 0.985
+        },
+        "A:HAR": {
+          "QLIKE": 0.31228182935757837,
+          "shuffled_mean": 0.2787036217676103,
+          "share_shuffles_better": 0.9
+        },
+        "B:Meridian_legacy": {
+          "QLIKE": 0.4264143297720876,
+          "shuffled_mean": 0.41707165433062326,
+          "share_shuffles_better": 0.735
+        },
+        "B:HAR": {
+          "QLIKE": 0.32190452035297423,
+          "shuffled_mean": 0.3234097973743647,
+          "share_shuffles_better": 0.455
+        },
+        "meaning": "share_shuffles_better > 0.05: within this window the model's day-to-day ordering of forecasts does not beat a random ordering of its own forecasts (no timing evidence); HAR rows are the control"
+      }
+    }
+  ]
+}
