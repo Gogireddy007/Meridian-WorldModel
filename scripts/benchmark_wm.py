@@ -171,7 +171,9 @@ def combine():
     M = P.merge(W[["asset", "date", "MeridianWM", "WM_df", "WM_scale", "WM_regime"]
                   + [f"WM_s{k}" for k in range(N_SEEDS)]], on=["asset", "date"], how="left")
     M.to_parquet(OUT / "bench_wm.parquet")
+    from datetime import datetime, timezone
     (OUT / "bench_wm_meta.json").write_text(json.dumps({"seeds": N_SEEDS, "epochs": EPOCHS, "fold_grid_check": grid,
+                                                        "combined_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                                                         "data_end": str(BENCH_DATA_END.date())}, indent=2))
     print(json.dumps(grid, indent=2))
 

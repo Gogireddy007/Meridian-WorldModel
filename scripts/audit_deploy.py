@@ -21,6 +21,9 @@ pipeline and the audit is unlikely.
   D1 data_source_parity       snapshot data reproduces the audited benchmark's realized variance
   D2 truth_recomputed         rv_next / target_date re-derived from raw OHLC independently
   D3 bars_complete            no in-progress bar, no duplicates, no degenerate bars in the window
+  D4 fx_bar_dating_no_leak     Yahoo FX bars are labelled a day early in UK summer time: on the true
+                              trading day every training set still ends before every scored target;
+                              the completeness rule drops an open summer bar; test sensitivity recorded
   R1 precommitted_reproduced  frozen weights + the real-time data vintage reproduce exactly the
                               forecasts logged in results/forward/forecast_log.csv BEFORE their outcomes
   R2 frozen_har_reproduced    HAR refit at the same cut-off equals the frozen HAR artifact
@@ -302,6 +305,47 @@ def d3():
                "duplicates": int(o.index.duplicated().sum()), "degenerate_bars_in_window": int((w["high"] <= w["low"]).sum())}
         ev[a] = rec
         ok &= not rec["after_last_complete_day"] and rec["duplicates"] == 0
+    return ("PASS" if ok else "FAIL"), ev
+
+
+@check("D4", "fx_bar_dating_no_leak")
+def d4():
+    """Yahoo FX bars are labelled one day early during UK summer time (meridian.data.fx_true_day).
+    Verify that, measured on the TRUE trading day, every training set still ends before every
+    scored target, that the bar-completeness rule handles summer, and record how the
+    date-level tests move when FX rows are aligned to their trading day."""
+    mdata.DATA_DIR = dfz.DATA
+    d = mdata.load_all()
+    shifted = {}
+    for a in mdata.FX:
+        idx = d["prices"][a].index
+        shifted[a] = int((mdata.fx_true_day(idx) != idx).sum())
+    ev = {"fx_bars_labelled_one_day_early": shifted}
+    ok = True
+    # true-day check: the last FX training label of each frozen model vs the first scored FX target
+    if (VAL / "v1v3_predictions.parquet").exists():
+        P = pd.read_parquet(VAL / "v1v3_predictions.parquet", columns=["asset", "target_date", "eval"])
+        fx = P[P["asset"].isin(list(mdata.FX))]
+        first_eval = mdata.fx_true_day(fx.loc[fx["eval"], "target_date"]).min()
+        last_train = mdata.fx_true_day(pd.DatetimeIndex([pd.Timestamp("2026-07-29")]))[0]
+        ev["V1_V3_last_train_label_true_day"] = str(last_train.date())
+        ev["V1_V3_first_scored_fx_target_true_day"] = str(first_eval.date())
+        ok &= last_train < first_eval
+    PA = pd.read_parquet(DEP / "predictions_A.parquet", columns=["asset", "target_date"])
+    fa = PA[PA["asset"].isin(list(mdata.FX))]
+    ev["A_first_scored_fx_target_true_day"] = str(mdata.fx_true_day(fa["target_date"]).min().date())
+    ok &= mdata.fx_true_day(fa["target_date"]).min() > pd.Timestamp("2026-10-30")
+    from scripts.forward_test import complete_bars
+    df = pd.DataFrame({"c": [1.0, 2.0]}, index=pd.to_datetime(["2026-08-09", "2026-08-10"]))
+    rule_ok = complete_bars(df, fx=True, now=pd.Timestamp("2026-08-11 00:47", tz="UTC")).index.max() == pd.Timestamp("2026-08-09")
+    ev["summer_in_progress_bar_dropped"] = bool(rule_ok)
+    ok &= rule_ok
+    if (VAL / "v1v3_score.json").exists():
+        S = json.loads((VAL / "v1v3_score.json").read_text())
+        if "vol_core_label_dates" in S:
+            ev["V1_dates_label_vs_aligned"] = [S["vol_core_label_dates"]["meta"]["n_dates"], S["vol_core"]["meta"]["n_dates"]]
+            ev["V1_DM_p_label_vs_aligned"] = {m: [S["vol_core_label_dates"]["models"][m]["DM_p"], S["vol_core"]["models"][m]["DM_p"]]
+                                             for m in ("Meridian_legacy_cal", "MeridianWM_frozen", "Ridge", "RandomForest")}
     return ("PASS" if ok else "FAIL"), ev
 
 
@@ -602,7 +646,7 @@ def render_md(rep):
 
 
 def main():
-    for fn in (w1, w2, t1, t2, t3, t4, d1, d2, d3, r1, r2, s1, s2, s3, s4, x1, x2, x3, x4, x5, x6, x7):
+    for fn in (w1, w2, t1, t2, t3, t4, d1, d2, d3, d4, r1, r2, s1, s2, s3, s4, x1, x2, x3, x4, x5, x6, x7):
         fn()
     summ = pd.Series([r["status"] for r in RESULTS]).value_counts().to_dict()
     rep = {"run_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),

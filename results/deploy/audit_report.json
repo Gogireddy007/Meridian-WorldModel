@@ -1,8 +1,8 @@
 {
-  "run_at_utc": "2026-11-10T01:54:24+00:00",
-  "git_commit": "aade716",
+  "run_at_utc": "2026-11-10T02:01:29+00:00",
+  "git_commit": "4ed3c41",
   "summary": {
-    "PASS": 19,
+    "PASS": 20,
     "SKIP": 2,
     "WARN": 1
   },
@@ -301,6 +301,44 @@
           "after_last_complete_day": false,
           "duplicates": 0,
           "degenerate_bars_in_window": 0
+        }
+      }
+    },
+    {
+      "id": "D4",
+      "check": "fx_bar_dating_no_leak",
+      "status": "PASS",
+      "evidence": {
+        "fx_bars_labelled_one_day_early": {
+          "EURUSD": 3025,
+          "USDJPY": 3024,
+          "GBPUSD": 3040
+        },
+        "V1_V3_last_train_label_true_day": "2026-07-30",
+        "V1_V3_first_scored_fx_target_true_day": "2026-08-04",
+        "A_first_scored_fx_target_true_day": "2026-11-02",
+        "summer_in_progress_bar_dropped": true,
+        "V1_dates_label_vs_aligned": [
+          79,
+          68
+        ],
+        "V1_DM_p_label_vs_aligned": {
+          "Meridian_legacy_cal": [
+            0.18317482140137764,
+            0.34850297581804596
+          ],
+          "MeridianWM_frozen": [
+            0.675827856982344,
+            0.8768539228608576
+          ],
+          "Ridge": [
+            0.019006603163517082,
+            0.09347155917126984
+          ],
+          "RandomForest": [
+            0.005579600210626482,
+            0.039385461353037
+          ]
         }
       }
     },

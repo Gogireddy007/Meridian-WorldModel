@@ -163,11 +163,11 @@ def bars_vs_ref(models, title, name, highlight=("Meridian",), ref_label="HAR"):
         c = BLUE if any(m.startswith(h) for h in highlight) else NEUTRAL
         v = 100 * r["pct_vs_ref"]
         ax.barh(i, v, color=c, height=0.62)
+        lo = hi = v
         if r.get("ci95_pct_vs_ref"):
             lo, hi = (100 * x for x in r["ci95_pct_vs_ref"])
             ax.plot([lo, hi], [i, i], color=INK2, lw=0.9)
-        ax.text(v + (1.0 if v >= 0 else -1.0), i, f"{v:+.1f}%", va="center", ha="left" if v >= 0 else "right",
-                fontsize=6.5, color=INK)
+        ax.text(max(v, hi) + 1.2, i, f"{v:+.1f}%", va="center", ha="left", fontsize=6.5, color=INK)
     ax.set_yticks(range(len(items)), [lab(m) for m, _ in items], fontsize=7)
     ax.axvline(0, color=INK2, lw=0.8)
     ax.set_xlabel(f"QLIKE vs {ref_label}, % (negative = better; line = 95% block-bootstrap CI)", fontsize=7.5, color=INK2)
@@ -183,9 +183,17 @@ def lines(series, title, name, xlabel, ylabel):
     """<=4 series, direct-labelled at the line end."""
     fig, ax = plt.subplots(figsize=(7.2, 3.0), dpi=200)
     fig.patch.set_facecolor(SURF); ax.set_facecolor(SURF)
+    ends = []
     for (lbl, xs, ys), c in zip(series, (BLUE, ORANGE, AQUA, YELLOW)):
         ax.plot(xs, ys, color=c, lw=2, marker="o", ms=4)
-        ax.annotate(lbl, (xs[-1], ys[-1]), xytext=(6, 0), textcoords="offset points", fontsize=7, color=INK, va="center")
+        ends.append([ys[-1], lbl, xs[-1]])
+    ends.sort()
+    span = (max(max(s_[2]) for s_ in series) - min(min(s_[2]) for s_ in series)) or 1.0
+    gap = 0.07 * span                                   # nudge end labels apart (no collisions)
+    for k in range(1, len(ends)):
+        ends[k][0] = max(ends[k][0], ends[k - 1][0] + gap)
+    for y, lbl, x in ends:
+        ax.annotate(lbl, (x, y), xytext=(6, 0), textcoords="offset points", fontsize=7, color=INK, va="center")
     ax.axhline(0, color=INK2, lw=0.8)
     ax.set_title(title, fontsize=9, color=INK, loc="left")
     ax.set_xlabel(xlabel, fontsize=7.5, color=INK2); ax.set_ylabel(ylabel, fontsize=7.5, color=INK2)
@@ -295,11 +303,18 @@ def build():
                    f"benchmark) Meridian-WM is {pct(h['MeridianWM']['pct_vs_ref'])} vs HAR (p {pv(h['MeridianWM']['DM_p'])}), "
                    f"while the audited Meridian M0 is {pct(h['Meridian_M0']['pct_vs_ref'])} (p {pv(h['Meridian_M0']['DM_p'])}) "
                    f"on exactly the same rows. Verdict for the WM network: {verdict(h['MeridianWM']['pct_vs_ref'], h['MeridianWM']['DM_p'], h['_meta']['n_dates'])}.")
+        if "holdout_raw_tradeday" in WMS["tables"]:
+            ht = WMS["tables"]["holdout_raw_tradeday"]
+            pts.append(f"With FX rows aligned to their true trading day (audit D4) the audited benchmark's headline M0 result becomes "
+                       f"{pct(ht['Meridian_M0']['pct_vs_ref'])} {ci(ht['Meridian_M0']['ci95_pct_vs_ref'])}, DM p "
+                       f"{pv(ht['Meridian_M0']['DM_p'])} (as stored: {pct(h['Meridian_M0']['pct_vs_ref'])} "
+                       f"{ci(h['Meridian_M0']['ci95_pct_vs_ref'])}, p {pv(h['Meridian_M0']['DM_p'])}).")
     pts.append(f"The audited M0 has only {A['meta']['n_dates']} target dates after its own training cut-off, so its "
                f"post-training performance is not yet testable; its live pre-committed log covers {FWD['n_dates']} origins. "
                "Months of daily logging are needed before a forward verdict exists.")
     pts.append("The audit found no data leak, no changed weights, no look-ahead, and no number in a report that differs from "
-               "its source file. It did find and help fix five real defects during the work (Section 10).")
+               "its source file. It did find, and the work fixed, six real defects, including a pre-existing FX date-labelling "
+               "issue that overstated some significance levels (Section 10).")
     for t in pts:
         S.append(P("• " + t))
     S.append(PageBreak())
@@ -372,16 +387,36 @@ def build():
                    f"{vc['meta']['n_rows']} forecasts. Nothing was retrained during the window."))
         S.append(img(bars_vs_ref(vc["models"], f"V1/V3 — QLIKE vs per-asset HAR, {vc['meta']['n_dates']} post-training dates", "v1bars")))
         rows, hl = vol_rows(vc["models"], vc["meta"]["n_assets"])
-        S.append(table(rows, [1 * cm, 4.6 * cm, 1.5 * cm, 1.5 * cm, 2.6 * cm, 1.3 * cm, 1.5 * cm, 2.6 * cm], hl_rows=hl))
+        S.append(table(rows, [1.15 * cm, 4.45 * cm, 1.5 * cm, 1.5 * cm, 2.6 * cm, 1.3 * cm, 1.5 * cm, 2.6 * cm], hl_rows=hl))
         S.append(P(f"DM: one-sided Newey–West test that the model's date-level loss is below HAR's. CI: moving-block bootstrap over "
                    f"dates. MCS: Hansen model confidence set at 90%. Legacy level offset and Jensen term were estimated on "
                    f"pre-cut-off rows only (bias {m['legacy_bias']:+.3f}, Jensen {m['legacy_jensen']:.3f} log units); the legacy "
                    "model was trained on uncleaned pre-audit FX bars, which biases its raw head low.", SM))
         mon = vc["monthly_pct_vs_ref"]
         months = list(mon)
-        ser = [(lab(k), months, [100 * mon[mm][k] for mm in months])
+        mn = vc.get("monthly_n_dates", {})
+        xl = [f"{mm} ({mn[mm]}d)" if mm in mn else mm for mm in months]
+        ser = [(lab(k), xl, [100 * mon[mm][k] for mm in months])
                for k in ("Meridian_legacy_cal", "MeridianWM_frozen", "Ridge", "LightGBM")]
         S.append(img(lines(ser, "V1/V3 — QLIKE vs HAR by target month (%, negative = better)", "v1month", "target month", "% vs HAR"), 15))
+        pa = vc.get("per_asset_pct_vs_ref")
+        if pa:
+            cols = ["Meridian_legacy_cal", "MeridianWM_frozen", "Ridge", "LightGBM", "GJR_GARCH"]
+            rows = [["Asset"] + [lab(c) for c in cols]] + [[a] + [pct(pa[a][c]) for c in cols] for a in sorted(pa)]
+            S.append(P("Per asset — QLIKE vs per-asset HAR", H3))
+            S.append(table(rows))
+        if "vol_core_label_dates" in V13:
+            lb = V13["vol_core_label_dates"]
+            S.append(P("Date alignment sensitivity (audit D4)", H3))
+            S.append(P(f"Yahoo labels FX bars one day early during UK summer time, so on label dates FX and equity rows of different "
+                       f"trading days were averaged together ({lb['meta']['n_dates']} 'dates' instead of "
+                       f"{vc['meta']['n_dates']} trading days). The tables above use the corrected trading-day alignment; the "
+                       "label-date version is shown for transparency. QLIKE values are identical; only date-level tests move.", B))
+            rows = [["Model", "DM p (label dates)", "DM p (trading days)", "CI (label dates)", "CI (trading days)"]]
+            for mm in ("Meridian_legacy_cal", "MeridianWM_frozen", "Ridge", "RandomForest", "LightGBM"):
+                rows.append([lab(mm), pv(lb["models"][mm]["DM_p"]), pv(vc["models"][mm]["DM_p"]),
+                             ci(lb["models"][mm]["ci95_pct_vs_ref"]), ci(vc["models"][mm]["ci95_pct_vs_ref"])])
+            S.append(table(rows))
         S.append(PageBreak())
         S.append(P("7. V1 + V3: tail risk (next-day VaR / Expected Shortfall)", H1))
         S.append(P("Volatility forecasts are turned into VaR/ES by filtering returns through them and reading the tail from past "
@@ -400,8 +435,11 @@ def build():
                     hl.append(len(rows) - 1)
             S.append(P(f"{100 * t['meta']['alpha']:.1f}% level — {t['meta']['n_rows']} asset-days, {t['meta']['n_dates']} dates", H3))
             S.append(table(rows, hl_rows=hl))
-        S.append(P("With about 66 days per asset a single asset expects only ~1.7 violations at 2.5%, so per-asset coverage tests "
-                   "have very little power; the pooled Kupiec test and FZ0 differences are the informative columns.", SM))
+        t25 = V13["tail_core"]["025"]["models"]["GJR_FHS"]
+        n_per = int(round(t25["n"] / t25["n_assets"]))
+        S.append(P(f"With about {n_per} days per asset a single asset expects only ~{0.025 * n_per:.1f} violations at 2.5%, so "
+                   "per-asset coverage tests have very little power; the pooled Kupiec test and FZ0 differences are the "
+                   "informative columns. Tail DM tests use the trading-day alignment.", SM))
         S.append(PageBreak())
 
     # ---------------- 8. V2
@@ -418,7 +456,7 @@ def build():
         tb = WMS["tables"]["holdout_raw"]
         keep = {k: v for k, v in tb.items() if not k.startswith("_") and not k.startswith("WM_s")}
         S.append(img(bars_vs_ref(keep, f"V2 holdout {tb['_meta']['date_range'][0]} → {tb['_meta']['date_range'][1]} — raw forecasts vs per-asset HAR", "v2bars")))
-        for t in ("holdout_raw", "holdout_cal", "dev_raw"):
+        for t in ("holdout_raw", "holdout_raw_tradeday", "holdout_cal", "dev_raw"):
             tbl = WMS["tables"][t]
             if t == "holdout_raw":
                 tbl = {k: v for k, v in tbl.items() if not k.startswith("WM_s")}
@@ -477,6 +515,12 @@ def build():
               "<font face='Courier'>kupiec()</font>; fixed before any number was reported.",
               "<b>Audit X5 crash.</b> A boolean-negation bug in the independent FZ0 recomputation; fixed, check now passes.",
               "<b>Over-claim in a summary.</b> An early README sentence said every interval contained zero; two did not. Corrected.",
+              "<b>FX bar dating (pre-existing since the project's first data loader).</b> Yahoo stamps daily FX bars at London "
+              "midnight; normalizing the UTC timestamp labels every summer-time bar one day early (Sunday–Thursday). It is not a "
+              "look-ahead leak (each series stays in order and the VIX joined to those rows is older, not newer; audit D4 checks "
+              "every train/test boundary on the true day), but date-level significance tests mixed FX and equity rows from "
+              "different days, which overstated significance (Section 6), and the forward test would have accepted an open FX "
+              "bar in summer. Fixed with meridian.data.fx_true_day; tests align by trading day.",
               "<b>Scheduled logger without repository access.</b> Fresh scheduled sessions could not push; the daily task now runs in "
               "the working session. Days it could not run are recorded as missed, never back-filled."]:
         S.append(P("• " + t))

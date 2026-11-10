@@ -221,7 +221,9 @@ def vol_scores(P, models, ref="HAR"):
         out[m]["rank"] = i + 1
     monthly = {str(p): {m: float(g[f"q_{m}"].mean() / g[f"q_{ref}"].mean() - 1) for m in models}
                for p, g in P.groupby(P["target_date"].dt.to_period("M"))}
-    return {"models": out, "monthly_pct_vs_ref": monthly,
+    monthly_n = {str(p): int(g["target_date"].nunique()) for p, g in P.groupby(P["target_date"].dt.to_period("M"))}
+    per_asset = {a: {m: float(g[f"q_{m}"].mean() / g[f"q_{ref}"].mean() - 1) for m in models} for a, g in P.groupby("asset")}
+    return {"models": out, "monthly_pct_vs_ref": monthly, "monthly_n_dates": monthly_n, "per_asset_pct_vs_ref": per_asset,
             "meta": {"n_rows": int(len(P)), "n_dates": int(T), "n_assets": int(P["asset"].nunique()),
                      "target_range": [str(P["target_date"].min().date()), str(P["target_date"].max().date())], "ref": ref}}
 
