@@ -313,6 +313,11 @@ def build():
                        f"{pct(ht['Meridian_M0']['pct_vs_ref'])} {ci(ht['Meridian_M0']['ci95_pct_vs_ref'])}, DM p "
                        f"{pv(ht['Meridian_M0']['DM_p'])} (as stored: {pct(h['Meridian_M0']['pct_vs_ref'])} "
                        f"{ci(h['Meridian_M0']['ci95_pct_vs_ref'])}, p {pv(h['Meridian_M0']['DM_p'])}).")
+    if WMS:
+        h = WMS["tables"]["holdout_raw"]["Meridian_M0"]
+        pts.append(f"'MEETS the bar' for M0 refers to its point estimate ({pct(h['pct_vs_ref'])}); the upper end of its 95% interval "
+                   f"({ci(h['ci95_pct_vs_ref'])}) is above -5%, so the size of the gain is uncertain even though the gain itself is clear. "
+                   "That holdout result predates this work and is reproduced exactly here, not newly established.")
     pts.append(f"The audited M0 has only {A['meta']['n_dates']} target dates after its own training cut-off, so its "
                f"post-training performance is not yet testable; its live pre-committed log covers {FWD['n_dates']} origins. "
                "Months of daily logging are needed before a forward verdict exists.")
@@ -487,6 +492,18 @@ def build():
             S.append(P(f"{meta['label']} — {meta['n_rows']} forecasts, {meta['n_dates']} dates", H3))
             S.append(table(rows, hl_rows=hl))
         S.append(PageBreak())
+        lc = WMS.get("loss_concentration")
+        if lc:
+            d_, h_ = lc["dev"], lc["holdout"]
+            S.append(P("Loss concentration (a finding about the original benchmark's development period)", H3))
+            S.append(P(f"In the development period the 10 worst rows carry {100 * d_['top10_share_of_HAR_QLIKE']:.0f}% of HAR's total "
+                       f"QLIKE ({d_['rows']} rows); in the holdout they carry {100 * h_['top10_share_of_HAR_QLIKE']:.0f}%. "
+                       "Largest development-period rows: "
+                       + "; ".join(f"{r['asset']} {r['date']} (next-day variance {r['rv_next']:.4f}, QLIKE {r['HAR_QLIKE']:.0f})" for r in d_["top_rows"][:3])
+                       + ". The 2012-01-26 FX bars imply a one-day variance far outside anything else in the series and look like a "
+                       "bad price tick that the bar cleaner (which only removes high &lt;= low bars) does not catch. Development-period "
+                       "rankings, which the original project used to choose its configuration, are therefore driven by a handful of "
+                       "rows; holdout results are not. This is reported, not corrected, here.", B))
         yr = WMS["by_year_pct_vs_HAR"]
         years = sorted(yr["MeridianWM"], key=int)
         ser = [(lab(k), [int(y) for y in years], [100 * yr[k][y] for y in years]) for k in ("Meridian_M0", "MeridianWM")]

@@ -1,9 +1,8 @@
 {
-  "run_at_utc": "2026-11-10T02:01:29+00:00",
-  "git_commit": "4ed3c41",
+  "run_at_utc": "2026-11-10T02:45:29+00:00",
+  "git_commit": "8bbc661",
   "summary": {
-    "PASS": 20,
-    "SKIP": 2,
+    "PASS": 22,
     "WARN": 1
   },
   "checks": [
@@ -427,7 +426,8 @@
         "amendment8_committed": "2026-11-05 05:24:45+00:00",
         "results_created": {
           "v1v3_run": "2026-11-05T05:54:41+00:00",
-          "frozen_wm": "2026-11-05T05:54:22+00:00"
+          "frozen_wm": "2026-11-05T05:54:22+00:00",
+          "wm_walkforward_combined": "2026-11-10T02:42:37+00:00"
         }
       }
     },
@@ -501,21 +501,26 @@
     {
       "id": "X6",
       "check": "wm_walkforward_fold_grid",
-      "status": "SKIP",
+      "status": "PASS",
       "evidence": {
-        "missing": [
-          "results/wm/bench_wm_meta.json"
-        ]
+        "rows_bench": 49717,
+        "rows_wm": 49421,
+        "rows_matched": 49421,
+        "fold_mismatch": 0,
+        "only_in_bench": 296,
+        "only_in_wm": 0,
+        "nonfinite_forecasts": 0
       }
     },
     {
       "id": "X7",
       "check": "wm_walkforward_rescored_and_reproduces_benchmark",
-      "status": "SKIP",
+      "status": "PASS",
       "evidence": {
-        "missing": [
-          "results/wm/wm_score.json"
-        ]
+        "rescore_max_abs_diff": 1.1102230246251565e-16,
+        "stored_benchmark_max_abs_diff": 1.1631812180112888e-10,
+        "same_rows_as_stored_benchmark": true,
+        "rows": 20898
       }
     }
   ]

@@ -149,6 +149,14 @@ significantly so. That is consistent with the audit that withdrew it, not a new 
 (25-date) intervals are wide (several percent either side), so months more of forward data are
 needed before any deployment claim.
 
+## Validation report (PREREGISTRATION.md Amendment 8)
+
+`results/Meridian_Validation_Report.pdf` gathers the full validation in one document: the frozen
+deployment, the longest post-training window for the legacy model and a frozen Meridian-WM (V1/V3),
+Meridian-WM in the audited walk-forward harness (V2, including its pre-registered NaN failure and
+the Amendment 8a re-run), tail risk, the audit, and the defects found along the way. It is generated
+by `scripts/build_validation_pdf.py`, and every number in it is read from the results JSON files.
+
 ## Forward test
 
 `scripts/forward_test.py` freezes Meridian M0 and per-asset HAR (trained once, weights hashed)

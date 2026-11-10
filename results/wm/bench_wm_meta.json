@@ -1,0 +1,135 @@
+{
+  "seeds": 3,
+  "epochs": 8,
+  "fold_grid_check": {
+    "rows_bench": 49717,
+    "rows_wm": 49421,
+    "rows_matched": 49421,
+    "fold_mismatch": 0,
+    "only_in_bench": 296,
+    "only_in_wm": 0,
+    "nonfinite_forecasts": 0
+  },
+  "combined_at_utc": "2026-11-10T02:42:37+00:00",
+  "amendment": "8a: optimizer steps with non-finite loss/grad skipped",
+  "steps_per_fold": {
+    "seed0": {
+      "1": {
+        "steps": 368
+      },
+      "2": {
+        "steps": 480
+      },
+      "3": {
+        "steps": 592
+      },
+      "4": {
+        "steps": 712
+      },
+      "5": {
+        "steps": 824
+      },
+      "6": {
+        "steps": 936
+      },
+      "7": {
+        "steps": 1048,
+        "skipped": 8
+      },
+      "8": {
+        "steps": 1168
+      },
+      "9": {
+        "steps": 1280
+      },
+      "10": {
+        "steps": 1392
+      },
+      "11": {
+        "steps": 1504
+      },
+      "12": {
+        "steps": 1616
+      }
+    },
+    "seed1": {
+      "1": {
+        "steps": 368
+      },
+      "2": {
+        "steps": 480
+      },
+      "3": {
+        "steps": 592
+      },
+      "4": {
+        "steps": 712
+      },
+      "5": {
+        "steps": 824
+      },
+      "6": {
+        "steps": 936
+      },
+      "7": {
+        "steps": 1048,
+        "skipped": 8
+      },
+      "8": {
+        "steps": 1168
+      },
+      "9": {
+        "steps": 1280
+      },
+      "10": {
+        "steps": 1392
+      },
+      "11": {
+        "steps": 1504
+      },
+      "12": {
+        "steps": 1616
+      }
+    },
+    "seed2": {
+      "1": {
+        "steps": 368
+      },
+      "2": {
+        "steps": 480
+      },
+      "3": {
+        "steps": 592
+      },
+      "4": {
+        "steps": 712
+      },
+      "5": {
+        "steps": 824
+      },
+      "6": {
+        "steps": 936
+      },
+      "7": {
+        "steps": 1048,
+        "skipped": 8
+      },
+      "8": {
+        "steps": 1168
+      },
+      "9": {
+        "steps": 1280
+      },
+      "10": {
+        "steps": 1392
+      },
+      "11": {
+        "steps": 1504
+      },
+      "12": {
+        "steps": 1616
+      }
+    }
+  },
+  "data_end": "2026-07-30"
+}

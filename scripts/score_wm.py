@@ -55,11 +55,24 @@ def main():
                                                          "holdout: raw, FX aligned to trading day")
     # reproduction check: the stored M0 / HAR holdout numbers must be reproduced on the same rows
     stored = json.loads((ROOT / "results" / "benchmark_vol.json").read_text())["tables"]["holdout_raw"]
-    rep["reproduction_vs_stored_benchmark"] = {m: {"stored_QLIKE": stored[m]["QLIKE"],
-                                                   "rescored_QLIKE": rep["tables"]["holdout_raw"][m]["QLIKE"],
-                                                   "stored_rows": stored["_meta"]["n_rows"],
-                                                   "rescored_rows": rep["tables"]["holdout_raw"]["_meta"]["n_rows"]}
+    # rescore on the stored benchmark's own support (all benchmark models, no WM restriction)
+    full = common_table(core[core["date"] >= SPLIT], [m for m in BASE_MODELS if m in P.columns] + ["Meridian_M0"], "HAR",
+                        "holdout raw, stored benchmark support")
+    rep["reproduction_vs_stored_benchmark"] = {m: {"stored_QLIKE": stored[m]["QLIKE"], "rescored_QLIKE": full[m]["QLIKE"],
+                                                   "stored_DM_p": stored[m].get("DM_p"), "rescored_DM_p": full[m].get("DM_p"),
+                                                   "stored_rows": stored["_meta"]["n_rows"], "rescored_rows": full["_meta"]["n_rows"]}
                                                for m in ("HAR", "Meridian_M0") if m in stored}
+    rep["wm_support_rows_missing_in_holdout"] = int(full["_meta"]["n_rows"] - rep["tables"]["holdout_raw"]["_meta"]["n_rows"])
+    # outlier concentration of the loss (QLIKE is dominated by rows where RV explodes vs forecast)
+    conc = {}
+    for pname, df in {"dev": core[core["date"] < SPLIT], "holdout": core[core["date"] >= SPLIT]}.items():
+        d_ = df[np.isfinite(df[["HAR", "rv_next"]]).all(axis=1)].copy()
+        d_["q"] = qlike(d_["rv_next"].to_numpy(), np.exp(d_["HAR"].to_numpy()))
+        top = d_.nlargest(10, "q")
+        conc[pname] = {"top10_share_of_HAR_QLIKE": float(top["q"].sum() / d_["q"].sum()), "rows": int(len(d_)),
+                       "top_rows": [{"asset": r.asset, "date": str(pd.Timestamp(r.date).date()), "rv_next": float(r.rv_next),
+                                     "HAR_QLIKE": float(r.q)} for r in top.head(5).itertuples()]}
+    rep["loss_concentration"] = conc
     # by year / asset (raw, vs per-asset HAR)
     sub = core[np.isfinite(core[["HAR", "Meridian_M0", "MeridianWM", "rv_next"]]).all(axis=1)].copy()
     for m in ("HAR", "Meridian_M0", "MeridianWM"):
