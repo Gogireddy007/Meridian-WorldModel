@@ -441,3 +441,14 @@ sha256-hashed, then run forward untouched on the V1 window and scored exactly li
 All three are added to the audit (`scripts/audit_deploy.py`): weights unchanged after freeze,
 targets after training, look-ahead truncation, fold-grid identity, independent re-scoring,
 report == JSON. Whatever the results are, they are reported.
+
+**Amendment 8a — V2 deviation (written and committed 2026-11-10 before the re-run).** The
+pre-registered V2 run of `MeridianWM` exactly as written **failed**: on fold 7 (test from
+2019-04-25) training diverged to NaN for 3/3 seeds. Diagnosis: `sigreg_loss` divides each random
+projection by its batch standard deviation; when the representation collapses along a direction
+that std is ~0, the 4th powers overflow and the loss is NaN, and gradient clipping cannot stop a
+NaN gradient, so every weight becomes NaN. This is the primary V2 result and is reported as such.
+Secondary analysis, labelled as a deviation: the same model and loss, with the training loop
+**skipping any optimizer step whose loss or gradient norm is non-finite** (no change to the model,
+the loss, or any healthy step; the number of skipped steps per fold and seed is recorded and
+reported). Everything else in V2 is unchanged.
