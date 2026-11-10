@@ -264,9 +264,18 @@ def score():
     E = P[P["eval"]]
     assert (E["target_date"] > pd.Timestamp(meta["cut_label"])).all()
     assert (E["target_date"] > pd.Timestamp(meta["frozen_wm"]["train_label_end_max"])).all()
+    # Date-level tests align assets by the trading day each bar covers: Yahoo FX bars are
+    # labelled one day early in UK summer time (meridian.data.fx_true_day, audit D4).
+    # The label-date version is kept as a sensitivity check.
+    from meridian.data import FX, fx_true_day
+    lab_core = E[~E["breadth"]]
+    E = E.copy()
+    fxm = E["asset"].isin(list(FX))
+    E.loc[fxm, "target_date"] = fx_true_day(E.loc[fxm, "target_date"])
     core, br = E[~E["breadth"]], E[E["breadth"]]
     tails = ["Meridian_B_EVT", "Meridian_B_FHS", "MeridianWM_FHS", "WM_studentt", "HAR_FHS", "LightGBM_FHS", "GJR_FHS"]
-    res = {"meta": meta,
+    res = {"meta": meta, "date_alignment": "FX target dates mapped to the London trading day (fx_true_day)",
+           "vol_core_label_dates": vol_scores(lab_core, VOL_MODELS),
            "vol_core": vol_scores(core, VOL_MODELS),
            "vol_breadth": vol_scores(br, VOL_MODELS) if len(br) else None,
            "tail_core": tail_scores(core, tails),

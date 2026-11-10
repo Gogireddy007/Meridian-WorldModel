@@ -66,13 +66,14 @@ def fetch():
 def complete_bars(df, fx=False, now=None):
     """Drop a bar whose day is still in progress: Yahoo returns a partial bar for it, which
     must never become a forecast origin or an outcome. Equity bars are New York days
-    (complete from 17:00 ET); Yahoo FX bars are UTC days (complete from 00:00 UTC next day)."""
+    (complete from 17:00 ET). Yahoo FX bars are London days, complete at the next London
+    midnight, and are labelled one day early during UK summer time (meridian.data.fx_true_day)."""
     now = pd.Timestamp.now(tz="UTC") if now is None else pd.Timestamp(now).tz_convert("UTC")
     if fx:
-        last_complete = now.tz_localize(None).normalize() - pd.Timedelta(days=1)
-    else:
-        ny = now.tz_convert("America/New_York")
-        last_complete = ny.normalize().tz_localize(None) - (pd.Timedelta(0) if ny.hour >= 17 else pd.Timedelta(days=1))
+        from meridian.data import fx_bar_end_utc
+        return df[fx_bar_end_utc(df.index) <= now.tz_localize(None)]
+    ny = now.tz_convert("America/New_York")
+    last_complete = ny.normalize().tz_localize(None) - (pd.Timedelta(0) if ny.hour >= 17 else pd.Timedelta(days=1))
     return df[df.index <= last_complete]
 
 

@@ -296,7 +296,7 @@ def d3():
     for a, o in d["prices"].items():
         w = o[o.index >= "2026-09-01"]
         # FX bars are UTC-day bars: day d is complete only once d+1 00:00 UTC has passed
-        fx_incomplete = a in mdata.FX and o.index.max() + pd.Timedelta(days=1) > pd.Timestamp(man["built_at_utc"]).tz_localize(None)
+        fx_incomplete = a in mdata.FX and mdata.fx_bar_end_utc(o.index[-1:])[0] > pd.Timestamp(man["built_at_utc"]).tz_convert("UTC").tz_localize(None)
         rec = {"last_bar": str(o.index.max().date()),
                "after_last_complete_day": bool(o.index.max() > last_complete or fx_incomplete),
                "duplicates": int(o.index.duplicated().sum()), "degenerate_bars_in_window": int((w["high"] <= w["low"]).sum())}

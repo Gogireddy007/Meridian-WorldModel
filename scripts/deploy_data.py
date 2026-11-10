@@ -139,11 +139,10 @@ def fred():
     return pd.DataFrame(cols).sort_index(), {"source": "fred", "sha256": hashes}
 
 
-def complete_bars(df):
-    """Drop a bar of the New York trading day still in progress (before 17:00 ET)."""
-    now = pd.Timestamp.now(tz="America/New_York")
-    last = now.normalize().tz_localize(None) - (pd.Timedelta(0) if now.hour >= 17 else pd.Timedelta(days=1))
-    return df[df.index <= last]
+def complete_bars(df, fx=False):
+    """Drop a bar of a day still in progress (same rule as scripts/forward_test.py)."""
+    from scripts.forward_test import complete_bars as cb
+    return cb(df, fx=fx)
 
 
 def check_against_benchmark(name, ohlc):
@@ -177,7 +176,7 @@ def main():
     for name, sym in FX.items():
         print(f"  {name} (fx)", flush=True)
         df, info = fx(name, sym)
-        df = complete_bars(df)
+        df = complete_bars(df, fx=True)
         df.to_parquet(OUT / f"px_{name}.parquet")
         info.update(rows=len(df), first=str(df.index.min().date()), last=str(df.index.max().date()),
                     check_vs_benchmark=check_against_benchmark(name, df))

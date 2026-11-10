@@ -45,6 +45,14 @@ def main():
         rep["tables"][f"{pname}_cal"] = common_table(
             df, ["HAR_cal", "LightGBM_cal", "Meridian_M0_cal", "MeridianWM_cal", "HAR", "Meridian_M0", "MeridianWM"],
             "HAR_cal", f"{pname}: walk-forward recalibrated")
+    # sensitivity: date-level tests with FX rows aligned to the trading day they cover
+    # (Yahoo FX bars are labelled one day early in UK summer time; audit D4)
+    from meridian.data import FX, fx_true_day
+    al = core[core["date"] >= SPLIT].copy()
+    fxm = al["asset"].isin(list(FX))
+    al.loc[fxm, "date"] = fx_true_day(al.loc[fxm, "date"])
+    rep["tables"]["holdout_raw_tradeday"] = common_table(al, ["HAR", "Meridian_M0", "MeridianWM", "LightGBM", "Ridge"], "HAR",
+                                                         "holdout: raw, FX aligned to trading day")
     # reproduction check: the stored M0 / HAR holdout numbers must be reproduced on the same rows
     stored = json.loads((ROOT / "results" / "benchmark_vol.json").read_text())["tables"]["holdout_raw"]
     rep["reproduction_vs_stored_benchmark"] = {m: {"stored_QLIKE": stored[m]["QLIKE"],

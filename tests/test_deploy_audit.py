@@ -103,3 +103,15 @@ def test_forward_test_drops_in_progress_bars():
     at = pd.Timestamp("2026-11-05 01:47", tz="UTC")              # 20:47 New York (scheduled run)
     assert complete_bars(df, fx=True, now=at).index.max() == pd.Timestamp("2026-11-04")
     assert complete_bars(df, fx=False, now=at).index.max() == pd.Timestamp("2026-11-04")
+
+
+def test_fx_bars_dated_one_day_early_in_uk_summer():
+    from meridian.data import fx_true_day, fx_bar_end_utc
+    from scripts.forward_test import complete_bars
+    lab = pd.to_datetime(["2026-08-09", "2026-08-13", "2026-11-02", "2026-03-29", "2026-03-27"])
+    assert list(fx_true_day(lab)) == list(pd.to_datetime(["2026-08-10", "2026-08-14", "2026-11-02", "2026-03-30", "2026-03-27"]))
+    assert fx_bar_end_utc(lab[:1])[0] == pd.Timestamp("2026-08-10 23:00")
+    # summer evening run at 00:47 UTC on Aug 11: the bar labelled Aug 10 is Aug 11's session, still open
+    df = pd.DataFrame({"close": [1.0, 2.0]}, index=pd.to_datetime(["2026-08-09", "2026-08-10"]))
+    assert complete_bars(df, fx=True, now=pd.Timestamp("2026-08-11 00:47", tz="UTC")).index.max() == pd.Timestamp("2026-08-09")
+    assert complete_bars(df, fx=True, now=pd.Timestamp("2026-08-11 23:30", tz="UTC")).index.max() == pd.Timestamp("2026-08-10")
