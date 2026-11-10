@@ -83,7 +83,10 @@ def wm_windows(asset_win, frames, mean, std):
     return out
 
 
-def train_wm(cfg, tr, threads=None):
+SKIP_NONFINITE = True        # Amendment 8a: skip optimizer steps whose loss / grad norm is non-finite
+
+
+def train_wm(cfg, tr, threads=None, stats=None):
     if threads:
         torch.set_num_threads(threads)
     m = MeridianWM(cfg)
@@ -98,10 +101,21 @@ def train_wm(cfg, tr, threads=None):
             b = perm[i:i + BATCH]
             opt.zero_grad()
             loss, _ = m.loss({"x_ctx": T["ctx"][b], "x_fut": T["fut"][b], "y": T["y"][b], "r_next": T["r_next"][b]})
+            if SKIP_NONFINITE and not torch.isfinite(loss):
+                if stats is not None:
+                    stats["skipped"] = stats.get("skipped", 0) + 1
+                continue
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(m.parameters(), 1.0)
+            gn = torch.nn.utils.clip_grad_norm_(m.parameters(), 1.0)
+            if SKIP_NONFINITE and not torch.isfinite(gn):
+                opt.zero_grad()
+                if stats is not None:
+                    stats["skipped"] = stats.get("skipped", 0) + 1
+                continue
             opt.step()
             m.update_target()
+            if stats is not None:
+                stats["steps"] = stats.get("steps", 0) + 1
     m.eval()
     return m
 
@@ -120,8 +134,15 @@ def run_seed(k):
     torch.set_num_threads(1)
     t0 = time.time()
     R, _, _, _, frames, asset_win = build()
-    recs = []
+    recs, skips = [], {}
+    ck = OUT / f"partial_seed{k}"
+    ck.mkdir(parents=True, exist_ok=True)
     for f in fold_grid(R):
+        fp = ck / f"fold{f['fold']:02d}.parquet"
+        if fp.exists():                                   # resume after a restart
+            recs.append(pd.read_parquet(fp))
+            skips[f["fold"]] = json.loads((ck / f"fold{f['fold']:02d}.json").read_text())
+            continue
         core = {a: v for a, v in asset_win.items() if a in bv.CORE_ASSETS}
         mean, std = train_scaler(frames, core, f["cutoff"])
         W = wm_windows(asset_win, frames, mean, std)
@@ -134,19 +155,27 @@ def run_seed(k):
                 tr[kk].append(w[kk][m])
         tr = {kk: np.concatenate(v) for kk, v in tr.items()}
         cfg = WMConfig(n_features=len(FEATURES), window=bv.L_NEURAL, seed=f["fold"] * 100 + k)
-        model = train_wm(cfg, tr)
+        st = {}
+        model = train_wm(cfg, tr, stats=st)
+        fold_recs = []
         for a, w in W.items():
             tm = np.array([d in f["test_dates"] for d in w["dates"].values])
             if not tm.any():
                 continue
             p = predict(model, w["ctx"][tm])
-            recs.append(pd.DataFrame({"asset": a, "date": w["dates"][tm], "fold": f["fold"],
-                                      f"WM_s{k}": p["vol"], f"WMdf_s{k}": p["df"],
-                                      f"WMscale_s{k}": p["scale"], f"WMreg_s{k}": p["regime"]}))
-        print(f"  seed {k} fold {f['fold']:2d} {pd.Timestamp(f['test_start']).date()} train={len(tr['y'])} "
+            fold_recs.append(pd.DataFrame({"asset": a, "date": w["dates"][tm], "fold": f["fold"],
+                                           f"WM_s{k}": p["vol"], f"WMdf_s{k}": p["df"],
+                                           f"WMscale_s{k}": p["scale"], f"WMreg_s{k}": p["regime"]}))
+        fr = pd.concat(fold_recs, ignore_index=True)
+        fr.to_parquet(fp)
+        (ck / f"fold{f['fold']:02d}.json").write_text(json.dumps(st))
+        recs.append(fr)
+        skips[f["fold"]] = st
+        print(f"  seed {k} fold {f['fold']:2d} {pd.Timestamp(f['test_start']).date()} train={len(tr['y'])} skipped={st.get('skipped', 0)} "
               f"[{time.time() - t0:.0f}s]", flush=True)
     OUT.mkdir(parents=True, exist_ok=True)
     pd.concat(recs, ignore_index=True).to_parquet(OUT / f"bench_seed{k}.parquet")
+    (OUT / f"bench_seed{k}_steps.json").write_text(json.dumps({str(a): b for a, b in skips.items()}, indent=1))
     print(f"seed {k} done in {time.time() - t0:.0f}s", flush=True)
 
 
@@ -171,9 +200,13 @@ def combine():
     M = P.merge(W[["asset", "date", "MeridianWM", "WM_df", "WM_scale", "WM_regime"]
                   + [f"WM_s{k}" for k in range(N_SEEDS)]], on=["asset", "date"], how="left")
     M.to_parquet(OUT / "bench_wm.parquet")
+    steps = {f"seed{k}": json.loads((OUT / f"bench_seed{k}_steps.json").read_text()) for k in range(N_SEEDS)}
+    grid["nonfinite_forecasts"] = int((~np.isfinite(W["MeridianWM"])).sum())
     from datetime import datetime, timezone
     (OUT / "bench_wm_meta.json").write_text(json.dumps({"seeds": N_SEEDS, "epochs": EPOCHS, "fold_grid_check": grid,
                                                         "combined_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                                                        "amendment": "8a: optimizer steps with non-finite loss/grad skipped",
+                                                        "steps_per_fold": steps,
                                                         "data_end": str(BENCH_DATA_END.date())}, indent=2))
     print(json.dumps(grid, indent=2))
 
