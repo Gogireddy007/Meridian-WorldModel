@@ -551,7 +551,7 @@ def x5():
             v, e, r = Q[f"VaR_{nm}_{k}"].to_numpy(), Q[f"ES_{nm}_{k}"].to_numpy(), Q["r_next"].to_numpy()
             # FZ0 written out independently
             v2, e2 = np.minimum(v, -1e-10), np.minimum(np.minimum(e, v), -1e-10)
-            fz = -(r <= v2) * (v2 - r) / (al * e2) + v2 / e2 + np.log(-e2) - 1
+            fz = -(r <= v2).astype(float) * (v2 - r) / (al * e2) + v2 / e2 + np.log(-e2) - 1
             worst = max(worst, abs(fz.mean() - t["models"][nm]["FZ0"]), abs((r <= v).mean() - t["models"][nm]["violation_rate"]))
             n += 1
     return ("PASS" if worst < 1e-9 else "FAIL"), {"numbers_checked": n, "max_abs_diff": worst}

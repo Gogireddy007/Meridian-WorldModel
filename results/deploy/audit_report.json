@@ -1,8 +1,9 @@
 {
-  "run_at_utc": "2026-11-05T01:09:14+00:00",
-  "git_commit": "323f2e7",
+  "run_at_utc": "2026-11-10T01:54:24+00:00",
+  "git_commit": "aade716",
   "summary": {
-    "PASS": 14,
+    "PASS": 19,
+    "SKIP": 2,
     "WARN": 1
   },
   "checks": [
@@ -378,6 +379,105 @@
           "share_shuffles_better": 0.455
         },
         "meaning": "share_shuffles_better > 0.05: within this window the model's day-to-day ordering of forecasts does not beat a random ordering of its own forecasts (no timing evidence); HAR rows are the control"
+      }
+    },
+    {
+      "id": "X1",
+      "check": "preregistered_before_results",
+      "status": "PASS",
+      "evidence": {
+        "amendment8_committed": "2026-11-05 05:24:45+00:00",
+        "results_created": {
+          "v1v3_run": "2026-11-05T05:54:41+00:00",
+          "frozen_wm": "2026-11-05T05:54:22+00:00"
+        }
+      }
+    },
+    {
+      "id": "X2",
+      "check": "frozen_wm_unchanged",
+      "status": "PASS",
+      "evidence": {
+        "results/wm/frozen/wm_seed0.pt": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        },
+        "results/wm/frozen/wm_seed1.pt": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        },
+        "results/wm/frozen/wm_seed2.pt": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        },
+        "results/wm/frozen/wm_seed3.pt": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        },
+        "results/wm/frozen/wm_seed4.pt": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        },
+        "results/wm/frozen/scaler.npz": {
+          "matches_manifest": true,
+          "matches_git_HEAD": true
+        }
+      }
+    },
+    {
+      "id": "X3",
+      "check": "v1v3_targets_after_training",
+      "status": "PASS",
+      "evidence": {
+        "training_ends": {
+          "legacy_B_last_origin(T4)": "2026-07-28",
+          "baselines_label_end": "2026-07-29",
+          "frozen_wm_label_end": "2026-07-29"
+        },
+        "first_scored_target": "2026-08-03",
+        "eval_rows_violating": 0,
+        "eval_rows": 871
+      }
+    },
+    {
+      "id": "X4",
+      "check": "v1v3_lookahead_truncation",
+      "status": "PASS",
+      "evidence": {
+        "origins_tested": 12,
+        "max_abs_diff_log_var": {
+          "MeridianWM_frozen": 9.5367431640625e-07,
+          "Meridian_legacy_raw": 9.5367431640625e-07
+        }
+      }
+    },
+    {
+      "id": "X5",
+      "check": "v1v3_scores_recomputed",
+      "status": "PASS",
+      "evidence": {
+        "numbers_checked": 33,
+        "max_abs_diff": 0.0
+      }
+    },
+    {
+      "id": "X6",
+      "check": "wm_walkforward_fold_grid",
+      "status": "SKIP",
+      "evidence": {
+        "missing": [
+          "results/wm/bench_wm_meta.json"
+        ]
+      }
+    },
+    {
+      "id": "X7",
+      "check": "wm_walkforward_rescored_and_reproduces_benchmark",
+      "status": "SKIP",
+      "evidence": {
+        "missing": [
+          "results/wm/wm_score.json"
+        ]
       }
     }
   ]
