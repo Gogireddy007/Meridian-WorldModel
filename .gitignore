@@ -39,3 +39,4 @@ report/*.pdf
 !results/deploy/*.parquet
 !results/validation/*.parquet
 !results/wm/*.parquet
+results/wm/partial_seed*/
