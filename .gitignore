@@ -37,3 +37,5 @@ report/*.pdf
 # Frozen-model deployment (scripts/deploy_*.py): data snapshot + predictions kept for audit
 !results/deploy/data/*.parquet
 !results/deploy/*.parquet
+!results/validation/*.parquet
+!results/wm/*.parquet

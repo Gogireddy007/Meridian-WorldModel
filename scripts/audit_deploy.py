@@ -27,6 +27,11 @@ pipeline and the audit is unlikely.
   S1 scores_recomputed        every QLIKE / % vs HAR in deploy_score.json recomputed independently
   S2 report_matches_json      DEPLOYMENT.md and README's DEPLOY block equal a fresh render of the JSON
   S3 no_tests_on_tiny_samples no p-value or CI is reported for windows with < 20 dates
+  X1-X7 (Amendment 8)         pre-registration committed before results; frozen WM unchanged;
+                              V1/V3 targets after every training cut-off; look-ahead truncation for
+                              the frozen WM and legacy model; V1/V3 and V2 scores recomputed
+                              independently; WM walk-forward uses the audited fold grid and its
+                              HAR / M0 numbers reproduce the stored benchmark exactly
   S4 scorer_sanity            an oracle scores QLIKE 0; date-shuffled forecasts should score worse
                               (WARN when Meridian's ordering is no better than shuffled)
 """
@@ -422,6 +427,167 @@ def s4():
     return status, ev
 
 
+
+# --------------------------------------------------------------------------- #
+# Amendment 8 (overnight validation): V1 / V2 / V3
+# --------------------------------------------------------------------------- #
+VAL = ROOT / "results" / "validation"
+WMD = ROOT / "results" / "wm"
+
+
+def _skip_if_missing(*paths):
+    miss = [str(p.relative_to(ROOT)) for p in paths if not p.exists()]
+    return ("SKIP", {"missing": miss}) if miss else None
+
+
+def _prereg_time():
+    out = subprocess.run(["git", "log", "-S", "Amendment 8", "--format=%cI", "--reverse", "--", "PREREGISTRATION.md"],
+                         capture_output=True, text=True, cwd=ROOT).stdout.split()
+    return pd.Timestamp(out[0]) if out else None
+
+
+@check("X1", "preregistered_before_results")
+def x1():
+    sk = _skip_if_missing(VAL / "v1v3_meta.json", WMD / "frozen" / "manifest.json")
+    if sk:
+        return sk
+    pre = _prereg_time()
+    stamps = {"v1v3_run": json.loads((VAL / "v1v3_meta.json").read_text())["run_at_utc"],
+              "frozen_wm": json.loads((WMD / "frozen" / "manifest.json").read_text())["frozen_at_utc"]}
+    if (WMD / "bench_wm_meta.json").exists():
+        stamps["wm_walkforward_combined"] = json.loads((WMD / "bench_wm_meta.json").read_text()).get("combined_at_utc")
+    ok = pre is not None and all(v is not None and pd.Timestamp(v) > pre for v in stamps.values())
+    return ("PASS" if ok else "FAIL"), {"amendment8_committed": str(pre), "results_created": stamps}
+
+
+@check("X2", "frozen_wm_unchanged")
+def x2():
+    sk = _skip_if_missing(WMD / "frozen" / "manifest.json")
+    if sk:
+        return sk
+    man = json.loads((WMD / "frozen" / "manifest.json").read_text())
+    ev, ok = {}, True
+    for n, h in man["sha256"].items():
+        p = WMD / "frozen" / n
+        rel = str(p.relative_to(ROOT))
+        head = git_blob_sha(rel)
+        ev[rel] = {"matches_manifest": sha(p) == h, "matches_git_HEAD": sha(p) == head}
+        ok &= sha(p) == h and sha(p) == head
+    return ("PASS" if ok else "FAIL"), ev
+
+
+@check("X3", "v1v3_targets_after_training")
+def x3():
+    sk = _skip_if_missing(VAL / "v1v3_predictions.parquet")
+    if sk:
+        return sk
+    meta = json.loads((VAL / "v1v3_meta.json").read_text())
+    P = pd.read_parquet(VAL / "v1v3_predictions.parquet")
+    E = P[P["eval"]]
+    cuts = {"legacy_B_last_origin(T4)": "2026-07-28", "baselines_label_end": meta["baseline_fit"]["train_label_end_max"],
+            "frozen_wm_label_end": meta["frozen_wm"]["train_label_end_max"]}
+    worst = max(pd.Timestamp(v) for v in cuts.values())
+    bad = int((E["target_date"] <= worst).sum())
+    sc = json.loads((VAL / "v1v3_score.json").read_text()) if (VAL / "v1v3_score.json").exists() else None
+    scored_from = sc["vol_core"]["meta"]["target_range"][0] if sc else None
+    ok = bad == 0 and (scored_from is None or pd.Timestamp(scored_from) > worst)
+    return ("PASS" if ok else "FAIL"), {"training_ends": cuts, "first_scored_target": scored_from,
+                                        "eval_rows_violating": bad, "eval_rows": int(len(E))}
+
+
+@check("X4", "v1v3_lookahead_truncation")
+def x4():
+    sk = _skip_if_missing(VAL / "v1v3_predictions.parquet")
+    if sk:
+        return sk
+    import scripts.validate_v1v3 as vv
+    dfz.use_snapshot()
+    d = bv.load_clean()
+    P = pd.read_parquet(VAL / "v1v3_predictions.parquet")
+    E = P[P["eval"]].sample(12, random_state=3)
+    sc = np.load(WMD / "frozen" / "scaler.npz")
+    from meridian.meridian_wm import MeridianWM, WMConfig
+    wms = []
+    for s in range(vv.N_WM):
+        m = MeridianWM(WMConfig(n_features=len(FEATURES), window=bv.L_NEURAL, seed=7000 + s))
+        m.load_state_dict(torch.load(WMD / "frozen" / f"wm_seed{s}.pt")); m.eval(); wms.append(m)
+    mB, meanB, stdB = dfz.load_B()
+    worst = {"MeridianWM_frozen": 0.0, "Meridian_legacy_raw": 0.0}
+    for _, r in E.iterrows():
+        a, t = r["asset"], r["date"]
+        o = d["prices"][a]
+        f = build_asset_frame(o[o.index <= t], d["macro"][d["macro"].index <= t])
+        _, X = dfz.windows_for(f, FEATURES, sc["mean"], sc["std"])
+        v = float(vv.wm_forecast(wms, X[-1:])[0][0])
+        worst["MeridianWM_frozen"] = max(worst["MeridianWM_frozen"], abs(v - r["MeridianWM_frozen"]))
+        _, X = dfz.windows_for(f, dfz.LEGACY_FEATURES, meanB, stdB)
+        worst["Meridian_legacy_raw"] = max(worst["Meridian_legacy_raw"], abs(float(dfz.run([mB], X[-1:])[0]) - r["Meridian_legacy_raw"]))
+    ok = all(v < 1e-4 for v in worst.values())
+    return ("PASS" if ok else "FAIL"), {"origins_tested": int(len(E)), "max_abs_diff_log_var": worst}
+
+
+@check("X5", "v1v3_scores_recomputed")
+def x5():
+    sk = _skip_if_missing(VAL / "v1v3_score.json")
+    if sk:
+        return sk
+    import scripts.validate_v1v3 as vv
+    from meridian.riskscore import fz0_loss
+    S = json.loads((VAL / "v1v3_score.json").read_text())
+    P = pd.read_parquet(VAL / "v1v3_predictions.parquet")
+    C = P[P["eval"] & ~P["breadth"]]
+    C = C[np.isfinite(C[vv.VOL_MODELS + ["rv_next"]]).all(axis=1)]
+    worst, n = 0.0, 0
+    for m in vv.VOL_MODELS:
+        q = qlike_independent(C["rv_next"].to_numpy(), C[m].to_numpy()).mean()
+        worst = max(worst, abs(q - S["vol_core"]["models"][m]["QLIKE"])); n += 1
+    for k, t in S["tail_core"].items():
+        al = t["meta"]["alpha"]
+        names = list(t["models"])
+        cols = [c for nm in names for c in (f"VaR_{nm}_{k}", f"ES_{nm}_{k}")]
+        Q = P[P["eval"] & ~P["breadth"]]
+        Q = Q[np.isfinite(Q[cols + ["r_next"]]).all(axis=1)]
+        for nm in names:
+            v, e, r = Q[f"VaR_{nm}_{k}"].to_numpy(), Q[f"ES_{nm}_{k}"].to_numpy(), Q["r_next"].to_numpy()
+            # FZ0 written out independently
+            v2, e2 = np.minimum(v, -1e-10), np.minimum(np.minimum(e, v), -1e-10)
+            fz = -(r <= v2) * (v2 - r) / (al * e2) + v2 / e2 + np.log(-e2) - 1
+            worst = max(worst, abs(fz.mean() - t["models"][nm]["FZ0"]), abs((r <= v).mean() - t["models"][nm]["violation_rate"]))
+            n += 1
+    return ("PASS" if worst < 1e-9 else "FAIL"), {"numbers_checked": n, "max_abs_diff": worst}
+
+
+@check("X6", "wm_walkforward_fold_grid")
+def x6():
+    sk = _skip_if_missing(WMD / "bench_wm_meta.json")
+    if sk:
+        return sk
+    g = json.loads((WMD / "bench_wm_meta.json").read_text())["fold_grid_check"]
+    ok = g["fold_mismatch"] == 0 and g["only_in_wm"] == 0 and g["rows_matched"] >= 0.99 * g["rows_bench"]
+    return ("PASS" if ok else "FAIL"), g
+
+
+@check("X7", "wm_walkforward_rescored_and_reproduces_benchmark")
+def x7():
+    sk = _skip_if_missing(WMD / "wm_score.json")
+    if sk:
+        return sk
+    S = json.loads((WMD / "wm_score.json").read_text())
+    P = pd.read_parquet(WMD / "bench_wm.parquet")
+    tb = S["tables"]["holdout_raw"]
+    models = [m for m in tb if not m.startswith("_")]
+    H = P[(~P["breadth"]) & (pd.to_datetime(P["date"]) >= "2019-01-01")]
+    H = H[np.isfinite(H[["HAR", "y", "rv_next"]]).all(axis=1)]
+    H = H[np.isfinite(H[models]).all(axis=1)]
+    worst = max(abs(qlike_independent(H["rv_next"].to_numpy(), H[m].to_numpy()).mean() - tb[m]["QLIKE"]) for m in models)
+    rep = S["reproduction_vs_stored_benchmark"]
+    repro = max(abs(v["stored_QLIKE"] - v["rescored_QLIKE"]) for v in rep.values())
+    rows_same = all(v["stored_rows"] == v["rescored_rows"] for v in rep.values())
+    ok = worst < 1e-9 and repro < 1e-9 and rows_same
+    return ("PASS" if ok else "FAIL"), {"rescore_max_abs_diff": worst, "stored_benchmark_max_abs_diff": repro,
+                                        "same_rows_as_stored_benchmark": rows_same, "rows": int(len(H))}
+
+
 def render_md(rep):
     L = ["<!-- generated by scripts/audit_deploy.py — do not edit by hand -->",
          "# Audit of the frozen-model deployment", "",
@@ -436,7 +602,7 @@ def render_md(rep):
 
 
 def main():
-    for fn in (w1, w2, t1, t2, t3, t4, d1, d2, d3, r1, r2, s1, s2, s3, s4):
+    for fn in (w1, w2, t1, t2, t3, t4, d1, d2, d3, r1, r2, s1, s2, s3, s4, x1, x2, x3, x4, x5, x6, x7):
         fn()
     summ = pd.Series([r["status"] for r in RESULTS]).value_counts().to_dict()
     rep = {"run_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
