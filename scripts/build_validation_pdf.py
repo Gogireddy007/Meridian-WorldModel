@@ -46,6 +46,7 @@ WMS = J("wm/wm_score.json")
 FWD = J("forward/forward_score.json")
 AUD = J("deploy/audit_report.json")
 WMAN = J("wm/frozen/manifest.json")
+V2F = J("wm/v2_primary_failure.json")
 FLOG = pd.read_csv(RES / "forward" / "forecast_log.csv")
 COMMIT = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, cwd=ROOT).stdout.strip()
 
@@ -272,11 +273,14 @@ def build():
         vc = V13["vol_core"]
         for m in ("Meridian_legacy_cal", "Meridian_legacy", "MeridianWM_frozen"):
             add("V1/V3", m, vc)
+    if V2F:
+        rows.append(["V2 primary", "Meridian-WM as written", f"walk-forward, fold {V2F['fold']} (test from {V2F['fold_test_start']})",
+                     "—", "—", "—", f"FAILED: diverged to NaN ({len(V2F['seeds_failed'])}/{V2F['seeds_run']} seeds)"])
     if WMS:
         for t, m in (("holdout_raw", "MeridianWM"), ("holdout_raw", "Meridian_M0"), ("holdout_cal", "MeridianWM_cal")):
             tb = WMS["tables"][t]
             r = tb[m]
-            rows.append(["V2 holdout", lab(m), f"{tb['_meta']['date_range'][0]} → {tb['_meta']['date_range'][1]} ({tb['_meta']['n_dates']})",
+            rows.append(["V2 (8a)", lab(m), f"{tb['_meta']['date_range'][0]} → {tb['_meta']['date_range'][1]} ({tb['_meta']['n_dates']})",
                          pct(r["pct_vs_ref"]), ci(r.get("ci95_pct_vs_ref")), pv(r.get("DM_p")),
                          verdict(r["pct_vs_ref"], r.get("DM_p"), tb["_meta"]["n_dates"])])
     if FWD:
@@ -445,6 +449,25 @@ def build():
     # ---------------- 8. V2
     if WMS:
         S.append(P("8. V2: Meridian-WM in the audited walk-forward harness", H1))
+        if V2F:
+            S.append(P("Primary result (as pre-registered): FAILED", H3))
+            S.append(P(f"Meridian-WM exactly as written could not complete the walk-forward. On fold {V2F['fold']} (test from "
+                       f"{V2F['fold_test_start']}) training diverged to NaN for {len(V2F['seeds_failed'])} of {V2F['seeds_run']} seeds, "
+                       f"after {V2F['folds_completed_before_failure']} folds had completed. Diagnosis "
+                       f"(<font face='Courier'>scripts/diag_wm_nan.py</font> reproduces it): {V2F['diagnosis']} Root cause: "
+                       f"{V2F['root_cause']}"))
+            S.append(P("Secondary result (Amendment 8a, committed before the re-run): same model and loss; optimizer steps whose "
+                       "loss or gradient norm is non-finite are skipped and counted. Healthy steps are untouched.", H3))
+            sp = WMS["meta"].get("steps_per_fold")
+            if sp:
+                rows = [["Seed"] + [f"F{int(f)}" for f in sorted(next(iter(sp.values())), key=int)] + ["Total skipped"]]
+                for sd, folds in sp.items():
+                    ks = sorted(folds, key=int)
+                    tot = sum(folds[f].get("skipped", 0) for f in ks)
+                    steps = sum(folds[f].get("steps", 0) for f in ks)
+                    rows.append([sd] + [str(folds[f].get("skipped", 0)) for f in ks] + [f"{tot} of {tot + steps}"])
+                S.append(P("Skipped (non-finite) optimizer steps per fold", H3))
+                S.append(table(rows))
         g = WMS["meta"]["fold_grid_check"]
         rep = WMS["reproduction_vs_stored_benchmark"]
         S.append(P(f"Meridian-WM (default configuration, {WMS['meta']['seeds']} seeds, {WMS['meta']['epochs']} epochs) was trained "
