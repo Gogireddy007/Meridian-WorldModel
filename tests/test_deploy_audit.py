@@ -115,3 +115,13 @@ def test_fx_bars_dated_one_day_early_in_uk_summer():
     df = pd.DataFrame({"close": [1.0, 2.0]}, index=pd.to_datetime(["2026-08-09", "2026-08-10"]))
     assert complete_bars(df, fx=True, now=pd.Timestamp("2026-08-11 00:47", tz="UTC")).index.max() == pd.Timestamp("2026-08-09")
     assert complete_bars(df, fx=True, now=pd.Timestamp("2026-08-11 23:30", tz="UTC")).index.max() == pd.Timestamp("2026-08-10")
+
+
+def test_strict_precommitment_uses_real_world_target_close():
+    from scripts.forward_test import target_close_utc
+    idx = pd.to_datetime(["2026-11-05", "2026-11-06", "2026-11-09", "2026-11-10"])
+    d = {"prices": {"SPY": pd.DataFrame({"close": 1.0}, index=idx), "EURUSD": pd.DataFrame({"close": 1.0}, index=idx)}}
+    S = pd.DataFrame({"asset": ["SPY", "EURUSD"], "origin_date": pd.to_datetime(["2026-11-06", "2026-11-06"])})
+    t = target_close_utc(S, d)
+    assert t.iloc[0] == pd.Timestamp("2026-11-09 21:00")      # Monday 16:00 New York (EST)
+    assert t.iloc[1] == pd.Timestamp("2026-11-10 00:00")      # London midnight ending Monday's FX bar

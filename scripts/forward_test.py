@@ -197,6 +197,24 @@ def predict(refresh=True):
     print(f"logged {len(rows)} new forecasts ({sum(r['precommitted'] for r in rows)} pre-committed) -> {LOG}")
 
 
+def target_close_utc(S, d):
+    """UTC close of each row's target bar: the asset's next bar after the origin. Equities close
+    16:00 New York; Yahoo FX bars end at the next London midnight (meridian.data.fx_bar_end_utc)."""
+    from meridian.data import fx_bar_end_utc
+    out = pd.Series(pd.NaT, index=S.index, dtype="datetime64[ns]")
+    for a, g in S.groupby("asset"):
+        idx = d["prices"][a].index
+        pos = idx.searchsorted(g["origin_date"].to_numpy(), side="right")
+        ok = pos < len(idx)
+        tgt = pd.DatetimeIndex([idx[p] if o else pd.NaT for p, o in zip(pos, ok)])
+        if a in FX:
+            out.loc[g.index] = fx_bar_end_utc(tgt).to_numpy()
+        else:
+            ny = (tgt + pd.Timedelta(hours=16)).tz_localize("America/New_York").tz_convert("UTC").tz_localize(None)
+            out.loc[g.index] = ny.to_numpy()
+    return out
+
+
 def score():
     use_snapshot()
     d = bv.load_clean()
@@ -206,7 +224,14 @@ def score():
         f = bv.build_asset_frame(o, d["macro"])
         real.append(pd.DataFrame({"asset": a, "origin_date": f.index, "rv_next": f["rv_next"].to_numpy()}))
     S = log.merge(pd.concat(real), on=["asset", "origin_date"], how="left")
-    S = S[S["precommitted"] & ~S["breadth"] & np.isfinite(S["rv_next"])]
+    S = S[S["precommitted"] & ~S["breadth"] & np.isfinite(S["rv_next"])].copy()
+    # Strict pre-commitment: the row must have been logged before its TARGET bar closed in the
+    # real world, not merely before the data source published it (Yahoo can lag by hours).
+    S["target_close_utc"] = target_close_utc(S, d)
+    logged = pd.to_datetime(S["logged_at_utc"], utc=True).dt.tz_localize(None)
+    late = logged >= S["target_close_utc"]
+    n_late = int(late.sum())
+    S = S[~late]
     if S.empty:
         print("no pre-committed core forecasts with a realized outcome yet"); return
     for m in ("Meridian_M0", "HAR"):
@@ -216,6 +241,7 @@ def score():
     pct = S["q_Meridian_M0"].mean() / S["q_HAR"].mean() - 1
     t, p = hac_mean_test((dl["q_Meridian_M0"] - dl["q_HAR"]).to_numpy())
     res = {"scored_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+           "excluded_logged_after_target_close": n_late,
            "n_dates": T, "n_forecasts": int(len(S)),
            "date_range": [str(S["origin_date"].min().date()), str(S["origin_date"].max().date())],
            "QLIKE_Meridian_M0": float(S["q_Meridian_M0"].mean()), "QLIKE_HAR": float(S["q_HAR"].mean()),
