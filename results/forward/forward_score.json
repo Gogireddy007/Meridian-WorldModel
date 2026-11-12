@@ -1,15 +1,15 @@
 {
-  "scored_at_utc": "2026-11-11T01:50:24+00:00",
+  "scored_at_utc": "2026-11-12T01:49:30+00:00",
   "excluded_logged_after_target_close": 8,
-  "n_dates": 4,
-  "n_forecasts": 36,
+  "n_dates": 5,
+  "n_forecasts": 39,
   "date_range": [
     "2026-10-30",
-    "2026-11-09"
+    "2026-11-10"
   ],
-  "QLIKE_Meridian_M0": 0.5212973140414314,
-  "QLIKE_HAR": 0.5041915904484235,
-  "pct_vs_HAR": 0.03392703074994596,
+  "QLIKE_Meridian_M0": 0.4867116653299635,
+  "QLIKE_HAR": 0.4686250868222048,
+  "pct_vs_HAR": 0.03859498566413877,
   "DM_p": null,
   "note": "DM test needs >= 20 dates; under ~250 dates the result is noisy."
 }
