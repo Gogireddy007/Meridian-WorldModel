@@ -1,0 +1,34 @@
+{
+  "run_at_utc": "2026-11-05T05:54:41+00:00",
+  "cut_origin": "2026-07-28",
+  "cut_label": "2026-07-29",
+  "eval_from": "2026-08-03",
+  "baseline_fit": {
+    "n_train_rows_core": 54140,
+    "train_origin_max": "2026-07-28",
+    "train_label_end_max": "2026-07-29"
+  },
+  "frozen_wm": {
+    "frozen_at_utc": "2026-11-05T05:54:22+00:00",
+    "model": "MeridianWM default WMConfig, 5 seeds (7000-7004), 8 epochs",
+    "train_origin_max": "2026-07-28",
+    "train_label_end_max": "2026-07-29",
+    "train_rows": 53997,
+    "sha256": {
+      "wm_seed0.pt": "b8a244e80930be6f534182fe6e5d30bc1ebd5358adf0354f4d0627ad19562f5f",
+      "wm_seed1.pt": "7c01a8b9ab233f66ebc7b102e4006e6af61d4f3d2a44657729a121ca419c945d",
+      "wm_seed2.pt": "9df6acbdc460c8c4126375f5ca5595c0a5c0a480fb93af11a6871aa3b4464ebd",
+      "wm_seed3.pt": "3f3456fdc768f037e5bf6d39a3e8e43eb1adefc8e4704284c9118610243d733f",
+      "wm_seed4.pt": "d32d49353eeabf47b2e3fce97ccce19d5b055c7d3858f3c8badffd973aaf5303",
+      "scaler.npz": "c3374e67a3ddd9a1bc1cfc75cc79f061d842d555a95dccbafe430cc1e138fbe9"
+    }
+  },
+  "legacy_bias": 0.39321442011766805,
+  "legacy_jensen": 0.2836792468470334,
+  "legacy_sha256": "608a21d102bfd8f28e5739459941eee275076e51601470681b301baa3b562829",
+  "eval_rows": 871,
+  "eval_target_range": [
+    "2026-08-03",
+    "2026-11-04"
+  ]
+}

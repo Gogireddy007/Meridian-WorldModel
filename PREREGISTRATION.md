@@ -404,3 +404,51 @@ period 2012-06-12 → 2018-12-31, FZ0 loss at 2.5% (lower is better; Δ vs GJR-G
 **Selected Meridian tail variant: Meridian + EVT.** Noted before the holdout: on the development
 period the HAR-filtered tails are slightly better than the Meridian-filtered ones, so the tail
 benchmark will also report Meridian against HAR-RV + FHS, not only against the GJR reference.
+
+**Amendment 8 — overnight validation of the frozen deployment and of Meridian-WM (written and
+committed 2026-11-05, BEFORE any of the runs below were started; the git commit time of this text
+is the evidence).** Three pre-specified tests. Nothing below is tuned; every configuration is the
+one already in the repository.
+
+*V1 — Snapshot B, longest honest window.* The legacy frozen model `results/meridian_final.pt`
+(cut-off reconstructed by audit check T4: last training origin 2026-07-28) is run forward,
+untouched, on every target date from **2026-08-03 to the last complete day** (≈ 66 trading dates).
+All comparison models are fit once on rows whose 1-day label ends **≤ 2026-07-29** and then run
+forward frozen. Primary: core-universe QLIKE vs per-asset HAR, date-level DM (Newey–West HAC),
+moving-block bootstrap CI, model confidence set (10%). Reported for the raw head, the
+Jensen-only head (Var term from pre-cutoff rows) and the level-offset head (mean + Var from
+pre-cutoff rows). Tail: next-day 2.5% and 1% VaR/ES on the same rows from Meridian-B + EVT
+(Amendment 7 selection), HAR + FHS, LightGBM + FHS and GJR-GARCH + FHS (reference); FZ0 loss,
+Kupiec and Christoffersen per asset.
+
+*V2 — Meridian-WM in the audited walk-forward harness.* `MeridianWM` exactly as in
+`meridian/meridian_wm.py` (default `WMConfig`, 15 features, window 32, 8 epochs, batch 256,
+AdamW 1e-3) is trained per fold inside the audited harness of Amendment 6: the same 12 folds,
+22-day embargo, label-end purge, train-only scaler, core assets for training, data truncated
+to the audited benchmark's data end (2026-07-30) so the fold grid is identical (checked against
+the `fold` column of `results/benchmark_vol_predictions.parquet`). Ensemble: 3 seeds (CPU
+budget; M0 used 5 — stated as a limitation). Scored with `scripts/score_vol_benchmark.py`'s
+protocol on the **2019-01-01 → 2026-06-29 holdout** against per-asset HAR and the stored M0,
+raw and with the same walk-forward recalibration every model gets. Win bar unchanged (§5:
+≥ 5% QLIKE reduction vs HAR and DM p < 0.05). Secondary: the Student-t head's 2.5%/1% VaR
+coverage (Kupiec, per asset) and regime persistence (mean dwell of the argmax regime).
+Development-period (< 2019) numbers are reported but not used for any choice; there is no choice.
+
+*V3 — Frozen Meridian-WM, deployed without further training.* `MeridianWM` (same config, 5
+seeds) is trained ONCE on rows whose labels end ≤ 2026-07-29 (the V1 cut-off), saved and
+sha256-hashed, then run forward untouched on the V1 window and scored exactly like V1.
+
+All three are added to the audit (`scripts/audit_deploy.py`): weights unchanged after freeze,
+targets after training, look-ahead truncation, fold-grid identity, independent re-scoring,
+report == JSON. Whatever the results are, they are reported.
+
+**Amendment 8a — V2 deviation (written and committed 2026-11-10 before the re-run).** The
+pre-registered V2 run of `MeridianWM` exactly as written **failed**: on fold 7 (test from
+2019-04-25) training diverged to NaN for 3/3 seeds. Diagnosis: `sigreg_loss` divides each random
+projection by its batch standard deviation; when the representation collapses along a direction
+that std is ~0, the 4th powers overflow and the loss is NaN, and gradient clipping cannot stop a
+NaN gradient, so every weight becomes NaN. This is the primary V2 result and is reported as such.
+Secondary analysis, labelled as a deviation: the same model and loss, with the training loop
+**skipping any optimizer step whose loss or gradient norm is non-finite** (no change to the model,
+the loss, or any healthy step; the number of skipped steps per fold and seed is recorded and
+reported). Everything else in V2 is unchanged.

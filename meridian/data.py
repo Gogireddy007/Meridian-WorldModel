@@ -154,3 +154,30 @@ if __name__ == "__main__":
         print(f"{k:8} {v.shape[0]:5d} rows  {v.index.min().date()} -> {v.index.max().date()}")
     print("macro:", d["macro"].shape, d["macro"].columns.tolist(),
           d["macro"].index.min().date(), "->", d["macro"].index.max().date())
+
+
+# --------------------------------------------------------------------------- #
+# FX bar dating (found by the deployment audit, check D4)
+# --------------------------------------------------------------------------- #
+# Yahoo daily FX bars cover one London trading day and are stamped at London midnight.
+# fetch_yahoo() normalizes the UTC timestamp, so during UK summer time (BST, UTC+1) the
+# stamp 23:00 UTC falls on the PREVIOUS calendar day: a bar labelled d is the session of
+# d+1 (labels run Sun-Thu in summer, Mon-Fri in winter). Every FX row in this project
+# since 2007 carries that label. Within one asset the ordering is unaffected and nothing
+# from the future enters a forecast; the label only matters when FX rows are aligned with
+# other assets by date or when deciding whether the latest bar is complete.
+def fx_true_day(labels) -> pd.DatetimeIndex:
+    """Map Yahoo FX bar labels to the London trading day they actually cover."""
+    labels = pd.DatetimeIndex(labels)
+    nxt = labels + pd.Timedelta(days=1)
+    london_midnight_utc = (nxt.tz_localize("Europe/London", nonexistent="shift_forward", ambiguous=False)
+                           .tz_convert("UTC").normalize().tz_localize(None))
+    shifted = london_midnight_utc == labels           # BST: the session starts 23:00 UTC on the label day
+    return pd.DatetimeIndex(np.where(shifted, nxt, labels))
+
+
+def fx_bar_end_utc(labels) -> pd.DatetimeIndex:
+    """UTC time at which the Yahoo FX bar with each label is complete (next London midnight)."""
+    day = fx_true_day(labels) + pd.Timedelta(days=1)
+    return (day.tz_localize("Europe/London", nonexistent="shift_forward", ambiguous=False)
+            .tz_convert("UTC").tz_localize(None))

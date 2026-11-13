@@ -33,3 +33,10 @@ report/*.fdb_latexmk
 report/build.log
 report/arch_build.log
 report/*.pdf
+
+# Frozen-model deployment (scripts/deploy_*.py): data snapshot + predictions kept for audit
+!results/deploy/data/*.parquet
+!results/deploy/*.parquet
+!results/validation/*.parquet
+!results/wm/*.parquet
+results/wm/partial_seed*/

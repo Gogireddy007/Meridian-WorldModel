@@ -1,0 +1,13 @@
+{
+  "test": "PREREGISTRATION.md Amendment 8, V2, MeridianWM exactly as written",
+  "result": "FAILED: training diverged to NaN",
+  "fold": 7,
+  "fold_test_start": "2019-04-25",
+  "seeds_failed": [0, 1, 2],
+  "seeds_run": 3,
+  "folds_completed_before_failure": 6,
+  "error": "ValueError: Expected parameter df of distribution Chi2() to satisfy the constraint GreaterThan(lower_bound=0.0), but found invalid values (NaN)",
+  "diagnosis": "scripts/diag_wm_nan.py, seed 700: all loss terms finite until optimizer step 131, where the SIGReg term is NaN (QLIKE 0.042, JEPA 0.187 finite); gradient norm NaN; after the step every switching-core parameter is NaN and all outputs are non-finite at step 132.",
+  "root_cause": "meridian/model.py sigreg_loss standardizes each random projection by its batch std (+1e-6); when the representation collapses along a projection the 4th powers overflow; clip_grad_norm_ cannot bound a NaN gradient.",
+  "diagnosed_at_utc": "2026-11-10T02:04:00+00:00"
+}
